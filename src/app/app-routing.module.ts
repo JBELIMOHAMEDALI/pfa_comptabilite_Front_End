@@ -4,7 +4,10 @@ import { HomePageComponent } from "./home-page/home-page.component";
 import { SigninComponent } from "./pages/auth/signin/signin.component";
 import { DashboardDefaultComponent } from "./pages/dashboard/dashboard-default/dashboard-default.component";
 import { SimplePageComponent } from "./pages/simple-page/simple-page.component";
+import { TesttestComponent } from "./pages/testtest/testtest.component";
+
 import { ProfileComponent } from "./pages/user/profile/profile.component";
+
 
 const routes: Routes = [
   // {
@@ -67,6 +70,8 @@ const routes: Routes = [
       },
       // { path: "admin", component: AdminComponent },
       { path: "simple", component: SimplePageComponent },
+      { path: "test", component: TesttestComponent },
+
     ],
   },
 ];

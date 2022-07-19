@@ -14,7 +14,7 @@ import { PopupComponent } from '../../popup/popup.component';
         style({
           overflow: 'hidden',
           height: '0px',
-        })
+        }) 
       ),
       state('yes-block',
         style({
