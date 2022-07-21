@@ -14,6 +14,8 @@ import { PopupComponent } from './popup/popup.component';
 import { TesttestComponent } from './pages/testtest/testtest.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ListSocieteComponent } from './pages/societe/list-societe/list-societe.component';
+import { AddUpdateSocieteComponent } from './pages/societe/add-update-societe/add-update-societe.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { FormsModule } from '@angular/forms';
     ProfileComponent,
     PopupComponent,
     TesttestComponent,
+    ListSocieteComponent,
+    AddUpdateSocieteComponent,
     
 
   ],

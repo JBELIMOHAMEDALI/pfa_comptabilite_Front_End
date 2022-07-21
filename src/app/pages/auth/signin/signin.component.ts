@@ -18,10 +18,10 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
   }
   async onSignin(f:NgForm) {
-    console.log(f.value.email.toString(),f.value.password.toString())
+    //console.log(f.value.email.toString(),f.value.password.toString())
 
     this.login_service.login_fn(f.value.email.toString(),f.value.password.toString()).subscribe((data) => {
-      //console.log(data)
+      console.log(data)
       const dataRes=data;
       this.route.navigate(['/dashboard']);
       // const donne: any = data;
