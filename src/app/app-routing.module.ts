@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { HomePageComponent } from "./home-page/home-page.component";
 import { SigninComponent } from "./pages/auth/signin/signin.component";
 import { DashboardDefaultComponent } from "./pages/dashboard/dashboard-default/dashboard-default.component";
+import { ListPlanComptableComponent } from "./pages/plan_comptable/list-plan-comptable/list-plan-comptable.component";
 import { SimplePageComponent } from "./pages/simple-page/simple-page.component";
 import { ListSocieteComponent } from "./pages/societe/list-societe/list-societe.component";
 import { TesttestComponent } from "./pages/testtest/testtest.component";
@@ -73,6 +74,8 @@ const routes: Routes = [
       { path: "simple", component: SimplePageComponent },
       { path: "test", component: TesttestComponent },
       { path: "socite", component: ListSocieteComponent },
+      { path: "plan_comptable", component: ListPlanComptableComponent },
+      // 
 
     ],
   },

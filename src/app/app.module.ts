@@ -16,6 +16,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ListSocieteComponent } from './pages/societe/list-societe/list-societe.component';
 import { AddUpdateSocieteComponent } from './pages/societe/add-update-societe/add-update-societe.component';
+import { ListPlanComptableComponent } from './pages/plan_comptable/list-plan-comptable/list-plan-comptable.component';
+import { AddPlanComptableComponent } from './pages/plan_comptable/add-plan-comptable/add-plan-comptable.component';
+import { UpdatePlanComptableComponent } from './pages/plan_comptable/update-plan-comptable/update-plan-comptable.component';
+import { DeleteAllFromTabComponent } from './pages/delete_all/delete-all-from-tab/delete-all-from-tab.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import { AddUpdateSocieteComponent } from './pages/societe/add-update-societe/ad
     TesttestComponent,
     ListSocieteComponent,
     AddUpdateSocieteComponent,
+    ListPlanComptableComponent,
+    AddPlanComptableComponent,
+    UpdatePlanComptableComponent,
+    DeleteAllFromTabComponent,
     
 
   ],
@@ -46,7 +54,7 @@ import { AddUpdateSocieteComponent } from './pages/societe/add-update-societe/ad
     //BasicLoginComponent,
     //DashboardDefaultComponent
   ],
-  entryComponents: [PopupComponent],
+  entryComponents: [PopupComponent,AddPlanComptableComponent,UpdatePlanComptableComponent],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]

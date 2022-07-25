@@ -1,0 +1,82 @@
+<!-- Page-header start -->
+<div class="">
+    <div class="page-header card">
+      <div class="row align-items-end">
+        <div class="col-lg-8">
+          <div class="page-header-title">
+            <span><i class="icofont icofont-home bg-c-pink"></i></span>
+            <div class="d-inline">
+              <span class="d-block"><h4> Plan Comptable</h4></span>
+              <span>Ajouter,Modifier,Supprimer et Lister plan Comptable</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="page-header-breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a [routerLink]="'/'">
+                  <i class="icofont icofont-home"></i>
+                </a>
+              </li>
+              <li class="breadcrumb-item">
+  
+                <a>Plan_Comptable</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page-header end -->
+  
+  <div class="row">
+    <div class="col-sm-12">
+      <app-card [title]="' choisir un type Plan Comptable pour continuer'">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-lg-5 offset-lg-1">
+                <select class="form-select" aria-label="Default select example">
+                    <!-- fct:onchange-->
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+              </div>
+  
+              <div class="col-md-6 col-lg-4 offset-lg-2">
+
+                <div class="input-group">
+                    <button (click)="this.OpenAdd()">
+                        update
+                       </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+  
+            </tbody>
+          </table>
+      </app-card>
+    </div>
+  </div>
+  
