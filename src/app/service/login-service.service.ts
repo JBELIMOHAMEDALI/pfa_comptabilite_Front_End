@@ -19,9 +19,9 @@ export class LoginServiceService {
      login_fn(email: string, mot_passe: string) {
     const obj={email:email,mot_passe:mot_passe}
    // alert(environment.apiUrl);
-     return this.httpClient.post("http://localhost:3000/auth/login",obj);
+     return this.httpClient.post("http://127.0.0.1:3000/auth/login",obj);
      }
      addUser(obj:any){
-      return this.httpClient.post("http://localhost:3000/users/add",obj);
+      return this.httpClient.post("http://127.0.0.1:3000/users/add",obj);
      }
 }

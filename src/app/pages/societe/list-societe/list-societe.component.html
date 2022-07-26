@@ -34,26 +34,54 @@
   <div class="row">
     <div class="col-sm-12">
       <app-card [title]="'Hello card'">
-        <table class="table">
+        <!-- <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-lg-4">
+                      <button type="button"  class="btn btn-primary offset-10">Danger</button>
+            </div>
+          </div>
+        </div> -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-5 offset-lg-1">
+            </div>
+
+            <div class="col-md-12 col-lg-4 offset-lg-4">
+
+              <div class="input-group">
+                <button type="button"  class="btn btn-primary " (click)="this.openAdd()">add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- 
+ -->
+ <div class="table-responsive mt-3">
+        <table class="table" style="text-align:center;">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Ref°</th>
+              <th scope="col">Nom societe</th>
+              <th scope="col">Domaine societe</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngFor="let item of this.list_socite">
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <th scope="row">{{item.id_societe}}</th>
+              <td>{{item.nom_societe}}</td>
+              <td>{{item.domaine_societe}}</td>
+              <td>
+                <button type="button" class="btn btn-warning" (click)="this.openUpdate(item)">update</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-danger" (click)="this.opendelete(item.id_societe)" >delete</button>
+              </td>
+
             </tr>
 
           </tbody>
         </table>
-        
+      </div>
 
       </app-card>
     </div>

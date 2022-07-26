@@ -54,7 +54,7 @@ import { DeleteAllFromTabComponent } from './pages/delete_all/delete-all-from-ta
     //BasicLoginComponent,
     //DashboardDefaultComponent
   ],
-  entryComponents: [PopupComponent,AddPlanComptableComponent,UpdatePlanComptableComponent],
+  entryComponents: [PopupComponent,AddPlanComptableComponent,UpdatePlanComptableComponent,AddUpdateSocieteComponent,DeleteAllFromTabComponent],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,36 @@
-<p>add-update-societe works!</p>
+<div class="modal-header">
+    <h4 class="modal-title">{{this.titre}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form class="form" name="form" #f="ngForm" (ngSubmit)="this.addupdate(f)">
+  <div class="modal-body">
+
+        <div *ngIf=" this.action=='update'" class="form-group">
+            <label for="exampleFormControlInput1">ID societe</label>
+            <input disabled  type="text" class="form-control" id="exampleFormControlInput1" name="id_societe" [(ngModel)]="this.model.id_societe" #id_societe="ngModel" >
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Nom societe</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name..." name="nom_societe" [(ngModel)]="this.model.nom_societe" #nom_societe="ngModel" required>
+            <div *ngIf="(nom_societe.invalid && nom_societe.touched)" class="alert alert-danger p-2" role="alert">
+                Saisir la Nom societe
+              </div>
+        </div>
+      <div class="form-group">
+            <label for="exampleFormControlInput1">Domaine societe</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Domaine" name="domaine_societe" [(ngModel)]="this.model.domaine_societe" #domaine_societe="ngModel" required>
+            <div *ngIf="(domaine_societe.invalid && domaine_societe.touched)" class="alert alert-danger p-2" role="alert">
+                Saisir la Domaine societe
+              </div>
+        </div>
+   
+  </div>
+  <div class="modal-footer">
+    <button *ngIf=" this.action=='add'" type="submit" class="btn btn-primary">add</button>
+    <button *ngIf=" this.action=='update'" type="submit" class="btn btn-warning">update</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Fermer</button>
+
+  </div> </form>
+  
