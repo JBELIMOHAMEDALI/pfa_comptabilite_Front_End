@@ -6,8 +6,8 @@
           <div class="page-header-title">
             <span><i class="icofont icofont-home bg-c-pink"></i></span>
             <div class="d-inline">
-              <span class="d-block"><h4>Plan Comptable</h4></span>
-              <span>Liste des Plan Comptables</span>
+              <span class="d-block"><h4>Taxes</h4></span>
+              <span>Liste des Taxes</span>
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@
               </li>
               <li class="breadcrumb-item">
   
-                <a>Home/Plan Comptable</a>
+                <a>Home/Taxe</a>
               </li>
             </ul>
           </div>
@@ -45,74 +45,55 @@
           <div class="row">
             <div class="col-md-6 col-lg-5 offset-lg-1">
             </div>
-  
+
             <div class="col-md-12 col-lg-4 offset-lg-4">
-  
+
               <div class="input-group">
                 <button type="button"  class="btn btn-primary " (click)="this.openAdd()">add</button>
               </div>
             </div>
           </div>
         </div>
-  
-  <!-- 
-  -->
-  <div class="table-responsive mt-3">
+
+<!-- 
+ -->
+ <div class="table-responsive mt-3">
         <table class="table" style="text-align:center;">
           <thead class="thead-dark">
             <tr>
               <th scope="col">Ref°</th>
-              <th scope="col">Nom du fichier</th>
-              <th scope="col">Type de donnees</th>
+              <th scope="col">Code taxe</th>
               <th scope="col">Intitule</th>
-              <th scope="col">Numero compte</th>
-              <th scope="col">Type de fichier</th>
-              <th scope="col">Delimiteur enregistrement</th>
-              <th scope="col">Delimiteur champ</th>
-              <th scope="col">Origine fichier</th>
-              <th scope="col">Nombre de decimales</th>
-              <th scope="col">Separateur decimales</th>
-              <th scope="col">Cadrage</th>
-              <th scope="col">Separateur miliers</th>
-              <th scope="col">Caractere remplissage</th>
-              <th scope="col">Debut enregistrement</th>
-              <th scope="col">Entete du fichier</th>
-              <th scope="col">Id Société</th>
-              <th scope="col">Actions</th>
-  
+              <th scope="col">Compte taxe</th>
+              <th scope="col">Type de taxe</th>
+              <th scope="col">sens</th>
+              <th scope="col">Taux en pourcentage</th>
+              <th scope="col">Numero</th>
+
             </tr>
           </thead>
-          <tbody *ngFor="let item of this.list_plan_comptable">
+          <tbody *ngFor="let item of this.list_taxe">
             <tr>
-              <th scope="row">{{item.id_comptable}}</th>
-              <td>{{item.nom_du_fichier}}</td>
-              <td>{{item.type_de_donnees}}</td>
+              <th scope="row">{{item.id_taxe}}</th>
+              <td>{{item.code_taxe}}</td>
               <td>{{item.intitule}}</td>
-              <td>{{item.numero_compte}}</td>
-              <td>{{item.type_de_fichier}}</td>
-              <td>{{item.delimiteur_enregistrement}}</td>
-              <td>{{item.delimiteur_champ}}</td>
-              <td>{{item.origine_fichier}}</td>
-              <td>{{item.nombre_de_decimales}}</td>
-              <td>{{item.separateur_decimales}}</td>
-              <td>{{item.cadrage}}</td>
-              <td>{{item.separateur_miliers}}</td>
-              <td>{{item.caractere_remplissage}}</td>
-              <td>{{item.debut_enregistrement}}</td>
-              <td>{{item.entete_du_fichier}}</td>
-              <td>{{item.id_societe }}</td>
-             
+              <td>{{item.compte_taxe}}</td>
+              <td>{{item.type_de_taxe}}</td>
+              <td>{{item.sens}}</td>
+              <td>{{item.taux_pourcentage}}</td>
+              <td>{{item.numero}}</td>
+              
               <td>
                 <button type="button" class="btn btn-warning" (click)="this.openUpdate(item)">update</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-danger" (click)="this.opendelete(item.id_comptable)" >delete</button>
+                <button type="button" class="btn btn-danger" (click)="this.opendelete(item.id_taxe)" >delete</button>
               </td>
-  
+
             </tr>
-  
+
           </tbody>
         </table>
       </div>
-  
+
       </app-card>
     </div>
   </div>

@@ -16,10 +16,13 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ListSocieteComponent } from './pages/societe/list-societe/list-societe.component';
 import { AddUpdateSocieteComponent } from './pages/societe/add-update-societe/add-update-societe.component';
-import { ListPlanComptableComponent } from './pages/plan_comptable/list-plan-comptable/list-plan-comptable.component';
-import { AddPlanComptableComponent } from './pages/plan_comptable/add-plan-comptable/add-plan-comptable.component';
-import { UpdatePlanComptableComponent } from './pages/plan_comptable/update-plan-comptable/update-plan-comptable.component';
+
+
 import { DeleteAllFromTabComponent } from './pages/delete_all/delete-all-from-tab/delete-all-from-tab.component';
+import { AddUpdatePlanComptableComponent } from './pages/plan_comptable/add-update-plan-comptable/add-update-plan-comptable.component';
+import { ListPlanComptableComponent } from './pages/plan_comptable/list-plan-comptable/list-plan-comptable.component';
+import { ListTaxeComponent } from './pages/taxe/list-taxe/list-taxe.component';
+import { AddUpdateTaxeComponent } from './pages/taxe/add-update-taxe/add-update-taxe.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +37,19 @@ import { DeleteAllFromTabComponent } from './pages/delete_all/delete-all-from-ta
     TesttestComponent,
     ListSocieteComponent,
     AddUpdateSocieteComponent,
-    ListPlanComptableComponent,
-    AddPlanComptableComponent,
-    UpdatePlanComptableComponent,
+    
     DeleteAllFromTabComponent,
+    
+    AddUpdatePlanComptableComponent,
+    
+    ListPlanComptableComponent,
+    
+    ListTaxeComponent,
+    
+    AddUpdateTaxeComponent,
+    
+    
+    
     
 
   ],
@@ -54,7 +66,8 @@ import { DeleteAllFromTabComponent } from './pages/delete_all/delete-all-from-ta
     //BasicLoginComponent,
     //DashboardDefaultComponent
   ],
-  entryComponents: [PopupComponent,AddPlanComptableComponent,UpdatePlanComptableComponent,AddUpdateSocieteComponent,DeleteAllFromTabComponent],
+  //seulement les interfaces qui declenchent pop up
+  entryComponents: [PopupComponent,AddUpdateSocieteComponent,DeleteAllFromTabComponent,AddUpdatePlanComptableComponent,AddUpdateTaxeComponent],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]

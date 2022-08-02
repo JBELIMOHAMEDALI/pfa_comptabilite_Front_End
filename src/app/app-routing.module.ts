@@ -6,6 +6,7 @@ import { DashboardDefaultComponent } from "./pages/dashboard/dashboard-default/d
 import { ListPlanComptableComponent } from "./pages/plan_comptable/list-plan-comptable/list-plan-comptable.component";
 import { SimplePageComponent } from "./pages/simple-page/simple-page.component";
 import { ListSocieteComponent } from "./pages/societe/list-societe/list-societe.component";
+import { ListTaxeComponent } from "./pages/taxe/list-taxe/list-taxe.component";
 import { TesttestComponent } from "./pages/testtest/testtest.component";
 
 import { ProfileComponent } from "./pages/user/profile/profile.component";
@@ -75,6 +76,7 @@ const routes: Routes = [
       { path: "test", component: TesttestComponent },
       { path: "socite", component: ListSocieteComponent },
       { path: "plan_comptable", component: ListPlanComptableComponent },
+      { path: "taxe", component: ListTaxeComponent },
       // 
 
     ],
