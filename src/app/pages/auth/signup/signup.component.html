@@ -1,1 +1,245 @@
-<p>signup works!</p>
+<app-navbar></app-navbar>
+<!-- Section: Design Block -->
+<section class="text-center">
+  <!-- Background image -->
+  <div class="p-5 bg-image" style="
+      background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+      height: 125px;
+    "></div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+      margin-top: -100px;
+      background: hsla(0, 0%, 100%, 0.8);
+      backdrop-filter: blur(30px);
+    ">
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">S'inscrire maintenant</h2>
+          <form name="form" (ngSubmit)="signup(fadd)" #fadd="ngForm" novalidate>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input type="text" ngModel required #nom="ngModel" placeholder="Nom*" name="nom"
+                    class="form-control" />
+                </div>
+                <div *ngIf="nom.invalid && nom.touched" class="alert alert-danger p-2" role="alert">
+                  Saisir le nom
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input type="text" ngModel required #prenom="ngModel" placeholder="Prénom*" name="prenom"
+                    class="form-control" />
+                </div>
+                <div *ngIf="prenom.invalid && prenom.touched" class="alert alert-danger p-2" role="alert">
+                  Saisir le prénom
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input class="form-control" [type]="htmlinputType" (click)="geninputtype($event)"
+                    placeholder="date de naissance*" onkeydown="return false" ngModel required #dns="ngModel" name="dns"
+                    max="{{ this.actualDate | date: 'yyyy-MM-dd' }}" />
+                </div>
+                <div *ngIf="dns.invalid && dns.touched" class="alert alert-danger p-2" role="alert">
+                  Saisir la date de naissance
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <select ngModel="{{ '1' }}" #id_role="ngModel" name="id_role" class="form-control" required>
+                    <option value="1">Etudiant</option>
+                    <option value="2">Responsable entreprise</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="id_role.value == '2'">
+              <div class="col-md-4 mb-4">
+                <div class="form-outline">
+                  <input type="text" ngModel required #nom_entreprise="ngModel" placeholder="Nom entreprise*"
+                    name="nom_entreprise" class="form-control" />
+                </div>
+                <div *ngIf="nom_entreprise.invalid && nom_entreprise.touched" class="alert alert-danger p-2"
+                  role="alert">
+                  Saisir le nom d'entreprise
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="form-outline">
+                  <input type="text" ngModel required #num_reg_commercial="ngModel" placeholder="N° registre commercial*"
+                    name="num_reg_commercial" class="form-control" />
+                </div>
+                <div *ngIf="num_reg_commercial.invalid && num_reg_commercial.touched" class="alert alert-danger p-2"
+                  role="alert">
+                  Saisir le numéro registre commercial
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="form-outline">
+                  <input type="text" ngModel #site_web="ngModel" placeholder="Site web" name="site_web"
+                    class="form-control" />
+                </div>
+              </div>
+              <div class="row" *ngIf="id_role.value == '2'">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <select ngModel="{{ '-1' }}" #id_domaine="ngModel" name="id_domaine" class="form-control" required>
+                      <option disabled value="-1" selected>
+                        Séléctionner un domaine*
+                      </option>
+                      <option value="1">Mécanique</option>
+                      <option value="2">Informatique</option>
+                      <option value="3">Electrique</option>
+                      <option value="4">Génie civil</option>
+                    </select>
+                  </div>
+                  <div *ngIf="id_domaine.value == '-1' && id_domaine.touched" class="alert alert-danger p-2"
+                    role="alert">
+                    Séléctionner le domaine
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline mb-4">
+                    <select ngModel="{{ '-1' }}" #localisation="ngModel" name="localisation" class="form-control"
+                      required>
+                      <option disabled value="-1">
+                        Séléctionner la localisation*
+                      </option>
+                      <option *ngFor="let ville of getLocalisation();" [value]="ville">
+                        {{ville}}
+                      </option>
+                    </select>
+                  </div>
+                  <div *ngIf="localisation.value == '-1' && localisation.touched" class="alert alert-danger p-2"
+                    role="alert">
+                    Séléctionner la localistation
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Email input -->
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="email" name="email" ngModel #email="ngModel" placeholder="Adresse email*"
+                    class="form-control" required />
+                  <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
+                    Saisir l`email
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="tel" ngModel #num_tel="ngModel" name="num_tel" placeholder="Numéro de téléphone*"
+                    class="form-control" required />
+                  <div *ngIf="num_tel.invalid && num_tel.touched" class="alert alert-danger p-2" role="alert">
+                    Saisir le numéro de téléphone
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="password" ngModel #pass="ngModel" name="password" placeholder="Mot de passe*"
+                    class="form-control" required />
+                  <div *ngIf="pass.invalid && pass.touched" class="alert alert-danger p-2" role="alert">
+                    Saisir le mot de passe
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline mb-4">
+                  <input type="password" name="pass2" ngModel #pass2="ngModel" placeholder="Confirmez le mot de passe*"
+                    class="form-control" required />
+                  <div *ngIf="
+                      (pass2.invalid && pass2.touched) ||
+                      (pass.value != pass2.value && pass2.valid)
+                    " class="alert alert-danger p-2" role="alert">
+                    Le mot de passe ne correspond pas
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Checkbox -->
+            <ng-container *ngIf="id_role.value == '1'">
+              <div class="form-check d-flex justify-content-center mb-5">
+                <input name="etranger" ngModel #etranger="ngModel" class="form-check-input me-2 ml-5 offset-4"
+                  type="checkbox" />
+                <label class="form-check-label mr-5" for="etranger">
+                  Etranger ?
+                </label>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" ngModel #cinpassport="ngModel" required name="cinpassport" [placeholder]="
+                        etranger && etranger.value == true
+                          ? 'Numéro de passport*'
+                          : 'Carte d`identité*'
+                      " class="form-control" />
+                  </div>
+                  <div *ngIf="cinpassport.invalid && cinpassport.touched" class="alert alert-danger p-2" role="alert">
+                    Saisir
+                    {{
+                    etranger && etranger.value == true
+                    ? "le Numéro de passport"
+                    : "la Carte d`identité"
+                    }}
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <select ngModel="{{ '-1' }}" #id_departement="ngModel" name="id_departement" class="form-control"
+                      required>
+                      <option disabled value="-1">
+                        Séléctionner un département*
+                      </option>
+
+                      <option value="3">Technologie de l'informatique</option>
+                      <option value="4">Agro alimentaire</option>
+                      <option value="5">Mécanique</option>
+                      <option value="6">Electrique</option>
+                      <option value="7">Génie civil</option>
+                    </select>
+                  </div>
+                  <div *ngIf="
+                      id_departement.value == '-1' && id_departement.touched
+                    " class="alert alert-danger p-2" role="alert">
+                    Séléctionner un département
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" [disabled]="
+                  fadd.invalid ||
+                  (id_departement &&
+                    id_departement.value == '-1' &&
+                    id_role &&
+                    id_role.value == '1')
+                " class="btn btn-primary btn-block mb-4">
+                S'inscrire
+              </button>
+            </ng-container>
+
+            <button *ngIf="id_role.value == '2'" type="submit"
+              [disabled]="fadd.invalid||(id_domaine&&id_domaine.value=='-1'||localisation&&localisation.value=='-1')"
+              class="btn btn-primary btn-block mb-4">
+              S'inscrire
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->

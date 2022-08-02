@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { LayoutComponent } from "../layout/layout.component";
+import { LayoutComponent } from "../layout/original-layout/layout.component";
 import { NotfoundComponent } from "../pages/notfound/notfound.component";
 
 const routes: Routes = [
@@ -46,13 +46,14 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "",
+    redirectTo: "/dashboard",
     pathMatch: "full",
   },
   {
     path: "**",
     component: NotfoundComponent,
   },
+
 
 
 ];

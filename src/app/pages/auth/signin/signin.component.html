@@ -1,1 +1,52 @@
-<p>signin works!</p>
+<app-navbar></app-navbar>
+<!-- Section: Design Block -->
+
+<section class="text-center">
+  <!-- Background image -->
+  <div class="p-5 bg-image" style="
+        background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+        height: 125px;
+        "></div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Authentification</h2>
+          <form name="form" (ngSubmit)="login(flogin)" #flogin="ngForm" novalidate>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" name="email" ngModel #email="ngModel" required placeholder="Adresse email"
+                class="form-control" />
+            </div>
+            <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
+              Saisir l`email
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" name="password" ngModel #password="ngModel" required placeholder="Mot de passe"
+                class="form-control" />
+            </div>
+            <div *ngIf="password.invalid && password.touched" class="alert alert-danger p-2" role="alert">
+              Saisir le mot de passe
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" [disabled]="flogin.invalid" class="btn btn-primary btn-block mb-4">
+              Connexion
+            </button>
+            <!-- Register buttons -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->

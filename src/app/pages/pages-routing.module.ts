@@ -1,87 +1,50 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { LayoutComponent } from "../layout/layout.component";
-import { NotfoundComponent } from "./notfound/notfound.component";
+import { NavbarComponent } from "../layout/navbar/navbar.component";
+import { AboutComponent } from "./about/about.component";
+import { ResetPwdComponent } from "./auth/reset-pwd/reset-pwd.component";
+import { SigninComponent } from "./auth/signin/signin.component";
+import { SignupComponent } from "./auth/signup/signup.component";
+import { VerifAccountComponent } from "./auth/verif-account/verif-account.component";
+import { ContactComponent } from "./contact/contact.component";
+import { HomeComponent } from "./home/home.component";
 
-// const routes: Routes = [
-//   {
-//     path: "dashboard",
-//     loadChildren: () =>
-//       import("./dashboard/dashboard.module").then(
-//         (m) => m.DashboardModule
-//       ),
-//   },
-//   {
-//     path: "",
-//     loadChildren: () =>
-//       import("./dashboard/dashboard.module").then(
-//         (m) => m.DashboardModule
-//       ),
-//     children: [
-//       {
-//         path: "accounting/plan",
-//         loadChildren: () =>
-//           import("./accounting-plan/accounting-plan.module").then(
-//             (m) => m.AccountingPlanModule
-//           ),
-//       },
-//       {
-//         path: "tax",
-//         loadChildren: () =>
-//           import("./tax/tax.module").then((m) => m.TaxModule),
-//       },
-//       {
-//         path: "company",
-//         loadChildren: () =>
-//           import("./company/company.module").then((m) => m.CompanyModule),
-//       },
-//       {
-//         path: "third/party",
-//         loadChildren: () =>
-//           import("./third-party/third-party.module").then(
-//             (m) => m.ThirdPartyModule
-//           ),
-//       },
-//     ],
-//   },
-//   {
-//     path: '',
-//     redirectTo: '',
-//     pathMatch: 'full'
-//   },
-//   {
-//     path: "**",
-//     component:NotfoundComponent
-//   },
-// ];
 const routes: Routes = [
 
-  {
-    path: "signin",
-    loadChildren: () =>
-      import("./auth/signin/signin.module").then((m) => m.SigninModule),
-  },
-  {
-    path: "signup",
-    loadChildren: () =>
-      import("./auth/signup/signup.module").then((m) => m.SignupModule),
-  },
-  {
-    path: "account/:hashedid",
-    loadChildren: () =>
-      import("./verif-account/verif-account.module").then((m) => m.VerifAccountModule),
-  },
-  {
-    path: "",
-    redirectTo: "/signin",
-    pathMatch: "full",
-  },
-  {
-    path: "**",
-    component: NotfoundComponent,
-  },
+      {
+        path: "home",
+        component: HomeComponent,
+      },
+
+      {
+        path: "about",
+        component: AboutComponent,
+      },
+      {
+        path: "contact",
+        component: ContactComponent,
+      },
+
+      {
+        path: "signin",
+       component:SigninComponent
+      },
+      {
+        path: "signup",
+        component:SignupComponent
+
+      },
+      {
+        path: "account/:hashedid",
+        component:VerifAccountComponent
+      },
+      {
+        path: "reset/password",
+        component:ResetPwdComponent
+      },
 
 ];
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
