@@ -23,6 +23,7 @@ export interface MainMenuItems {
   icon: string;
   badge?: BadgeItem[];
   children?: ChildrenItems[];
+  routerLink:string
 }
 
 export interface Menu {
@@ -30,7 +31,7 @@ export interface Menu {
   main: MainMenuItems[];
 }
 
-const MENUITEMS = [
+const MENUITEMS:Menu[] = [
   {
     label: 'Navigation',
     main: [
@@ -39,160 +40,187 @@ const MENUITEMS = [
         short_label: 'D',
         name: 'Dashboard',
         type: 'link',
-        icon: 'ti-home'
+        icon: 'ti-home',
+        routerLink:"/dashboard"
       },
+      // {
+      //   state: 'basic',
+      //   short_label: 'B',
+      //   name: 'Basic Components',
+      //   type: 'sub',
+      //   icon: 'ti-layout-grid2-alt',
+      //   children: [
+      //     {
+      //       state: 'button',
+      //       name: 'Button'
+      //     },
+      //     {
+      //       state: 'typography',
+      //       name: 'Typography'
+      //     }
+      //   ]
+      // },
       {
-        state: 'basic',
-        short_label: 'B',
-        name: 'Basic Components',
-        type: 'sub',
-        icon: 'ti-layout-grid2-alt',
-        children: [
-          {
-            state: 'button',
-            name: 'Button'
-          },
-          {
-            state: 'typography',
-            name: 'Typography'
-          }
-        ]
-      },
-      {
-        state: 'notifications',
-        short_label: 'n',
-        name: 'Notifications',
+        state: 'accounting-plan',
+        short_label: 'A-P',
+        name: 'Accounting plan',
         type: 'link',
-        icon: 'ti-crown'
+        icon: 'ti-crown',
+        routerLink:"/accounting/plan"
+      },
+      {
+        state: 'company',
+        short_label: 'C',
+        name: 'Company',
+        type: 'link',
+        icon: 'ti-crown',
+        routerLink:"/company"
+      },
+      {
+        state: 'tax',
+        short_label: 'T',
+        name: 'Tax',
+        type: 'link',
+        icon: 'ti-crown',
+        routerLink:"/tax"
+      },
+      {
+        state: 'third-party',
+        short_label: 'T-P',
+        name: 'Third-party',
+        type: 'link',
+        icon: 'ti-crown',
+        routerLink:"/third/party"
       },
     ],
   },
-  {
-    label: 'Tables',
-    main: [
-      {
-        state: 'bootstrap-table',
-        short_label: 'B',
-        name: 'Bootstrap Table',
-        type: 'link',
-        icon: 'ti-receipt'
-      }
-    ]
-  },
-  {
-    label: 'Map And Extra Pages ',
-    main: [
-      {
-        state: 'map',
-        short_label: 'M',
-        name: 'Maps',
-        type: 'link',
-        icon: 'ti-map-alt'
-      },
-      {
-        state: 'authentication',
-        short_label: 'A',
-        name: 'Authentication',
-        type: 'sub',
-        icon: 'ti-id-badge',
-        children: [
-          {
-            state: 'login',
-            type: 'link',
-            name: 'Login',
-            target: true
-          }, {
-            state: 'registration',
-            type: 'link',
-            name: 'Registration',
-            target: true
-          }
-        ]
-      },
-      {
-        state: 'user',
-        short_label: 'U',
-        name: 'User Profile',
-        type: 'link',
-        icon: 'ti-user'
-      }
-    ]
-  },
-  {
-    label: 'Other',
-    main: [
-      {
-        state: '',
-        short_label: 'M',
-        name: 'Menu Levels',
-        type: 'sub',
-        icon: 'ti-direction-alt',
-        children: [
-          {
-            state: '',
-            name: 'Menu Level 2.1',
-            target: true
-          }, {
-            state: '',
-            name: 'Menu Level 2.2',
-            type: 'sub',
-            children: [
-              {
-                state: '',
-                name: 'Menu Level 2.2.1',
-                target: true
-              },
-              {
-                state: '',
-                name: 'Menu Level 2.2.2',
-                target: true
-              }
-            ]
-          }, {
-            state: '',
-            name: 'Menu Level 2.3',
-            target: true
-          }, {
-            state: '',
-            name: 'Menu Level 2.4',
-            type: 'sub',
-            children: [
-              {
-                state: '',
-                name: 'Menu Level 2.4.1',
-                target: true
-              },
-              {
-                state: '',
-                name: 'Menu Level 2.4.2',
-                target: true
-              }
-            ]
-          }
-        ]
-      },
-      {
-        state: 'simple-page',
-        short_label: 'S',
-        name: 'Simple Page',
-        type: 'link',
-        icon: 'ti-layout-sidebar-left'
-      }
-    ]
-  }, {
-    label: 'Support',
-    main: [
-      {
-        state: 'Upgrade To Pro',
-        short_label: 'U',
-        external: 'https://codedthemes.com/item/guru-able-admin-template/',
-        name: 'Upgrade To Pro',
-        type: 'external',
-        icon: 'ti-layout-list-post',
-        target: true
-      }
-    ]
-  }
+  // {
+  //   label: 'Tables',
+  //   main: [
+  //     {
+  //       state: 'bootstrap-table',
+  //       short_label: 'B',
+  //       name: 'Bootstrap Table',
+  //       type: 'link',
+  //       icon: 'ti-receipt'
+  //     }
+  //   ]
+  // },
+  // {
+  //   label: 'Map And Extra Pages ',
+  //   main: [
+  //     {
+  //       state: 'map',
+  //       short_label: 'M',
+  //       name: 'Maps',
+  //       type: 'link',
+  //       icon: 'ti-map-alt'
+  //     },
+  //     {
+  //       state: 'authentication',
+  //       short_label: 'A',
+  //       name: 'Authentication',
+  //       type: 'sub',
+  //       icon: 'ti-id-badge',
+  //       children: [
+  //         {
+  //           state: 'login',
+  //           type: 'link',
+  //           name: 'Login',
+  //           target: true
+  //         }, {
+  //           state: 'registration',
+  //           type: 'link',
+  //           name: 'Registration',
+  //           target: true
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       state: 'user',
+  //       short_label: 'U',
+  //       name: 'User Profile',
+  //       type: 'link',
+  //       icon: 'ti-user'
+  //     }
+  //   ]
+  // },
+  // {
+  //   label: 'Other',
+  //   main: [
+  //     {
+  //       state: '',
+  //       short_label: 'M',
+  //       name: 'Menu Levels',
+  //       type: 'sub',
+  //       icon: 'ti-direction-alt',
+  //       children: [
+  //         {
+  //           state: '',
+  //           name: 'Menu Level 2.1',
+  //           target: true
+  //         }, {
+  //           state: '',
+  //           name: 'Menu Level 2.2',
+  //           type: 'sub',
+  //           children: [
+  //             {
+  //               state: '',
+  //               name: 'Menu Level 2.2.1',
+  //               target: true
+  //             },
+  //             {
+  //               state: '',
+  //               name: 'Menu Level 2.2.2',
+  //               target: true
+  //             }
+  //           ]
+  //         }, {
+  //           state: '',
+  //           name: 'Menu Level 2.3',
+  //           target: true
+  //         }, {
+  //           state: '',
+  //           name: 'Menu Level 2.4',
+  //           type: 'sub',
+  //           children: [
+  //             {
+  //               state: '',
+  //               name: 'Menu Level 2.4.1',
+  //               target: true
+  //             },
+  //             {
+  //               state: '',
+  //               name: 'Menu Level 2.4.2',
+  //               target: true
+  //             }
+  //           ]
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       state: 'simple-page',
+  //       short_label: 'S',
+  //       name: 'Simple Page',
+  //       type: 'link',
+  //       icon: 'ti-layout-sidebar-left'
+  //     }
+  //   ]
+  // },
+  // {
+  //   label: 'Support',
+  //   main: [
+  //     {
+  //       state: 'Upgrade To Pro',
+  //       short_label: 'U',
+  //       // external: 'https://codedthemes.com/item/guru-able-admin-template/',
+  //       name: 'Upgrade To Pro',
+  //       type: 'external',
+  //       icon: 'ti-layout-list-post',
+  //       target: true
+  //     }
+  //   ]
+  // }
 ];
 
 @Injectable()

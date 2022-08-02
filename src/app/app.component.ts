@@ -7,11 +7,10 @@ import {NavigationEnd, Router} from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Welcome ! Guru Able Angular 8+';
-
   constructor(private router: Router) { }
 
   ngOnInit() {
+    // alert("_____")
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
