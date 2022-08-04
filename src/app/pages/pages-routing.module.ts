@@ -43,10 +43,10 @@ const routes: Routes = [
         path: "reset/password",
         component:ResetPwdComponent
       },
-      {
-        path: "notfound",
-        component:NotfoundComponent
-      },
+      // {
+      //   path: "notfound",
+      //   component:NotfoundComponent
+      // },
 
 ];
 

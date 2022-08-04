@@ -54,7 +54,7 @@ export class ResetPwdComponent implements OnInit {
   resetPassword(form: NgForm) {
     const payload={...form.value}
     this.backendService
-      .put(RESET_PASSWORD_END_POINT, { newPassword:payload.newPassword })
+      .put(RESET_PASSWORD_END_POINT, { email:this.email, newPassword:payload.newPassword })
       .subscribe(
         {
           next: (response:any) => {
