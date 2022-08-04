@@ -43,10 +43,10 @@
               <div class="col-md-6 mb-4">
                 <div class="form-outline">
                   <input class="form-control" [type]="htmlinputType" (click)="geninputtype($event)"
-                    placeholder="Birth Date" onkeydown="return false" ngModel required #dns="ngModel" name="dns"
+                    placeholder="Birth Date" onkeydown="return false" ngModel required #birthdate="ngModel" name="birthdate"
                     max="{{ this.actualDate | date: 'yyyy-MM-dd' }}" />
                 </div>
-                <div *ngIf="dns.invalid && dns.touched" class="alert alert-danger p-2" role="alert">
+                <div *ngIf="birthdate.invalid && birthdate.touched" class="alert alert-danger p-2" role="alert">
                   Enter Birth Date
                 </div>
               </div>
