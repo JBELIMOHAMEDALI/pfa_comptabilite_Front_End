@@ -37,6 +37,10 @@
             <div *ngIf="password.invalid && password.touched" class="alert alert-danger p-2" role="alert">
               Enter Password
             </div>
+            <!-- Forgot Password link  -->
+            <div class="form-outline mb-4" >
+              Forgot Password ? <a [routerLink]="'/reset/password'"> <i style="font-size: medium;">Click here to reset your password </i></a>
+            </div>
 
             <!-- Submit button -->
             <button type="submit" [disabled]="flogin.invalid" class="btn btn-primary btn-block mb-4">
