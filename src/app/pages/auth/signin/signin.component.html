@@ -18,29 +18,29 @@
 
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
-          <h2 class="fw-bold mb-5">Authentification</h2>
+          <h2 class="fw-bold mb-5">Authentication</h2>
           <form name="form" (ngSubmit)="login(flogin)" #flogin="ngForm" novalidate>
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" name="email" ngModel #email="ngModel" required placeholder="Adresse email"
+              <input type="email" name="email" ngModel #email="ngModel" required placeholder="Email Address"
                 class="form-control" />
             </div>
             <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
-              Saisir l`email
+              Enter Email Address
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" name="password" ngModel #password="ngModel" required placeholder="Mot de passe"
+              <input type="password" name="password" ngModel #password="ngModel" required placeholder="Password"
                 class="form-control" />
             </div>
             <div *ngIf="password.invalid && password.touched" class="alert alert-danger p-2" role="alert">
-              Saisir le mot de passe
+              Enter Password
             </div>
 
             <!-- Submit button -->
             <button type="submit" [disabled]="flogin.invalid" class="btn btn-primary btn-block mb-4">
-              Connexion
+              Login
             </button>
             <!-- Register buttons -->
           </form>

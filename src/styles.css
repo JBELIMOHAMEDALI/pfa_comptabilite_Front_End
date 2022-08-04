@@ -3,8 +3,10 @@
 /********** Template CSS **********/
 :root {
     --primary: #06BBCC;
+    /* --primary: #ED24E1; */
     --light: #F0FBFC;
     --dark: #181d38;
+    /* --dark : #ED24E1; */
 }
 
 .fw-medium {
