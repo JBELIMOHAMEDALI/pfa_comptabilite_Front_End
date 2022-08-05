@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
     delete payload["pass2"];
     this.backendService
       .post(SIGNUP_END_POINT, payload)
-      .subscribe(new Observer(this.router,"/signin",true).OBSERVER_POST);
+      .subscribe(new Observer(this.router,"/signin",true).OBSERVER_POST());
   }
 
   geninputtype() {

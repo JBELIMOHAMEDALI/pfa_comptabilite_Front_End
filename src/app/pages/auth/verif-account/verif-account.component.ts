@@ -27,7 +27,7 @@ export class VerifAccountComponent implements OnInit {
     const hashedid = this.activatedRoute.snapshot.paramMap.get("hashedid");
     this.backendService
     .get(`${VERIFY_ACCOUNT_END_POINT}/${hashedid}`)
-    .subscribe(new Observer(this.router,"/notfound",false).OBSERVER_VERIFY);
+    .subscribe(new Observer(this.router,"/notfound",false).OBSERVER_VERIFY_ACCOUNT);
     // try {
     //   (await this.authService.validate(hashedid)) as any;
     //   this.validation=true;

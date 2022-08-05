@@ -8,7 +8,6 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { VerifAccountComponent } from "./auth/verif-account/verif-account.component";
 import { ContactComponent } from "./contact/contact.component";
 import { HomeComponent } from "./home/home.component";
-import { NotfoundComponent } from "./notfound/notfound.component";
 
 const routes: Routes = [
 

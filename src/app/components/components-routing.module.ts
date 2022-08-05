@@ -6,7 +6,7 @@ import { NotfoundComponent } from "../pages/notfound/notfound.component";
 const routes: Routes = [
 
   {
-    path: "",
+    path: "user",
     component: LayoutComponent,
     children: [
       {
@@ -46,7 +46,7 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "/dashboard",
+    redirectTo: "/home",
     pathMatch: "full",
   },
   {
