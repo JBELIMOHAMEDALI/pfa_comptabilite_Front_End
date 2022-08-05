@@ -32,7 +32,7 @@
               <div class="form-outline">
                 <!-- Submit button -->
                 <button type="button" (click)="this.verifyEmailAndSendCode(email.value)"
-                  [disabled]="email.invalid&&!verifiedEmail" class="btn btn-primary btn-block mb-4">
+                  [disabled]="email.invalid&&!verifiedEmail" class="btn btn-primary btn-block mb-4" id="btnSendCode">
                   Send Code
                 </button>
               </div>
@@ -54,7 +54,7 @@
               <div class="form-outline">
                 <!-- Submit button -->
                 <button type="button" (click)="this.verifyCode(verifCode.value)" [disabled]="verifCode.invalid&&!this.verifiedCode"
-                  class="btn btn-primary btn-block mb-4">
+                  class="btn btn-primary btn-block mb-4" id="btnConfirm">
                   Confirm
                 </button>
               </div>
@@ -69,7 +69,7 @@
                   <input type="password" name="newPassword" ngModel #newPassword="ngModel"
                     placeholder="Your new password" class="form-control" required />
                   <div *ngIf="newPassword.invalid && newPassword.touched" class="alert alert-danger p-2" role="alert">
-                    Enter New Password
+                    <span class="text-light">Enter New Password</span>
                   </div>
                 </div>
               </div>
@@ -79,15 +79,15 @@
                     placeholder="Confirm your new password" class="form-control" required />
                   <div *ngIf="confirmNewPwd.invalid && confirmNewPwd.touched" class="alert alert-danger p-2"
                     role="alert">
-                    Confirm New Password
+                    <span class="text-light">Confirm New Password</span>
                   </div>
                 </div>
               </div>
 
               <div class="form-outline">
                 <button type="submit" [disabled]="freset.invalid||(newPassword.value!=confirmNewPwd.value)"
-                  class="btn btn-primary btn-block col-md-10 mb-4">
-                  Validate
+                  class="btn btn-primary btn-block col-md-10 mb-4" id="btnValidate">
+                  <span class="text-light">Validate</span>
                 </button>
               </div>
 

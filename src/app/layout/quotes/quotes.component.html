@@ -2,19 +2,41 @@
   <div class="container">
     <div class="text-center">
       <h6 class="section-title bg-white text-center text-primary px-3">Testemonies</h6>
-      <h1 class="mb-5">Nos Etudiants !</h1>
+      <h1 class="mb-5">Our Testimonials!</h1>
     </div>
     <div class="position-relative">
       <owl-carousel-o [options]="quotesOptions">
 
-        <ng-container *ngFor="let quote of quotes">
-          <ng-template carouselSlide [id]="quote.id">
-            <img class="border rounded-circle p-2 mx-auto mb-3" [src]="quote.img" style="width: 80px; height: 80px;">
+        <!-- <ng-container *ngFor="let quote of quotes"> -->
+        <ng-container>
+          <ng-template carouselSlide>
+            <img class="border rounded-circle p-2 mx-auto mb-3" src="assets/img/testimonial-1.jpg" style="width: 80px; height: 80px;">
             <div class="testimonial-item text-center">
-              <h5 class="mb-0">Nom de l'etudiant</h5>
-              <p>Profession</p>
+              <h5 class="mb-0">Victoria Adams</h5>
+              <p>Creative Director</p>
               <div class="testimonial-text bg-light text-dark text-center p-4">
-                <p class="mb-0">Beaucoup rêvent de succès. A mon sens, le succès ne peut être atteint qu’après une succession d’échecs et d’introspections. En fait, le succès représente 1% de votre travail qui comporte lui, 99% de ce qu’on peut appeler échec.</p>
+                <p class="mb-0">We had a record year this past year. Could we have done it without this plateform? I don't know how we would have.</p>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <img class="border rounded-circle p-2 mx-auto mb-3" src="assets/img/testimonial-2.jpg" style="width: 80px; height: 80px;">
+            <div class="testimonial-item text-center">
+              <h5 class="mb-0">Graham Pugh</h5>
+              <p>Co-founder</p>
+              <div class="testimonial-text bg-light text-dark text-center p-4">
+                <p class="mb-0">I found the platform so intuitive . I was easily able to do expenses tracking, bills tracking and invoice customers by sending emails to them.</p>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <img class="border rounded-circle p-2 mx-auto mb-3" src="assets/img/testimonial-4.jpg" style="width: 80px; height: 80px;">
+            <div class="testimonial-item text-center">
+              <h5 class="mb-0">Carolina Ramirez</h5>
+              <p>Owner</p>
+              <div class="testimonial-text bg-light text-dark text-center p-4">
+                <p class="mb-0">The competitive pricing of this platform and the user interface, it's just very user-friendly.
+                  For someone in branding and marketing PR, that's important.</p>
               </div>
             </div>
           </ng-template>

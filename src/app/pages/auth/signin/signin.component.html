@@ -15,10 +15,16 @@
         backdrop-filter: blur(30px);
         ">
     <div class="card-body py-5 px-md-5">
-
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
-          <h2 class="fw-bold mb-5">Authentication</h2>
+          <h2 class="text-primary w-bold mb-5">Authentication</h2>
+          <div class="row">
+            <div class="col-md-12">
+              <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" [routerLink]="'/'">
+                <img src="https://img.icons8.com/color/16/000000/google-logo.png" id="google_logo"> <b>Signin with Google</b></a>
+            </div>
+          </div>
+          
           <form name="form" (ngSubmit)="login(flogin)" #flogin="ngForm" novalidate>
             <!-- Email input -->
             <div class="form-outline mb-4">
@@ -39,12 +45,12 @@
             </div>
             <!-- Forgot Password link  -->
             <div class="form-outline mb-4" >
-              Forgot Password ? <a [routerLink]="'/reset/password'"> <i style="font-size: medium;">Click here to reset your password </i></a>
+              Forgot Password ? <a [routerLink]="'/reset/password'" id="resetlink"> <i style="font-size: medium;" >Click here to reset your password </i></a>
             </div>
 
             <!-- Submit button -->
-            <button type="submit" [disabled]="flogin.invalid" class="btn btn-primary btn-block mb-4">
-              Login
+            <button type="submit" [disabled]="flogin.invalid" class="btn btn-primary btn-block mb-4" id="btnlogin">
+              <span>Login</span>
             </button>
             <!-- Register buttons -->
           </form>

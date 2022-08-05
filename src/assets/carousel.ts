@@ -14,8 +14,8 @@ export const customOptions: OwlOptions = {
 };
 
 export const slides = [
-  { id: '1', img: 'assets/img/carousel-2.jpg' },
-  { id: '2', img: 'assets/img/carousel-1.jpg' },
+  { id: '1', img: 'assets/img/carousel-1.jpg' },
+  { id: '2', img: 'assets/img/carousel-2.jpg' },
 ];
 
 export const quotesOptions: OwlOptions = {

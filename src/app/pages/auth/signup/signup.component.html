@@ -16,7 +16,7 @@
     <div class="card-body py-5 px-md-5">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
-          <h2 class="fw-bold mb-5">Signup Now</h2>
+          <h2 class="text-primary fw-bold mb-5">Signup Now</h2>
           <form name="form" (ngSubmit)="signup(fadd)" #fadd="ngForm" novalidate>
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row">
@@ -43,8 +43,8 @@
               <div class="col-md-6 mb-4">
                 <div class="form-outline">
                   <input class="form-control" [type]="htmlinputType" (click)="geninputtype($event)"
-                    placeholder="Birth Date" onkeydown="return false" ngModel required #birthdate="ngModel" name="birthdate"
-                    max="{{ this.actualDate | date: 'yyyy-MM-dd' }}" />
+                    placeholder="Birth Date" onkeydown="return false" ngModel required #birthdate="ngModel"
+                    name="birthdate" max="{{ this.actualDate | date: 'yyyy-MM-dd' }}" />
                 </div>
                 <div *ngIf="birthdate.invalid && birthdate.touched" class="alert alert-danger p-2" role="alert">
                   Enter Birth Date
@@ -85,8 +85,8 @@
               </div>
             </div>
 
-            <button type="submit" [disabled]="fadd.invalid" class="btn btn-primary btn-block mb-4">
-              Confirm
+            <button type="submit" [disabled]="fadd.invalid" class="btn btn-primary btn-block mb-4" id="btnconfirm">
+              <span>Confirm</span>
             </button>
           </form>
         </div>

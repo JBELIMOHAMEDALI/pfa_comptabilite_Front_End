@@ -2,9 +2,10 @@
 /* You can add global styles to this file, and also import other style files */
 /********** Template CSS **********/
 :root {
-    --primary: #06BBCC;
-    /* --primary: #ED24E1; */
-    --light: #F0FBFC;
+    /* --primary: #06BBCC; */
+    --primary: #000080;
+    /* --light: #EBF7FF; */
+    --light: #EBF7FF;
     --dark: #181d38;
     /* --dark : #ED24E1; */
 }
@@ -201,7 +202,7 @@
 }
 
 .page-header {
-    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url(assets/img/stages.png);
+    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url(assets/img/carousel-1.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
