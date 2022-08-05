@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
     this.backendService
       .post(SIGNIN_END_POINT, payload)
       .subscribe(
-        new Observer(this.router, "/dashboard", false).OBSERVER_POST()
+        new Observer(this.router, "/user/dashboard", false).OBSERVER_POST()
       );
   }
 
