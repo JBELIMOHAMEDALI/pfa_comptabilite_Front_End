@@ -38,7 +38,7 @@ export class ResetPwdComponent implements OnInit {
   }
   verifyCode(code: string) {
     this.backendService
-      .post(RESET_VERIFY_CODE_END_POINT, { email: this.email })
+      .post(RESET_VERIFY_CODE_END_POINT, { email: this.email, code})
       .subscribe(
         new Observer(this.router, null, true).OBSERVER_RESET(
           (verified: boolean) => {

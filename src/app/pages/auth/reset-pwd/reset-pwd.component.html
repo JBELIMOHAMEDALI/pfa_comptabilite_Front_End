@@ -53,8 +53,9 @@
             <div class="col-md-4 mb-4">
               <div class="form-outline">
                 <!-- Submit button -->
-                <button type="button" (click)="this.verifyCode(verifCode.value)" [disabled]="verifCode.invalid&&!this.verifiedCode"
-                  class="btn btn-primary btn-block mb-4" id="btnConfirm">
+                <button type="button" (click)="this.verifyCode(verifCode.value)"
+                  [disabled]="verifCode.invalid&&!this.verifiedCode" class="btn btn-primary btn-block mb-4"
+                  id="btnConfirm">
                   Confirm
                 </button>
               </div>
@@ -63,7 +64,7 @@
             <!-- </ng-container> -->
           </div>
           <form name="form" #freset="ngForm" (ngSubmit)="resetPassword(freset)" novalidate>
-              <div *ngIf="this.verifiedCode" class="row d-flex justify-content-center">
+            <div *ngIf="this.verifiedCode" class="row d-flex justify-content-center">
               <div class="col-md-5 mb-4">
                 <div class="form-outline mb-4">
                   <input type="password" name="newPassword" ngModel #newPassword="ngModel"
@@ -77,13 +78,14 @@
                 <div class="form-outline mb-4">
                   <input type="password" name="confirmNewPwd" ngModel #confirmNewPwd="ngModel"
                     placeholder="Confirm your new password" class="form-control" required />
-                  <div *ngIf="confirmNewPwd.invalid && confirmNewPwd.touched" class="alert alert-danger p-2"
-                    role="alert">
-                    <span class="text-light">Confirm New Password</span>
+                  <div *ngIf="
+                    (confirmNewPwd.invalid && confirmNewPwd.touched) ||
+                    (newPassword.value != confirmNewPwd.value && confirmNewPwd.valid)
+                  " class="alert alert-danger p-2" role="alert">
+                    Password does not match
                   </div>
                 </div>
               </div>
-
               <div class="form-outline">
                 <button type="submit" [disabled]="freset.invalid||(newPassword.value!=confirmNewPwd.value)"
                   class="btn btn-primary btn-block col-md-10 mb-4" id="btnValidate">

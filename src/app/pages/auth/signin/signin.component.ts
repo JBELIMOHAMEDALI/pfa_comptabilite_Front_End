@@ -23,15 +23,8 @@ export class SigninComponent implements OnInit {
     this.backendService
       .post(SIGNIN_END_POINT, payload)
       .subscribe(
-        new Observer(this.router, "/user/dashboard", false).OBSERVER_POST()
+        new Observer(this.router, "/app/dashboard", false).OBSERVER_POST()
       );
   }
 
-  // signinwithgoogle() {
-  //   this.backendService
-  //     .get(GOOGLE_SIGNIN_END_POINT)
-  //     .subscribe(
-  //       new Observer(this.router,null,true).OBSERVER_GET((data) => console.log(data))
-  //     );
-  // }
 }

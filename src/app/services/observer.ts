@@ -53,12 +53,12 @@ export default class Observer {
 
     return {
       next: (response: any) => {
-        cb(true,response);
+        if (cb) cb(true,response);
         if (this.swal_display) swal("Success!", response.message, "success");
         if (this.target) this.router.navigate([this.target]);
       },
       error: (err: HttpErrorResponse) => {
-        cb(false,err);
+        if (cb) cb(false,err);
         swal("Failure!", err.error.message, "warning");
       },
       // complete: () => console.log("Observer got a complete notification"),
