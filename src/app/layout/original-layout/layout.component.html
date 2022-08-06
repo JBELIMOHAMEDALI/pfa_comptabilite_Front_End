@@ -2,18 +2,19 @@
   [attr.vertical-placement]="verticalPlacement" [attr.vertical-layout]="verticalLayout"
   [attr.pcoded-device-type]="deviceType" [attr.vertical-nav-type]="verticalNavType"
   [attr.vertical-effect]="verticalEffect" [attr.vnavigation-view]="vNavigationView" (window:resize)="onResize($event)">
-  <div class="pcoded-overlay-box"></div>
+
   <div class="pcoded-container navbar-wrapper">
-    <nav class="navbar header-navbar pcoded-header" [attr.pcoded-header-position]="pcodedHeaderPosition"
-      [attr.header-theme]="headerTheme">
+    <nav class="navbar header-navbar pcoded-header bg-white navbar-light shadow sticky-top p-0"
+      [attr.header-theme]="headerTheme" style=" overflow: hidden; position: fixed ; top: 0;">
+
       <div class="navbar-wrapper">
-        <div class="navbar-logo" [attr.logo-theme]="logoTheme" style="background-color: #06BBCC;">
+        <div class="navbar-logo" [attr.logo-theme]="logoTheme" style="background-color: #000080;">
           <a class="mobile-menu" id="mobile-collapse" href="javascript:;" (click)="toggleOpened()"
             [exclude]="'#main_navbar'" (clickOutside)="onClickedOutside($event)">
             <i class="ti-menu"></i>
           </a>
-          <a class="navbar-brand">
-            <h2 class="m-3 text-white"><i class="fa fa-book me-3"></i>_______</h2>
+          <a [routerLink]="['/home']" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-light"><i class="fa fa-star-o"></i> A.T.A </h2>
           </a>
           <a (click)="onMobileMenu()" class="mobile-options">
             <i class="ti-more"></i>
@@ -34,15 +35,32 @@
               </li>
             </ul>
             <ul [@mobileMenuTop]="isCollapsedMobile" class="nav-right" [ngClass]="isCollapsedMobile">
+              <li class="header-notification lng-dropdown">
+                <a href="javascript:;" id="dropdown-active-item">
+                  <img src="assets/images/flags/ENGLISH.jpg" alt=""> English
+                </a>
+                <ul class="show-notification">
+                  <li>
+                    <a href="javascript:;" data-lng="en">
+                      <img src="assets/images/flags/ENGLISH.jpg" alt=""> English
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:;" data-lng="fr">
+                      <img src="assets/images/flags/FRANCE.jpg" alt=""> French
+                    </a>
+                  </li>
+                </ul>
+              </li>
               <li class="user-profile header-notification">
                 <a>
-                  <img src="assets/images/logo.png" class="img-radius" alt="User-Profile-Image" />
+                  <img src="assets/images/avatar-7.jpg" class="img-radius" alt="User-Profile-Image" />
                   <span>{{"username H_C"}}</span>
                   <i class="ti-angle-down"></i>
                 </a>
-                <ul class="show-notification profile-notification">
+                <ul class="profile-notification show-notification">
                   <li>
-                    <a [routerLink]="['/']">
+                    <a  [routerLink]="['/']" >
                       <i class="ti-user"></i> Profile
                     </a>
                   </li>
@@ -58,7 +76,8 @@
         </div>
       </div>
     </nav>
-    <!-- right-bar inner chat end -->
+
+
     <div class="pcoded-main-container" [style.margin-top]="headerFixedMargin">
       <div class="pcoded-wrapper">
         <nav id="main_navbar" class="pcoded-navbar" (clickOutside)="onClickedOutside($event)"
@@ -82,8 +101,7 @@
                   <li [@mobileMenuTop]="isCollapsedSideBar" class="more-details" [ngClass]="isCollapsedSideBar">
                     <a [routerLink]="['/']">
                       <i class="ti-user"></i>Profile</a>
-                    <a [routerLink]="['/signin']" (click)="logout()"><i
-                        class="ti-layout-sidebar-left"></i>logout</a>
+                    <a [routerLink]="['/signin']" (click)="logout()"><i class="ti-layout-sidebar-left"></i>logout</a>
                   </li>
                 </ul>
               </div>

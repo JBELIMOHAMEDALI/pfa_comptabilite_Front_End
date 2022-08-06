@@ -82,7 +82,7 @@ const MENUITEMS:Menu[] = [
         name: 'Tax',
         type: 'link',
         icon: 'ti-crown',
-        routerLink:"/tax"
+        routerLink:"/app/tax"
       },
       {
         state: 'third-party',
