@@ -41,7 +41,7 @@ const MENUITEMS:Menu[] = [
         name: 'Dashboard',
         type: 'link',
         icon: 'ti-home',
-        routerLink:"/dashboard"
+        routerLink:"/app/dashboard"
       },
       // {
       //   state: 'basic',
@@ -66,7 +66,7 @@ const MENUITEMS:Menu[] = [
         name: 'Accounting plan',
         type: 'link',
         icon: 'ti-crown',
-        routerLink:"/accounting/plan"
+        routerLink:"/app/accounting/plan"
       },
       {
         state: 'company',
@@ -74,7 +74,7 @@ const MENUITEMS:Menu[] = [
         name: 'Company',
         type: 'link',
         icon: 'ti-crown',
-        routerLink:"/company"
+        routerLink:"/app/company"
       },
       {
         state: 'tax',
@@ -90,7 +90,7 @@ const MENUITEMS:Menu[] = [
         name: 'Third-party',
         type: 'link',
         icon: 'ti-crown',
-        routerLink:"/third/party"
+        routerLink:"/app/third/party"
       },
     ],
   },

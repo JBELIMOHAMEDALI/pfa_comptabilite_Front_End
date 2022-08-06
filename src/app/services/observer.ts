@@ -8,8 +8,6 @@ export default class Observer {
     private target?: string,
     private swal_display?: boolean
   ) {
-    // this.target=null;
-    // this.swal_display=false;
   }
 
   OBSERVER_POST() {
@@ -46,6 +44,21 @@ export default class Observer {
         // if (this.target) this.router.navigate([this.target]);
       },
       error: (err: HttpErrorResponse) => {
+        swal("Failure!", err.error.message, "warning");
+      },
+      // complete: () => console.log("Observer got a complete notification"),
+    };
+  }
+  OBSERVER_RESET(cb?) {
+
+    return {
+      next: (response: any) => {
+        cb(true,response);
+        if (this.swal_display) swal("Success!", response.message, "success");
+        if (this.target) this.router.navigate([this.target]);
+      },
+      error: (err: HttpErrorResponse) => {
+        cb(false,err);
         swal("Failure!", err.error.message, "warning");
       },
       // complete: () => console.log("Observer got a complete notification"),
