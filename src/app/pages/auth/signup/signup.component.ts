@@ -11,15 +11,11 @@ import { SIGNUP_END_POINT } from "../../../services/endpoints";
   styleUrls: ["./signup.component.scss"],
 })
 export class SignupComponent implements OnInit {
-  actualDate: string;
-  htmlinputType: string;
 
   constructor(
     private backendService: BackendService,
-    public router: Router // private sharedService: SharedServiceService
+    public router: Router 
   ) {
-    this.actualDate = new Date().toDateString();
-    this.htmlinputType = "text";
   }
 
   ngOnInit() {}
@@ -32,7 +28,4 @@ export class SignupComponent implements OnInit {
       .subscribe(new Observer(this.router,"/signin",true).OBSERVER_POST());
   }
 
-  geninputtype() {
-    this.htmlinputType = "date";
-  }
 }
