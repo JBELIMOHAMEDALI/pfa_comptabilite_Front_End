@@ -14118,13 +14118,13 @@ td.highlight {
 }
 
 td.details-control {
-  background: url("assets/images/details_open.png") no-repeat center center;
+  // background: url("assets/images/details_open.png") no-repeat center center;
   cursor: pointer;
 }
 
-tr.shown td.details-control {
-  background: url("assets/images/details_close.png") no-repeat center center;
-}
+// tr.shown td.details-control {
+  // background: url("assets/images/details_close.png") no-repeat center center;
+// }
 
 #row-select .selected, #row-delete .selected {
   background-color: #4680ff;
@@ -17417,7 +17417,7 @@ table {
 
 .common-img-bg {
   background-size: cover;
-  background: url(assets/images/bg.jpg) no-repeat center center fixed;
+  // background: url(assets/images/bg.jpg) no-repeat center center fixed;
   height: 100%;
 }
 
@@ -17753,7 +17753,7 @@ table {
 ==========================  **/
 
 .chat-bg {
-  background-image: url("assets/images/chat-bg.jpg");
+  // background-image: url("assets/images/chat-bg.jpg");
   background-size: cover;
   background-blend-mode: overlay;
   background-color: rgba(255, 255, 255, 0.45);
