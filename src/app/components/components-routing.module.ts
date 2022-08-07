@@ -4,7 +4,6 @@ import { LayoutComponent } from "../layout/original-layout/layout.component";
 import { NotfoundComponent } from "../pages/notfound/notfound.component";
 
 const routes: Routes = [
-
   {
     path: "app",
     component: LayoutComponent,
@@ -44,6 +43,27 @@ const routes: Routes = [
       },
     ],
   },
+
+  {
+    path: "app",
+    children: [
+      {
+        path: "redirection",
+        loadChildren: () =>
+          import("./redirection/redirection.module").then(
+            (m) => m.RedirectionModule
+          ),
+      },
+      {
+        path: "firstcompany",
+        loadChildren: () =>
+          import("./first-company/first-company.module").then(
+            (m) => m.FirstCompanyModule
+          ),
+      },
+    ],
+  },
+
   {
     path: "",
     redirectTo: "/home",
@@ -53,9 +73,6 @@ const routes: Routes = [
     path: "**",
     component: NotfoundComponent,
   },
-
-
-
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

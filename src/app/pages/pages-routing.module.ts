@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { NavbarComponent } from "../layout/navbar/navbar.component";
 import { AboutComponent } from "./about/about.component";
 import { ResetPwdComponent } from "./auth/reset-pwd/reset-pwd.component";
 import { SigninComponent } from "./auth/signin/signin.component";
@@ -43,8 +42,8 @@ const routes: Routes = [
         component:ResetPwdComponent
       },
       // {
-      //   path: "notfound",
-      //   component:NotfoundComponent
+      //   path: "redirection",
+      //   component:RedirectionComponent
       // },
 
 ];

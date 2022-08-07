@@ -39,7 +39,7 @@ import { VerifAccountComponent } from "./auth/verif-account/verif-account.compon
     SigninComponent,
     SignupComponent,
     ResetPwdComponent,
-    VerifAccountComponent
+    VerifAccountComponent,
   ],
   exports: [
     HomeComponent,
