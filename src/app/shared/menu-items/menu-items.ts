@@ -43,23 +43,6 @@ const MENUITEMS:Menu[] = [
         icon: 'ti-home',
         routerLink:"/app/dashboard"
       },
-      // {
-      //   state: 'basic',
-      //   short_label: 'B',
-      //   name: 'Basic Components',
-      //   type: 'sub',
-      //   icon: 'ti-layout-grid2-alt',
-      //   children: [
-      //     {
-      //       state: 'button',
-      //       name: 'Button'
-      //     },
-      //     {
-      //       state: 'typography',
-      //       name: 'Typography'
-      //     }
-      //   ]
-      // },
       {
         state: 'accounting-plan',
         short_label: 'A-P',
@@ -84,14 +67,14 @@ const MENUITEMS:Menu[] = [
         icon: 'ti-crown',
         routerLink:"/app/tax"
       },
-      {
-        state: 'third-party',
-        short_label: 'T-P',
-        name: 'Third-party',
-        type: 'link',
-        icon: 'ti-crown',
-        routerLink:"/app/third/party"
-      },
+      // {
+      //   state: 'third-party',
+      //   short_label: 'T-P',
+      //   name: 'Third-party',
+      //   type: 'link',
+      //   icon: 'ti-crown',
+      //   routerLink:"/app/third/party"
+      // },
     ],
   },
   // {

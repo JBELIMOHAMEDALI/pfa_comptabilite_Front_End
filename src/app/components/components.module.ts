@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ComponentsRoutingModule } from './components-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 

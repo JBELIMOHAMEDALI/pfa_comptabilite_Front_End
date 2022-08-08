@@ -21,6 +21,7 @@ import { SigninComponent } from "./auth/signin/signin.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { ResetPwdComponent } from "./auth/reset-pwd/reset-pwd.component";
 import { VerifAccountComponent } from "./auth/verif-account/verif-account.component";
+import { TokenInterceptorService } from "../services/token-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -61,10 +62,10 @@ import { VerifAccountComponent } from "./auth/verif-account/verif-account.compon
   ],
   imports: [CommonModule, CarouselModule, PagesRoutingModule, FormsModule],
   schemas: [NO_ERRORS_SCHEMA],
-  // providers:[{
-  //   provide:HTTP_INTERCEPTORS,
-  //   useClass:TokenInterceptorService,
-  //   multi:true
-  // }],
+  providers:[{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
 })
 export class PagesModule {}

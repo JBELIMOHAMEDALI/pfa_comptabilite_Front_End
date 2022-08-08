@@ -23,17 +23,11 @@ export class VerifAccountComponent implements OnInit {
   ngOnInit() {
     this.validateAccount();
   }
-  async validateAccount() {
+  validateAccount() {
     const hashedid = this.activatedRoute.snapshot.paramMap.get("hashedid");
     this.backendService
     .get(`${VERIFY_ACCOUNT_END_POINT}/${hashedid}`)
-    .subscribe(new Observer(this.router,"/notfound",false).OBSERVER_VERIFY_ACCOUNT);
-    // try {
-    //   (await this.authService.validate(hashedid)) as any;
-    //   this.validation=true;
-    // } catch (error) {
-    //   this.router.navigate(['/introuvable'])
-    // }
+    .subscribe(new Observer(this.router,"/notfound",false).OBSERVER_VERIFY_ACCOUNT());
   }
 
 }

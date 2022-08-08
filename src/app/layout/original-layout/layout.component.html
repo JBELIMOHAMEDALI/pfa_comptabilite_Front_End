@@ -60,7 +60,7 @@
                 </a>
                 <ul class="profile-notification show-notification">
                   <li>
-                    <a  [routerLink]="['/']" >
+                    <a [routerLink]="['/']">
                       <i class="ti-user"></i> Profile
                     </a>
                   </li>
@@ -108,7 +108,7 @@
             </div>
 
             <perfect-scrollbar [style.max-width]="'100%'" [style.max-height]="'calc(100vh - 230px)'" [config]="config">
-              <div *ngFor="let asideItems of menuItems.getAll()" class="d-color">
+              <!-- <div *ngFor="let asideItems of menuItems.getAll()" class="d-color">
                 <div class="pcoded-navigatio-lavel" [attr.menu-title-theme]="menuTitleTheme">{{asideItems.label}}</div>
                 <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder"
                   [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder"
@@ -137,7 +137,124 @@
                     </ng-template>
                   </li>
                 </ul>
+              </div> -->
+              <div class="d-color">
+                <div class="pcoded-navigatio-lavel" [attr.menu-title-theme]="menuTitleTheme">
+                  Navigation
+                </div>
+                <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder"
+                  [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder" appAccordionLink>
+                  <li appAccordionLink>
+                    <a [routerLink]="['/app/dashboard']" target="_self" appAccordionToggle>
+                      <span class="pcoded-micon"><i class="ti-home"></i></span>
+                      <span class="pcoded-mtext">Dashboard</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                    <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder"
+                      [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder" appAccordionLink
+                      group="dashboard">
+                      <li class="pcoded-hasmenu" [attr.dropdown-icon]="dropDownIcon" [attr.subitem-icon]="subItemIcon"
+                        appAccordionLink group="dashboard">
+                        <a href="javascript:;" appAccordionToggle>
+                          <span class="pcoded-micon"><i class="ti-home" style="color: #000080;"></i></span>
+                          <span class="pcoded-mtext">Expenses</span>
+                          <span class="pcoded-mcaret"></span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                          <li appAccordionLink>
+                            <a [routerLink]="['/app/expenses/transactions']" appAccordionToggle>
+                              <span class="pcoded-micon">
+                                <i class="ti-angle-right"></i>
+                              </span>
+                              <span class="pcoded-mtext">Expenses Transactions</span>
+                            </a>
+                          </li>
+                          <li appAccordionLink>
+                            <a [routerLink]="['/app/expenses/prodserv']" appAccordionToggle>
+                              <span class="pcoded-micon">
+                                <i class="ti-angle-right"></i>
+                              </span>
+                              <span class="pcoded-mtext">Products / Services </span>
+                            </a>
+                          </li>
+                          <li appAccordionLink>
+                            <a [routerLink]="['/app/expenses/suppliers']" appAccordionToggle>
+                              <span class="pcoded-micon">
+                                <i class="ti-angle-right"></i>
+                              </span>
+                              <span class="pcoded-mtext">Suppliers</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder"
+                      [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder" appAccordionLink
+                      group="dashboard">
+                      <li class="pcoded-hasmenu" [attr.dropdown-icon]="dropDownIcon" [attr.subitem-icon]="subItemIcon"
+                        appAccordionLink group="dashboard">
+                        <a href="javascript:;" appAccordionToggle>
+                          <span class="pcoded-micon"><i class="ti-home" style="color: #c9e400;"></i></span>
+                          <span class="pcoded-mtext">Sales</span>
+                          <span class="pcoded-mcaret"></span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                          <li appAccordionLink>
+                            <a [routerLink]="['/app/sales/invoices']" appAccordionToggle>
+                              <span class="pcoded-micon">
+                                <i class="ti-angle-right"></i>
+                              </span>
+                              <span class="pcoded-mtext">Invoices</span>
+                            </a>
+                          </li>
+                          <li appAccordionLink>
+                            <a [routerLink]="['/app/sales/prod-serv']" appAccordionToggle>
+                              <span class="pcoded-micon">
+                                <i class="ti-angle-right"></i>
+                              </span>
+                              <span class="pcoded-mtext">Products / Services </span>
+                            </a>
+                          </li>
+                          <li appAccordionLink>
+                            <a [routerLink]="['/app/sales/customers']" appAccordionToggle>
+                              <span class="pcoded-micon">
+                                <i class="ti-angle-right"></i>
+                              </span>
+                              <span class="pcoded-mtext">Customers</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <a [routerLink]="['/app/cash-flow']" target="_self" appAccordionToggle>
+                      <span class="pcoded-micon"><i class="ti-home" style="color: #00a2d3;"></i></span>
+                      <span class="pcoded-mtext">Cash Flow</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                    <a [routerLink]="['/app/employees']" target="_self" appAccordionToggle>
+                      <span class="pcoded-micon"><i class="ti-home" style="color: #d38600;"></i></span>
+                      <span class="pcoded-mtext">Employees</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                    <a [routerLink]="['/app/tax']" target="_self" appAccordionToggle>
+                      <span class="pcoded-micon"><i class="ti-home" style="color: #d3005f;"></i></span>
+                      <span class="pcoded-mtext">Taxes</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                    <a [routerLink]="['/app/customer-management']" target="_self" appAccordionToggle>
+                      <span class="pcoded-micon"><i class="ti-home" style="color: #d3c800;"></i></span>
+                      <span class="pcoded-mtext">Customers Management</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                    <a [routerLink]="['/app/accounting/plan']" target="_self" appAccordionToggle>
+                      <span class="pcoded-micon"><i class="ti-home" style="color: #15d300;"></i></span>
+                      <span class="pcoded-mtext">Accounting Plan</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                </ul>
               </div>
+
             </perfect-scrollbar>
           </div>
         </nav>

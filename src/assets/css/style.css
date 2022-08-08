@@ -199,7 +199,8 @@
 }
 
 .page-header {
-    background: linear-gradient(rgba(237, 246, 247, 0.7), rgba(237, 246, 247, 0.7)), url(assets/img/carousel-1.jpg);
+    background: linear-gradient(rgba(237, 246, 247, 0.7), rgba(237, 246, 247, 0.7)), url("assets/img/carousel-1.jpg");
+    /* background: white; */
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

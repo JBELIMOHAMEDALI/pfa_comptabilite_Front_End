@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ThirdPartyComponent } from './third-party.component';
+import { TransactionsComponent } from './transactions.component';
 
-const routes: Routes = [{ path: '', component: ThirdPartyComponent }];
+const routes: Routes = [{ path: '', component: TransactionsComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ThirdPartyRoutingModule { }
+export class TransactionsRoutingModule { }

@@ -31,16 +31,55 @@ const routes: Routes = [
       },
       {
         path: "company",
-        loadChildren: () =>
-          import("./company/company.module").then((m) => m.CompanyModule),
+        loadChildren: () => import("./company/company.module").then((m) => m.CompanyModule),
       },
       {
-        path: "third/party",
-        loadChildren: () =>
-          import("./third-party/third-party.module").then(
-            (m) => m.ThirdPartyModule
-          ),
+        path: "sales",
+        children: [
+          {
+            path: 'invoices',
+            loadChildren: () => import('./sales/invoices/invoices.module').then(m => m.InvoicesModule)
+          },
+          {
+            path: 'prod-serv',
+            loadChildren: () => import('./sales/prodserv/prodserv.module').then(m => m.ProdservModule)
+          },
+          {
+            path: 'customers',
+            loadChildren: () => import('./sales/customers/customers.module').then(m => m.CustomersModule)
+          },
+        ]
       },
+      {
+        path: "expenses",
+        children: [
+          {
+            path: 'transactions',
+            loadChildren: () => import('./expenses/transactions/transactions.module').then(m => m.TransactionsModule)
+          },
+          {
+            path: 'prodserv',
+            loadChildren: () => import('./expenses/prodserv/prodserv.module').then(m => m.ProdservModule)
+          },
+          {
+            path: 'suppliers',
+            loadChildren: () => import('./expenses/suppliers/suppliers.module').then(m => m.SuppliersModule)
+          },
+        ]
+      },
+      {
+        path: 'cash-flow',
+        loadChildren: () => import('./cash-flow/cash-flow.module').then(m => m.CashFlowModule)
+      },
+      {
+        path: 'employees',
+        loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule)
+      },
+      {
+        path: 'customer-management',
+        loadChildren: () => import('./customer-management/customer-management.module').then(m => m.CustomerManagementModule)
+      },
+
     ],
   },
 
@@ -48,7 +87,7 @@ const routes: Routes = [
     path: "app",
     children: [
       {
-        path: "redirection",
+        path: "redirection/:accessToken",
         loadChildren: () =>
           import("./redirection/redirection.module").then(
             (m) => m.RedirectionModule
@@ -73,9 +112,12 @@ const routes: Routes = [
     path: "**",
     component: NotfoundComponent,
   },
+
+
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ComponentsRoutingModule {}
+export class ComponentsRoutingModule { }
