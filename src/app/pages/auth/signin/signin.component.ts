@@ -24,12 +24,9 @@ export class SigninComponent implements OnInit {
     this.backendService
       .post(SIGNIN_END_POINT, payload)
       .subscribe(
-        new Observer(this.router, "/app/dashboard", false).OBSERVER_POST((response)=>{
+        new Observer(this.router, "/app/dashboard", false,true).OBSERVER_POST((response)=>{
           if(!response.err)
           this.tokenService.saveToken(response.accessToken)
-
-          console.log(response);
-
         })
       );
   }

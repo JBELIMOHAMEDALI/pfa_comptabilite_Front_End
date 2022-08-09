@@ -13,7 +13,10 @@ export const USER_DASHBOARD_END_POINT: string = `${environment.apiUrl}/dashboard
 
 
 //COMPANY ENDPOINTS
-export const USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/get`;
+export const GET_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/get`;
+export const DELETE_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/delete`;
+export const POST_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/add`;
+export const PUT_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/update`;
 
 
 //USER-INFO ENDPOINTS

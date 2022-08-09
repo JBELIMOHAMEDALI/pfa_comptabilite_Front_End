@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private backendService: BackendService,
-    public router: Router 
+    public router: Router
   ) {
   }
 
@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
     delete payload["pass2"];
     this.backendService
       .post(SIGNUP_END_POINT, payload)
-      .subscribe(new Observer(this.router,"/signin",true).OBSERVER_POST());
+      .subscribe(new Observer(this.router,"/signin",false,true).OBSERVER_POST());
   }
 
 }

@@ -6,12 +6,12 @@ import { Router } from '@angular/router';
 })
 export class SharedService {
 
-  constructor(public router:Router) { }
+  constructor() { }
 
-  reloadComponent() {
-    const currentRoute = this.router.url;
-    this.router.navigateByUrl("/", { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentRoute]);
+  reloadComponent(router:Router) {
+    const currentRoute = router.url;
+    router.navigateByUrl("/", { skipLocationChange: true }).then(() => {
+      router.navigate([currentRoute]);
     });
   }
 

@@ -9,7 +9,7 @@ import {
 } from "@angular/animations";
 import { MenuItems } from "../../shared/menu-items/menu-items";
 import { BackendService } from "../../services/backend.service";
-import { USER_COMPANIES_END_POINT, USER_INFO_END_POINT } from "../../services/endpoints";
+import { GET_USER_COMPANIES_END_POINT, USER_INFO_END_POINT } from "../../services/endpoints";
 import Observer from "../../services/observer";
 import { Router } from "@angular/router";
 import { TokenService } from "../../services/token.service";
@@ -205,7 +205,7 @@ export class LayoutComponent implements OnInit {
     )  }
 
   getCompanies() {
-    this.backendService.get(USER_COMPANIES_END_POINT).subscribe(
+    this.backendService.get(GET_USER_COMPANIES_END_POINT).subscribe(
       new Observer(this.router,null,false).OBSERVER_GET((response)=>{
         if(!response.err)
         this.companyList=response.rows;
