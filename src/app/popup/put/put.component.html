@@ -1,1 +1,45 @@
-<p>put works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">{{ this.title }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- add -->
+
+<div class="modal-body">
+  <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control"
+              [(ngModel)]="this.payload && this.payload.name"
+ placeholder="Name" name="name" ngModel #name="ngModel"
+        required />
+    </div>
+    <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter company name !</span>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-company"></i></label></span>
+      <input type="text" class="form-control"
+      [(ngModel)]="this.payload && this.payload.domain"
+       placeholder="Domain" name="domain" ngModel #domain="ngModel"
+        required />
+    </div>
+    <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter company domain !</span>
+    </div>
+
+
+    <div class="modal-footer">
+      <input value="Confirmer" [disabled]="fedit.invalid" type="submit" class="btn btn-outline-primary" />
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+        Fermer
+      </button>
+    </div>
+  </form>
+</div>
+<!-- update -->

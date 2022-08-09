@@ -7,6 +7,7 @@ import { PutComponent } from '../../popup/put/put.component';
 import { BackendService } from '../../services/backend.service';
 import { DELETE_USER_COMPANIES_END_POINT, GET_USER_COMPANIES_END_POINT } from '../../services/endpoints';
 import Observer from '../../services/observer';
+import  swal from 'sweetalert';
 
 @Component({
   selector: 'app-company',
@@ -36,9 +37,21 @@ export class CompanyComponent implements OnInit {
   }
 
   deleteCompany(id_company:string){
-    this.backendService.delete(`${DELETE_USER_COMPANIES_END_POINT}/${id_company}`).subscribe(
-      new Observer(this.router,null,true,true,this.sharedService,null).OBSERVER_DELETE()
-    )
+    swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      closeOnEsc: true,
+      closeOnClickOutside: true,
+      buttons:['cancel','confirm'],
+    }).then((result) => {
+      if (result) {
+        this.backendService.delete(`${DELETE_USER_COMPANIES_END_POINT}/${id_company}`).subscribe(
+          new Observer(this.router,null,true,true,this.sharedService,null).OBSERVER_DELETE()
+        )
+      }
+    })
+
   }
 
   editCompany(id_company:string){
@@ -50,7 +63,7 @@ export class CompanyComponent implements OnInit {
   OpenModal(title:string,company?) {
     const modalRef = this.modalService.open(title.split(" ")[0]==='NEW'?PostComponent:PutComponent);
     modalRef.componentInstance.title = title;
-    modalRef.componentInstance.company = company&&{...company};
+    modalRef.componentInstance.payload = company&&{...company};
 
   }
 
