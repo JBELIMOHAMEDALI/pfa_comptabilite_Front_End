@@ -23,7 +23,7 @@ export interface MainMenuItems {
   icon: string;
   badge?: BadgeItem[];
   children?: ChildrenItems[];
-  routerLink:string
+  routerLink?:string
 }
 
 export interface Menu {
@@ -67,28 +67,91 @@ const MENUITEMS:Menu[] = [
         icon: 'ti-crown',
         routerLink:"/app/tax"
       },
-      // {
-      //   state: 'third-party',
-      //   short_label: 'T-P',
-      //   name: 'Third-party',
-      //   type: 'link',
-      //   icon: 'ti-crown',
-      //   routerLink:"/app/third/party"
-      // },
+      {
+        state: 'cash-flow',
+        short_label: 'C-F',
+        name: 'Cash flow',
+        type: 'link',
+        icon: 'ti-crown',
+        routerLink:"/app/cash-flow"
+      },
+      {
+        state: 'employees',
+        short_label: 'EMP',
+        name: 'Employees',
+        type: 'link',
+        icon: 'ti-crown',
+        routerLink:"/app/employees"
+      },
+      {
+        state: 'customers-management',
+        short_label: 'C-M',
+        name: 'Customers management',
+        type: 'link',
+        icon: 'ti-crown',
+        routerLink:"/app/customer-management"
+      },
     ],
   },
-  // {
-  //   label: 'Tables',
-  //   main: [
-  //     {
-  //       state: 'bootstrap-table',
-  //       short_label: 'B',
-  //       name: 'Bootstrap Table',
-  //       type: 'link',
-  //       icon: 'ti-receipt'
-  //     }
-  //   ]
-  // },
+  {//expenses
+    label: 'Expenses',
+    main: [
+      {
+        state: 'transactions',
+        short_label: 'E-T',
+        name: 'Transactions',
+        type: 'link',
+        icon: 'ti-receipt',
+        routerLink:'/app/expenses/transactions'
+      },
+      {
+        state: 'products-services',
+        short_label: 'P-S',
+        name: 'Products/Services',
+        type: 'link',
+        icon: 'ti-receipt',
+        routerLink:'/app/expenses/products-services'
+      },
+      {
+        state: 'suppliers',
+        short_label: 'S',
+        name: 'Suppliers',
+        type: 'link',
+        icon: 'ti-receipt',
+        routerLink:'/app/expenses/suppliers'
+      }
+    ]
+  },
+  {//sales
+    label: 'Sales',
+    main: [
+      {
+        state: 'sales-invoices',
+        short_label: 'E-T',
+        name: 'Invoices',
+        type: 'link',
+        icon: 'ti-receipt',
+        routerLink:'/app/sales/invoices'
+      },
+      {
+        state: 'products-services',
+        short_label: 'P-S',
+        name: 'Products/Services',
+        type: 'link',
+        icon: 'ti-receipt',
+        routerLink:'/app/sales/products-services'
+      },
+      {
+        state: 'customers',
+        short_label: 'Cust',
+        name: 'Customers',
+        type: 'link',
+        icon: 'ti-receipt',
+        routerLink:'/app/sales/customers'
+      }
+    ]
+  },
+
   // {
   //   label: 'Map And Extra Pages ',
   //   main: [
@@ -97,7 +160,9 @@ const MENUITEMS:Menu[] = [
   //       short_label: 'M',
   //       name: 'Maps',
   //       type: 'link',
-  //       icon: 'ti-map-alt'
+  //       icon: 'ti-map-alt',
+  //       routerLink:''
+
   //     },
   //     {
   //       state: 'authentication',

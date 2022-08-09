@@ -7,6 +7,7 @@ import {
 } from "../../../services/endpoints";
 import { BackendService } from "../../../services/backend.service";
 import Observer from "../../../services/observer";
+import { TokenService } from "../../../services/token.service";
 
 @Component({
   selector: "app-signin",
@@ -14,7 +15,7 @@ import Observer from "../../../services/observer";
   styleUrls: ["./signin.component.scss"],
 })
 export class SigninComponent implements OnInit {
-  constructor(private backendService: BackendService, private router: Router) {}
+  constructor(private backendService: BackendService, private router: Router,private tokenService:TokenService) {}
 
   ngOnInit() {}
 
@@ -23,7 +24,13 @@ export class SigninComponent implements OnInit {
     this.backendService
       .post(SIGNIN_END_POINT, payload)
       .subscribe(
-        new Observer(this.router, "/app/dashboard", false).OBSERVER_POST()
+        new Observer(this.router, "/app/dashboard", false).OBSERVER_POST((response)=>{
+          if(!response.err)
+          this.tokenService.saveToken(response.accessToken)
+
+          console.log(response);
+
+        })
       );
   }
 

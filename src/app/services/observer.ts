@@ -10,11 +10,12 @@ export default class Observer {
   ) {
   }
 
-  OBSERVER_POST() {
+  OBSERVER_POST(cb?) {
     return {
       next: (response: any) => {
         if (this.swal_display) swal("Success!", response.message, "success");
         if (this.target) this.router.navigate([this.target]);
+        cb(response)
       },
       error: (err: HttpErrorResponse) => {
         // if (this.swal_display)

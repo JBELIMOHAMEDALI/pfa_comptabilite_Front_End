@@ -54,16 +54,16 @@
               </li>
               <li class="user-profile header-notification">
                 <a>
-                  <img src="assets/images/avatar-7.jpg" class="img-radius" alt="User-Profile-Image" />
-                  <span>{{"username H_C"}}</span>
+                  <img [src]="userinfo&&userinfo.photo" class="img-radius" alt="User-Profile-Image" />
+                  <span>{{userinfo&&(userinfo.lastname+" "+userinfo.firstname)}}</span>
                   <i class="ti-angle-down"></i>
                 </a>
                 <ul class="profile-notification show-notification">
-                  <li>
+                  <!-- <li>
                     <a [routerLink]="['/']">
                       <i class="ti-user"></i> Profile
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a [routerLink]="['/signin']" (click)="logout()">
                       <i class="ti-layout-sidebar-left"></i> logout
@@ -90,25 +90,24 @@
           <div class="pcoded-inner-navbar main-menu" appAccordion>
             <div class="">
               <div class="main-menu-header">
-                <img class="img-40 img-radius" src="assets/images/avatar-7.jpg" alt="User-Profile-Image" />
+                <img class="img-40 img-radius" [src]="userinfo&&userinfo.photo" alt="User-Profile-Image" />
                 <div class="user-details">
-                  <span id="more-details" (click)="toggleOpenedSidebar()">{{"username H.C"}}<i
+                  <span id="more-details" (click)="toggleOpenedSidebar()">{{userinfo&&(userinfo.lastname+" "+userinfo.firstname)}}<i
                       class="ti-angle-down"></i></span>
                 </div>
               </div>
               <div class="main-menu-content">
                 <ul>
-                  <li [@mobileMenuTop]="isCollapsedSideBar" class="more-details" [ngClass]="isCollapsedSideBar">
-                    <a [routerLink]="['/']">
-                      <i class="ti-user"></i>Profile</a>
-                    <a [routerLink]="['/signin']" (click)="logout()"><i class="ti-layout-sidebar-left"></i>logout</a>
+                  <li *ngFor="let company of companyList" [@mobileMenuTop]="isCollapsedSideBar" class="more-details" [ngClass]="isCollapsedSideBar">
+                    <a [routerLink]="['/app/company']">
+                      <i class="ti-user"></i>{{company.name}}</a>
                   </li>
                 </ul>
               </div>
             </div>
 
             <perfect-scrollbar [style.max-width]="'100%'" [style.max-height]="'calc(100vh - 230px)'" [config]="config">
-              <!-- <div *ngFor="let asideItems of menuItems.getAll()" class="d-color">
+               <div *ngFor="let asideItems of menuItems.getAll()" class="d-color">
                 <div class="pcoded-navigatio-lavel" [attr.menu-title-theme]="menuTitleTheme">{{asideItems.label}}</div>
                 <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder"
                   [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder"
@@ -137,14 +136,14 @@
                     </ng-template>
                   </li>
                 </ul>
-              </div> -->
-              <div class="d-color">
+              </div>
+              <!-- <div class="d-color">
                 <div class="pcoded-navigatio-lavel" [attr.menu-title-theme]="menuTitleTheme">
                   Navigation
                 </div>
                 <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder"
                   [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder" appAccordionLink>
-                  <li appAccordionLink>
+                   <li appAccordionLink>
                     <a [routerLink]="['/app/dashboard']" target="_self" appAccordionToggle>
                       <span class="pcoded-micon"><i class="ti-home"></i></span>
                       <span class="pcoded-mtext">Dashboard</span>
@@ -253,7 +252,7 @@
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
 
             </perfect-scrollbar>
           </div>

@@ -33,7 +33,7 @@ export class RedirectionComponent implements OnInit {
           this.backendService.get(`${USER_DASHBOARD_END_POINT}`).subscribe(
             new Observer(this.router, null, false).OBSERVER_GET((response) => {
               if (response.err) {
-                this.tokenService.clearLS();
+                this.tokenService.removeToken();
                 return this.router.navigate(["/signin"]);
               }
             })

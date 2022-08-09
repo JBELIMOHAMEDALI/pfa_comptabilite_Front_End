@@ -62,10 +62,12 @@ import { TokenInterceptorService } from "../services/token-interceptor.service";
   ],
   imports: [CommonModule, CarouselModule, PagesRoutingModule, FormsModule],
   schemas: [NO_ERRORS_SCHEMA],
-  providers:[{
-    provide:HTTP_INTERCEPTORS,
-    useClass:TokenInterceptorService,
-    multi:true
-  }],
+  providers:[
+  //   {
+  //   provide:HTTP_INTERCEPTORS,
+  //   useClass:TokenInterceptorService,
+  //   multi:true
+  // }
+],
 })
 export class PagesModule {}

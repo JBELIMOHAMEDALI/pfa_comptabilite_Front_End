@@ -3,7 +3,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PopupComponent } from "./popup/popup.component";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { PagesModule } from "./pages/pages.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from "./shared/shared.module";
@@ -12,6 +12,7 @@ import { FormsModule } from "@angular/forms";
 import { NotfoundComponent } from "./pages/notfound/notfound.component";
 import { LayoutComponent } from "./layout/original-layout/layout.component";
 import { NavbarComponent } from "./layout/navbar/navbar.component";
+import { TokenInterceptorService } from "./services/token-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,11 @@ import { NavbarComponent } from "./layout/navbar/navbar.component";
     PopupComponent,
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

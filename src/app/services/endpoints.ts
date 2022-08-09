@@ -9,3 +9,12 @@ export const RESET_PASSWORD_END_POINT: string = `${environment.apiUrl}/auth/user
 export const GOOGLE_SIGNIN_END_POINT: string = `${environment.apiUrl}/auth/google`;
 //DASHBOARD ENDPOINTS
 export const USER_DASHBOARD_END_POINT: string = `${environment.apiUrl}/dashboard/get`;
+
+
+
+//COMPANY ENDPOINTS
+export const USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/get`;
+
+
+//USER-INFO ENDPOINTS
+export const USER_INFO_END_POINT: string = `${environment.apiUrl}/user/info`;

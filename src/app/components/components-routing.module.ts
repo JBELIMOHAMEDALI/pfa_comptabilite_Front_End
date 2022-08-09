@@ -41,7 +41,7 @@ const routes: Routes = [
             loadChildren: () => import('./sales/invoices/invoices.module').then(m => m.InvoicesModule)
           },
           {
-            path: 'prod-serv',
+            path: 'products-services',
             loadChildren: () => import('./sales/prodserv/prodserv.module').then(m => m.ProdservModule)
           },
           {
@@ -58,7 +58,7 @@ const routes: Routes = [
             loadChildren: () => import('./expenses/transactions/transactions.module').then(m => m.TransactionsModule)
           },
           {
-            path: 'prodserv',
+            path: 'products-services',
             loadChildren: () => import('./expenses/prodserv/prodserv.module').then(m => m.ProdservModule)
           },
           {

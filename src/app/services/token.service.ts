@@ -12,7 +12,8 @@ export class TokenService {
   saveToken(token:string){
     localStorage.setItem('accessToken',token);
   }
-  clearLS(){
-    localStorage.clear();
+  removeToken(){
+    localStorage.removeItem('accessToken')
   }
+
 }
