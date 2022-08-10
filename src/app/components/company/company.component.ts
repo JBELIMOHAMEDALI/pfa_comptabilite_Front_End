@@ -8,6 +8,7 @@ import { BackendService } from '../../services/backend.service';
 import { DELETE_USER_COMPANIES_END_POINT, GET_USER_COMPANIES_END_POINT } from '../../services/endpoints';
 import Observer from '../../services/observer';
 import swal from 'sweetalert';
+import { COMPANY_POPUP_TYPE } from '../../popup/popup-type';
 
 @Component({
   selector: 'app-company',
@@ -58,6 +59,7 @@ export class CompanyComponent implements OnInit {
   OpenModal(title: string, company?) {
     const modalRef = this.modalService.open(title.split(" ")[0] === 'NEW' ? PostComponent : PutComponent);
     modalRef.componentInstance.title = title;
+    modalRef.componentInstance.type = COMPANY_POPUP_TYPE;
     modalRef.componentInstance.payload = company && { ...company };
 
   }

@@ -200,8 +200,7 @@ export class LayoutComponent implements OnInit {
     this.backendService.get(USER_INFO_END_POINT).subscribe(
       new Observer(this.router,null,false).OBSERVER_GET((response)=>{
         if(!response.err)
-        this.userinfo=response.rows[0];
-      })
+this.userinfo=response&&response.rows[0];      })
     )  }
 
   getCompanies() {

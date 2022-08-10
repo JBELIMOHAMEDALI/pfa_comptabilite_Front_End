@@ -8,38 +8,146 @@
 <!-- add -->
 
 <div class="modal-body">
-  <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control"
-              [(ngModel)]="this.payload && this.payload.name"
- placeholder="Name" name="name" ngModel #name="ngModel"
-        required />
-    </div>
-    <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter company name !</span>
-    </div>
+  <ng-container  *ngIf="this.type==='COMPANY'">
+    <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" [(ngModel)]="this.payload && this.payload.name" placeholder="Name"
+          name="name" ngModel #name="ngModel" required />
+      </div>
+      <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter company name !</span>
+      </div>
 
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-company"></i></label></span>
-      <input type="text" class="form-control"
-      [(ngModel)]="this.payload && this.payload.domain"
-       placeholder="Domain" name="domain" ngModel #domain="ngModel"
-        required />
-    </div>
-    <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter company domain !</span>
-    </div>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-company"></i></label></span>
+        <input type="text" class="form-control" [(ngModel)]="this.payload && this.payload.domain" placeholder="Domain"
+          name="domain" ngModel #domain="ngModel" required />
+      </div>
+      <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter company domain !</span>
+      </div>
 
 
-    <div class="modal-footer">
-      <input value="Confirmer" [disabled]="fedit.invalid" type="submit" class="btn btn-outline-primary" />
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
-        Fermer
-      </button>
-    </div>
-  </form>
+      <div class="modal-footer">
+        <input value="Confirmer" [disabled]="fedit.invalid" type="submit" class="btn btn-outline-primary" />
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+          Fermer
+        </button>
+      </div>
+    </form>
+
+  </ng-container>
+  <ng-container *ngIf="this.type==='EMPLOYEE'">
+
+    <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" placeholder="Fullname" name="fullname"  [(ngModel)]="this.payload.fullname" #fullname="ngModel"
+          required />
+      </div>
+      <div *ngIf="fullname.invalid && fullname.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter fullname !</span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="this.payload.email" #email="ngModel" required />
+      </div>
+      <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter email !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" placeholder="Address" name="address" [(ngModel)]="this.payload.address" #address="ngModel"
+          required />
+      </div>
+      <div *ngIf="address.invalid && address.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter address !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="tel" class="form-control" placeholder="Phone" name="phone" [(ngModel)]="this.payload.phone" #phone="ngModel" required />
+      </div>
+      <div *ngIf="phone.invalid && phone.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter phone !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" placeholder="Salary" name="salary" [(ngModel)]="this.payload.salary" #salary="ngModel" required />
+      </div>
+      <div *ngIf="salary.invalid && salary.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter salary !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-calendar"></i></label></span>
+        <input class="form-control textbox-n" [type]="birthdateinputype" placeholder="Birthdate"
+          onkeydown="return false" name="birthdate" [ngModel]="this.payload.birthdate|date:'yyyy-MM-dd'" #birthdate="ngModel" required
+          (click)="setinputtype($event,'birthdate')" max="{{ this.actualDate | date: 'yyyy-MM-dd' }}" />
+      </div>
+      <div *ngIf="birthdate.invalid && birthdate.touched" class="alert alert-danger p-2" role="alert">
+        <spna>Enter birthdate !</spna>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-calendar"></i></label></span>
+        <input class="form-control" [type]="hiredateinputype" placeholder="Hire date" onkeydown="return false"
+          name="hiredate" [ngModel]="this.payload.hiredate|date:'yyyy-MM-dd'" #hiredate="ngModel" (click)="setinputtype($event,'hiredate')" required
+          min="{{ birthdate.value | date: 'yyyy-MM-dd' }}" />
+      </div>
+
+      <div *ngIf="hiredate.invalid && hiredate.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter hiredate !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-brand-myspace"></i></label></span>
+        <select [(ngModel)]="this.payload.id_company" #id_company="ngModel"  name="id_company" class="form-control"
+          required>
+
+          <option *ngFor="let company of this.companyList" [value]="company.id_company">
+            {{company.name}}
+          </option>
+        </select>
+      </div>
+
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" [checked]="this.payload.gender==='F'"
+        [(ngModel)]="this.payload.gender" #gender="ngModel"
+        type="radio" name="gender" id="F" value="F">
+        <label class="form-check-label" for="inlineRadio1">Female</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" [checked]="this.payload.gender==='M'"
+        [(ngModel)]="this.payload.gender" #gender="ngModel"
+        type="radio" name="gender" id="M" value="M">
+        <label class="form-check-label" for="inlineRadio2">Male</label>
+      </div>
+
+
+
+      <div class="modal-footer">
+        <input value="Confirmer" [disabled]="fedit.invalid" type="submit"
+          class="btn btn-outline-primary" />
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </ng-container>
 </div>
 <!-- update -->

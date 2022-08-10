@@ -103,4 +103,23 @@ export default class Observer {
       },
     };
   }
+
+  OBSERVER_SIGNIN(cb?) {
+    return {
+      next: (response: any) => {
+        if (this.target) this.router.navigate([this.target]);
+        cb(response);
+      },
+      error: (err: HttpErrorResponse) => {
+        swal("Failure!", err.error.message, "warning");
+        cb(err);
+      },
+
+      // complete: () => {
+        // console.log('COMPLETE !');
+
+        // if (this.activeModal) this.activeModal.dismiss();
+      // },
+    };
+  }
 }
