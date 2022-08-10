@@ -21,3 +21,10 @@ export const PUT_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/compa
 
 //USER-INFO ENDPOINTS
 export const USER_INFO_END_POINT: string = `${environment.apiUrl}/user/info`;
+
+
+//EMPLOYEE ENDPOINTS
+export const GET_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/employee/get`;
+export const DELETE_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/employee/delete`;
+export const POST_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/employee/add`;
+export const PUT_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/employee/update`;

@@ -8,6 +8,7 @@
             <span class="d-block text-primary">
               <h4>Company</h4>
             </span>
+            <span class="text-dark">Company</span>
           </div>
         </div>
       </div>
@@ -48,6 +49,7 @@
                   </div>
                 </div>
               </div>
+
               <!-- Begin Table -->
               <div class="table-responsive">
                 <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
@@ -65,10 +67,7 @@
                       </tr>
                     </thead>
                     <ng-container>
-                      <tbody *ngFor="
-                                          let company of this.companyList;
-                                          let i = index
-                                        ">
+                      <tbody *ngFor="let company of this.companyList;let i = index">
                         <tr style="text-align: center">
 
                           <td scope="row">{{
@@ -82,21 +81,29 @@
                             }} </td>
 
                           <td scope="row">
-                            <div ngbDropdown placement="bottom-right" class="d-inline-block">
+                            <!-- <div ngbDropdown placement="bottom-right" class="d-inline-block">
                               <button class="btn btn-outline-none" id="dropdownBasic1" ngbDropdownToggle>
                                 <i class="fa fa-ellipsis-v"></i>
                               </button>
                               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
 
-                                <button (click)="OpenModal('UPDATE COMPANY',company)" ngbDropdownItem>
+                                <button (click)="OpenModal('UPDATE COMPANY',company)">
                                   <i class="icofont icofont-edit-alt"></i>Edit
                                 </button>
-                                <button (click)="deleteCompany(company.id_company)" ngbDropdownItem>
+                                <button (click)="deleteCompany(company.id_company)">
                                   <i class="icofont icofont-trash"></i>Delete
                                 </button>
 
                               </div>
-                            </div>
+                            </div> -->
+                            <button class="btn btn-info" (click)="OpenModal('UPDATE COMPANY',company)"
+                              style="border-radius: 3px; width: 10%; margin-right: 2%;">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger" (click)="deleteCompany(company.id_company)"
+                              style="border-radius: 3px; width: 10%;">
+                              <i class="fa fa-trash-o"></i>
+                            </button>
                           </td>
                         </tr>
                       </tbody>
