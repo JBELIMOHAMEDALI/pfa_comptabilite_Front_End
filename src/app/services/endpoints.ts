@@ -28,3 +28,9 @@ export const GET_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/emplo
 export const DELETE_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/employee/delete`;
 export const POST_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/employee/add`;
 export const PUT_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/employee/update`;
+
+//ACCOUNTING PLAN ENDPOINTS
+export const GET_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/employee/get`;
+export const DELETE_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/employee/delete`;
+export const POST_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/employee/add`;
+export const PUT_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/employee/update`;

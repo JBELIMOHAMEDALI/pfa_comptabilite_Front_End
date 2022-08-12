@@ -7,8 +7,8 @@
 
 
 <div class="modal-body">
+  <!-- COMPANY -->
   <ng-container *ngIf="this.type==='COMPANY'">
-
     <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
@@ -37,9 +37,8 @@
       </div>
     </form>
   </ng-container>
-
+  <!-- EMPLOYEE -->
   <ng-container *ngIf="this.type==='EMPLOYEE'">
-
     <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
@@ -113,8 +112,7 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-brand-myspace"></i></label></span>
-        <select ngModel="{{ '-1' }}" #id_company="ngModel"  name="id_company" class="form-control"
-          required>
+        <select ngModel="{{ '-1' }}" #id_company="ngModel" name="id_company" class="form-control" required>
           <option value="-1" disabled selected>Select your company</option>
           <option *ngFor="let company of this.companyList" [value]="company.id_company">
             {{company.name}}
@@ -133,11 +131,39 @@
         <label class="form-check-label" for="inlineRadio2">Male</label>
       </div>
 
-
-
       <div class="modal-footer">
         <input value="Confirmer" [disabled]="fadd.invalid||gender.value==''||id_company.value=='-1'" type="submit"
           class="btn btn-outline-primary" />
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </ng-container>
+  <!-- ACCOUNTING_PLAN -->
+  <ng-container *ngIf="this.type==='ACCOUNTING_PLAN'">
+    <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel" required />
+      </div>
+      <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter column name !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-company"></i></label></span>
+        <input type="text" class="form-control" placeholder="Description" name="description" ngModel #description="ngModel" required />
+      </div>
+      <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter description !</span>
+      </div>
+
+
+      <div class="modal-footer">
+        <input value="Confirmer" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />
         <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
           Cancel
         </button>

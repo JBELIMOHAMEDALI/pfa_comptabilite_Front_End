@@ -8,6 +8,7 @@
 <!-- add -->
 
 <div class="modal-body">
+  <!-- COMPANY -->
   <ng-container  *ngIf="this.type==='COMPANY'">
     <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
       <div class="input-group">
@@ -38,10 +39,10 @@
         </button>
       </div>
     </form>
-
   </ng-container>
-  <ng-container *ngIf="this.type==='EMPLOYEE'">
 
+  <!-- EMPLOYEE -->
+  <ng-container *ngIf="this.type==='EMPLOYEE'">
     <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
@@ -124,7 +125,6 @@
         </select>
       </div>
 
-
       <div class="form-check form-check-inline">
         <input class="form-check-input" [checked]="this.payload.gender==='F'"
         [(ngModel)]="this.payload.gender" #gender="ngModel"
@@ -138,8 +138,6 @@
         <label class="form-check-label" for="inlineRadio2">Male</label>
       </div>
 
-
-
       <div class="modal-footer">
         <input value="Confirmer" [disabled]="fedit.invalid" type="submit"
           class="btn btn-outline-primary" />
@@ -149,5 +147,39 @@
       </div>
     </form>
   </ng-container>
+
+  <!-- ACCOUNTING PLAN -->
+  <ng-container  *ngIf="this.type==='ACCOUNTING_PLAN'">
+    <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" [(ngModel)]="this.payload && this.payload.name" placeholder="Name"
+          name="name" ngModel #name="ngModel" required />
+      </div>
+      <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter column name !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-company"></i></label></span>
+        <input type="text" class="form-control" [(ngModel)]="this.payload && this.payload.description" placeholder="Description"
+          name="description" ngModel #domain="ngModel" required />
+      </div>
+      <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter description !</span>
+      </div>
+
+
+      <div class="modal-footer">
+        <input value="Confirmer" [disabled]="fedit.invalid" type="submit" class="btn btn-outline-primary" />
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+          Fermer
+        </button>
+      </div>
+    </form>
+  </ng-container>
+  
 </div>
 <!-- update -->
