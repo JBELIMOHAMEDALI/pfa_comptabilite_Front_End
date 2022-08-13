@@ -14,6 +14,8 @@ export const USER_DASHBOARD_END_POINT: string = `${environment.apiUrl}/dashboard
 
 //COMPANY ENDPOINTS
 export const GET_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/get`;
+export const GET_USER_FIRST_COMPANY_END_POINT: string = `${environment.apiUrl}/company/get/first`;
+
 export const DELETE_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/delete`;
 export const POST_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/add`;
 export const PUT_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/update`;
@@ -30,7 +32,12 @@ export const POST_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/empl
 export const PUT_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/employee/update`;
 
 //ACCOUNTING PLAN ENDPOINTS
-export const GET_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/employee/get`;
-export const DELETE_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/employee/delete`;
-export const POST_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/employee/add`;
-export const PUT_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/employee/update`;
+export const GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT: string = `${environment.apiUrl}/accounting/plan/get/sources`;
+export const GET_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/get`;
+export const IMPORT_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/import`;
+export const EXPORT_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/export`;
+export const UNLINK_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/unlink`;
+
+export const DELETE_USER_ACCOUNTING_PLAN_ROW_END_POINT: string = `${environment.apiUrl}/accounting/plan/delete`;
+export const POST_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/add`;
+export const PUT_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/update`;
