@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import {
   GET_USER_COMPANIES_END_POINT,
+  PUT_USER_ACCOUNTING_PLAN_END_POINT,
   PUT_USER_COMPANIES_END_POINT,
   PUT_USER_EMPLOYEES_END_POINT,
 } from "../../services/endpoints";
@@ -44,6 +45,7 @@ export class PutComponent implements OnInit {
   onSubmit(form: NgForm) {
     let endpoint: string = "";
     let payload = { ...form.value };
+
     switch (this.type) {
       case "COMPANY":
         endpoint = PUT_USER_COMPANIES_END_POINT;
@@ -52,6 +54,9 @@ export class PutComponent implements OnInit {
       case "EMPLOYEE":
         endpoint = PUT_USER_EMPLOYEES_END_POINT;
         payload = { ...payload, id_employee: this.payload.id_employee };
+        break;
+        case "ACCOUNTING_PLAN":
+        endpoint = `${PUT_USER_ACCOUNTING_PLAN_END_POINT}/${this.payload.id}`;
         break;
     }
     this.backendService

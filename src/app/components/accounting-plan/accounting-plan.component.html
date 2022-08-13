@@ -41,16 +41,15 @@
               </div>
               <div class="container">
                 <div class="row">
-                  <div class="col-sm-4 mb-5 mr-2">
-                    <select class="form-select" (change)="changeSelectedFile($event.target.value)"
-                      aria-label="Default select example">
-                      <option *ngIf="this.sourceFiles&&this.sourceFiles.length===0" disabled selected>Select filename</option>
+                  <div *ngIf="this.sourceFiles.length>0" class="col-sm-4 mb-5 mr-2">
+                    <select class="form-select" (change)="changeSelectedFile($event.target.value)">
+                      <!-- <option value="-1" disabled>Import files to retreive data</option> -->
                       <option *ngFor="let file of this.sourceFiles;let i=index" [value]="file.source">
                         {{file.source}}
                       </option>
                     </select>
                   </div>
-                  <div class="col-sm-1 mb-5 inputWrapper offset-4" style="height: 60px; width: 105px;">
+                  <div class="col-sm-1 mb-5 inputWrapper offset-3" style="height: 60px; width: 105px;">
                     <button class="btn">
                       <input type="file"
                         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
@@ -59,18 +58,28 @@
                       Import
                     </button>
                   </div>
-                  <div class="col-sm-1 mb-5 mr-2">
-                    <button class="btn">
-                      <i class="fa fa-download"></i>
-                      Export
-                    </button>
-                  </div>
-                  <div class="col-sm-1 mb-5 mr-2">
-                    <button class="btn" (click)="unlinkFile()">
-                      <i class="fa fa-trash-o"></i>
-                      Delete
-                    </button>
-                  </div>
+                  <ng-container *ngIf="this.sourceFiles.length>0">
+
+                    <div class="col-sm-1 mb-5 mr-2">
+                      <button class="btn" (click)="exportFile()">
+                        <i  class="fa fa-download"></i>
+                        Export
+                      </button>
+                    </div>
+                    <div class="col-sm-1 mb-5 mr-2">
+                      <button class="btn" (click)="unlinkFile()">
+                        <i class="fa fa-trash-o"></i>
+                        Delete
+                      </button>
+                    </div>
+                    <div  class="col-sm-1 mb-5 mr-2">
+                      <button class="btn"
+                        (click)="OpenModal('NEW ACCOUNTING PLAN ROW',{source:this.selectedSource,id_company:this.id_company})">
+                        <i class="fa fa-plus"></i>
+                        New
+                      </button>
+                    </div>
+                  </ng-container>
                 </div>
               </div>
 
@@ -98,8 +107,7 @@
                           <td scope="row"> {{accounting_plan.description}} </td>
                           <td scope="row">
                             <i (click)="OpenModal('UPDATE ACCOUNTING PLAN',accounting_plan)" class="fas fa-edit"></i>
-                            <i (click)="deleteAccountingPlanRow(accounting_plan.id_company)"
-                              class="fa fa-trash-o ml-2"></i>
+                            <i (click)="deleteAccountingPlanRow(accounting_plan.id)" class="fa fa-trash-o ml-2"></i>
                           </td>
                         </tr>
                       </tbody>

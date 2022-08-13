@@ -154,10 +154,10 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" [(ngModel)]="this.payload && this.payload.name" placeholder="Name"
-          name="name" ngModel #name="ngModel" required />
+        <input type="number" class="form-control" [(ngModel)]="this.payload && this.payload.col" placeholder="Name"
+          name="col" ngModel #col="ngModel" required />
       </div>
-      <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+      <div *ngIf="col.invalid && col.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter column name !</span>
       </div>
 
@@ -180,6 +180,6 @@
       </div>
     </form>
   </ng-container>
-  
+
 </div>
 <!-- update -->

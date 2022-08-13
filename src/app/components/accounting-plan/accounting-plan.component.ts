@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { SharedService } from "../../services/shared.service";
 import {
   DELETE_USER_ACCOUNTING_PLAN_ROW_END_POINT,
+  EXPORT_USER_ACCOUNTING_PLAN_END_POINT,
   GET_USER_ACCOUNTING_PLAN_END_POINT,
   GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT,
   IMPORT_USER_ACCOUNTING_PLAN_END_POINT,
@@ -44,11 +45,14 @@ export class AccountingPlanComponent implements OnInit {
       .get(`${GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT}/${this.id_company}`)
       .subscribe(
         new Observer().OBSERVER_GET((response) => {
-          if (response && !response.err) {
-            this.sourceFiles = response.rows;
-            this.getAccountingPlans(
-              response.rows[0] && response.rows[0].source
-            );
+          if (response) {
+            const { rows } = response;
+            const { err } = rows[0];
+            if (!err) {
+              const { source } = rows[0];
+              this.sourceFiles = rows;
+              this.getAccountingPlans(source);
+            }
           }
         })
       );
@@ -81,9 +85,7 @@ export class AccountingPlanComponent implements OnInit {
     }).then((result) => {
       if (result) {
         this.backendService
-          .delete(
-            `${DELETE_USER_ACCOUNTING_PLAN_ROW_END_POINT}/${this.id_company}/${this.selectedSource}/${id}`
-          )
+          .delete(`${DELETE_USER_ACCOUNTING_PLAN_ROW_END_POINT}/${id}`)
           .subscribe(
             new Observer(
               this.router,
@@ -121,11 +123,14 @@ export class AccountingPlanComponent implements OnInit {
           formData
         )
         .subscribe(
-          new Observer().OBSERVER_GET((response) => {
-            console.log(response);
-
-            if (!response.err) this.accountingPlansList = response.rows;
-          })
+          new Observer(
+            this.router,
+            null,
+            true,
+            true,
+            this.sharedService,
+            null
+          ).OBSERVER_POST()
         );
       // if (file.type.split("/")[0] === "image") {
       //   try {
@@ -167,5 +172,20 @@ export class AccountingPlanComponent implements OnInit {
           );
       }
     });
+  }
+
+  exportFile() {
+    this.backendService
+      .get(`${EXPORT_USER_ACCOUNTING_PLAN_END_POINT}/${this.selectedSource}`)
+      .subscribe(
+        new Observer().OBSERVER_GET((response) => {
+          const { err } = response;
+          return swal(
+            err ? "Failure!" : "Success!",
+            response.message,
+            err ? "warning" : "success"
+          );
+        })
+      );
   }
 }
