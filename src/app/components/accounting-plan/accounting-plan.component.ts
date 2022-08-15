@@ -6,7 +6,6 @@ import { Router } from "@angular/router";
 import { SharedService } from "../../services/shared.service";
 import {
   DELETE_USER_ACCOUNTING_PLAN_ROW_END_POINT,
-  EXPORT_USER_ACCOUNTING_PLAN_END_POINT,
   GET_USER_ACCOUNTING_PLAN_END_POINT,
   GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT,
   IMPORT_USER_ACCOUNTING_PLAN_END_POINT,
@@ -28,9 +27,11 @@ export class AccountingPlanComponent implements OnInit {
   sourceFiles: [] = [];
   id_company: string;
   selectedSource: string;
+
+  collectionSize: number = 0;
   page = 1;
-  pageSize = 10;
-  pageSizes = [10, 20, 50];
+  pageSize = 100;
+  pageSizes = [100, 150, 200];
 
   constructor(
     private backendService: BackendService,
@@ -55,7 +56,7 @@ export class AccountingPlanComponent implements OnInit {
             const { err } = rows[0];
             if (!err) {
               const { source } = rows[0];
-              this.sourceFiles = rows ;
+              this.sourceFiles = rows;
               this.getAccountingPlans(source);
             }
           }
@@ -69,13 +70,21 @@ export class AccountingPlanComponent implements OnInit {
 
   getAccountingPlans(source: string) {
     this.id_company = this.sharedService.getStoredCompany();
+    const offset = (this.page - 1) * this.pageSize;
     this.selectedSource = source;
 
     this.backendService
-      .get(`${GET_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${source}`)
+      .get(
+        `${GET_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${source}`,
+        this.pageSize,
+        offset
+      )
       .subscribe(
         new Observer().OBSERVER_GET((response) => {
-          if (!response.err) this.accountingPlansList = response.rows;
+          if (!response.err) {
+            this.accountingPlansList = response.rows;
+            this.collectionSize = response.totalItems;
+          }
         })
       );
   }
@@ -186,30 +195,33 @@ export class AccountingPlanComponent implements OnInit {
 
   exportFile() {
     if (this.sourceFiles.length > 0) {
-      this.excelService.exportAsExcelFile(
-        this.accountingPlansList,
-        this.selectedSource
-      );
+      this.backendService
+        .get(
+          `${GET_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${this.selectedSource}`
+        )
+        .subscribe(
+          new Observer().OBSERVER_GET((response) => {
+            if (!response.err) {
+              this.excelService.exportAsExcelFile(
+                response.rows,
+                this.selectedSource
+              );
+            }
+          })
+        );
     } else {
       return swal("Failure!", "No file selected !", "info");
     }
-    // this.backendService
-
-    //   .get(`${EXPORT_USER_ACCOUNTING_PLAN_END_POINT}/${this.selectedSource}`)
-    //   .subscribe(
-    //     new Observer().OBSERVER_GET((response) => {
-    //       const { err } = response;
-    //       return swal(
-    //         err ? "Failure!" : "Success!",
-    //         response.message,
-    //         err ? "warning" : "success"
-    //       );
-    //     })
-    //   );
   }
 
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
     this.page = 1;
+    this.getAccountingPlans(this.selectedSource);
+  }
+
+  handlePageChange(currentPage: number) {
+    this.page = currentPage;
+    this.getAccountingPlans(this.selectedSource);
   }
 }

@@ -7,8 +7,8 @@ import { Injectable } from "@angular/core";
 export class BackendService {
   constructor(private httpClient: HttpClient) {}
 
-  get(endpoint: string) {
-    return this.httpClient.get(endpoint);
+  get(endpoint: string,limit?:number,offset?:number) {
+    return this.httpClient.get(limit>0?`${endpoint}?limit=${limit}&offset=${offset}`:endpoint);
   }
 
   delete(endpoint: string) {

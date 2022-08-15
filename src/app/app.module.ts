@@ -28,7 +28,7 @@ import { PopupModule } from "./popup/popup.module";
     FormsModule,
     PagesModule,
     ComponentsModule,
-    PopupModule
+    PopupModule,
   ],
   //seulement les interfaces qui declenchent pop up
   schemas: [NO_ERRORS_SCHEMA],
