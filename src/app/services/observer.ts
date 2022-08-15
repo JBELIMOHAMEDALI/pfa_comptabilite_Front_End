@@ -30,9 +30,9 @@ export default class Observer {
       },
 
       // complete: () => {
-        // console.log('COMPLETE !');
+      // console.log('COMPLETE !');
 
-        // if (this.activeModal) this.activeModal.dismiss();
+      // if (this.activeModal) this.activeModal.dismiss();
       // },
     };
   }
@@ -82,7 +82,7 @@ export default class Observer {
     return {
       next: (response: any) => {
         swal("Success!", response.message, "success");
-        this.sharedService.reloadComponent(this.router);        // cb(response)
+        this.sharedService.reloadComponent(this.router); // cb(response)
       },
       error: (err: HttpErrorResponse) => {
         swal("Failure!", err.error.message, "warning");
@@ -94,8 +94,8 @@ export default class Observer {
       next: (response: any) => {
         swal("Success!", response.message, "success");
         this.sharedService.reloadComponent(this.router);
-        this.activeModal.dismiss();
-        // cb(response)
+        if (this.activeModal) this.activeModal.dismiss();
+        cb(response)
       },
       error: (err: HttpErrorResponse) => {
         // cb(err)
@@ -116,9 +116,9 @@ export default class Observer {
       },
 
       // complete: () => {
-        // console.log('COMPLETE !');
+      // console.log('COMPLETE !');
 
-        // if (this.activeModal) this.activeModal.dismiss();
+      // if (this.activeModal) this.activeModal.dismiss();
       // },
     };
   }

@@ -87,23 +87,31 @@
               <div class="main-menu-header">
                 <img class="img-40 img-radius" [src]="userinfo&&userinfo.photo" alt="User-Profile-Image" />
                 <div class="user-details">
-                  <span id="more-details" (click)="toggleOpenedSidebar()">{{userinfo&&(userinfo.firstname+" "+userinfo.lastname)}}
+                  <span id="more-details" (click)="toggleOpenedSidebar()">{{userinfo&&(userinfo.firstname+"
+                    "+userinfo.lastname)}}
                     <i *ngIf="this.companyList&&this.companyList.length>0" class="ti-angle-down"></i></span>
                 </div>
               </div>
               <div class="main-menu-content">
                 <ul>
-                  <li *ngFor="let company of companyList" [@mobileMenuTop]="isCollapsedSideBar" class="more-details" [ngClass]="isCollapsedSideBar">
-                    <a [routerLink]="['/app/company']">
-                      <label class="label label-danger">Selected</label>
-                      <i class="ti-control-record"></i>{{company.name}}</a>
+                  <li *ngFor="let company of companyList" [@mobileMenuTop]="isCollapsedSideBar" class="more-details"
+                    [ngClass]="isCollapsedSideBar">
+
+                    <a>
+                      <i (click)="setSelected(company.id_company)"
+                        [class]="company.selected===1 ?'fa fa-check-square-o':'fa fa-square-o'">
+
+                      </i>
+                      {{company.name}}
+                    </a>
+
                   </li>
                 </ul>
               </div>
             </div>
 
             <perfect-scrollbar [style.max-width]="'100%'" [style.max-height]="'calc(100vh - 230px)'" [config]="config">
-               <div *ngFor="let asideItems of menuItems.getAll()" class="d-color">
+              <div *ngFor="let asideItems of menuItems.getAll()" class="d-color">
                 <div class="pcoded-navigatio-lavel" [attr.menu-title-theme]="menuTitleTheme">{{asideItems.label}}</div>
                 <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder"
                   [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder"

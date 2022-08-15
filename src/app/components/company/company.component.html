@@ -70,10 +70,14 @@
                     <ng-container>
                       <tbody *ngFor="let company of this.companyList;let i = index">
                         <tr style="text-align: center">
-
-                          <td scope="row">{{
+                          <td>
+                            <label *ngIf="company.selected===1" class="label label-success">
+                              <i class="ti-check"></i>
+                            </label>
+                          </td>
+                          <!-- <td scope="row">{{
                             company.id_company
-                            }} </td>
+                            }} </td> -->
                           <td scope="row">{{
                             company.name
                             }} </td>

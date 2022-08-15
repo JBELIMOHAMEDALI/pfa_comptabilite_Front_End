@@ -9,10 +9,15 @@ import {
 } from "@angular/animations";
 import { MenuItems } from "../../shared/menu-items/menu-items";
 import { BackendService } from "../../services/backend.service";
-import { GET_USER_COMPANIES_END_POINT, USER_INFO_END_POINT } from "../../services/endpoints";
+import {
+  GET_USER_COMPANIES_END_POINT,
+  SET_SELECTED_USER_COMPANIES_END_POINT,
+  USER_INFO_END_POINT,
+} from "../../services/endpoints";
 import Observer from "../../services/observer";
 import { Router } from "@angular/router";
 import { TokenService } from "../../services/token.service";
+import { SharedService } from "../../services/shared.service";
 
 @Component({
   selector: "app-layout",
@@ -121,7 +126,7 @@ export class LayoutComponent implements OnInit {
   isSidebarChecked: boolean;
   isHeaderChecked: boolean;
   companyList: [];
-  userinfo: {lastname:'',firstname:'',photo:''};
+  userinfo: { lastname: ""; firstname: ""; photo: "" };
 
   @ViewChild("searchFriends", /* TODO: add static flag */ { static: false })
   search_friends: ElementRef;
@@ -132,8 +137,9 @@ export class LayoutComponent implements OnInit {
     public menuItems: MenuItems,
     // private modalService: NgbModal,
     private backendService: BackendService,
-    private router:Router,
-    private tokenService:TokenService
+    private sharedService: SharedService,
+    private router: Router,
+    private tokenService: TokenService
   ) {
     this.navType = "st5";
     this.themeLayout = "vertical";
@@ -154,8 +160,8 @@ export class LayoutComponent implements OnInit {
     this.navBarTheme = "themelight1";
     this.activeItemTheme = "theme4";
 
-    this.isCollapsedMobile = "no-block";
-    this.isCollapsedSideBar = "no-block";
+    this.isCollapsedMobile = "yes-block";
+    this.isCollapsedSideBar = "yes-block";
 
     this.chatToggle = "out";
     this.chatToggleInverse = "in";
@@ -198,20 +204,18 @@ export class LayoutComponent implements OnInit {
   }
   getUserInfo() {
     this.backendService.get(USER_INFO_END_POINT).subscribe(
-      new Observer(this.router,null,false).OBSERVER_GET((response)=>{
-        if(!response.err)
-this.userinfo=response&&response.rows[0];      })
-    )  }
+      new Observer(this.router, null, false).OBSERVER_GET((response) => {
+        if (!response.err) this.userinfo = response && response.rows[0];
+      })
+    );
+  }
 
   getCompanies() {
     this.backendService.get(GET_USER_COMPANIES_END_POINT).subscribe(
-      new Observer(this.router,null,false).OBSERVER_GET((response)=>{
-        if(!response.err)
-        this.companyList=response.rows;
-
+      new Observer(this.router, null, false).OBSERVER_GET((response) => {
+        if (!response.err) this.companyList = response.rows;
       })
-    )
-
+    );
   }
 
   onResize(event) {
@@ -357,7 +361,24 @@ this.userinfo=response&&response.rows[0];      })
     }
   }
 
+  setSelected(id_company: string) {
+    this.backendService
+      .put(`${SET_SELECTED_USER_COMPANIES_END_POINT}/${id_company}`, null)
+      .subscribe(
+        new Observer(
+          this.router,
+          null,
+          true,
+          true,
+          this.sharedService,
+          null
+        ).OBSERVER_EDIT((response) =>
+          this.sharedService.updateStoredCompany(id_company)
+        )
+      );
+  }
+
   logout() {
-    this.tokenService.removeToken()
+    this.tokenService.removeToken();
   }
 }

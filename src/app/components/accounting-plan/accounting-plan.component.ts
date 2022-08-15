@@ -50,12 +50,12 @@ export class AccountingPlanComponent implements OnInit {
       .get(`${GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT}/${this.id_company}`)
       .subscribe(
         new Observer().OBSERVER_GET((response) => {
-          if (response&&response.rows[0]) {
+          if (response && response.rows[0]) {
             const { rows } = response;
             const { err } = rows[0];
             if (!err) {
               const { source } = rows[0];
-              this.sourceFiles = rows;
+              this.sourceFiles = rows ;
               this.getAccountingPlans(source);
             }
           }
@@ -68,6 +68,7 @@ export class AccountingPlanComponent implements OnInit {
   }
 
   getAccountingPlans(source: string) {
+    this.id_company = this.sharedService.getStoredCompany();
     this.selectedSource = source;
 
     this.backendService
@@ -106,14 +107,16 @@ export class AccountingPlanComponent implements OnInit {
   }
 
   OpenModal(title: string, accounting_plan?) {
-    const modalRef = this.modalService.open(
-      title.split(" ")[0] === "NEW" ? PostComponent : PutComponent
-    );
-    modalRef.componentInstance.title = title;
-    modalRef.componentInstance.type = ACCOUNTING_PLAN_POPUP_TYPE;
-    modalRef.componentInstance.payload = accounting_plan && {
-      ...accounting_plan,
-    };
+    if (this.sourceFiles.length > 0) {
+      const modalRef = this.modalService.open(
+        title.split(" ")[0] === "NEW" ? PostComponent : PutComponent
+      );
+      modalRef.componentInstance.title = title;
+      modalRef.componentInstance.type = ACCOUNTING_PLAN_POPUP_TYPE;
+      modalRef.componentInstance.payload = accounting_plan && {
+        ...accounting_plan,
+      };
+    } else return swal("Failure!", "No file selected !", "info");
   }
 
   changeFile(event) {
@@ -152,31 +155,33 @@ export class AccountingPlanComponent implements OnInit {
   }
 
   unlinkFile() {
-    swal({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      closeOnEsc: true,
-      closeOnClickOutside: true,
-      buttons: ["cancel", "confirm"],
-    }).then((result) => {
-      if (result) {
-        this.backendService
-          .delete(
-            `${UNLINK_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${this.selectedSource}`
-          )
-          .subscribe(
-            new Observer(
-              this.router,
-              null,
-              true,
-              true,
-              this.sharedService,
-              null
-            ).OBSERVER_DELETE()
-          );
-      }
-    });
+    if (this.sourceFiles.length > 0)
+      swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        closeOnEsc: true,
+        closeOnClickOutside: true,
+        buttons: ["cancel", "confirm"],
+      }).then((result) => {
+        if (result) {
+          this.backendService
+            .delete(
+              `${UNLINK_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${this.selectedSource}`
+            )
+            .subscribe(
+              new Observer(
+                this.router,
+                null,
+                true,
+                true,
+                this.sharedService,
+                null
+              ).OBSERVER_DELETE()
+            );
+        }
+      });
+    else return swal("Failure!", "No file selected !", "info");
   }
 
   exportFile() {
