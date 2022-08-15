@@ -16,6 +16,7 @@ import Observer from "../../services/observer";
 import { PostComponent } from "../../popup/post/post.component";
 import { PutComponent } from "../../popup/put/put.component";
 import { ACCOUNTING_PLAN_POPUP_TYPE } from "../../popup/popup-type";
+import { ExcelService } from "../../services/excel.service";
 
 @Component({
   selector: "app-accounting-plan",
@@ -27,12 +28,16 @@ export class AccountingPlanComponent implements OnInit {
   sourceFiles: [] = [];
   id_company: string;
   selectedSource: string;
+  page = 1;
+  pageSize = 10;
+  pageSizes = [10, 20, 50];
 
   constructor(
     private backendService: BackendService,
     private router: Router,
     private modalService: NgbModal,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private excelService: ExcelService
   ) {}
 
   ngOnInit() {
@@ -45,7 +50,7 @@ export class AccountingPlanComponent implements OnInit {
       .get(`${GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT}/${this.id_company}`)
       .subscribe(
         new Observer().OBSERVER_GET((response) => {
-          if (response) {
+          if (response&&response.rows[0]) {
             const { rows } = response;
             const { err } = rows[0];
             if (!err) {
@@ -175,17 +180,31 @@ export class AccountingPlanComponent implements OnInit {
   }
 
   exportFile() {
-    this.backendService
-      .get(`${EXPORT_USER_ACCOUNTING_PLAN_END_POINT}/${this.selectedSource}`)
-      .subscribe(
-        new Observer().OBSERVER_GET((response) => {
-          const { err } = response;
-          return swal(
-            err ? "Failure!" : "Success!",
-            response.message,
-            err ? "warning" : "success"
-          );
-        })
+    if (this.sourceFiles.length > 0) {
+      this.excelService.exportAsExcelFile(
+        this.accountingPlansList,
+        this.selectedSource
       );
+    } else {
+      return swal("Failure!", "No file selected !", "info");
+    }
+    // this.backendService
+
+    //   .get(`${EXPORT_USER_ACCOUNTING_PLAN_END_POINT}/${this.selectedSource}`)
+    //   .subscribe(
+    //     new Observer().OBSERVER_GET((response) => {
+    //       const { err } = response;
+    //       return swal(
+    //         err ? "Failure!" : "Success!",
+    //         response.message,
+    //         err ? "warning" : "success"
+    //       );
+    //     })
+    //   );
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
   }
 }

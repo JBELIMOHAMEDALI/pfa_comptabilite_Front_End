@@ -58,11 +58,11 @@
                       Import
                     </button>
                   </div>
-                  <ng-container *ngIf="this.sourceFiles.length>0">
+                  <ng-container>
 
                     <div class="col-sm-1 mb-5 mr-2">
                       <button class="btn" (click)="exportFile()">
-                        <i  class="fa fa-download"></i>
+                        <i class="fa fa-download"></i>
                         Export
                       </button>
                     </div>
@@ -72,7 +72,7 @@
                         Delete
                       </button>
                     </div>
-                    <div  class="col-sm-1 mb-5 mr-2">
+                    <div class="col-sm-1 mb-5 mr-2">
                       <button class="btn"
                         (click)="OpenModal('NEW ACCOUNTING PLAN ROW',{source:this.selectedSource,id_company:this.id_company})">
                         <i class="fa fa-plus"></i>
@@ -88,7 +88,7 @@
                 <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
                   <table class="table table-hover">
                     <thead>
-                      <tr style="text-align: center">
+                      <tr>
                         <th scope="col">#</th>
                         <th scope="col">
                           Name
@@ -101,7 +101,7 @@
                     </thead>
                     <ng-container>
                       <tbody *ngFor="let accounting_plan of this.accountingPlansList; let i = index">
-                        <tr style="text-align: center">
+                        <tr>
                           <td scope="row">{{ accounting_plan.id}} </td>
                           <td scope="row">{{ accounting_plan.col}} </td>
                           <td scope="row"> {{accounting_plan.description}} </td>
@@ -113,6 +113,16 @@
                       </tbody>
                     </ng-container>
                   </table>
+                  <!-- <div class="d-flex justify-content-between p-2">
+                    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="accountingPlansList.length">
+                    </ngb-pagination>
+                    <select class="custom-select" style="width: auto" name="pageSize"
+                      (change)="handlePageSizeChange($event)">
+                      <option *ngFor="let size of pageSizes" [ngValue]="size">
+                        {{ size }}
+                      </option>
+                    </select>
+                  </div> -->
                 </div>
               </div>
               <!-- </app-card> -->

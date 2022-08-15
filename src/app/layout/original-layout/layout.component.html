@@ -95,6 +95,7 @@
                 <ul>
                   <li *ngFor="let company of companyList" [@mobileMenuTop]="isCollapsedSideBar" class="more-details" [ngClass]="isCollapsedSideBar">
                     <a [routerLink]="['/app/company']">
+                      <label class="label label-danger">Selected</label>
                       <i class="ti-control-record"></i>{{company.name}}</a>
                   </li>
                 </ul>

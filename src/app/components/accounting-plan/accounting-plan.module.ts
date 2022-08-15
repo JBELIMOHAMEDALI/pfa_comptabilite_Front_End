@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AccountingPlanRoutingModule } from './accounting-plan-routing.module';
 import { AccountingPlanComponent } from './accounting-plan.component';
+import { ExcelService } from '../../services/excel.service';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { AccountingPlanComponent } from './accounting-plan.component';
     CommonModule,
     AccountingPlanRoutingModule
   ],
+  providers:[ExcelService],
   schemas:[NO_ERRORS_SCHEMA]
 })
 export class AccountingPlanModule { }
