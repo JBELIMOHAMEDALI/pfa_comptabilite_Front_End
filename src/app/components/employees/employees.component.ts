@@ -18,6 +18,10 @@ import { DetailsComponent } from "../../popup/details/details.component";
 })
 export class EmployeesComponent implements OnInit {
   employeesList: [] = [];
+  collectionSize: number = 0;
+  page = 1;
+  pageSize = 5;
+  pageSizes = [5, 20, 100];
 
   constructor(
     private backendService: BackendService,
@@ -31,9 +35,11 @@ export class EmployeesComponent implements OnInit {
   }
 
   getEmployees() {
-    this.backendService.get(GET_USER_EMPLOYEES_END_POINT).subscribe(
-      new Observer(this.router, "", false).OBSERVER_GET((response) => {
-        if (!response.err) this.employeesList = response.rows;
+    const offset = (this.page - 1) * this.pageSize;
+    this.backendService.get(GET_USER_EMPLOYEES_END_POINT,this.pageSize,offset).subscribe(
+      new Observer().OBSERVER_GET((response) => {
+        this.collectionSize=response.totalItems;
+         this.employeesList = response.rows;
       })
     );
   }
@@ -81,5 +87,16 @@ export class EmployeesComponent implements OnInit {
     modalRef.componentInstance.type = EMPLOYEE_POPUP_TYPE;
 
     modalRef.componentInstance.payload = payload && { ...payload };
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.getEmployees();
+  }
+
+  handlePageChange(currentPage: number) {
+    this.page = currentPage;
+    this.getEmployees();
   }
 }

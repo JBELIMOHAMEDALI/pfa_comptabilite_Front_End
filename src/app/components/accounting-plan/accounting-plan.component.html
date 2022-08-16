@@ -102,9 +102,7 @@
                     </tr>
                   </thead>
                   <!-- <ng-container> -->
-                  <tbody *ngFor="let accounting_plan of this.accountingPlansList
-                      | slice: { itemsPerPage: 10, currentPage: 1 }
-                      ">
+                  <tbody *ngFor="let accounting_plan of this.accountingPlansList| slice">
                     <tr>
                       <td scope="row">{{ accounting_plan.id}} </td>
                       <td scope="row">{{ accounting_plan.col}} </td>

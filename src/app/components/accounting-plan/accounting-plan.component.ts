@@ -51,7 +51,6 @@ export class AccountingPlanComponent implements OnInit {
       .get(`${GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT}/${this.id_company}`)
       .subscribe(
         new Observer().OBSERVER_GET((response) => {
-          if (response && response.rows[0]) {
             const { rows } = response;
             const { err } = rows[0];
             if (!err) {
@@ -59,7 +58,6 @@ export class AccountingPlanComponent implements OnInit {
               this.sourceFiles = rows;
               this.getAccountingPlans(source);
             }
-          }
         })
       );
   }

@@ -57,8 +57,8 @@ export default class Observer {
         // if (this.target) this.router.navigate([this.target]);
       },
       error: (err: HttpErrorResponse) => {
-        cb(err);
-        // swal("Failure!", err.error.message, "warning");
+        // cb(err);
+        swal("Info!", err.error.message, "info");
       },
       // complete: () => console.log("Observer got a complete notification"),
     };
