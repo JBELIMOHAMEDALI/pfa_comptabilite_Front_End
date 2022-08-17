@@ -40,8 +40,7 @@ export class PostComponent implements OnInit {
     this.actualDate = new Date().toDateString();
     this.birthdateinputype = "text";
     this.hiredateinputype = "text";
-    this.startperiodinputype="text"
-
+    this.startperiodinputype = "text";
   }
   ngOnInit() {}
 
@@ -57,25 +56,33 @@ export class PostComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     let endpoint: string = "";
-    let payload = { ...form.value, id_company: this.payload.id_company };
+    let payload = { ...form.value };
     switch (this.type) {
       case "COMPANY":
         endpoint = POST_USER_COMPANIES_END_POINT;
-        delete payload['id_company']
         break;
       case "EMPLOYEE":
         endpoint = POST_USER_EMPLOYEES_END_POINT;
+        payload = { ...payload, id_company: this.payload.id_company };
+
         break;
       case "ACCOUNTING_PLAN":
         endpoint = POST_USER_ACCOUNTING_PLAN_END_POINT;
-        payload = { ...payload, source: this.payload.source };
+        payload = {
+          ...payload,
+          source: this.payload.source,
+          id_company: this.payload.id_company,
+        };
         break;
       case "TAX":
         endpoint = POST_USER_TAXES_END_POINT;
+        payload = { ...payload, id_company: this.payload.id_company };
+
         break;
 
       case "CUSTOMER":
         endpoint = POST_USER_CUSTOMERS_END_POINT;
+        payload = { ...payload, id_company: this.payload.id_company };
         break;
     }
 
@@ -96,7 +103,6 @@ export class PostComponent implements OnInit {
   setinputtype(type: string) {
     if (type === "birthdate") this.birthdateinputype = "date";
     if (type === "hiredate") this.hiredateinputype = "date";
-        if (type === "start_period") this.startperiodinputype = "date";
-
+    if (type === "start_period") this.startperiodinputype = "date";
   }
 }
