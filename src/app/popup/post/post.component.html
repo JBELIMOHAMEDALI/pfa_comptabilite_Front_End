@@ -171,5 +171,86 @@
       </div>
     </form>
   </ng-container>
+
+  <!-- TAX -->
+  <ng-container *ngIf="this.type==='TAX'">
+    <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel" required />
+      </div>
+      <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter tax name !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-company"></i></label></span>
+        <input type="text" class="form-control" placeholder="Description" name="description" ngModel
+          #description="ngModel" required />
+      </div>
+      <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter description!</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-company"></i></label></span>
+        <input type="text" class="form-control" placeholder="Agency Name" name="agency_name" ngModel
+          #agency_name="ngModel" required />
+      </div>
+      <div *ngIf="agency_name.invalid && agency_name.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter Agency name!</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-company"></i></label></span>
+        <input type="text" class="form-control" placeholder="Business No" name="businessNo" ngModel
+          #businessNo="ngModel" required />
+      </div>
+      <div *ngIf="businessNo.invalid && businessNo.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter Business No!</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-company"></i></label></span>
+        <input type="text" class="form-control" placeholder="Start Period" name="start_period" ngModel
+          #start_period="ngModel" required />
+      </div>
+      <div *ngIf="start_period.invalid && start_period.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter Start Period !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-company"></i></label></span>
+        <input type="text" class="form-control" placeholder="Filling Frequency" name="filling_freq" ngModel
+          #filling_freq="ngModel" required />
+      </div>
+      <div *ngIf="filling_freq.invalid && filling_freq.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter Start Period !</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-company"></i></label></span>
+        <input type="text" class="form-control" placeholder="Collectionn Type" name="collection_type" ngModel
+          #collection_type="ngModel" required />
+      </div>
+      <div *ngIf="collection_type.invalid && collection_type.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter Collection Type !</span>
+      </div>
+
+      <div class="modal-footer">
+        <input value="Confirmer" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </ng-container>
 </div>
 <!-- update -->

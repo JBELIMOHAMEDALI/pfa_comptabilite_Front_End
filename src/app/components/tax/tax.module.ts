@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { TaxRoutingModule } from './tax-routing.module';
 import { TaxComponent } from './tax.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [TaxComponent],
   imports: [
     CommonModule,
-    TaxRoutingModule
+    TaxRoutingModule,
+    NgbModule
   ],  schemas:[NO_ERRORS_SCHEMA]
 
 })

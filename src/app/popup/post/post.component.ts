@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { GET_USER_COMPANIES_END_POINT, POST_USER_ACCOUNTING_PLAN_END_POINT, POST_USER_COMPANIES_END_POINT, POST_USER_EMPLOYEES_END_POINT } from "../../services/endpoints";
+import { GET_USER_COMPANIES_END_POINT, POST_USER_ACCOUNTING_PLAN_END_POINT, POST_USER_COMPANIES_END_POINT, POST_USER_EMPLOYEES_END_POINT, POST_USER_TAXES_END_POINT } from "../../services/endpoints";
 import Observer from "../../services/observer";
 import { BackendService } from "../../services/backend.service";
 import { SharedService } from "../../services/shared.service";
@@ -34,8 +34,8 @@ export class PostComponent implements OnInit {
     this.hiredateinputype = "text";
   }
   ngOnInit() {
-    if(this.type==='EMPLOYEE')
-    this.getCompanies()
+    if (this.type === 'EMPLOYEE')
+      this.getCompanies()
   }
 
   getCompanies() {
@@ -50,18 +50,21 @@ export class PostComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-    let endpoint:string='';
-    let payload ={...form.value}
+    let endpoint: string = '';
+    let payload = { ...form.value }
     switch (this.type) {
       case "COMPANY":
-        endpoint=POST_USER_COMPANIES_END_POINT
+        endpoint = POST_USER_COMPANIES_END_POINT
         break;
       case "EMPLOYEE":
-        endpoint=POST_USER_EMPLOYEES_END_POINT
+        endpoint = POST_USER_EMPLOYEES_END_POINT
         break;
-        case "ACCOUNTING_PLAN":
-        endpoint=POST_USER_ACCOUNTING_PLAN_END_POINT
-        payload={...payload,id_company:this.payload.id_company,source:this.payload.source}
+      case "ACCOUNTING_PLAN":
+        endpoint = POST_USER_ACCOUNTING_PLAN_END_POINT
+        payload = { ...payload, id_company: this.payload.id_company, source: this.payload.source }
+        break;
+      case "TAX":
+        endpoint = POST_USER_TAXES_END_POINT
         break;
     }
 

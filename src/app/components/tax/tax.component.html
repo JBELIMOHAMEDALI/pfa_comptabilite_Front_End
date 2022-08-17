@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     <!-- Page-header end -->
@@ -28,7 +28,7 @@
                                 <div class="col-md-12 col-lg-3 offset-lg-10">
                                     <div class="pcoded-search">
                                         <div class="pcoded-search-box">
-                                            <button class="btn btn-success" >
+                                            <button class="btn " (click)="OpenModal('NEW TAX')">
                                                 <i class="icofont icofont-ui-add"></i>
                                                 New
                                             </button>
@@ -36,51 +36,78 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Begin Table -->
                             <div class="table-responsive">
                                 <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr style="text-align: center">
-                                                <th scope="col">Photo</th>
                                                 <th scope="col">
-                                                    Hello
+                                                    Name
                                                 </th>
                                                 <th scope="col">
-                                                    Hello
+                                                    Description
                                                 </th>
                                                 <th scope="col">
-                                                    Hello
+                                                    Agency Name
                                                 </th>
-                                                <th scope="col"> Actions</th>
+                                                <th scope="col">
+                                                    Business No
+                                                </th>
+                                                <th scope="col">
+                                                    Start Period
+                                                </th>
+                                                <th scope="col">
+                                                    Filling Frequency
+                                                </th>
+                                                <th scope="col">
+                                                    Collection Type
+                                                </th>
+                                                <th scope="col">Actions</th>
                                             </tr>
                                         </thead>
-                                        <ng-container>
-                                            <tbody>
-                                                <tr style="text-align: center">
-                                                    <td>
-                                                        <img class="user-img img-radius" id="profil-photo"
-                                                            alt="photo-utilisateur" src="assets/images/avatar-7.jpg" />
-                                                    </td>
-                                                    <td scope="row">Hello </td>
-                                                    <td scope="row"> Hello </td>
-                                                    <td scope="row">
-                                                        Hello
-                                                    </td>
-                                                    <td scope="row">
-                                                        <button class="btn btn-info"
-                                                        style="border-radius: 3px; width: 15%; margin-right: 2%;">
-                                                        <i class="fas fa-edit"></i>
-                                                      </button>
-                                                      <button class="btn btn-danger"
-                                                        style="border-radius: 3px; width: 15%;">
-                                                        <i class="fa fa-trash-o"></i>
-                                                      </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </ng-container>
+                                        <tbody *ngFor="let tax of this.taxesList|slice">
+                                            <tr style="text-align: center">
+                                                <td scope="row">{{
+                                                    tax.name
+                                                    }} </td>
+                                                <td scope="row"> {{
+                                                    tax.description
+                                                    }} </td>
+                                                <td scope="row"> {{
+                                                    tax.agency_name
+                                                    }} </td>
+                                                <td scope="row"> {{
+                                                    tax.businessNo
+                                                    }} </td>
+                                                <td scope="row"> {{
+                                                    tax.start_period
+                                                    }} </td>
+                                                <td scope="row"> {{
+                                                    tax.filling_frequency
+                                                    }} </td>
+                                                <td scope="row"> {{
+                                                    tax.collection_type
+                                                    }} </td>
+                                                <td scope="row">
+                                                    <i (click)="OpenModal('UPDATE TAX',tax)" class="fas fa-edit"></i>
+                                                    <i (click)="deleteTax(tax.id)" class="fa fa-trash-o ml-2"></i>
+                                                    <i (click)="OpenDetails('TAX DETAILS',tax)"
+                                                        class="fa fa-eye ml-2"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
+                                    <div class="d-flex justify-content-between p-2">
+                                        <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)"
+                                            [pageSize]="pageSize" [collectionSize]="collectionSize">
+                                        </ngb-pagination>
+                                        <select class="custom-select" style="width: auto" name="pageSize"
+                                            (change)="handlePageSizeChange($event)">
+                                            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                                {{ size }}
+                                            </option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <!-- </app-card> -->

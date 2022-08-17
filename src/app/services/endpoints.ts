@@ -7,10 +7,9 @@ export const RESET_VERIFY_EMAIL_END_POINT: string = `${environment.apiUrl}/auth/
 export const RESET_VERIFY_CODE_END_POINT: string = `${environment.apiUrl}/auth/user/verify/reset/code`;
 export const RESET_PASSWORD_END_POINT: string = `${environment.apiUrl}/auth/user/reset/password`;
 export const GOOGLE_SIGNIN_END_POINT: string = `${environment.apiUrl}/auth/google`;
+
 //DASHBOARD ENDPOINTS
 export const USER_DASHBOARD_END_POINT: string = `${environment.apiUrl}/dashboard/get`;
-
-
 
 //COMPANY ENDPOINTS
 export const GET_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/get`;
@@ -20,10 +19,8 @@ export const POST_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/comp
 export const PUT_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/update`;
 export const SET_SELECTED_USER_COMPANIES_END_POINT: string = `${environment.apiUrl}/company/set/selection`;
 
-
 //USER-INFO ENDPOINTS
 export const USER_INFO_END_POINT: string = `${environment.apiUrl}/user/info`;
-
 
 //EMPLOYEE ENDPOINTS
 export const GET_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/employee/get`;
@@ -41,3 +38,16 @@ export const UNLINK_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiU
 export const DELETE_USER_ACCOUNTING_PLAN_ROW_END_POINT: string = `${environment.apiUrl}/accounting/plan/delete/row`;
 export const POST_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/add`;
 export const PUT_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/update`;
+
+
+//TAXES ENDPOINTS
+export const GET_USER_TAXES_END_POINT: string = `${environment.apiUrl}/taxe/get`;
+export const DELETE_USER_TAXES_END_POINT: string = `${environment.apiUrl}/taxe/delete`;
+export const POST_USER_TAXES_END_POINT: string = `${environment.apiUrl}/taxe/add`;
+export const PUT_USER_TAXES_END_POINT: string = `${environment.apiUrl}/taxe/update`;
+
+//CUSTOMERS ENDPOINTS
+export const GET_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/get`;
+export const DELETE_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/delete`;
+export const POST_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/add`;
+export const PUT_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/update`;
