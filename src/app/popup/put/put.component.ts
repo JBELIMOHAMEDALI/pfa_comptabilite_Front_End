@@ -40,7 +40,6 @@ export class PutComponent implements OnInit {
     this.hiredateinputype = "text";
   }
   ngOnInit() {
-    if (this.type === "EMPLOYEE") this.getCompanies();
   }
 
   onSubmit(form: NgForm) {
@@ -78,13 +77,6 @@ export class PutComponent implements OnInit {
       );
   }
 
-  getCompanies() {
-    this.backendService.get(GET_USER_COMPANIES_END_POINT).subscribe(
-      new Observer(this.router, "", false).OBSERVER_GET((response) => {
-        if (!response.err) this.companyList = response.rows;
-      })
-    );
-  }
 
   setinputtype(event, type: string) {
     if (type === "birthdate") this.birthdateinputype = "date";

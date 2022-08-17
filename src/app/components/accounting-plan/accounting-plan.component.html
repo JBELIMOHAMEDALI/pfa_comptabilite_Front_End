@@ -49,7 +49,7 @@
                       </option>
                     </select>
                   </div>
-                  <div class="col-sm-1 mb-5 inputWrapper offset-3" style="height: 60px; width: 105px;">
+                  <div class="col-sm-1 mb-5 inputWrapper" style="height: 60px; width: 105px;">
                     <button class="btn">
                       <input type="file"
                         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
@@ -58,7 +58,6 @@
                       Import
                     </button>
                   </div>
-                  <ng-container>
 
                     <div class="col-sm-1 mb-5 mr-2">
                       <button class="btn" (click)="exportFile()">
@@ -76,10 +75,16 @@
                       <button class="btn"
                         (click)="OpenModal('NEW ACCOUNTING PLAN ROW',{source:this.selectedSource,id_company:this.id_company})">
                         <i class="fa fa-plus"></i>
+                        Accounting plan
+                      </button>
+                    </div>
+                    <div class="col-sm-1 mb-5 mr-5" *ngIf="this.sourceFiles.length>0" >
+                      <button class="btn"
+                        (click)="OpenModal('NEW ACCOUNTING PLAN ROW',{source:this.selectedSource,id_company:this.id_company})">
+                        <i class="fa fa-plus"></i>
                         New
                       </button>
                     </div>
-                  </ng-container>
                 </div>
               </div>
 
@@ -91,26 +96,24 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
+                      <th scope="col">Actions</th>
                       <th scope="col">
-                        Name
+                        Account number
                       </th>
                       <th scope="col">
                         Description
                       </th>
-                      <th scope="col">Actions</th>
                     </tr>
                   </thead>
                   <!-- <ng-container> -->
                   <tbody *ngFor="let accounting_plan of this.accountingPlansList| slice">
                     <tr>
-                      <td scope="row">{{ accounting_plan.id}} </td>
-                      <td scope="row">{{ accounting_plan.col}} </td>
-                      <td scope="row"> {{accounting_plan.description}} </td>
                       <td scope="row">
                         <i (click)="OpenModal('UPDATE ACCOUNTING PLAN',accounting_plan)" class="fas fa-edit"></i>
                         <i (click)="deleteAccountingPlanRow(accounting_plan.id)" class="fa fa-trash-o ml-2"></i>
                       </td>
+                      <td scope="row">{{ accounting_plan.account_number}} </td>
+                      <td scope="row"> {{accounting_plan.description}} </td>
                     </tr>
                   </tbody>
                   <!-- </ng-container> -->

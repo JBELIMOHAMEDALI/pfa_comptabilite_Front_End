@@ -24,7 +24,7 @@ export class TaxComponent implements OnInit {
   page = 1;
   pageSize = 5;
   pageSizes = [5, 20, 100];
-
+  id_company:string;
   constructor(
     private backendService: BackendService,
     private router: Router,
@@ -37,8 +37,10 @@ export class TaxComponent implements OnInit {
   }
 
   getTaxes() {
+    this.id_company = this.sharedService.getStoredCompany();
+
     const offset = (this.page - 1) * this.pageSize;
-    this.backendService.get(GET_USER_TAXES_END_POINT,this.pageSize,offset).subscribe(
+    this.backendService.get(`${GET_USER_TAXES_END_POINT}/${this.id_company}`,this.pageSize,offset).subscribe(
       new Observer().OBSERVER_GET((response) => {
         this.collectionSize=response.totalItems;
          this.taxesList = response.rows;
@@ -80,15 +82,14 @@ export class TaxComponent implements OnInit {
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.type = TAX_POPUP_TYPE;
 
-    modalRef.componentInstance.payload = tax && { ...tax };
+    modalRef.componentInstance.payload = tax ? { ...tax }:{id_company:this.id_company};
   }
 
-  OpenDetails(title: string, payload) {
+  OpenDetails(title: string, payload:any) {
     const modalRef = this.modalService.open(DetailsComponent);
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.type = TAX_POPUP_TYPE;
-
-    modalRef.componentInstance.payload = payload && { ...payload };
+    modalRef.componentInstance.payload = { ...payload };
   }
 
   handlePageSizeChange(event: any): void {

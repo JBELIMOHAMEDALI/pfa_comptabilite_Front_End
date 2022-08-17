@@ -1,120 +1,119 @@
 <ng-container>
-    <div class="page-header card" id="myheader">
-        <div class="row align-items-end">
-            <div class="col-lg-8">
-                <div class="page-header-title">
-                    <span><i class="icofont icofont-home" style="background-color: #000080"></i></span>
-                    <div class="d-inline">
-                        <span class="d-block text-primary">
-                            <h4>Tax Page</h4>
-                        </span>
-                        <span class="text-dark">Tax Page</span>
-                    </div>
-                </div>
-            </div>
-
+  <div class="page-header card" id="myheader">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="page-header-title">
+          <span><i class="icofont icofont-home" style="background-color: #000080"></i></span>
+          <div class="d-inline">
+            <span class="d-block text-primary">
+              <h4>Tax Page</h4>
+            </span>
+            <span class="text-dark">Tax Page</span>
+          </div>
         </div>
-    </div>
-    <!-- Page-header end -->
+      </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="md-tabs">
-                <div class="m-t-15">
-                    <div class="card">
-                        <div class="col-sm-12">
-                            <div class="card-header">
-                                <h5 class="card-header-text">Tax List</h5>
-                                <div class="col-md-12 col-lg-3 offset-lg-10">
-                                    <div class="pcoded-search">
-                                        <div class="pcoded-search-box">
-                                            <button class="btn " (click)="OpenModal('NEW TAX')">
-                                                <i class="icofont icofont-ui-add"></i>
-                                                New
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr style="text-align: center">
-                                                <th scope="col">
-                                                    Name
-                                                </th>
-                                                <th scope="col">
+    </div>
+  </div>
+  <!-- Page-header end -->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="md-tabs">
+        <div class="m-t-15">
+          <div class="card">
+            <div class="col-sm-12">
+              <div class="card-header">
+                <h5 class="card-header-text">Tax List</h5>
+                <div class="col-md-12 col-lg-3 offset-lg-10">
+                  <div class="pcoded-search">
+                    <div class="pcoded-search-box">
+                      <button class="btn " (click)="OpenModal('NEW TAX')">
+                        <i class="icofont icofont-ui-add"></i>
+                        New
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr style="text-align: center">
+                        <th scope="col">
+                          Name
+                        </th>
+                        <!-- <th scope="col">
                                                     Description
-                                                </th>
-                                                <th scope="col">
-                                                    Agency Name
-                                                </th>
-                                                <th scope="col">
+                                                </th> -->
+                        <th scope="col">
+                          Agency Name
+                        </th>
+                        <!-- <th scope="col">
                                                     Business No
-                                                </th>
-                                                <th scope="col">
-                                                    Start Period
-                                                </th>
-                                                <th scope="col">
+                                                </th> -->
+                        <th scope="col">
+                          Start Period
+                        </th>
+                        <!-- <th scope="col">
                                                     Filling Frequency
                                                 </th>
                                                 <th scope="col">
                                                     Collection Type
-                                                </th>
-                                                <th scope="col">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody *ngFor="let tax of this.taxesList|slice">
-                                            <tr style="text-align: center">
-                                                <td scope="row">{{
-                                                    tax.name
-                                                    }} </td>
-                                                <td scope="row"> {{
+                                                </th> -->
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let tax of this.taxesList|slice">
+                      <tr style="text-align: center">
+                        <td scope="row">{{
+                          tax.name
+                          }} </td>
+                        <!-- <td scope="row"> {{
                                                     tax.description
-                                                    }} </td>
-                                                <td scope="row"> {{
-                                                    tax.agency_name
-                                                    }} </td>
-                                                <td scope="row"> {{
+                                                    }} </td> -->
+                        <td scope="row"> {{
+                          tax.agency_name
+                          }} </td>
+                        <!-- <td scope="row"> {{
                                                     tax.businessNo
-                                                    }} </td>
-                                                <td scope="row"> {{
-                                                    tax.start_period
-                                                    }} </td>
-                                                <td scope="row"> {{
+                                                    }} </td> -->
+                        <td scope="row"> {{
+                          tax.start_period|date:'dd/MM/yyyy'
+                          }} </td>
+                        <!-- <td scope="row"> {{
                                                     tax.filling_frequency
                                                     }} </td>
                                                 <td scope="row"> {{
                                                     tax.collection_type
-                                                    }} </td>
-                                                <td scope="row">
-                                                    <i (click)="OpenModal('UPDATE TAX',tax)" class="fas fa-edit"></i>
-                                                    <i (click)="deleteTax(tax.id)" class="fa fa-trash-o ml-2"></i>
-                                                    <i (click)="OpenDetails('TAX DETAILS',tax)"
-                                                        class="fa fa-eye ml-2"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="d-flex justify-content-between p-2">
-                                        <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)"
-                                            [pageSize]="pageSize" [collectionSize]="collectionSize">
-                                        </ngb-pagination>
-                                        <select class="custom-select" style="width: auto" name="pageSize"
-                                            (change)="handlePageSizeChange($event)">
-                                            <option *ngFor="let size of pageSizes" [ngValue]="size">
-                                                {{ size }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- </app-card> -->
-                        </div>
-                    </div>
+                                                    }} </td> -->
+                        <td scope="row">
+                          <i (click)="OpenModal('UPDATE TAX',tax)" class="fas fa-edit"></i>
+                          <i (click)="deleteTax(tax.id)" class="fa fa-trash-o ml-2"></i>
+                          <i (click)="OpenDetails('TAX DETAILS',tax)" class="fa fa-eye ml-2"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="d-flex justify-content-between p-2">
+                    <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)" [pageSize]="pageSize"
+                      [collectionSize]="collectionSize">
+                    </ngb-pagination>
+                    <select class="custom-select" style="width: auto" name="pageSize"
+                      (change)="handlePageSizeChange($event)">
+                      <option *ngFor="let size of pageSizes" [ngValue]="size">
+                        {{ size }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
+              </div>
+              <!-- </app-card> -->
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </ng-container>

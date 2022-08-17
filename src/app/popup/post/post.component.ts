@@ -2,7 +2,14 @@ import { Component, Input, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { GET_USER_COMPANIES_END_POINT, POST_USER_ACCOUNTING_PLAN_END_POINT, POST_USER_COMPANIES_END_POINT, POST_USER_EMPLOYEES_END_POINT, POST_USER_TAXES_END_POINT } from "../../services/endpoints";
+import {
+  GET_USER_COMPANIES_END_POINT,
+  POST_USER_ACCOUNTING_PLAN_END_POINT,
+  POST_USER_COMPANIES_END_POINT,
+  POST_USER_CUSTOMERS_END_POINT,
+  POST_USER_EMPLOYEES_END_POINT,
+  POST_USER_TAXES_END_POINT,
+} from "../../services/endpoints";
 import Observer from "../../services/observer";
 import { BackendService } from "../../services/backend.service";
 import { SharedService } from "../../services/shared.service";
@@ -21,6 +28,7 @@ export class PostComponent implements OnInit {
 
   birthdateinputype: string;
   hiredateinputype: string;
+  startperiodinputype: string;
   companyList: [];
 
   constructor(
@@ -32,39 +40,42 @@ export class PostComponent implements OnInit {
     this.actualDate = new Date().toDateString();
     this.birthdateinputype = "text";
     this.hiredateinputype = "text";
-  }
-  ngOnInit() {
-    if (this.type === 'EMPLOYEE')
-      this.getCompanies()
-  }
-
-  getCompanies() {
-    this.backendService.get(GET_USER_COMPANIES_END_POINT).subscribe(
-      new Observer(this.router, '', false).OBSERVER_GET((response) => {
-        if (!response.err)
-          this.companyList = response.rows;
-      })
-    )
+    this.startperiodinputype="text"
 
   }
+  ngOnInit() {}
+
+  // getCompanies() {
+  //   this.backendService.get(GET_USER_COMPANIES_END_POINT).subscribe(
+  //     new Observer(this.router, '', false).OBSERVER_GET((response) => {
+  //       if (!response.err)
+  //         this.companyList = response.rows;
+  //     })
+  //   )
+
+  // }
 
   onSubmit(form: NgForm) {
-
-    let endpoint: string = '';
-    let payload = { ...form.value }
+    let endpoint: string = "";
+    let payload = { ...form.value, id_company: this.payload.id_company };
     switch (this.type) {
       case "COMPANY":
-        endpoint = POST_USER_COMPANIES_END_POINT
+        endpoint = POST_USER_COMPANIES_END_POINT;
+        delete payload['id_company']
         break;
       case "EMPLOYEE":
-        endpoint = POST_USER_EMPLOYEES_END_POINT
+        endpoint = POST_USER_EMPLOYEES_END_POINT;
         break;
       case "ACCOUNTING_PLAN":
-        endpoint = POST_USER_ACCOUNTING_PLAN_END_POINT
-        payload = { ...payload, id_company: this.payload.id_company, source: this.payload.source }
+        endpoint = POST_USER_ACCOUNTING_PLAN_END_POINT;
+        payload = { ...payload, source: this.payload.source };
         break;
       case "TAX":
-        endpoint = POST_USER_TAXES_END_POINT
+        endpoint = POST_USER_TAXES_END_POINT;
+        break;
+
+      case "CUSTOMER":
+        endpoint = POST_USER_CUSTOMERS_END_POINT;
         break;
     }
 
@@ -82,8 +93,10 @@ export class PostComponent implements OnInit {
       );
   }
 
-  setinputtype(event, type: string) {
+  setinputtype(type: string) {
     if (type === "birthdate") this.birthdateinputype = "date";
     if (type === "hiredate") this.hiredateinputype = "date";
+        if (type === "start_period") this.startperiodinputype = "date";
+
   }
 }

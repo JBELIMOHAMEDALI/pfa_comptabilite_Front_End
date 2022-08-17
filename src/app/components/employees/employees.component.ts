@@ -4,7 +4,10 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { PostComponent } from "../../popup/post/post.component";
 import { PutComponent } from "../../popup/put/put.component";
 import { BackendService } from "../../services/backend.service";
-import { DELETE_USER_EMPLOYEES_END_POINT, GET_USER_EMPLOYEES_END_POINT } from "../../services/endpoints";
+import {
+  DELETE_USER_EMPLOYEES_END_POINT,
+  GET_USER_EMPLOYEES_END_POINT,
+} from "../../services/endpoints";
 import Observer from "../../services/observer";
 import { SharedService } from "../../services/shared.service";
 import swal from "sweetalert";
@@ -22,6 +25,7 @@ export class EmployeesComponent implements OnInit {
   page = 1;
   pageSize = 5;
   pageSizes = [5, 20, 100];
+  id_company: string;
 
   constructor(
     private backendService: BackendService,
@@ -35,13 +39,20 @@ export class EmployeesComponent implements OnInit {
   }
 
   getEmployees() {
+    this.id_company = this.sharedService.getStoredCompany();
     const offset = (this.page - 1) * this.pageSize;
-    this.backendService.get(GET_USER_EMPLOYEES_END_POINT,this.pageSize,offset).subscribe(
-      new Observer().OBSERVER_GET((response) => {
-        this.collectionSize=response.totalItems;
-         this.employeesList = response.rows;
-      })
-    );
+    this.backendService
+      .get(
+        `${GET_USER_EMPLOYEES_END_POINT}/${this.id_company}`,
+        this.pageSize,
+        offset
+      )
+      .subscribe(
+        new Observer().OBSERVER_GET((response) => {
+          this.collectionSize = response.totalItems;
+          this.employeesList = response.rows;
+        })
+      );
   }
 
   deleteEmployee(id_employee: string) {
@@ -78,10 +89,12 @@ export class EmployeesComponent implements OnInit {
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.type = EMPLOYEE_POPUP_TYPE;
 
-    modalRef.componentInstance.payload = employee && { ...employee };
+    modalRef.componentInstance.payload = employee
+      ? { ...employee, id_company: this.id_company }
+      : { id_company: this.id_company };
   }
 
-  OpenDetails(title: string, payload) {
+  OpenDetails(title: string, payload:any) {
     const modalRef = this.modalService.open(DetailsComponent);
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.type = EMPLOYEE_POPUP_TYPE;

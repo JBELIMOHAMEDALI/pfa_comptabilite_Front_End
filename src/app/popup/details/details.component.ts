@@ -8,6 +8,8 @@ import { NgbActiveModal, } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DetailsComponent implements OnInit {
   @Input('title') title:string;
+  @Input('type') type:string;
+
   @Input('payload') payload:any;
 
   constructor(public actifmodal:NgbActiveModal) { }

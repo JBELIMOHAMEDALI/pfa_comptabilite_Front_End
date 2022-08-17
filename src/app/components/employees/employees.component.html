@@ -63,7 +63,7 @@
                           employee.salary
                           }} </td>
                         <td scope="row"> {{
-                          employee.hiredate|date
+                          employee.hiredate|date:'dd/MM/yyyy'
                           }} </td>
                         <td scope="row">
                           <i (click)="OpenModal('UPDATE EMPLOYEE',employee)" class="fas fa-edit"></i>

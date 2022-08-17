@@ -93,13 +93,7 @@ const routes: Routes = [
             (m) => m.RedirectionModule
           ),
       },
-      {
-        path: "firstcompany",
-        loadChildren: () =>
-          import("./first-company/first-company.module").then(
-            (m) => m.FirstCompanyModule
-          ),
-      },
+
     ],
   },
 

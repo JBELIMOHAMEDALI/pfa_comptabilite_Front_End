@@ -41,10 +41,10 @@ export const PUT_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}
 
 
 //TAXES ENDPOINTS
-export const GET_USER_TAXES_END_POINT: string = `${environment.apiUrl}/taxe/get`;
-export const DELETE_USER_TAXES_END_POINT: string = `${environment.apiUrl}/taxe/delete`;
-export const POST_USER_TAXES_END_POINT: string = `${environment.apiUrl}/taxe/add`;
-export const PUT_USER_TAXES_END_POINT: string = `${environment.apiUrl}/taxe/update`;
+export const GET_USER_TAXES_END_POINT: string = `${environment.apiUrl}/tax/get`;
+export const DELETE_USER_TAXES_END_POINT: string = `${environment.apiUrl}/tax/delete`;
+export const POST_USER_TAXES_END_POINT: string = `${environment.apiUrl}/tax/add`;
+export const PUT_USER_TAXES_END_POINT: string = `${environment.apiUrl}/tax/update`;
 
 //CUSTOMERS ENDPOINTS
 export const GET_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/get`;

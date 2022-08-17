@@ -51,13 +51,13 @@ export class AccountingPlanComponent implements OnInit {
       .get(`${GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT}/${this.id_company}`)
       .subscribe(
         new Observer().OBSERVER_GET((response) => {
-            const { rows } = response;
-            const { err } = rows[0];
-            if (!err) {
-              const { source } = rows[0];
-              this.sourceFiles = rows;
-              this.getAccountingPlans(source);
-            }
+          const { rows } = response;
+          const { err } = rows[0];
+          if (!err) {
+            const { source } = rows[0];
+            this.sourceFiles = rows;
+            this.getAccountingPlans(source);
+          }
         })
       );
   }
@@ -120,9 +120,11 @@ export class AccountingPlanComponent implements OnInit {
       );
       modalRef.componentInstance.title = title;
       modalRef.componentInstance.type = ACCOUNTING_PLAN_POPUP_TYPE;
-      modalRef.componentInstance.payload = accounting_plan && {
-        ...accounting_plan,
-      };
+      modalRef.componentInstance.payload = accounting_plan
+        ? {
+            ...accounting_plan,
+          }
+        : { id_company: this.id_company };
     } else return swal("Failure!", "No file selected !", "info");
   }
 
