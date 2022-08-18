@@ -149,12 +149,12 @@
     </ng-container>
 
     <!-- ACCOUNTING PLAN -->
-    <ng-container *ngIf="this.type==='ACCOUNTING_PLAN'">
+    <ng-container *ngIf="this.type==='ACCOUNTING_PLAN_ROW'">
       <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
                 class="icofont icofont-presentation"></i></label></span>
-          <input type="number" class="form-control" [(ngModel)]="this.payload.account_number"
+          <input type="number" min="0" class="form-control" [(ngModel)]="this.payload.account_number"
             placeholder="Account number" name="account_number" ngModel #account_number="ngModel" required />
         </div>
         <div *ngIf="account_number.invalid && account_number.touched" class="alert alert-danger p-2" role="alert">

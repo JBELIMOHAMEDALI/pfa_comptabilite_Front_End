@@ -14,7 +14,10 @@ import {
 import Observer from "../../services/observer";
 import { PostComponent } from "../../popup/post/post.component";
 import { PutComponent } from "../../popup/put/put.component";
-import { ACCOUNTING_PLAN_POPUP_TYPE } from "../../popup/popup-type";
+import {
+  ACCOUNTING_PLAN_POPUP_TYPE,
+  ACCOUNTING_PLAN_ROW_POPUP_TYPE,
+} from "../../popup/popup-type";
 import { ExcelService } from "../../services/excel.service";
 
 @Component({
@@ -24,9 +27,10 @@ import { ExcelService } from "../../services/excel.service";
 })
 export class AccountingPlanComponent implements OnInit {
   accountingPlansList: [] = [];
-  sourceFiles: [] = [];
+  sourceFiles = [];
   id_company: string;
-  selectedSource: string;
+  upload: string;
+  id_source: string;
 
   collectionSize: number = 0;
   page = 1;
@@ -42,11 +46,11 @@ export class AccountingPlanComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.id_company = this.sharedService.getStoredCompany();
     this.getsources();
   }
 
   getsources() {
-    this.id_company = this.sharedService.getStoredCompany();
     this.backendService
       .get(`${GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT}/${this.id_company}`)
       .subscribe(
@@ -54,26 +58,29 @@ export class AccountingPlanComponent implements OnInit {
           const { rows } = response;
           const { err } = rows[0];
           if (!err) {
-            const { source } = rows[0];
             this.sourceFiles = rows;
-            this.getAccountingPlans(source);
           }
         })
       );
   }
 
-  changeSelectedFile(selectedFile: string) {
-    this.getAccountingPlans(selectedFile);
+  changeSelectedFile(selected: string) {
+    const [a, b] = selected.split(";");
+    this.upload = a;
+    this.id_source = b;
+    this.accountingPlansList.length = 0;
+    this.collectionSize = 1;
+    // this.id_company = this.sharedService.getStoredCompany();
+    this.getAccountingPlans(a);
   }
 
-  getAccountingPlans(source: string) {
-    this.id_company = this.sharedService.getStoredCompany();
-    const offset = (this.page - 1) * this.pageSize;
-    this.selectedSource = source;
+  getAccountingPlans(upload: string) {
 
+    const offset = (this.page - 1) * this.pageSize;
+    this.upload = upload;
     this.backendService
       .get(
-        `${GET_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${source}`,
+        `${GET_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${upload}`,
         this.pageSize,
         offset
       )
@@ -115,16 +122,20 @@ export class AccountingPlanComponent implements OnInit {
 
   OpenModal(title: string, accounting_plan?) {
     if (this.sourceFiles.length > 0) {
+      console.log(this.id_source);
+
       const modalRef = this.modalService.open(
         title.split(" ")[0] === "NEW" ? PostComponent : PutComponent
       );
       modalRef.componentInstance.title = title;
-      modalRef.componentInstance.type = ACCOUNTING_PLAN_POPUP_TYPE;
+      modalRef.componentInstance.type = title.includes("ROW")
+        ? ACCOUNTING_PLAN_ROW_POPUP_TYPE
+        : ACCOUNTING_PLAN_POPUP_TYPE;
       modalRef.componentInstance.payload = accounting_plan
         ? {
             ...accounting_plan,
           }
-        : { id_company: this.id_company };
+        : { id_company: this.id_company, id_source: this.id_source };
     } else return swal("Failure!", "No file selected !", "info");
   }
 
@@ -149,17 +160,7 @@ export class AccountingPlanComponent implements OnInit {
             null
           ).OBSERVER_POST()
         );
-      // if (file.type.split("/")[0] === "image") {
-      //   try {
-      //     // ((await this.profilService.changeEtudiantphoto(formData)) as any) ||
-      //     [];
-      //     // this.sharedService.reloadComponent();
-      //   } catch (error) {
-      //     swal("Echec!", error.error.message, "warning");
-      //   }
-      // } else {
-      //   swal("info!", "choisir une image ! ", "info");
-      // }
+
     }
   }
 
@@ -176,7 +177,7 @@ export class AccountingPlanComponent implements OnInit {
         if (result) {
           this.backendService
             .delete(
-              `${UNLINK_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${this.selectedSource}`
+              `${UNLINK_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${this.upload}`
             )
             .subscribe(
               new Observer(
@@ -197,15 +198,12 @@ export class AccountingPlanComponent implements OnInit {
     if (this.sourceFiles.length > 0) {
       this.backendService
         .get(
-          `${GET_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${this.selectedSource}`
+          `${GET_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${this.upload}`
         )
         .subscribe(
           new Observer().OBSERVER_GET((response) => {
             if (!response.err) {
-              this.excelService.exportAsExcelFile(
-                response.rows,
-                this.selectedSource
-              );
+              this.excelService.exportAsExcelFile(response.rows);
             }
           })
         );
@@ -217,11 +215,11 @@ export class AccountingPlanComponent implements OnInit {
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
     this.page = 1;
-    this.getAccountingPlans(this.selectedSource);
+    this.getAccountingPlans(this.upload);
   }
 
   handlePageChange(currentPage: number) {
     this.page = currentPage;
-    this.getAccountingPlans(this.selectedSource);
+    this.getAccountingPlans(this.upload);
   }
 }

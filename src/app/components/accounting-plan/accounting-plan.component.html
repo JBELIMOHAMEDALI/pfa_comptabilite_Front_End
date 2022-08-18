@@ -41,15 +41,22 @@
               </div>
               <div class="container">
                 <div class="row">
-                  <div *ngIf="this.sourceFiles.length>0" class="col-sm-4 mb-5 mr-2">
-                    <select class="form-select" (change)="changeSelectedFile($event.target.value)">
-                      <!-- <option value="-1" disabled>Import files to retreive data</option> -->
-                      <option *ngFor="let file of this.sourceFiles;let i=index" [value]="file.source">
+                  <div  class="col-sm-4 mb-5 mr-2">
+                    <select class="form-select" value="-1" (change)="changeSelectedFile($event.target.value)">
+                      <option value="-1"  disabled>{{this.sourceFiles.length===0?'Import files ':'Select a file'}}</option>
+                      <option *ngFor="let file of this.sourceFiles;let i=index" [value]="file.upload+';'+file.id">
                         {{file.source}}
                       </option>
                     </select>
                   </div>
-                  <div class="col-sm-1 mb-5 inputWrapper" style="height: 60px; width: 105px;">
+                  <div class="col-sm-1 mb-5 mr-2">
+                    <button class="btn"
+                      (click)="OpenModal('NEW ACCOUNTING PLAN')">
+                      <i class="fa fa-plus"></i>
+                      Accounting plan
+                    </button>
+                  </div>
+                  <div class="col-sm-1 mb-5 mr-2 inputWrapper" style="height: 60px; width: 105px;">
                     <button class="btn">
                       <input type="file"
                         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
@@ -71,16 +78,10 @@
                         Delete
                       </button>
                     </div>
-                    <div class="col-sm-1 mb-5 mr-2">
+
+                    <div class="col-sm-1 mb-5 mr-2" *ngIf="this.sourceFiles.length>0" >
                       <button class="btn"
-                        (click)="OpenModal('NEW ACCOUNTING PLAN ROW',{source:this.selectedSource,id_company:this.id_company})">
-                        <i class="fa fa-plus"></i>
-                        Accounting plan
-                      </button>
-                    </div>
-                    <div class="col-sm-1 mb-5 mr-5" *ngIf="this.sourceFiles.length>0" >
-                      <button class="btn"
-                        (click)="OpenModal('NEW ACCOUNTING PLAN ROW',{source:this.selectedSource,id_company:this.id_company})">
+                        (click)="OpenModal('NEW ACCOUNTING PLAN ROW')">
                         <i class="fa fa-plus"></i>
                         New
                       </button>
@@ -109,7 +110,7 @@
                   <tbody *ngFor="let accounting_plan of this.accountingPlansList| slice">
                     <tr>
                       <td scope="row">
-                        <i (click)="OpenModal('UPDATE ACCOUNTING PLAN',accounting_plan)" class="fas fa-edit"></i>
+                        <i (click)="OpenModal('UPDATE ACCOUNTING PLAN ROW',accounting_plan)" class="fas fa-edit"></i>
                         <i (click)="deleteAccountingPlanRow(accounting_plan.id)" class="fa fa-trash-o ml-2"></i>
                       </td>
                       <td scope="row">{{ accounting_plan.account_number}} </td>

@@ -9,19 +9,19 @@ export class ExcelService {
 
 
   constructor() { }
-  public exportAsExcelFile(json: any[], excelFileName: string): void {
+  public exportAsExcelFile(json: any[]): void {
 
     const myworksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
     const myworkbook: XLSX.WorkBook = { Sheets: { 'data': myworksheet }, SheetNames: ['data'] };
     const excelBuffer: any = XLSX.write(myworkbook, { bookType: 'xlsx', type: 'array' });
-    this.saveAsExcelFile(excelBuffer, excelFileName);
+    this.saveAsExcelFile(excelBuffer);
   }
 
-  private saveAsExcelFile(buffer: any, fileName: string): void {
+  private saveAsExcelFile(buffer: any): void {
     const data: Blob = new Blob([buffer], {
       type: EXCEL_TYPE
     });
-    FileSaver.saveAs(data, fileName);
+    FileSaver.saveAs(data, Date.now());
   }
 
 }

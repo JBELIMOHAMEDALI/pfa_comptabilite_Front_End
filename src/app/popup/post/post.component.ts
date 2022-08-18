@@ -3,8 +3,8 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import {
-  GET_USER_COMPANIES_END_POINT,
   POST_USER_ACCOUNTING_PLAN_END_POINT,
+  POST_USER_ACCOUNTING_PLAN_ROW_END_POINT,
   POST_USER_COMPANIES_END_POINT,
   POST_USER_CUSTOMERS_END_POINT,
   POST_USER_EMPLOYEES_END_POINT,
@@ -66,13 +66,18 @@ export class PostComponent implements OnInit {
         payload = { ...payload, id_company: this.payload.id_company };
 
         break;
-      case "ACCOUNTING_PLAN":
-        endpoint = POST_USER_ACCOUNTING_PLAN_END_POINT;
+      case "ACCOUNTING_PLAN_ROW":
+        endpoint = POST_USER_ACCOUNTING_PLAN_ROW_END_POINT;
         payload = {
           ...payload,
-          source: this.payload.source,
+          id_source: this.payload.id_source,
           id_company: this.payload.id_company,
         };
+        break;
+        case "ACCOUNTING_PLAN":
+        endpoint = POST_USER_ACCOUNTING_PLAN_END_POINT;
+        payload = { ...payload, id_company: this.payload.id_company };
+
         break;
       case "TAX":
         endpoint = POST_USER_TAXES_END_POINT;

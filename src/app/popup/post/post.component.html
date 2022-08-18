@@ -154,12 +154,12 @@
     </form>
   </ng-container>
   <!-- ACCOUNTING_PLAN -->
-  <ng-container *ngIf="this.type==='ACCOUNTING_PLAN'">
+  <ng-container *ngIf="this.type==='ACCOUNTING_PLAN_ROW'">
     <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="number" class="form-control" placeholder="Account number" name="account_number" ngModel #account_number="ngModel" required />
+        <input type="number" min="0" class="form-control" placeholder="Account number" name="account_number" ngModel #account_number="ngModel" required />
       </div>
       <div *ngIf="account_number.invalid && account_number.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter account number !</span>
@@ -175,6 +175,26 @@
         <span>Enter description !</span>
       </div>
 
+
+      <div class="modal-footer">
+        <input value="Confirm" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="this.type==='ACCOUNTING_PLAN'">
+    <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" placeholder="Name" name="source" ngModel #source="ngModel" required />
+      </div>
+      <div *ngIf="source.invalid && source.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter accounting plan name !</span>
+      </div>
 
       <div class="modal-footer">
         <input value="Confirm" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />

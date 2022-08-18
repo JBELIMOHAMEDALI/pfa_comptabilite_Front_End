@@ -58,7 +58,7 @@ export default class Observer {
       },
       error: (err: HttpErrorResponse) => {
         // cb(err);
-        swal("Info!", err.error.message, "info");
+        // swal("Info!", err.error.message, "info");
       },
       // complete: () => console.log("Observer got a complete notification"),
     };

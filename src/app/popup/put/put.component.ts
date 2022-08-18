@@ -3,8 +3,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import {
-  GET_USER_COMPANIES_END_POINT,
-  PUT_USER_ACCOUNTING_PLAN_END_POINT,
+  PUT_USER_ACCOUNTING_PLAN_ROW_END_POINT,
   PUT_USER_COMPANIES_END_POINT,
   PUT_USER_EMPLOYEES_END_POINT,
   PUT_USER_TAXES_END_POINT,
@@ -55,8 +54,8 @@ export class PutComponent implements OnInit {
         endpoint = PUT_USER_EMPLOYEES_END_POINT;
         payload = { ...payload, id_employee: this.payload.id_employee };
         break;
-      case "ACCOUNTING_PLAN":
-        endpoint = `${PUT_USER_ACCOUNTING_PLAN_END_POINT}/${this.payload.id}`;
+      case "ACCOUNTING_PLAN_ROW":
+        endpoint = `${PUT_USER_ACCOUNTING_PLAN_ROW_END_POINT}/${this.payload.id}`;
         break;
       case "TAX":
         endpoint = PUT_USER_TAXES_END_POINT;
