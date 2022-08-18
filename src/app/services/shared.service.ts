@@ -22,37 +22,46 @@ export class SharedService {
     //regex and password length
   }
 
-  getStoredCompany() {
-    const id_company = localStorage.getItem("COMPANY");
-    if (!id_company) {
+  // getStoredCompany() {
+  //   const id_company = localStorage.getItem("COMPANY");
+  //   if (!id_company) {
+  //     this.backendservice.get(GET_USER_SELECTED_COMPANY_END_POINT).subscribe(
+  //       new Observer().OBSERVER_GET((response) => {
+  //         if (!response.err&&response.rows[0]) {
+  //           localStorage.setItem(
+  //             "COMPANY",
+  //             (response.rows[0].id_company)
+  //           );
+  //         }
+  //       })
+  //     );
+  //   }
+  //   return localStorage.getItem("COMPANY");
+  // }
+
+  setItem(key: string,value:string) {
+    localStorage.setItem(key, value);
+  }
+  deleteItem(key:string) {
+    localStorage.removeItem(key);
+  }
+  getSelectedCompany() {
+    const id=localStorage.getItem('companyNo')
+    if (!id) {
       this.backendservice.get(GET_USER_SELECTED_COMPANY_END_POINT).subscribe(
         new Observer().OBSERVER_GET((response) => {
           if (!response.err&&response.rows[0]) {
             localStorage.setItem(
-              "COMPANY",
+              "comapnyNo",
               (response.rows[0].id_company)
             );
           }
         })
       );
+    }else{
+      return id;
     }
-    return localStorage.getItem("COMPANY");
+
   }
 
-  updateStoredCompany(id_company: string) {
-    localStorage.setItem("COMPANY", id_company);
-  }
-  deleteStoredCompany() {
-    localStorage.removeItem("COMPANY");
-  }
-
-  // encrypt(value: string): string {
-  //   return CryptoJS.AES.encrypt(value, "skey").toString();
-  // }
-
-  // decrypt(textToDecrypt: string) {
-  //   return CryptoJS.AES.decrypt(textToDecrypt, "skey").toString(
-  //     CryptoJS.enc.Utf8
-  //   );
-  // }
 }

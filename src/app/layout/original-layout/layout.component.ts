@@ -373,7 +373,7 @@ export class LayoutComponent implements OnInit {
           this.sharedService,
           null
         ).OBSERVER_EDIT((response) =>
-          this.sharedService.updateStoredCompany(id_company)
+          this.sharedService.setItem('companyNo',id_company)
         )
       );
   }
