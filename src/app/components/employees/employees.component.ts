@@ -36,12 +36,8 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit() {
     const id = this.sharedService.getSelectedCompany();
-    if (!id) {
-      window.location.reload();
-    } else {
       this.id_company = id;
       this.getEmployees();
-    }
   }
 
   getEmployees() {

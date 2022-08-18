@@ -47,12 +47,8 @@ export class AccountingPlanComponent implements OnInit {
 
   ngOnInit() {
     const id = this.sharedService.getSelectedCompany();
-    if (!id) {
-      window.location.reload();
-    } else {
       this.id_company = id;
       this.getsources();
-    }
   }
 
   getsources() {

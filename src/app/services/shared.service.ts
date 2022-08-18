@@ -9,7 +9,7 @@ import * as CryptoJS from "crypto-js";
   providedIn: "root",
 })
 export class SharedService {
-  constructor(private backendservice: BackendService) {}
+  constructor(private backendservice: BackendService, private router: Router) {}
 
   reloadComponent(router: Router) {
     const currentRoute = router.url;
@@ -17,6 +17,7 @@ export class SharedService {
       router.navigate([currentRoute]);
     });
   }
+
 
   passwordControl() {
     //regex and password length
@@ -39,29 +40,24 @@ export class SharedService {
   //   return localStorage.getItem("COMPANY");
   // }
 
-  setItem(key: string,value:string) {
+  setItem(key: string, value: string) {
     localStorage.setItem(key, value);
   }
-  deleteItem(key:string) {
+  deleteItem(key: string) {
     localStorage.removeItem(key);
   }
   getSelectedCompany() {
-    const id=localStorage.getItem('companyNo')
+    const id = localStorage.getItem("companyNo");
     if (!id) {
       this.backendservice.get(GET_USER_SELECTED_COMPANY_END_POINT).subscribe(
         new Observer().OBSERVER_GET((response) => {
-          if (!response.err&&response.rows[0]) {
-            localStorage.setItem(
-              "comapnyNo",
-              (response.rows[0].id_company)
-            );
+          if (!response.err && response.rows[0]) {
+            localStorage.setItem("comapnyNo", response.rows[0].id_company);
           }
         })
       );
-    }else{
+    } else {
       return id;
     }
-
   }
-
 }

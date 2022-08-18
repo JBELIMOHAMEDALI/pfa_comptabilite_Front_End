@@ -33,12 +33,8 @@ export class CustomerManagementComponent implements OnInit {
 
   ngOnInit() {
     const id = this.sharedService.getSelectedCompany();
-    if (!id) {
-      window.location.reload();
-    } else {
       this.id_company = id;
       this.getCustomers();
-    }
   }
 
   getCustomers() {
