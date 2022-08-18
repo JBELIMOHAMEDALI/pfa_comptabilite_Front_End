@@ -32,12 +32,16 @@ export class CustomerManagementComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getCustomers();
+    const id = this.sharedService.getSelectedCompany();
+    if (!id) {
+      window.location.reload();
+    } else {
+      this.id_company = id;
+      this.getCustomers();
+    }
   }
 
   getCustomers() {
-    this.id_company = this.sharedService.getStoredCompany();
-
     const offset = (this.page - 1) * this.pageSize;
     this.backendService.get(GET_USER_CUSTOMERS_END_POINT,this.pageSize,offset).subscribe(
       new Observer().OBSERVER_GET((response) => {

@@ -35,11 +35,16 @@ export class EmployeesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getEmployees();
+    const id = this.sharedService.getSelectedCompany();
+    if (!id) {
+      window.location.reload();
+    } else {
+      this.id_company = id;
+      this.getEmployees();
+    }
   }
 
   getEmployees() {
-    this.id_company = this.sharedService.getStoredCompany();
     const offset = (this.page - 1) * this.pageSize;
     this.backendService
       .get(

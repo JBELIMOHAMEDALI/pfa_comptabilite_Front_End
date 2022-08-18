@@ -33,11 +33,16 @@ export class TaxComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getTaxes();
+    const id = this.sharedService.getSelectedCompany();
+    if (!id) {
+      window.location.reload();
+    } else {
+      this.id_company = id;
+      this.getTaxes();
+    }
   }
 
   getTaxes() {
-    this.id_company = this.sharedService.getStoredCompany();
 
     const offset = (this.page - 1) * this.pageSize;
     this.backendService.get(`${GET_USER_TAXES_END_POINT}/${this.id_company}`,this.pageSize,offset).subscribe(
