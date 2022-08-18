@@ -36,8 +36,12 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit() {
     const id = this.sharedService.getSelectedCompany();
+    if (id) {
       this.id_company = id;
       this.getEmployees();
+    } else {
+      return swal("Failure!", "No company selected !", "info");
+    }
   }
 
   getEmployees() {
@@ -95,7 +99,7 @@ export class EmployeesComponent implements OnInit {
       : { id_company: this.id_company };
   }
 
-  OpenDetails(title: string, payload:any) {
+  OpenDetails(title: string, payload: any) {
     const modalRef = this.modalService.open(DetailsComponent);
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.type = EMPLOYEE_POPUP_TYPE;
@@ -106,11 +110,11 @@ export class EmployeesComponent implements OnInit {
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
     this.page = 1;
-    this.getEmployees();
+    if (this.id_company) this.getEmployees();
   }
 
   handlePageChange(currentPage: number) {
     this.page = currentPage;
-    this.getEmployees();
+    if (this.id_company) this.getEmployees();
   }
 }

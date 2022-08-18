@@ -34,11 +34,11 @@ export class TaxComponent implements OnInit {
 
   ngOnInit() {
     const id = this.sharedService.getSelectedCompany();
-    if (!id) {
-      window.location.reload();
-    } else {
+    if (id) {
       this.id_company = id;
       this.getTaxes();
+    } else {
+      return swal("Failure!", "No company selected !", "info");
     }
   }
 
@@ -98,13 +98,18 @@ export class TaxComponent implements OnInit {
   }
 
   handlePageSizeChange(event: any): void {
+    if(this.id_company){
+
+      this.getTaxes();
+    }
     this.pageSize = event.target.value;
     this.page = 1;
-    this.getTaxes();
   }
 
   handlePageChange(currentPage: number) {
+    if(this.id_company){
+      this.getTaxes();
+    }
     this.page = currentPage;
-    this.getTaxes();
   }
 }

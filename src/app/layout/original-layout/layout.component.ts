@@ -213,7 +213,16 @@ export class LayoutComponent implements OnInit {
   getCompanies() {
     this.backendService.get(GET_USER_COMPANIES_END_POINT).subscribe(
       new Observer(this.router, null, false).OBSERVER_GET((response) => {
-        if (!response.err) this.companyList = response.rows;
+        if (!response.err) {
+          this.companyList = response.rows;
+          const company: any = this.companyList.find(
+            (company: any) => company.selected == 1
+          );
+          this.sharedService.setItem(
+            "companyNo",
+            company.id_company.toString()
+          );
+        }
       })
     );
   }
@@ -373,7 +382,7 @@ export class LayoutComponent implements OnInit {
           this.sharedService,
           null
         ).OBSERVER_EDIT((response) =>
-          this.sharedService.setItem('companyNo',id_company)
+          this.sharedService.setItem("companyNo", id_company)
         )
       );
   }

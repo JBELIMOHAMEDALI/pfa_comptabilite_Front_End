@@ -47,28 +47,30 @@ export class AccountingPlanComponent implements OnInit {
 
   ngOnInit() {
     const id = this.sharedService.getSelectedCompany();
+    if (id) {
       this.id_company = id;
       this.getsources();
+    } else {
+      return swal("Failure!", "No company selected !", "info");
+    }
   }
 
   getsources() {
-    if(this.id_company){
+    if (this.id_company) {
       this.backendService
-      .get(`${GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT}/${this.id_company}`)
-      .subscribe(
-        new Observer().OBSERVER_GET((response) => {
-          const { rows } = response;
-          const { err } = rows[0];
-          if (!err) {
-            this.sourceFiles = rows;
-          }
-        })
-      );
-    }else{
+        .get(`${GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT}/${this.id_company}`)
+        .subscribe(
+          new Observer().OBSERVER_GET((response) => {
+            const { rows } = response;
+            const { err } = rows[0];
+            if (!err) {
+              this.sourceFiles = rows;
+            }
+          })
+        );
+    } else {
       return swal("Failure!", "No company selected !", "info");
-
     }
-
   }
 
   changeSelectedFile(selected: string) {
@@ -77,6 +79,7 @@ export class AccountingPlanComponent implements OnInit {
     this.id_source = b;
     this.accountingPlansList.length = 0;
     this.collectionSize = 1;
+    if(this.id_company)
     this.getAccountingPlans(a);
   }
 
@@ -126,7 +129,7 @@ export class AccountingPlanComponent implements OnInit {
   }
 
   OpenModal(title: string, accounting_plan?) {
-    if(this.id_company){
+    if (this.id_company) {
       if (this.sourceFiles.length > 0 || title.includes("NEW")) {
         const modalRef = this.modalService.open(
           title.split(" ")[0] === "NEW" ? PostComponent : PutComponent
@@ -141,14 +144,13 @@ export class AccountingPlanComponent implements OnInit {
             }
           : { id_company: this.id_company, id_source: this.id_source };
       } else return swal("Failure!", "No file selected !", "info");
-    }else{
+    } else {
       return swal("Failure!", "No company selected !", "info");
     }
-
   }
 
   changeFile(event) {
-    if(this.id_company){
+    if (this.id_company) {
       const fileList: FileList = event.target.files;
       if (fileList.length > 0) {
         const file: File = fileList[0];
@@ -170,52 +172,47 @@ export class AccountingPlanComponent implements OnInit {
             ).OBSERVER_POST()
           );
       }
-    }else{
+    } else {
       return swal("Failure!", "No company selected !", "info");
-
     }
-
   }
 
   unlinkFile() {
-    if(this.id_company){
+    if (this.id_company) {
       if (this.sourceFiles.length > 0)
-      swal({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        closeOnEsc: true,
-        closeOnClickOutside: true,
-        buttons: ["cancel", "confirm"],
-      }).then((result) => {
-        if (result) {
-          this.backendService
-            .delete(
-              `${UNLINK_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${this.upload}`
-            )
-            .subscribe(
-              new Observer(
-                this.router,
-                null,
-                true,
-                true,
-                this.sharedService,
-                null
-              ).OBSERVER_DELETE()
-            );
-        }
-      });
-    else return swal("Failure!", "No file selected !", "info");
-    }else{
+        swal({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          closeOnEsc: true,
+          closeOnClickOutside: true,
+          buttons: ["cancel", "confirm"],
+        }).then((result) => {
+          if (result) {
+            this.backendService
+              .delete(
+                `${UNLINK_USER_ACCOUNTING_PLAN_END_POINT}/${this.id_company}/${this.upload}`
+              )
+              .subscribe(
+                new Observer(
+                  this.router,
+                  null,
+                  true,
+                  true,
+                  this.sharedService,
+                  null
+                ).OBSERVER_DELETE()
+              );
+          }
+        });
+      else return swal("Failure!", "No file selected !", "info");
+    } else {
       return swal("Failure!", "No company selected !", "info");
-
     }
-
   }
 
   exportFile() {
-    if(this.id_company){
-
+    if (this.id_company) {
       if (this.sourceFiles.length > 0) {
         this.backendService
           .get(
@@ -231,20 +228,19 @@ export class AccountingPlanComponent implements OnInit {
       } else {
         return swal("Failure!", "No file selected !", "info");
       }
-    }else{
+    } else {
       return swal("Failure!", "No company selected !", "info");
-
     }
   }
 
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
     this.page = 1;
-    this.getAccountingPlans(this.upload);
+    if (this.id_company) this.getAccountingPlans(this.upload);
   }
 
   handlePageChange(currentPage: number) {
     this.page = currentPage;
-    this.getAccountingPlans(this.upload);
+    if (this.id_company) this.getAccountingPlans(this.upload);
   }
 }
