@@ -40,7 +40,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'D',
         name: 'Dashboard',
         type: 'link',
-        icon: 'ti-home',
+        icon: 'fas fa-chart-line',
         routerLink:"/app/dashboard"
       },
       {
@@ -48,7 +48,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'A-P',
         name: 'Accounting plan',
         type: 'link',
-        icon: 'ti-crown',
+        icon: 'fas fa-receipt',
         routerLink:"/app/accounting/plan"
       },
       {
@@ -56,7 +56,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'C',
         name: 'Company',
         type: 'link',
-        icon: 'ti-crown',
+        icon: 'fas fa-building',
         routerLink:"/app/company"
       },
       {
@@ -64,7 +64,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'T',
         name: 'Tax',
         type: 'link',
-        icon: 'ti-crown',
+        icon: 'fas fa-file-invoice-dollar',
         routerLink:"/app/tax"
       },
       {
@@ -72,7 +72,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'C-F',
         name: 'Cash flow',
         type: 'link',
-        icon: 'ti-crown',
+        icon: 'fas fa-money-check-alt',
         routerLink:"/app/cash-flow"
       },
       {
@@ -80,7 +80,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'EMP',
         name: 'Employees',
         type: 'link',
-        icon: 'ti-crown',
+        icon: 'fas fa-user-friends',
         routerLink:"/app/employees"
       },
       {
@@ -88,7 +88,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'C-M',
         name: 'Customers management',
         type: 'link',
-        icon: 'ti-crown',
+        icon: 'fas fa-user-tie',
         routerLink:"/app/customer-management"
       },
     ],
@@ -101,7 +101,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'E-T',
         name: 'Transactions',
         type: 'link',
-        icon: 'ti-receipt',
+        icon: 'fas fa-donate',
         routerLink:'/app/expenses/transactions'
       },
       {
@@ -109,7 +109,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'P-S',
         name: 'Products/Services',
         type: 'link',
-        icon: 'ti-receipt',
+        icon: 'fas fa-box',
         routerLink:'/app/expenses/products-services'
       },
       {
@@ -117,7 +117,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'S',
         name: 'Suppliers',
         type: 'link',
-        icon: 'ti-receipt',
+        icon: 'fas fa-users',
         routerLink:'/app/expenses/suppliers'
       }
     ]
@@ -130,7 +130,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'E-T',
         name: 'Invoices',
         type: 'link',
-        icon: 'ti-receipt',
+        icon: 'fas fa-file-invoice-dollar',
         routerLink:'/app/sales/invoices'
       },
       {
@@ -138,7 +138,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'P-S',
         name: 'Products/Services',
         type: 'link',
-        icon: 'ti-receipt',
+        icon: 'fas fa-box',
         routerLink:'/app/sales/products-services'
       },
       {
@@ -146,7 +146,7 @@ const MENUITEMS:Menu[] = [
         short_label: 'Cust',
         name: 'Customers',
         type: 'link',
-        icon: 'ti-receipt',
+        icon: 'fas fa-user-tie',
         routerLink:'/app/sales/customers'
       }
     ]

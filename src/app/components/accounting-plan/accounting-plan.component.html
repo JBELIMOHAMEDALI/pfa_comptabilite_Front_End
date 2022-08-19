@@ -3,7 +3,7 @@
     <div class="row align-items-end">
       <div class="col-lg-8">
         <div class="page-header-title">
-          <span><i class="icofont icofont-home" style="background-color: #000080"></i></span>
+          <span><i class="fas fa-receipt" style="background-color: #000080"></i></span>
           <div class="d-inline">
             <span class="d-block text-primary">
               <h4>Accounting Plan</h4>
@@ -41,51 +41,51 @@
               </div>
               <div class="container">
                 <div class="row">
-                  <div  class="col-sm-4 mb-5 mr-2">
+                  <div class="col-sm-4 mb-5 mr-2">
                     <select class="form-select" value="-1" (change)="changeSelectedFile($event.target.value)">
-                      <option value="-1"  disabled>{{this.sourceFiles.length===0?'Import files ':'Select a file'}}</option>
+                      <option value="-1" disabled>{{this.sourceFiles.length===0?'Import files ':'Select a file'}}
+                      </option>
                       <option *ngFor="let file of this.sourceFiles;let i=index" [value]="file.upload+';'+file.id">
                         {{file.source}}
                       </option>
                     </select>
                   </div>
-                  <div class="col-sm-1 mb-5 mr-2">
-                    <button class="btn"
-                      (click)="OpenModal('NEW ACCOUNTING PLAN')">
-                      <i class="fa fa-plus"></i>
-                      Accounting plan
-                    </button>
-                  </div>
-                  <div class="col-sm-1 mb-5 mr-2 inputWrapper" style="height: 60px; width: 105px;">
+
+                  <div class="col-sm-1 mb-5 inputWrapper" style="height: 60px; width: 105px;">
                     <button class="btn">
                       <input type="file"
                         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
                         (change)="changeFile($event)" name="file1" class="fileInput" />
-                      <i class="fa fa-upload"></i>
+                      <i class="fas fa-file-import"></i>
                       Import
                     </button>
                   </div>
+                  <div class="col-sm-1 mb-5 mr-2">
+                    <button class="btn" (click)="exportFile()">
+                      <i class="fas fa-file-export"></i>
+                      Export
+                    </button>
+                  </div>
 
-                    <div class="col-sm-1 mb-5 mr-2">
-                      <button class="btn" (click)="exportFile()">
-                        <i class="fa fa-download"></i>
-                        Export
-                      </button>
-                    </div>
-                    <div class="col-sm-1 mb-5 mr-2">
-                      <button class="btn" (click)="unlinkFile()">
-                        <i class="fa fa-trash-o"></i>
-                        Delete
-                      </button>
-                    </div>
+                  <div class="col-sm-1 mb-5 mr-2 ml-4">
+                    <button class="btn" (click)="OpenModal('NEW ACCOUNTING PLAN')">
+                      <i class="fas fa-file-signature"></i>
+                      New Plan
+                    </button>
+                  </div>
+                  <div class="col-sm-1 mb-5 mr-2 ml-5">
+                    <button class="btn" (click)="unlinkFile()">
+                      <i class="fas fa-trash"></i>
+                       Delete
+                    </button>
+                  </div>
 
-                    <div class="col-sm-1 mb-5 mr-2" *ngIf="this.sourceFiles.length>0" >
-                      <button class="btn"
-                        (click)="OpenModal('NEW ACCOUNTING PLAN ROW')">
-                        <i class="fa fa-plus"></i>
-                        New
-                      </button>
-                    </div>
+                  <div class="col-sm-1 mb-5 mr-2 ml-4" *ngIf="this.sourceFiles.length>0">
+                    <button class="btn" (click)="OpenModal('NEW ACCOUNTING PLAN ROW')">
+                      <i class="fas fa-plus-square"></i>
+                    New row
+                    </button>
+                  </div>
                 </div>
               </div>
 
