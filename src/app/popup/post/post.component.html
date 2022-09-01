@@ -287,6 +287,83 @@
     </form>
   </ng-container>
 </div>
+
+<ng-container *ngIf="this.type==='CUSTOMER'">
+  <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" placeholder="Fullname" name="fullname" ngModel #fullname="ngModel"
+        required />
+    </div>
+    <div *ngIf="fullname.invalid && fullname.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter fullname !</span>
+    </div>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="email" class="form-control" placeholder="Email" name="email" ngModel #email="ngModel" required />
+    </div>
+    <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter email !</span>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="tel" class="form-control" placeholder="Phone" name="phone" ngModel #phone="ngModel" required />
+    </div>
+    <div *ngIf="phone.invalid && phone.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter phone !</span>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" placeholder="Address" name="address" ngModel #address="ngModel"
+        required />
+    </div>
+    <div *ngIf="address.invalid && address.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter address !</span>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" placeholder="company name" name="company_name" ngModel #company_name="ngModel"
+        required />
+    </div>
+    <div *ngIf="company_name.invalid && company_name.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter company name !</span>
+    </div>
+    
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-brand-myspace"></i></label></span>
+      <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
+        <select ngModel='-1' #payment_method="ngModel" name="payment_method" class="form-control" required>
+          <option value="-1" disabled selected>Select your payment method</option>
+          <option value="credit_cards">Credit cards</option>
+          <option value="bank_check">Bank check</option>      
+           <option value="cash_payment">Cash payment</option>
+        </select>
+    </div> 
+
+    <div class="modal-footer">
+      <input value="Confirm" [disabled]="fadd.invalid" type="submit"
+        class="btn btn-outline-primary" />
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+        Cancel
+      </button>
+    </div>
+  </form>
+</ng-container>
+
+
+
+
+
+
 </ng-container>
 
 <!-- update -->

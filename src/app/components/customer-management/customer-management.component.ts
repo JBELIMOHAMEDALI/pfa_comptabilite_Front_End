@@ -39,7 +39,7 @@ export class CustomerManagementComponent implements OnInit {
 
   getCustomers() {
     const offset = (this.page - 1) * this.pageSize;
-    this.backendService.get(GET_USER_CUSTOMERS_END_POINT,this.pageSize,offset).subscribe(
+    this.backendService.get(`${GET_USER_CUSTOMERS_END_POINT}/${this.id_company}`,this.pageSize,offset).subscribe(
       new Observer().OBSERVER_GET((response) => {
         this.customersList = response.rows;
         this.collectionSize=response.totalItems;

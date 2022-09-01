@@ -45,56 +45,49 @@
                                                     Full name
                                                 </th>
                                                 <th scope="col">
-                                                    Salary
+                                                    email
                                                 </th>
                                                 <th scope="col">
-                                                    Hire date
+                                                    phone                                                </th>
+                                                <th scope="col">
+                                                    address
                                                 </th>
                                                 <th scope="col">
-                                                    Full name
+                                                    company name
                                                 </th>
                                                 <th scope="col">
-                                                    Salary
+                                                    payment method
                                                 </th>
-                                                <th scope="col">
-                                                    Hire date
-                                                </th>
-                                                <th scope="col">
-                                                    Hire date
-                                                </th>
+                                               <!--   -->
                                                 <th scope="col">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody *ngFor="let customer of this.customersList|slice">
+                                        <tbody *ngFor="let item of this.customersList|slice">
                                             <tr style="text-align: center">
                                                 <td scope="row">{{
-                                                    customer.fullname
+                                                    item.fullname
                                                     }} </td>
                                                 <td scope="row"> {{
-                                                    customer.salary
+                                                    item.email
                                                     }} </td>
                                                 <td scope="row"> {{
-                                                    customer.hiredate|date
+                                                    item.phone
                                                     }} </td>
                                                 <td scope="row"> {{
-                                                    customer.hiredate|date
+                                                    item.address
                                                     }} </td>
-                                                <td scope="row"> {{
-                                                    customer.hiredate|date
-                                                    }} </td>
-                                                <td scope="row"> {{
-                                                    customer.hiredate|date
-                                                    }} </td>
-                                                <td scope="row"> {{
-                                                    customer.hiredate|date
-                                                    }} </td>
+                                                    <td scope="row"> {{
+                                                        item.company_name
+                                                        }} </td>
+                                                        <td scope="row"> {{
+                                                            item.payment_method
+                                                            }} </td>
                                                 <td scope="row">
-                                                    <i (click)="OpenModal('UPDATE CUSTOMER',customer)"
+                                                    <i (click)="OpenModal('UPDATE customer',item)"
                                                         class="fas fa-edit"></i>
-                                                    <i (click)="deleteCustomer(customer.id_customer)"
+                                                    <i (click)="deleteCustomer(item.id)"
                                                         class="fa fa-trash-o ml-2"></i>
-                                                    <i (click)="OpenDetails('CUSTOMER DETAILS',customer)"
-                                                        class="fa fa-eye ml-2"></i>
+
                                                 </td>
                                             </tr>
                                         </tbody>

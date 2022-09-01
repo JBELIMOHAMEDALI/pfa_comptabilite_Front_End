@@ -89,6 +89,7 @@ export class PostComponent implements OnInit {
         endpoint = POST_USER_CUSTOMERS_END_POINT;
         payload = { ...payload, id_company: this.payload.id_company };
         break;
+        
     }
 
     this.backendService

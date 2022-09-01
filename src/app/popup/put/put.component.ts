@@ -5,6 +5,7 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import {
   PUT_USER_ACCOUNTING_PLAN_ROW_END_POINT,
   PUT_USER_COMPANIES_END_POINT,
+  PUT_USER_CUSTOMERS_END_POINT,
   PUT_USER_EMPLOYEES_END_POINT,
   PUT_USER_TAXES_END_POINT,
 } from "../../services/endpoints";
@@ -38,7 +39,7 @@ export class PutComponent implements OnInit {
     this.birthdateinputype = "text";
     this.hiredateinputype = "text";
   }
-  ngOnInit() {
+  ngOnInit() {console.log(JSON.stringify(this.payload)+"**************");
   }
 
   onSubmit(form: NgForm) {
@@ -60,6 +61,10 @@ export class PutComponent implements OnInit {
       case "TAX":
         endpoint = PUT_USER_TAXES_END_POINT;
         payload = { ...payload, id_tax: this.payload.id_tax };
+        break;
+      case "CUSTOMER":
+        endpoint = PUT_USER_CUSTOMERS_END_POINT;
+        payload = { ...payload,id:this.payload.id};
         break;
     }
     this.backendService
