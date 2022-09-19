@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+// import { DetailsComponent } from '../../popup/details/details.component';
+import { DetailsComponent } from '../../../popup/details/details.component';
 import  swal from 'sweetalert';
 import { PRODUCTS_POPUP_TYPE, SERVICES_POPUP_TYPE } from '../../../../app/popup/popup-type';
 import { PostComponent } from '../../../../app/popup/post/post.component';
 import { PutComponent } from '../../../../app/popup/put/put.component';
 import { BackendService } from '../../../../app/services/backend.service';
-import { GET_USER_PRODUCTS_END_POINT, GET_USER_SERVICES_END_POINT } from '../../../../app/services/endpoints';
+import { DELETE_USER_CUSTOMERS_END_POINT, DELETE_USER_PRODUCTS_END_POINT, GET_USER_PRODUCTS_END_POINT, GET_USER_SERVICES_END_POINT } from '../../../../app/services/endpoints';
 import Observer from '../../../../app/services/observer';
 import { SharedService } from '../../../../app/services/shared.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-prodserv',
@@ -27,6 +31,7 @@ export class ProdservComponent implements OnInit {
   constructor(
     private backendService: BackendService,
     private modalService: NgbModal,
+    private router: Router,
     private sharedService: SharedService
   ) { }
 
@@ -79,29 +84,16 @@ export class ProdservComponent implements OnInit {
   }
   OpenModal(title: string, obj?) {
 if(this.id_company){
-    if(this.etat==="1"){
+    
 //produt
       const modalRef = this.modalService.open(
         title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
         { size: "lg", backdrop: "static" }
       );
       modalRef.componentInstance.title = title;
-      modalRef.componentInstance.type = PRODUCTS_POPUP_TYPE;
-
+      modalRef.componentInstance.type = this.etat == "1" ?PRODUCTS_POPUP_TYPE:SERVICES_POPUP_TYPE;
       modalRef.componentInstance.payload = obj ? { ...obj }:{id_company:this.id_company};
-    }
-    if(this.etat==="2"){
-     //service
 
-      const modalRef = this.modalService.open(
-        title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
-        { size: "lg", backdrop: "static" }
-      );
-      modalRef.componentInstance.title = title;
-      modalRef.componentInstance.type = SERVICES_POPUP_TYPE;
-
-      modalRef.componentInstance.payload = obj ? { ...obj }:{id_company:this.id_company};
-    }
   } else {
     return swal("Failure!", "No company selected !", "info");
   }
@@ -109,6 +101,35 @@ if(this.id_company){
   }
 // SERVICES PRODUCTS
   deleteCustomer(id){
+    swal({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      closeOnEsc: true,
+      closeOnClickOutside: true,
+      buttons: ["cancel", "confirm"],
+    }).then((result) => {
+      if (result) {
+        this.backendService
+          .delete(`${DELETE_USER_PRODUCTS_END_POINT}/${id}`)
+          .subscribe(
+            new Observer(
+              this.router,
+              null,
+              true,
+              true,
+              this.sharedService,
+              null
+            ).OBSERVER_DELETE()
+          );
+      }
+    });
 
+  }
+  OpenDetails(title:string,payload:any){
+    const modalRef = this.modalService.open(DetailsComponent);
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.type = PRODUCTS_POPUP_TYPE;
+    modalRef.componentInstance.payload ={ ...payload };
   }
 }

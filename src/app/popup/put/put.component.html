@@ -330,6 +330,7 @@
     </div>
   </form>
 </ng-container>
+
 <ng-container *ngIf="this.type==='SUPPLIERS'">
   <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
     <div class="input-group">
@@ -358,6 +359,107 @@
     </div>
     <div *ngIf="adr_suppliers.invalid && adr_suppliers.touched" class="alert alert-danger p-2" role="alert">
       <span>Enter Address !</span>
+    </div>
+    <div class="modal-footer">
+      <input value="Confirm" [disabled]="fedit.invalid" type="submit"
+        class="btn btn-outline-primary" />
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+        Cancel
+      </button>
+    </div>
+  </form>
+</ng-container>
+
+<ng-container *ngIf="this.type==='PRODUCTS'">
+  <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-credit-card"></i></label></span>
+            <select class="form-select" value="-1"  name="id_accounting_plan" ngModel #id_accounting_plan="ngModel"
+            required>
+              <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
+                {{file.account_number}}
+              </option>
+            </select>
+    </div> 
+    <div *ngIf="id_accounting_plan.invalid && id_accounting_plan.touched" class="alert alert-danger p-2" role="alert">
+      <span>chos account number !</span>
+    </div>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-brand-myspace"></i></label></span>
+      <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
+        <select class="form-select" value="-1"  name="id_suppliers" ngModel #id_suppliers="ngModel" required>
+          <option *ngFor="let file of this.customerList;" value="{{file.id}}">
+            {{file.fullname}}
+          </option>
+        </select>
+    </div> 
+    <div *ngIf="id_suppliers.invalid && id_suppliers.touched" class="alert alert-danger p-2" role="alert">
+      <span>chos suppliers !</span>
+    </div>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel"
+        required />
+    </div>
+    <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter Name !</span>
+    </div>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" placeholder="Ref" name="ref" ngModel #ref="ngModel" required />
+    </div>
+    <div *ngIf="ref.invalid && ref.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter Ref !</span>
+    </div>
+  
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" placeholder="Quantity" name="quantity" ngModel #quantity="ngModel"
+        required />
+    </div>
+    <div *ngIf="quantity.invalid && quantity.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter Quantity !</span>
+    </div>
+    <!--  -->
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+        class="icofont icofont-file-text"></i></label></span>
+
+    <textarea class="form-control" id="exampleFormControlTextarea1"  placeholder="Description" rows="2" name="description" ngModel #description="ngModel" required></textarea>
+    
+  </div>
+  <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+    <span>Enter Description !</span>
+  </div>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="tel" class="form-control" placeholder="Sale price" name="sale_price" ngModel #sale_price="ngModel" required />
+    </div>
+    <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter sale price !</span>
+    </div>
+     <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" required />
+    </div>
+    <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter Tax</span>
+    </div>
+  
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" placeholder="Cost" name="cost" ngModel #cost="ngModel" required />
+    </div>
+    <div *ngIf="cost.invalid && cost.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter cost   !</span>
     </div>
     <div class="modal-footer">
       <input value="Confirm" [disabled]="fedit.invalid" type="submit"
