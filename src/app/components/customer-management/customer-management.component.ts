@@ -35,7 +35,7 @@ export class CustomerManagementComponent implements OnInit {
     const id = this.sharedService.getSelectedCompany();
       this.id_company = id;
       this.getCustomers();
-  }
+  } 
 
   getCustomers() {
     const offset = (this.page - 1) * this.pageSize;

@@ -31,6 +31,7 @@ export const PUT_USER_EMPLOYEES_END_POINT: string = `${environment.apiUrl}/emplo
 //ACCOUNTING PLAN ENDPOINTS
 export const GET_USER_ACCOUNTING_PLAN_SOURCES_END_POINT: string = `${environment.apiUrl}/accounting/plan/get/sources`;
 export const GET_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/get`;
+export const GET_USER_ACCOUNTING_LIST_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/list_acc_selectop`;
 export const IMPORT_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/import`;
 export const EXPORT_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/export`;
 export const UNLINK_USER_ACCOUNTING_PLAN_END_POINT: string = `${environment.apiUrl}/accounting/plan/unlink`;
@@ -51,8 +52,18 @@ export const GET_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/custo
 export const DELETE_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/delete`;
 export const POST_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/add`;
 export const PUT_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/update`;
+export const GET_USER_CUSTOMERS_LIST_END_POINT: string = `${environment.apiUrl}/customer/list_customer_select_option`;
 //PRODUCTS ENDPOINTS
 export const GET_USER_PRODUCTS_END_POINT: string = `${environment.apiUrl}/products/get`;
+export const ADD_USER_PRODUCTS_END_POINT: string = `${environment.apiUrl}/products/add`;
 
 //SERVICES ENDPOINTS
 export const GET_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/services/get`;
+
+
+// SUPPLIETS
+export const GET_SUPPLIETS_SERVICES_END_POINT: string = `${environment.apiUrl}/suppliers/get`;
+export const POST_SUPPLIETS_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/suppliers/add`;
+export const PUT_SUPPLIETS_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/suppliers/update`;
+export const DELETE_SUPPLIETS_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/suppliers/delete`;
+

@@ -164,8 +164,7 @@
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
                 class="icofont icofont-company"></i></label></span>
-          <input type="text" class="form-control" [(ngModel)]="this.payload.description" placeholder="Description"
-            name="description" ngModel #domain="ngModel" required />
+          <input type="text" class="form-control" [(ngModel)]="this.payload.description" placeholder="Description" name="description" ngModel #domain="ngModel" required />
         </div>
         <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
           <span>Enter description !</span>
@@ -322,7 +321,6 @@
            <option value="cash_payment">Cash payment</option>
         </select>
     </div> 
-
     <div class="modal-footer">
       <input value="Confirm" [disabled]="fedit.invalid" type="submit"
         class="btn btn-outline-primary" />
@@ -332,7 +330,44 @@
     </div>
   </form>
 </ng-container>
+<ng-container *ngIf="this.type==='SUPPLIERS'">
+  <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" [(ngModel)]="this.payload.nom_suppliers" placeholder="Nom suppliers" name="nom_suppliers" ngModel #nom_suppliers="ngModel"
+        required />
+    </div>
+    <div *ngIf="nom_suppliers.invalid && nom_suppliers.touched" class="alert alert-danger p-2" role="alert">
+      <span>Nom suppliers</span>
+    </div>
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
 
+      <input type="email" class="form-control" [(ngModel)]="this.payload.email_suppliers" placeholder="Email" name="email_suppliers" ngModel #email_suppliers="ngModel" required />
+    </div>
+    <div *ngIf="email_suppliers.invalid && email_suppliers.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter Email !</span>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-prepend"><label class="input-group-text"><i
+            class="icofont icofont-presentation"></i></label></span>
+      <input type="text" class="form-control" [(ngModel)]="this.payload.adr_suppliers" placeholder="Address" name="adr_suppliers" ngModel #adr_suppliers="ngModel" required />
+    </div>
+    <div *ngIf="adr_suppliers.invalid && adr_suppliers.touched" class="alert alert-danger p-2" role="alert">
+      <span>Enter Address !</span>
+    </div>
+    <div class="modal-footer">
+      <input value="Confirm" [disabled]="fedit.invalid" type="submit"
+        class="btn btn-outline-primary" />
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+        Cancel
+      </button>
+    </div>
+  </form>
+</ng-container>
 <!-- ****** -->
   </div>
 </ng-container>

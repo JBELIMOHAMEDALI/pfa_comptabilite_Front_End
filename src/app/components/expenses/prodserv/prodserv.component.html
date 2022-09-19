@@ -6,9 +6,9 @@
                     <span><i class="fas fa-user-tie" style="background-color: #000080"></i></span>
                     <div class="d-inline">
                         <span class="d-block text-primary">
-                            <h4>Customer Page</h4>
+                            <h4>Products and Services Page</h4>
                         </span>
-                        <span class="text-dark">Customer Page</span>
+                        <span class="text-dark">Products and Services Page</span>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
         <div class="col-lg-12">
             <div class="md-tabs">
             <ngb-tabset (tabChange)="changeEtat($event)">
-                <ngb-tab title="TOUTES LES OFFRES" [id]="0">
+            <ngb-tab title="Products " [id]="1">
                     <ng-template ngbTabContent>                 
            
                 
@@ -29,11 +29,11 @@
                     <div class="card">
                         <div class="col-sm-12">
                             <div class="card-header">
-                                <h5 class="card-header-text">Customer List</h5>
+                                <h5 class="card-header-text">Products List</h5>
                                 <div class="col-md-12 col-lg-3 offset-lg-10">
                                     <div class="pcoded-search">
                                         <div class="pcoded-search-box">
-                                            <button class="btn " (click)="OpenModal('NEW CUSTOMER')">
+                                            <button class="btn " (click)="OpenModal('NEW PRODUCTS')">
                                                 <i class="icofont icofont-ui-add"></i>
                                                 New
                                             </button>
@@ -47,51 +47,47 @@
                                         <thead>
                                             <tr style="text-align: center">
                                                 <th scope="col">
-                                                    Full name
+                                                    Product Name
                                                 </th>
                                                 <th scope="col">
-                                                    email
+                                                    Product Ref
                                                 </th>
                                                 <th scope="col">
-                                                    phone                                                </th>
+                                                    Product Quantity                                                </th>
                                                 <th scope="col">
-                                                    address
+                                                    Product Sale price
                                                 </th>
                                                 <th scope="col">
-                                                    company name
-                                                </th>
-                                                <th scope="col">
-                                                    payment method
+                                                     suppliers Name 
                                                 </th>
                                                <!--   -->
                                                 <th scope="col">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody *ngFor="let item of this.customersList|slice">
+                                        <tbody *ngFor="let item of this.productList|slice">
                                             <tr style="text-align: center">
                                                 <td scope="row">{{
-                                                    item.fullname
-                                                    }} </td>
-                                                <td scope="row"> {{
-                                                    item.email
-                                                    }} </td>
-                                                <td scope="row"> {{
-                                                    item.phone
-                                                    }} </td>
-                                                <td scope="row"> {{
-                                                    item.address
+                                                    item.name
+                                                }} </td>
+                                            <td scope="row"> {{
+                                                item.ref
+                                                }} </td>
+                                            <td scope="row"> {{
+                                                item.quantity
+                                                }} </td>
+                                            <td scope="row"> {{
+                                                item.sale_price
                                                     }} </td>
                                                     <td scope="row"> {{
-                                                        item.company_name
+                                                        item.nom_suppliers
                                                         }} </td>
-                                                        <td scope="row"> {{
-                                                            item.payment_method
-                                                            }} </td>
+                                                        
                                                 <td scope="row">
-                                                    <i (click)="OpenModal('UPDATE customer',item)"
+                                                    <i (click)="OpenModal('UPDATE PRODUCTS',item)"
                                                         class="fas fa-edit"></i>
                                                     <i (click)="deleteCustomer(item.id)"
                                                         class="fa fa-trash-o ml-2"></i>
+                                                    <i (click)="OpenDetails('EMPLOYEE DETAILS',employee)" class="fa fa-eye ml-2"></i>
 
                                                 </td>
                                             </tr>
@@ -116,7 +112,7 @@
                 </div>
                 </ng-template>
                 </ngb-tab>
-                <ngb-tab title="TOUTES LES OFFRES" [id]="1">
+                <ngb-tab title="Services" [id]="2">
                     <ng-template ngbTabContent>                 
            
                 
@@ -124,11 +120,11 @@
                     <div class="card">
                         <div class="col-sm-12">
                             <div class="card-header">
-                                <h5 class="card-header-text">Customer List</h5>
+                                <h5 class="card-header-text">Services List</h5>
                                 <div class="col-md-12 col-lg-3 offset-lg-10">
                                     <div class="pcoded-search">
                                         <div class="pcoded-search-box">
-                                            <button class="btn " (click)="OpenModal('NEW CUSTOMER')">
+                                            <button class="btn " (click)="OpenModal('NEW SERVICES')">
                                                 <i class="icofont icofont-ui-add"></i>
                                                 New
                                             </button>
@@ -183,7 +179,7 @@
                                                             item.payment_method
                                                             }} </td>
                                                 <td scope="row">
-                                                    <i (click)="OpenModal('UPDATE customer',item)"
+                                                    <i (click)="OpenModal('UPDATE SERVICES',item)"
                                                         class="fas fa-edit"></i>
                                                     <i (click)="deleteCustomer(item.id)"
                                                         class="fa fa-trash-o ml-2"></i>

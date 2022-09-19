@@ -15,3 +15,8 @@ export const TAX_POPUP_TYPE:string='TAX'
 
 //CUSTOMER POPUP TYPE
 export const CUSTOMER_POPUP_TYPE:string='CUSTOMER'
+
+export const SERVICES_POPUP_TYPE:string='SERVICES'
+export const PRODUCTS_POPUP_TYPE:string='PRODUCTS'
+// SUPPLIERS
+export const SUPPLIERS_POPUP_TYPE:string='SUPPLIERS'

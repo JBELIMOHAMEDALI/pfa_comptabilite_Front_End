@@ -3,6 +3,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import {
+  PUT_SUPPLIETS_CUSTOMERS_END_POINT,
   PUT_USER_ACCOUNTING_PLAN_ROW_END_POINT,
   PUT_USER_COMPANIES_END_POINT,
   PUT_USER_CUSTOMERS_END_POINT,
@@ -39,7 +40,9 @@ export class PutComponent implements OnInit {
     this.birthdateinputype = "text";
     this.hiredateinputype = "text";
   }
-  ngOnInit() {console.log(JSON.stringify(this.payload)+"**************");
+  ngOnInit() {
+    
+    console.log(JSON.stringify(this.payload)+"**************");
   }
 
   onSubmit(form: NgForm) {
@@ -64,6 +67,10 @@ export class PutComponent implements OnInit {
         break;
       case "CUSTOMER":
         endpoint = PUT_USER_CUSTOMERS_END_POINT;
+        payload = { ...payload,id:this.payload.id};
+        break;
+      case "SUPPLIERS":
+        endpoint = PUT_SUPPLIETS_CUSTOMERS_END_POINT;
         payload = { ...payload,id:this.payload.id};
         break;
     }
