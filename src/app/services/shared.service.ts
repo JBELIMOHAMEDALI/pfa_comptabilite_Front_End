@@ -46,18 +46,19 @@ export class SharedService {
   deleteItem(key: string) {
     localStorage.removeItem(key);
   }
-  getSelectedCompany() {
+  getSelectedCompany(cb) {
     const id = localStorage.getItem("companyNo");
     if (!id) {
       this.backendservice.get(GET_USER_SELECTED_COMPANY_END_POINT).subscribe(
         new Observer().OBSERVER_GET((response) => {
           if (!response.err && response.rows[0]) {
-            localStorage.setItem("comapnyNo", response.rows[0].id_company);
+            localStorage.setItem("companyNo", response.rows[0].id_company);
+            cb(response.rows[0].id_company)
           }
         })
       );
     } else {
-      return id;
+      cb(id);
     }
   }
 }

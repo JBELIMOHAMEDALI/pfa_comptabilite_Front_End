@@ -31,7 +31,6 @@ export class AccountingPlanComponent implements OnInit {
   id_company: string;
   upload: string;
   id_source: string;
-
   collectionSize: number = 0;
   page = 1;
   pageSize = 100;
@@ -46,13 +45,14 @@ export class AccountingPlanComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.sharedService.getSelectedCompany();
-    if (id) {
-      this.id_company = id;
-      this.getsources();
-    } else {
-      return swal("Failure!", "No company selected !", "info");
-    }
+    this.sharedService.getSelectedCompany((id)=>{
+      if (id) {
+        this.id_company = id;
+        this.getsources();
+      } else {
+        return swal("Failure!", "No company selected !", "info");
+      }
+    });
   }
 
   getsources() {

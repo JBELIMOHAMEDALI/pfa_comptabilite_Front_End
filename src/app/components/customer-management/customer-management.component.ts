@@ -32,10 +32,15 @@ export class CustomerManagementComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.sharedService.getSelectedCompany();
-      this.id_company = id;
-      this.getCustomers();
-  } 
+    this.sharedService.getSelectedCompany((id)=>{
+      if (id) {
+        this.id_company = id;
+        this.getCustomers();
+      } else {
+        return swal("Failure!", "No company selected !", "info");
+      }
+    });
+  }
 
   getCustomers() {
     const offset = (this.page - 1) * this.pageSize;
@@ -74,6 +79,10 @@ export class CustomerManagementComponent implements OnInit {
   }
 
   OpenModal(title: string, customer?) {
+
+    if(this.id_company){
+
+
     const modalRef = this.modalService.open(
       title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
       { size: "lg", backdrop: "static" }
@@ -82,6 +91,9 @@ export class CustomerManagementComponent implements OnInit {
     modalRef.componentInstance.type = CUSTOMER_POPUP_TYPE;
 
     modalRef.componentInstance.payload = customer ? { ...customer }:{id_company:this.id_company};
+  } else {
+    return swal("Failure!", "No company selected !", "info");
+  }
   }
 
   OpenDetails(title: string, payload:any) {

@@ -41,9 +41,7 @@ export class PutComponent implements OnInit {
     this.hiredateinputype = "text";
   }
   ngOnInit() {
-    
-    console.log(JSON.stringify(this.payload)+"**************");
-  }
+      }
 
   onSubmit(form: NgForm) {
     let endpoint: string = "";

@@ -35,13 +35,14 @@ export class EmployeesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.sharedService.getSelectedCompany();
-    if (id) {
-      this.id_company = id;
-      this.getEmployees();
-    } else {
-      return swal("Failure!", "No company selected !", "info");
-    }
+    this.sharedService.getSelectedCompany((id) => {
+      if (id) {
+        this.id_company = id;
+        this.getEmployees();
+      } else {
+        return swal("Failure!", "No company selected !", "info");
+      }
+    });
   }
 
   getEmployees() {
@@ -87,16 +88,20 @@ export class EmployeesComponent implements OnInit {
   }
 
   OpenModal(title: string, employee?) {
-    const modalRef = this.modalService.open(
-      title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
-      { size: "lg", backdrop: "static" }
-    );
-    modalRef.componentInstance.title = title;
-    modalRef.componentInstance.type = EMPLOYEE_POPUP_TYPE;
+    if (this.id_company) {
+      const modalRef = this.modalService.open(
+        title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
+        { size: "lg", backdrop: "static" }
+      );
+      modalRef.componentInstance.title = title;
+      modalRef.componentInstance.type = EMPLOYEE_POPUP_TYPE;
 
-    modalRef.componentInstance.payload = employee
-      ? { ...employee, id_company: this.id_company }
-      : { id_company: this.id_company };
+      modalRef.componentInstance.payload = employee
+        ? { ...employee, id_company: this.id_company }
+        : { id_company: this.id_company };
+    } else {
+      return swal("Failure!", "No company selected !", "info");
+    }
   }
 
   OpenDetails(title: string, payload: any) {

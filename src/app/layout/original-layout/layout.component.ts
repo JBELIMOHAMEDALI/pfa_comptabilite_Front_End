@@ -160,8 +160,8 @@ export class LayoutComponent implements OnInit {
     this.navBarTheme = "themelight1";
     this.activeItemTheme = "theme4";
 
-    this.isCollapsedMobile = "yes-block";
-    this.isCollapsedSideBar = "yes-block";
+    this.isCollapsedMobile = "no-block";
+    this.isCollapsedSideBar = "no-block";
 
     this.chatToggle = "out";
     this.chatToggleInverse = "in";
@@ -218,10 +218,11 @@ export class LayoutComponent implements OnInit {
           const company: any = this.companyList.find(
             (company: any) => company.selected == 1
           );
-          this.sharedService.setItem(
-            "companyNo",
-            company.id_company.toString()
-          );
+          if (company)
+            this.sharedService.setItem(
+              "companyNo",
+              company.id_company.toString()
+            );
         }
       })
     );
@@ -285,7 +286,7 @@ export class LayoutComponent implements OnInit {
 
   onMobileMenu() {
     this.isCollapsedMobile =
-      this.isCollapsedMobile === "yes-block" ? "no-block" : "yes-block";
+      this.isCollapsedMobile === "no-block" ? "yes-block" : "no-block";
   }
 
   toggleChat() {
@@ -323,7 +324,7 @@ export class LayoutComponent implements OnInit {
 
   toggleOpenedSidebar() {
     this.isCollapsedSideBar =
-      this.isCollapsedSideBar === "yes-block" ? "no-block" : "yes-block";
+      this.isCollapsedSideBar === "no-block" ? "yes-block" : "no-block";
   }
 
   toggleRightbar() {

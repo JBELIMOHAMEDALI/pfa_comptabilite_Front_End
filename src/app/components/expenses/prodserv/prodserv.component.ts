@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import  swal from 'sweetalert';
 import { PRODUCTS_POPUP_TYPE, SERVICES_POPUP_TYPE } from '../../../../app/popup/popup-type';
 import { PostComponent } from '../../../../app/popup/post/post.component';
 import { PutComponent } from '../../../../app/popup/put/put.component';
@@ -26,15 +26,19 @@ export class ProdservComponent implements OnInit {
 
   constructor(
     private backendService: BackendService,
-    private router: Router,
     private modalService: NgbModal,
     private sharedService: SharedService
   ) { }
 
   ngOnInit() {
-    const id = this.sharedService.getSelectedCompany();
-    this.id_company = id;
-    this.getproduit();
+    this.sharedService.getSelectedCompany((id)=>{
+      if (id) {
+        this.id_company = id;
+        this.getproduit();
+      } else {
+        return swal("Failure!", "No company selected !", "info");
+      }
+    });
   }
 
   getproduit() {
@@ -43,11 +47,10 @@ export class ProdservComponent implements OnInit {
       new Observer().OBSERVER_GET((response) => {
         this.productList = response.rows;
         this.collectionSize=response.totalItems;
-        console.log(JSON.stringify(this.productList))
       })
     );
   }
-  getservice() {
+  getservices() {
     const offset = (this.page - 1) * this.pageSize;
     this.backendService.get(`${GET_USER_SERVICES_END_POINT}/${this.id_company}`,this.pageSize,offset).subscribe(
       new Observer().OBSERVER_GET((response) => {
@@ -75,7 +78,7 @@ export class ProdservComponent implements OnInit {
     // this.getAllOffreStages(this.year,etat);
   }
   OpenModal(title: string, obj?) {
-   
+if(this.id_company){
     if(this.etat==="1"){
 //produt
       const modalRef = this.modalService.open(
@@ -84,7 +87,7 @@ export class ProdservComponent implements OnInit {
       );
       modalRef.componentInstance.title = title;
       modalRef.componentInstance.type = PRODUCTS_POPUP_TYPE;
-  
+
       modalRef.componentInstance.payload = obj ? { ...obj }:{id_company:this.id_company};
     }
     if(this.etat==="2"){
@@ -96,9 +99,12 @@ export class ProdservComponent implements OnInit {
       );
       modalRef.componentInstance.title = title;
       modalRef.componentInstance.type = SERVICES_POPUP_TYPE;
-  
+
       modalRef.componentInstance.payload = obj ? { ...obj }:{id_company:this.id_company};
     }
+  } else {
+    return swal("Failure!", "No company selected !", "info");
+  }
 
   }
 // SERVICES PRODUCTS

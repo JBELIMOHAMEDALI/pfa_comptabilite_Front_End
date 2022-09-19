@@ -33,13 +33,14 @@ export class TaxComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.sharedService.getSelectedCompany();
-    if (id) {
-      this.id_company = id;
-      this.getTaxes();
-    } else {
-      return swal("Failure!", "No company selected !", "info");
-    }
+    this.sharedService.getSelectedCompany((id)=>{
+      if (id) {
+        this.id_company = id;
+        this.getTaxes();
+      } else {
+        return swal("Failure!", "No company selected !", "info");
+      }
+    });
   }
 
   getTaxes() {
@@ -80,6 +81,7 @@ export class TaxComponent implements OnInit {
   }
 
   OpenModal(title: string, tax?) {
+    if(this.id_company){
     const modalRef = this.modalService.open(
       title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
       { size: "lg", backdrop: "static" }
@@ -88,6 +90,9 @@ export class TaxComponent implements OnInit {
     modalRef.componentInstance.type = TAX_POPUP_TYPE;
 
     modalRef.componentInstance.payload = tax ? { ...tax }:{id_company:this.id_company};
+  } else {
+    return swal("Failure!", "No company selected !", "info");
+  }
   }
 
   OpenDetails(title: string, payload:any) {

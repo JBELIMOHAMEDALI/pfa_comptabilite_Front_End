@@ -53,6 +53,8 @@ export const DELETE_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/cu
 export const POST_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/add`;
 export const PUT_USER_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/customer/update`;
 export const GET_USER_CUSTOMERS_LIST_END_POINT: string = `${environment.apiUrl}/customer/list_customer_select_option`;
+
+
 //PRODUCTS ENDPOINTS
 export const GET_USER_PRODUCTS_END_POINT: string = `${environment.apiUrl}/products/get`;
 export const ADD_USER_PRODUCTS_END_POINT: string = `${environment.apiUrl}/products/add`;
@@ -67,3 +69,5 @@ export const POST_SUPPLIETS_CUSTOMERS_END_POINT: string = `${environment.apiUrl}
 export const PUT_SUPPLIETS_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/suppliers/update`;
 export const DELETE_SUPPLIETS_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/suppliers/delete`;
 
+//INVOICES ENDPOINTS
+export const GET_USER_INVOICES_END_POINT: string = `${environment.apiUrl}/invoices/get`;

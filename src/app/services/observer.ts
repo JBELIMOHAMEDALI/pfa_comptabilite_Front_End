@@ -25,12 +25,10 @@ export default class Observer {
         // cb(response);
       },
       error: (err: HttpErrorResponse) => {
-        // if (this.swal_display)
         swal("Failure!", err.error.message, "warning");
       },
 
       // complete: () => {
-      // console.log('COMPLETE !');
 
       // if (this.activeModal) this.activeModal.dismiss();
       // },
@@ -116,7 +114,6 @@ export default class Observer {
       },
 
       // complete: () => {
-      // console.log('COMPLETE !');
 
       // if (this.activeModal) this.activeModal.dismiss();
       // },

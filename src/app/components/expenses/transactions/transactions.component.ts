@@ -15,18 +15,7 @@ export class TransactionsComponent implements OnInit {
 
   ngOnInit() {
   }
-  OpenModal(){}
-  deleteCustomer(){}
-  handlePageSizeChange(event: any): void {
-    // this.pageSize = event.target.value;
-    // this.page = 1;
-    // this.getproduit();
-  }
 
-  handlePageChange(currentPage: number) {
-    // this.page = currentPage;
-    // this.getproduit();
-  }
 
 
 }

@@ -61,7 +61,6 @@ if(this.type == "SERVICES"||this.type == "PRODUCTS" )
     this.backendService.get(`${GET_USER_CUSTOMERS_LIST_END_POINT}/${localStorage.getItem("companyNo")}`).subscribe(
       new Observer().OBSERVER_GET((response) => {
         this.customerList = response.rows;
-        // console.log(JSON.stringify(this.customerList))
       })
     );
   }
@@ -69,7 +68,6 @@ if(this.type == "SERVICES"||this.type == "PRODUCTS" )
     this.backendService.get(`${GET_USER_ACCOUNTING_LIST_PLAN_END_POINT}/${localStorage.getItem("companyNo")}`).subscribe(
       new Observer().OBSERVER_GET((response) => {
         this.AccountinList = response.rows;
-        // console.log(JSON.stringify(this.AccountinList))
       })
     );
   }
@@ -124,20 +122,19 @@ if(this.type == "SERVICES"||this.type == "PRODUCTS" )
         payload = { ...payload, id_company: this.payload.id_company };
         break;
       case "PRODUCTS":
-        // payload.cost payload.id_accounting_plan payload.id_suppliers payload.name payload.quantity payload.ref 
+        // payload.cost payload.id_accounting_plan payload.id_suppliers payload.name payload.quantity payload.ref
         // payload.sale_price payload.tax payload.description
         const obj_post={
           name:payload.name,ref:payload.ref,quantity:payload.quantity,description:payload.description,sale_price:payload.sale_price,tax:payload.tax,cost:payload.cost,id_company:localStorage.getItem("companyNo"),id_suppliers:payload.id_suppliers,id_accounting_plan:payload.id_accounting_plan}
-        console.log(JSON.stringify(obj_post));
-        
+
        endpoint = ADD_USER_PRODUCTS_END_POINT;
        payload = obj_post;
-        break;  
+        break;
       case "SUPPLIERS":
         endpoint = POST_SUPPLIETS_CUSTOMERS_END_POINT;
         payload = { ...payload, id_company: this.payload.id_company };
-        break; 
-        
+        break;
+
     }
 
     this.backendService
