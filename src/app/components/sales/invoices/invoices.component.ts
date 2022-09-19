@@ -20,7 +20,6 @@ export class InvoicesComponent implements OnInit {
   id_company: string;
   constructor(
     private backendService: BackendService,
-    private modalService: NgbModal,
     private sharedService: SharedService
   ) {}
 

@@ -71,3 +71,6 @@ export const DELETE_SUPPLIETS_CUSTOMERS_END_POINT: string = `${environment.apiUr
 
 //INVOICES ENDPOINTS
 export const GET_USER_INVOICES_END_POINT: string = `${environment.apiUrl}/invoices/get`;
+
+//TRANSACTIONS ENDPOINTS
+export const GET_USER_TRANSACTIONS_END_POINT: string = `${environment.apiUrl}/transactions/get`;
