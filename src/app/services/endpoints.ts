@@ -58,6 +58,8 @@ export const GET_USER_CUSTOMERS_LIST_END_POINT: string = `${environment.apiUrl}/
 //PRODUCTS ENDPOINTS
 export const GET_USER_PRODUCTS_END_POINT: string = `${environment.apiUrl}/products/get`;
 export const ADD_USER_PRODUCTS_END_POINT: string = `${environment.apiUrl}/products/add`;
+export const DELETE_USER_PRODUCTS_END_POINT: string = `${environment.apiUrl}/products/delete`;
+
 
 //SERVICES ENDPOINTS
 export const GET_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/services/get`;
