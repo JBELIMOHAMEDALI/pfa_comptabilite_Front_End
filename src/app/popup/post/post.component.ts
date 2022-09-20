@@ -48,28 +48,37 @@ export class PostComponent implements OnInit {
     this.startperiodinputype = "text";
   }
   ngOnInit() {
-   // alert(localStorage.getItem("companyNo"))
-if(this.type == "SERVICES"||this.type == "PRODUCTS" )
-    {
+    // alert(localStorage.getItem("companyNo"))
+    if (this.type == "SERVICES" || this.type == "PRODUCTS") {
       this.getListcustomer();
       this.getListaccutn();
     }
-
-
   }
-  getListcustomer(){
-    this.backendService.get(`${GET_USER_CUSTOMERS_LIST_END_POINT}/${localStorage.getItem("companyNo")}`).subscribe(
-      new Observer().OBSERVER_GET((response) => {
-        this.customerList = response.rows;
-      })
-    );
+  getListcustomer() {
+    this.backendService
+      .get(
+        `${GET_USER_CUSTOMERS_LIST_END_POINT}/${localStorage.getItem(
+          "companyNo"
+        )}`
+      )
+      .subscribe(
+        new Observer().OBSERVER_GET((response) => {
+          this.customerList = response.rows;
+        })
+      );
   }
-  getListaccutn(){
-    this.backendService.get(`${GET_USER_ACCOUNTING_LIST_PLAN_END_POINT}/${localStorage.getItem("companyNo")}`).subscribe(
-      new Observer().OBSERVER_GET((response) => {
-        this.AccountinList = response.rows;
-      })
-    );
+  getListaccutn() {
+    this.backendService
+      .get(
+        `${GET_USER_ACCOUNTING_LIST_PLAN_END_POINT}/${localStorage.getItem(
+          "companyNo"
+        )}`
+      )
+      .subscribe(
+        new Observer().OBSERVER_GET((response) => {
+          this.AccountinList = response.rows;
+        })
+      );
   }
 
   // getCompanies() {
@@ -102,7 +111,7 @@ if(this.type == "SERVICES"||this.type == "PRODUCTS" )
           id_company: this.payload.id_company,
         };
         break;
-        case "ACCOUNTING_PLAN":
+      case "ACCOUNTING_PLAN":
         endpoint = POST_USER_ACCOUNTING_PLAN_END_POINT;
         payload = { ...payload, id_company: this.payload.id_company };
 
@@ -124,17 +133,26 @@ if(this.type == "SERVICES"||this.type == "PRODUCTS" )
       case "PRODUCTS":
         // payload.cost payload.id_accounting_plan payload.id_suppliers payload.name payload.quantity payload.ref
         // payload.sale_price payload.tax payload.description
-        const obj_post={
-          name:payload.name,ref:payload.ref,quantity:payload.quantity,description:payload.description,sale_price:payload.sale_price,tax:payload.tax,cost:payload.cost,id_company:localStorage.getItem("companyNo"),id_suppliers:payload.id_suppliers,id_accounting_plan:payload.id_accounting_plan}
+        const obj_post = {
+          name: payload.name,
+          ref: payload.ref,
+          quantity: payload.quantity,
+          description: payload.description,
+          sale_price: payload.sale_price,
+          tax: payload.tax,
+          cost: payload.cost,
+          id_company: localStorage.getItem("companyNo"),
+          id_suppliers: payload.id_suppliers,
+          id_accounting_plan: payload.id_accounting_plan,
+        };
 
-       endpoint = ADD_USER_PRODUCTS_END_POINT;
-       payload = obj_post;
+        endpoint = ADD_USER_PRODUCTS_END_POINT;
+        payload = obj_post;
         break;
       case "SUPPLIERS":
         endpoint = POST_SUPPLIETS_CUSTOMERS_END_POINT;
         payload = { ...payload, id_company: this.payload.id_company };
         break;
-
     }
 
     this.backendService

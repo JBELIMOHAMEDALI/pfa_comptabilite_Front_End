@@ -13,6 +13,7 @@ import {
   GET_USER_COMPANIES_END_POINT,
   SET_SELECTED_USER_COMPANIES_END_POINT,
   USER_INFO_END_POINT,
+  USER_LOGOUT_END_POINT,
 } from "../../services/endpoints";
 import Observer from "../../services/observer";
 import { Router } from "@angular/router";
@@ -389,6 +390,9 @@ export class LayoutComponent implements OnInit {
   }
 
   logout() {
-    this.tokenService.removeToken();
+    this.tokenService.removeToken('accessToken');
+    this.tokenService.removeToken('refreshToken');
+    this.backendService.delete(USER_LOGOUT_END_POINT)
+    this.router.navigate(['/signin'])
   }
 }

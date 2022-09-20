@@ -6,14 +6,23 @@ import { Injectable } from '@angular/core';
 export class TokenService {
 
   constructor() { }
-  getToken(){
-    return localStorage.getItem('accessToken');
+  getToken(key:string){
+    return localStorage.getItem(key);
   }
-  saveToken(token:string){
-    localStorage.setItem('accessToken',token);
+  saveToken(key:string,token:string){
+    localStorage.setItem(key,token);
   }
-  removeToken(){
-    localStorage.removeItem('accessToken')
+  removeToken(key:string){
+    localStorage.removeItem(key)
+  }
+  verifLoggedIn(){
+    const accessToken=localStorage.getItem('accessToken');
+    const refreshToken=localStorage.getItem('refreshToken');
+    if(!accessToken||!refreshToken){
+      return false
+    }else{
+      return true
+    }
   }
 
 }

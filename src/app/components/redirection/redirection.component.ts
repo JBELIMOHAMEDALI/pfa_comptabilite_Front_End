@@ -24,7 +24,7 @@ export class RedirectionComponent implements OnInit {
 
   redirectUser() {
     let accessToken = this.activatedRoute.snapshot.paramMap.get("accessToken");
-    this.tokenService.saveToken(accessToken);
+    this.tokenService.saveToken('accessToken',accessToken);
 
     this.backendService.get(`${USER_DASHBOARD_END_POINT}`).subscribe(
       new Observer(this.router, null, false).OBSERVER_GET((response) => {
@@ -33,7 +33,7 @@ export class RedirectionComponent implements OnInit {
           this.backendService.get(`${USER_DASHBOARD_END_POINT}`).subscribe(
             new Observer(this.router, null, false).OBSERVER_GET((response) => {
               if (response.err) {
-                this.tokenService.removeToken();
+                this.tokenService.removeToken('accessToken');
                 return this.router.navigate(["/signin"]);
               }
             })

@@ -15,20 +15,25 @@ import { TokenService } from "../../../services/token.service";
   styleUrls: ["./signin.component.scss"],
 })
 export class SigninComponent implements OnInit {
-  constructor(private backendService: BackendService, private router: Router,private tokenService:TokenService) {}
+  constructor(
+    private backendService: BackendService,
+    private router: Router,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit() {}
 
   login(form: NgForm) {
     const payload = { ...form.value };
-    this.backendService
-      .post(SIGNIN_END_POINT, payload)
-      .subscribe(
-        new Observer(this.router, "/app/dashboard", false).OBSERVER_SIGNIN((response)=>{
-          if(!response.err)
-          this.tokenService.saveToken(response.accessToken)
-        })
-      );
+    this.backendService.post(SIGNIN_END_POINT, payload).subscribe(
+      new Observer(this.router, "/app/dashboard", false).OBSERVER_SIGNIN(
+        (response: any) => {
+          const { accessToken, refreshToken } = response;
+          this.tokenService.saveToken("accessToken", accessToken);
+          this.tokenService.saveToken("refreshToken", refreshToken);
+          // }
+        }
+      )
+    );
   }
-
 }

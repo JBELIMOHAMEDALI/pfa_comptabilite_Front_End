@@ -22,7 +22,7 @@ export default class Observer {
         if (this.reload) this.sharedService.reloadComponent(this.router);
         if (this.target) this.router.navigate([this.target]);
 
-        // cb(response);
+        if (cb) cb(response);
       },
       error: (err: HttpErrorResponse) => {
         swal("Failure!", err.error.message, "warning");
@@ -35,15 +35,14 @@ export default class Observer {
     };
   }
 
-  OBSERVER_VERIFY_ACCOUNT() {
+  OBSERVER_VERIFY_ACCOUNT(cb) {
     return {
-      // next: (response: any) => {
-      //   return;
-      // },
-      error: (err: Error) => {
-        if (this.target) this.router.navigate([this.target]);
+      next: (response: any) => {
+        cb(true);
       },
-      // complete: () => console.log("Observer got a complete notification"),
+      error: (err: HttpErrorResponse) => {
+        cb(false);
+      },
     };
   }
 
@@ -51,13 +50,8 @@ export default class Observer {
     return {
       next: (response: any) => {
         cb(response);
-        // if (this.swal_display) swal("Success!", response.message, "success");
-        // if (this.target) this.router.navigate([this.target]);
       },
-      error: (err: HttpErrorResponse) => {
-        // cb(err);
-        // swal("Info!", err.error.message, "info");
-      },
+      error: (err: HttpErrorResponse) => {},
       // complete: () => console.log("Observer got a complete notification"),
     };
   }
@@ -72,7 +66,6 @@ export default class Observer {
         if (cb) cb(false, err);
         swal("Failure!", err.error.message, "warning");
       },
-      // complete: () => console.log("Observer got a complete notification"),
     };
   }
 
@@ -93,7 +86,7 @@ export default class Observer {
         swal("Success!", response.message, "success");
         this.sharedService.reloadComponent(this.router);
         if (this.activeModal) this.activeModal.dismiss();
-        cb(response)
+        cb(response);
       },
       error: (err: HttpErrorResponse) => {
         // cb(err)
@@ -112,11 +105,6 @@ export default class Observer {
         swal("Failure!", err.error.message, "warning");
         cb(err);
       },
-
-      // complete: () => {
-
-      // if (this.activeModal) this.activeModal.dismiss();
-      // },
     };
   }
 }
