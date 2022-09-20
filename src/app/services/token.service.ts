@@ -15,14 +15,14 @@ export class TokenService {
   removeToken(key:string){
     localStorage.removeItem(key)
   }
-  verifLoggedIn(){
-    const accessToken=localStorage.getItem('accessToken');
-    const refreshToken=localStorage.getItem('refreshToken');
-    if(!accessToken||!refreshToken){
-      return false
-    }else{
-      return true
-    }
+  LoggedIn(){
+    // const accessToken=localStorage.getItem('accessToken');
+    return !!localStorage.getItem('refreshToken');
+    // if(!accessToken||!refreshToken){
+    //   return false
+    // }else{
+    //   return true
+    // }
   }
 
 }

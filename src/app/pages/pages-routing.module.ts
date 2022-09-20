@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AuthGuard } from "../guards/auth.guard";
 import { AboutComponent } from "./about/about.component";
 import { ResetPwdComponent } from "./auth/reset-pwd/reset-pwd.component";
 import { SigninComponent } from "./auth/signin/signin.component";
@@ -26,20 +27,25 @@ const routes: Routes = [
 
       {
         path: "signin",
-       component:SigninComponent
+       component:SigninComponent,
+       canActivate:[AuthGuard]
       },
       {
         path: "signup",
-        component:SignupComponent
+        component:SignupComponent,
+        canActivate:[AuthGuard]
 
       },
       {
         path: "account/:hashedid",
-        component:VerifAccountComponent
+        component:VerifAccountComponent,
+        canActivate:[AuthGuard]
       },
       {
         path: "reset/password",
-        component:ResetPwdComponent
+        component:ResetPwdComponent,
+        canActivate:[AuthGuard]
+
       },
       // {
       //   path: "redirection",
@@ -50,6 +56,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
+  providers:[AuthGuard],
   exports: [RouterModule],
 })
 export class PagesRoutingModule {}

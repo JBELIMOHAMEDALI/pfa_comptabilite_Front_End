@@ -57,4 +57,7 @@ export class InvoicesComponent implements OnInit {
     this.page = currentPage;
     this.getInvoices();
   }
+
+  changeEtat(event){
+  }
 }

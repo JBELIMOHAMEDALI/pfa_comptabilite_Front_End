@@ -81,6 +81,8 @@ export class TaxComponent implements OnInit {
   }
 
   OpenModal(title: string, tax?) {
+    console.log(tax);
+
     if(this.id_company){
     const modalRef = this.modalService.open(
       title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
@@ -89,7 +91,7 @@ export class TaxComponent implements OnInit {
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.type = TAX_POPUP_TYPE;
 
-    modalRef.componentInstance.payload = tax ? { ...tax }:{id_company:this.id_company};
+    modalRef.componentInstance.payload = tax!=null ? tax:{id_company:this.id_company};
   } else {
     return swal("Failure!", "No company selected !", "info");
   }

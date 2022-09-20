@@ -70,24 +70,14 @@
                         <td scope="row">{{
                           tax.name
                           }} </td>
-                        <!-- <td scope="row"> {{
-                                                    tax.description
-                                                    }} </td> -->
+
                         <td scope="row"> {{
                           tax.agency_name
                           }} </td>
-                        <!-- <td scope="row"> {{
-                                                    tax.businessNo
-                                                    }} </td> -->
+
                         <td scope="row"> {{
                           tax.start_period|date:'dd/MM/yyyy'
                           }} </td>
-                        <!-- <td scope="row"> {{
-                                                    tax.filling_frequency
-                                                    }} </td>
-                                                <td scope="row"> {{
-                                                    tax.collection_type
-                                                    }} </td> -->
                         <td scope="row">
                           <i (click)="OpenModal('UPDATE TAX',tax)" class="fas fa-edit"></i>
                           <i (click)="deleteTax(tax.id)" class="fa fa-trash-o ml-2"></i>

@@ -37,7 +37,6 @@ export class TokenInterceptorService implements HttpInterceptor {
       //refresh case
       return next.handle(req).pipe(
         catchError((err: HttpErrorResponse) => {
-          console.log(err);
 
           if (err.status === 403 && !this.refresh) {
             this.refresh = true;
@@ -48,6 +47,7 @@ export class TokenInterceptorService implements HttpInterceptor {
               .post(GET_USER_REFRESH_TOKEN_END_POINT, { token: refreshToken })
               .pipe(
                 switchMap((res: any) => {
+                  //if refreshToken is not correct redempt it
                   const newAccessToken = res.accessToken;
                   this.injector
                     .get(TokenService)
@@ -62,14 +62,6 @@ export class TokenInterceptorService implements HttpInterceptor {
               );
             // as Observable<HttpEvent<any>>;
           }
-          // else {
-          //   const tokenizedReq = req.clone({
-          //     setHeaders: {
-          //       Authorization: `Bearer ${accessToken}`,
-          //     },
-          //   });
-          //   return next.handle(tokenizedReq);
-          // }
           this.refresh = false;
 
           return throwError(() => err);

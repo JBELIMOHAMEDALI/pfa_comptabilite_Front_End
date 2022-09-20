@@ -33,7 +33,7 @@ export interface Menu {
 
 const MENUITEMS:Menu[] = [
   {
-    label: 'Navigation',
+    label: 'App',
     main: [
       {
         state: 'dashboard',
@@ -83,14 +83,7 @@ const MENUITEMS:Menu[] = [
         icon: 'fas fa-user-friends',
         routerLink:"/app/employees"
       },
-      {
-        state: 'customers-management',
-        short_label: 'C-M',
-        name: 'Customers management',
-        type: 'link',
-        icon: 'fas fa-user-tie',
-        routerLink:"/app/customer-management"
-      },
+
     ],
   },
   {//expenses
@@ -143,12 +136,13 @@ const MENUITEMS:Menu[] = [
       },
       {
         state: 'customers',
-        short_label: 'Cust',
+        short_label: 'C',
         name: 'Customers',
         type: 'link',
         icon: 'fas fa-user-tie',
-        routerLink:'/app/sales/customers'
-      }
+        routerLink:"/app/sales/customers"
+      },
+
     ]
   },
 

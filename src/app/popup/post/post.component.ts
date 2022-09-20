@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import {
   ADD_USER_PRODUCTS_END_POINT,
+  GET_SUPPLIETS_SERVICES_END_POINT,
   GET_USER_ACCOUNTING_LIST_PLAN_END_POINT,
   GET_USER_CUSTOMERS_LIST_END_POINT,
   POST_SUPPLIETS_CUSTOMERS_END_POINT,
@@ -12,6 +13,7 @@ import {
   POST_USER_COMPANIES_END_POINT,
   POST_USER_CUSTOMERS_END_POINT,
   POST_USER_EMPLOYEES_END_POINT,
+  POST_USER_SERVICES_END_POINT,
   POST_USER_TAXES_END_POINT,
 } from "../../services/endpoints";
 import Observer from "../../services/observer";
@@ -27,7 +29,7 @@ export class PostComponent implements OnInit {
   @Input("title") title: string;
   @Input("type") type: string;
   @Input("payload") payload: any;
-  customerList: [] = [];
+  supplierList: [] = [];
   AccountinList: [] = [];
   actualDate: string;
 
@@ -48,22 +50,21 @@ export class PostComponent implements OnInit {
     this.startperiodinputype = "text";
   }
   ngOnInit() {
-    // alert(localStorage.getItem("companyNo"))
     if (this.type == "SERVICES" || this.type == "PRODUCTS") {
-      this.getListcustomer();
+      this.getSuppliers();
       this.getListaccutn();
     }
   }
-  getListcustomer() {
+  getSuppliers() {
     this.backendService
       .get(
-        `${GET_USER_CUSTOMERS_LIST_END_POINT}/${localStorage.getItem(
+        `${GET_SUPPLIETS_SERVICES_END_POINT}/${localStorage.getItem(
           "companyNo"
         )}`
       )
       .subscribe(
         new Observer().OBSERVER_GET((response) => {
-          this.customerList = response.rows;
+          this.supplierList = response.rows;
         })
       );
   }
@@ -127,8 +128,10 @@ export class PostComponent implements OnInit {
         payload = { ...payload, id_company: this.payload.id_company };
         break;
       case "SERVICES":
-        endpoint = POST_USER_CUSTOMERS_END_POINT;
+        endpoint = POST_USER_SERVICES_END_POINT;
         payload = { ...payload, id_company: this.payload.id_company };
+        console.log(payload);
+
         break;
       case "PRODUCTS":
         // payload.cost payload.id_accounting_plan payload.id_suppliers payload.name payload.quantity payload.ref
@@ -174,4 +177,5 @@ export class PostComponent implements OnInit {
     if (type === "hiredate") this.hiredateinputype = "date";
     if (type === "start_period") this.startperiodinputype = "date";
   }
+
 }

@@ -7,7 +7,7 @@ import { PRODUCTS_POPUP_TYPE, SERVICES_POPUP_TYPE } from '../../../../app/popup/
 import { PostComponent } from '../../../../app/popup/post/post.component';
 import { PutComponent } from '../../../../app/popup/put/put.component';
 import { BackendService } from '../../../../app/services/backend.service';
-import { DELETE_USER_CUSTOMERS_END_POINT, DELETE_USER_PRODUCTS_END_POINT, GET_USER_PRODUCTS_END_POINT, GET_USER_SERVICES_END_POINT } from '../../../../app/services/endpoints';
+import { DELETE_USER_CUSTOMERS_END_POINT, DELETE_USER_PRODUCTS_END_POINT, DELETE_USER_SERVICES_END_POINT, GET_USER_PRODUCTS_END_POINT, GET_USER_SERVICES_END_POINT } from '../../../../app/services/endpoints';
 import Observer from '../../../../app/services/observer';
 import { SharedService } from '../../../../app/services/shared.service';
 import { Router } from '@angular/router';
@@ -40,6 +40,7 @@ export class ProdservComponent implements OnInit {
       if (id) {
         this.id_company = id;
         this.getproduit();
+        this.getservices();
       } else {
         return swal("Failure!", "No company selected !", "info");
       }
@@ -60,6 +61,8 @@ export class ProdservComponent implements OnInit {
     this.backendService.get(`${GET_USER_SERVICES_END_POINT}/${this.id_company}`,this.pageSize,offset).subscribe(
       new Observer().OBSERVER_GET((response) => {
         this.serviceList = response.rows;
+        console.log(JSON.stringify(response.rows) );
+
         this.collectionSize=response.totalItems;
       })
     );
@@ -80,11 +83,16 @@ export class ProdservComponent implements OnInit {
     // this.listStage = [null];
     const etat=event.nextId.toString();
     this.etat=etat;
+    if(this.etat === "1"){
+this.getproduit()
+    }else{
+this.getservices()
+    }
     // this.getAllOffreStages(this.year,etat);
   }
   OpenModal(title: string, obj?) {
 if(this.id_company){
-    
+
 //produt
       const modalRef = this.modalService.open(
         title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
@@ -132,4 +140,55 @@ if(this.id_company){
     modalRef.componentInstance.type = PRODUCTS_POPUP_TYPE;
     modalRef.componentInstance.payload ={ ...payload };
   }
+
+  OpenModal2(title: string, obj?) {
+    if(this.id_company){
+
+    //produt
+          const modalRef = this.modalService.open(
+            title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
+            { size: "lg", backdrop: "static" }
+          );
+          modalRef.componentInstance.title = title;
+          modalRef.componentInstance.type = this.etat == "1" ?PRODUCTS_POPUP_TYPE:SERVICES_POPUP_TYPE;
+          modalRef.componentInstance.payload = obj ? { ...obj }:{id_company:this.id_company};
+
+      } else {
+        return swal("Failure!", "No company selected !", "info");
+      }
+
+      }
+    // SERVICES PRODUCTS
+      deleteCustomer2(id){
+        swal({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          closeOnEsc: true,
+          closeOnClickOutside: true,
+          buttons: ["cancel", "confirm"],
+        }).then((result) => {
+          if (result) {
+            this.backendService
+              .delete(`${DELETE_USER_SERVICES_END_POINT}/${id}`)
+              .subscribe(
+                new Observer(
+                  this.router,
+                  null,
+                  true,
+                  true,
+                  this.sharedService,
+                  null
+                ).OBSERVER_DELETE()
+              );
+          }
+        });
+
+      }
+      OpenDetails2(title:string,payload:any){
+        const modalRef = this.modalService.open(DetailsComponent);
+        modalRef.componentInstance.title = title;
+        modalRef.componentInstance.type = SERVICES_POPUP_TYPE;
+        modalRef.componentInstance.payload ={ ...payload };
+      }
 }

@@ -22,10 +22,13 @@ export default class Observer {
         if (this.reload) this.sharedService.reloadComponent(this.router);
         if (this.target) this.router.navigate([this.target]);
 
-        if (cb) cb(response);
+        if (cb) cb(response,true);
       },
       error: (err: HttpErrorResponse) => {
         swal("Failure!", err.error.message, "warning");
+        if(this.router)this.router.navigate([this.target]);
+        if (cb) cb(err,false);
+
       },
 
       // complete: () => {
@@ -51,8 +54,8 @@ export default class Observer {
       next: (response: any) => {
         cb(response);
       },
-      error: (err: HttpErrorResponse) => {},
-      // complete: () => console.log("Observer got a complete notification"),
+      error: (err: HttpErrorResponse) => {
+      },
     };
   }
   OBSERVER_RESET(cb?) {
@@ -72,11 +75,14 @@ export default class Observer {
   OBSERVER_DELETE(cb?) {
     return {
       next: (response: any) => {
-        swal("Success!", response.message, "success");
-        this.sharedService.reloadComponent(this.router); // cb(response)
+        if(this.router){
+
+          swal("Success!", response.message, "success");
+          this.sharedService.reloadComponent(this.router); // cb(response)
+        }
       },
       error: (err: HttpErrorResponse) => {
-        swal("Failure!", err.error.message, "warning");
+        if(this.router)swal("Failure!", err.error.message, "warning");
       },
     };
   }

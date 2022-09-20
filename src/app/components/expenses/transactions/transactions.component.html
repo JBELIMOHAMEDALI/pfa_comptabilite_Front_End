@@ -20,68 +20,76 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="md-tabs">
-        <div class="m-t-15">
-          <div class="card">
-            <div class="col-sm-12">
-              <div class="card-header">
-                <h5 class="card-header-text">Transactions List</h5>
+        <ngb-tabset (tabChange)="changeEtat($event)">
+          <ngb-tab title="Products " [id]="1">
+            <ng-template ngbTabContent>
+              <div class="m-t-15">
+                <div class="card">
+                  <div class="col-sm-12">
+                    <div class="card-header">
+                      <h5 class="card-header-text">Transactions List</h5>
 
-              </div>
-              <div class="table-responsive">
-                <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr style="text-align: center">
-                        <th scope="col">
-                          Full name
-                        </th>
-                        <th scope="col">
-                          email
-                        </th>
-                        <th scope="col">
-                          phone </th>
-                        <th scope="col">
-                          address
-                        </th>
-                        <th scope="col">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody *ngFor="let transaction of this.transactionsList|slice">
-                      <tr style="text-align: center">
-                        <td scope="row">{{
-                          transaction.fullname
-                          }} </td>
-                        <td scope="row"> {{
-                          transaction.email
-                          }} </td>
-                        <td scope="row"> {{
-                          transaction.phone
-                          }} </td>
+                    </div>
+                    <div class="table-responsive">
+                      <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr style="text-align: center">
+                              <th scope="col">
+                                Product name
+                              </th>
+                              <th scope="col">
+                                Supplier name
+                              </th>
+                              <th scope="col">
+                                Company </th>
+
+                              <th scope="col">Explore</th>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let transaction of this.transactionsList|slice">
+                            <tr style="text-align: center">
+                              <td scope="row">{{
+                                transaction.productName
+                                }} </td>
+                              <td scope="row"> {{
+                                transaction.nom_suppliers
+                                }} </td>
+                              <td scope="row"> {{
+                                transaction.name
+                                }} </td>
 
 
-                        <td scope="row">
-                          <!-- <i (click)="OpenModal('UPDATE customer',transaction)" class="fas fa-edit"></i> -->
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="d-flex justify-content-between p-2">
-                    <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)" [pageSize]="pageSize"
-                      [collectionSize]="collectionSize">
-                    </ngb-pagination>
-                    <select class="custom-select" style="width: auto" name="pageSize"
-                      (change)="handlePageSizeChange($event)">
-                      <option *ngFor="let size of pageSizes" [ngValue]="size">
-                        {{ size }}
-                      </option>
-                    </select>
+                              <td scope="row">
+                                <i (click)="OpenDetails('TRANSACTION DETAILS',transaction)" class="fa fa-eye ml-2"></i>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="d-flex justify-content-between p-2">
+                          <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)" [pageSize]="pageSize"
+                            [collectionSize]="collectionSize">
+                          </ngb-pagination>
+                          <select class="custom-select" style="width: auto" name="pageSize"
+                            (change)="handlePageSizeChange($event)">
+                            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                              {{ size }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- </app-card> -->
                   </div>
                 </div>
               </div>
-              <!-- </app-card> -->
-            </div>
-          </div>
-        </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Services " [id]="2">
+            <ng-template ngbTabContent>
+              </ng-template>
+              </ngb-tab>
+          </ngb-tabset>
       </div>
     </div>
   </div>

@@ -67,8 +67,10 @@ export const PUT_PRODUCTS_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/p
 
 
 //SERVICES ENDPOINTS
-export const GET_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/services/get`;
-
+export const GET_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/service/get`;
+export const POST_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/service/add`;
+export const PUT_SERVICES_END_POINT: string = `${environment.apiUrl}/service/update`;
+export const DELETE_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/service/delete`;
 
 // SUPPLIETS
 export const GET_SUPPLIETS_SERVICES_END_POINT: string = `${environment.apiUrl}/suppliers/get`;

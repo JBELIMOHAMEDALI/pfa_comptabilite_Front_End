@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { USER_DASHBOARD_END_POINT } from "../../services/endpoints";
+import {
+  GET_USER_REFRESH_TOKEN_END_POINT,
+  USER_DASHBOARD_END_POINT,
+} from "../../services/endpoints";
 import Observer from "../../services/observer";
 import { BackendService } from "../../services/backend.service";
 import { TokenService } from "../../services/token.service";
@@ -23,24 +26,32 @@ export class RedirectionComponent implements OnInit {
   }
 
   redirectUser() {
-    let accessToken = this.activatedRoute.snapshot.paramMap.get("accessToken");
-    this.tokenService.saveToken('accessToken',accessToken);
+    const refreshToken =
+      this.activatedRoute.snapshot.paramMap.get("refreshToken");
 
-    this.backendService.get(`${USER_DASHBOARD_END_POINT}`).subscribe(
-      new Observer(this.router, null, false).OBSERVER_GET((response) => {
-        if (response.err) {
-          accessToken = localStorage.getItem("accessToken");
-          this.backendService.get(`${USER_DASHBOARD_END_POINT}`).subscribe(
-            new Observer(this.router, null, false).OBSERVER_GET((response) => {
-              if (response.err) {
-                this.tokenService.removeToken('accessToken');
-                return this.router.navigate(["/signin"]);
+    if (refreshToken) {
+      this.backendService
+        .post(`${GET_USER_REFRESH_TOKEN_END_POINT}`, { token: refreshToken })
+        .subscribe(
+          new Observer(this.router, null, false).OBSERVER_POST(
+            (response: any, nav: boolean) => {
+              if (nav) {
+                this.tokenService.saveToken("refreshToken", refreshToken);
+                this.tokenService.saveToken(
+                  "accessToken",
+                  response.accessToken
+                );
+                this.router.navigate(["/app/dashboard"]);
+              } else {
+                this.router.navigate(["/signin"]);
               }
-            })
-          );
-        }
-        this.router.navigate(["/app/dashboard"]);
-      })
-    );
+            }
+          )
+        );
+    } else {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      this.router.navigate(["/signin"]);
+    }
   }
 }

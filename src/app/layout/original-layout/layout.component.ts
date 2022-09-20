@@ -390,9 +390,12 @@ export class LayoutComponent implements OnInit {
   }
 
   logout() {
-    this.tokenService.removeToken('accessToken');
-    this.tokenService.removeToken('refreshToken');
-    this.backendService.delete(USER_LOGOUT_END_POINT)
-    this.router.navigate(['/signin'])
+    this.backendService
+    .delete(USER_LOGOUT_END_POINT)
+    .subscribe(new Observer().OBSERVER_DELETE());
+    this.tokenService.removeToken("accessToken");
+    this.tokenService.removeToken("refreshToken");
+    this.tokenService.removeToken("companyNo");
+    this.router.navigate(["/signin"]);
   }
 }
