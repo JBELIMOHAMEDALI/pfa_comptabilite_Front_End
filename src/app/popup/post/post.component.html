@@ -404,8 +404,9 @@
     <div class="input-group">
       <span class="input-group-prepend"><label class="input-group-text"><i
             class="icofont icofont-credit-card"></i></label></span>
-            <select class="form-select" value="-1"  name="id_accounting_plan" ngModel #id_accounting_plan="ngModel"
+            <select class="form-select" value="-1"  name="id_accounting_plan" ngModel #id_accounting_plan="ngModel" placeholder="Name"
             required>
+            <option value="">Chos account number </option>
               <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
                 {{file.account_number}}
               </option>
@@ -419,6 +420,8 @@
             class="icofont icofont-brand-myspace"></i></label></span>
       <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
         <select class="form-select" value="-1"  name="id_suppliers" ngModel #id_suppliers="ngModel" required>
+          <option value="">Chos suppliers</option>
+
           <option *ngFor="let file of this.customerList;" value="{{file.id}}">
             {{file.fullname}}
           </option>

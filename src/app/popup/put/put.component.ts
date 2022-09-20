@@ -3,6 +3,9 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import {
+  GET_USER_ACCOUNTING_LIST_PLAN_END_POINT,
+  GET_USER_CUSTOMERS_LIST_END_POINT,
+  PUT_PRODUCTS_CUSTOMERS_END_POINT,
   PUT_SUPPLIETS_CUSTOMERS_END_POINT,
   PUT_USER_ACCOUNTING_PLAN_ROW_END_POINT,
   PUT_USER_COMPANIES_END_POINT,
@@ -29,7 +32,8 @@ export class PutComponent implements OnInit {
   birthdateinputype: string;
   hiredateinputype: string;
   companyList: [];
-
+  customerList: [] = [];
+  AccountinList: [] = [];
   constructor(
     public activeModal: NgbActiveModal,
     public sharedService: SharedService,
@@ -41,8 +45,37 @@ export class PutComponent implements OnInit {
     this.hiredateinputype = "text";
   }
   ngOnInit() {
+    if (this.type == "SERVICES" || this.type == "PRODUCTS") {
+      this.getListcustomer();
+      this.getListaccutn();
+    }
       }
-
+      getListcustomer() {
+        this.backendService
+          .get(
+            `${GET_USER_CUSTOMERS_LIST_END_POINT}/${localStorage.getItem(
+              "companyNo"
+            )}`
+          )
+          .subscribe(
+            new Observer().OBSERVER_GET((response) => {
+              this.customerList = response.rows;
+            })
+          );
+      }
+      getListaccutn() {
+        this.backendService
+          .get(
+            `${GET_USER_ACCOUNTING_LIST_PLAN_END_POINT}/${localStorage.getItem(
+              "companyNo"
+            )}`
+          )
+          .subscribe(
+            new Observer().OBSERVER_GET((response) => {
+              this.AccountinList = response.rows;
+            })
+          );
+      }
   onSubmit(form: NgForm) {
     let endpoint: string = "";
     let payload = { ...form.value };
@@ -70,6 +103,12 @@ export class PutComponent implements OnInit {
       case "SUPPLIERS":
         endpoint = PUT_SUPPLIETS_CUSTOMERS_END_POINT;
         payload = { ...payload,id:this.payload.id};
+        break;
+      case "PRODUCTS":
+        endpoint = PUT_PRODUCTS_CUSTOMERS_END_POINT;
+        payload = { ...payload,id_product:this.payload.id_product };
+        console.log(payload);
+
         break;
     }
     this.backendService
