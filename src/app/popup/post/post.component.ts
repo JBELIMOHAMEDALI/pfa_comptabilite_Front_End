@@ -29,6 +29,9 @@ export class PostComponent implements OnInit {
   @Input("title") title: string;
   @Input("type") type: string;
   @Input("payload") payload: any;
+  @Input("operationSer") operationSer: any;
+  @Input("operationPro") operationPro: any;
+  // 
   supplierList: [] = [];
   AccountinList: [] = [];
   actualDate: string;
@@ -129,11 +132,9 @@ export class PostComponent implements OnInit {
         break;
       case "SERVICES":
         endpoint = POST_USER_SERVICES_END_POINT;
-        payload = { ...payload, id_company: this.payload.id_company };
+        payload = { ...payload, id_company: this.payload.id_company,operation:this.operationSer };
         break;
       case "PRODUCTS":
-        // payload.cost payload.id_accounting_plan payload.id_suppliers payload.name payload.quantity payload.ref
-        // payload.sale_price payload.tax payload.description
         const obj_post = {
           name: payload.name,
           ref: payload.ref,
@@ -142,6 +143,7 @@ export class PostComponent implements OnInit {
           sale_price: payload.sale_price,
           tax: payload.tax,
           cost: payload.cost,
+          operation: this.operationPro,
           id_company: localStorage.getItem("companyNo"),
           id_suppliers: payload.id_suppliers,
           id_accounting_plan: payload.id_accounting_plan,

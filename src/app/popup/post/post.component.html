@@ -537,8 +537,8 @@
         <select class="form-select" value="-1" name="id_suppliers" ngModel #id_suppliers="ngModel" required>
           <option value="">choose suppliers</option>
 
-          <option *ngFor="let file of this.supplierList;" value="{{file.id}}">
-            {{file.fullname}}
+          <option *ngFor="let supplier of this.supplierList;" value="{{supplier.id}}">
+            {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
           </option>
         </select>
       </div>

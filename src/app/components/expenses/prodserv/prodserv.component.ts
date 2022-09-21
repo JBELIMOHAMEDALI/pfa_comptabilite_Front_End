@@ -35,6 +35,8 @@ export class ProdservComponent implements OnInit {
   pageSizes = [5, 20, 100];
   etat = "1";
   id_company: string;
+  opetationProduct="0";
+  opetationService="0";
 
   constructor(
     private backendService: BackendService,
@@ -47,19 +49,19 @@ export class ProdservComponent implements OnInit {
     this.sharedService.getSelectedCompany((id) => {
       if (id) {
         this.id_company = id;
-        this.getproduit();
-        this.getservices();
+        this.getproduit("0");
+        this.getservices("0");
       } else {
         return swal("Failure!", "No company selected !", "info");
       }
     });
   }
 
-  getproduit() {
+  getproduit(operation:string) {
     const offset = (this.page - 1) * this.pageSize;
     this.backendService
       .get(
-        `${GET_USER_PRODUCTS_END_POINT}/${this.id_company}`,
+        `${GET_USER_PRODUCTS_END_POINT}/${this.id_company}/${operation}`,
         this.pageSize,
         offset
       )
@@ -70,11 +72,11 @@ export class ProdservComponent implements OnInit {
         })
       );
   }
-  getservices() {
+  getservices(operation:string) {
     const offset = (this.page - 1) * this.pageSize;
     this.backendService
       .get(
-        `${GET_USER_SERVICES_END_POINT}/${this.id_company}`,
+        `${GET_USER_SERVICES_END_POINT}/${this.id_company}/${operation}`,
         this.pageSize,
         offset
       )
@@ -89,12 +91,12 @@ export class ProdservComponent implements OnInit {
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
     this.page = 1;
-    this.getproduit();
+    this.getproduit("0");
   }
 
   handlePageChange(currentPage: number) {
     this.page = currentPage;
-    this.getproduit();
+    this.getproduit("0");
   }
 
   changeEtat(event) {
@@ -102,9 +104,9 @@ export class ProdservComponent implements OnInit {
     const etat = event.nextId.toString();
     this.etat = etat;
     if (this.etat === "1") {
-      this.getproduit();
+      this.getproduit("0");
     } else {
-      this.getservices();
+      this.getservices("0");
     }
     // this.getAllOffreStages(this.year,etat);
   }
@@ -116,6 +118,7 @@ export class ProdservComponent implements OnInit {
         { size: "lg", backdrop: "static" }
       );
       modalRef.componentInstance.title = title;
+      modalRef.componentInstance.operationPro = this.opetationProduct;
       modalRef.componentInstance.type =
         this.etat == "1" ? PRODUCTS_POPUP_TYPE : SERVICES_POPUP_TYPE;
       modalRef.componentInstance.payload = obj
@@ -159,6 +162,7 @@ export class ProdservComponent implements OnInit {
   }
 
   OpenModal2(title: string, obj?) {
+ 
     if (this.id_company) {
       //produt
       const modalRef = this.modalService.open(
@@ -166,6 +170,7 @@ export class ProdservComponent implements OnInit {
         { size: "lg", backdrop: "static" }
       );
       modalRef.componentInstance.title = title;
+      modalRef.componentInstance.operationSer = this.opetationService;
       modalRef.componentInstance.type =
         this.etat == "1" ? PRODUCTS_POPUP_TYPE : SERVICES_POPUP_TYPE;
       modalRef.componentInstance.payload = obj
@@ -206,5 +211,28 @@ export class ProdservComponent implements OnInit {
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.type = SERVICES_POPUP_TYPE;
     modalRef.componentInstance.payload = { ...payload };
+  }
+  changeProductState(event:any){
+    this.opetationProduct = event;
+    if(event == "0"){
+      this.productList = [];
+      this.getproduit("0")
+    }else{
+      this.productList = [];
+      this.getproduit("1")
+    }
+    
+  }
+  changeServiceState(valur:any){
+    this.opetationService=""
+    this.opetationService =valur;
+    if(valur == "0"){
+      this.serviceList=[]
+      this.getservices("0")
+    }else{
+      this.serviceList=[]
+      this.getservices("1")
+    }
+    
   }
 }
