@@ -8,7 +8,7 @@
   </div>
 
 
-  <ng-container *ngIf="this.type==='EMPLOYEE'">
+  <ng-container *ngIf="this.type==='CUSTOMER'">
 
     <div class="modal-body">
       <div class="view-info">
@@ -20,6 +20,12 @@
                   <div class="table-responsive">
                     <table class="table m-0">
                       <tbody>
+                        <tr>
+                          <th scope="row">Fullname</th>
+                          <td>
+                            <h5>{{ this.payload.fullname }}</h5>
+                          </td>
+                        </tr>
                         <tr>
                           <th scope="row">Email</th>
                           <td>
@@ -39,9 +45,88 @@
                           </td>
                         </tr>
                         <tr>
+                          <th scope="row">Payment method</th>
+                          <td>
+                            <h5>{{ this.payload.payment_method }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Company</th>
+                          <td>
+                            <h5>{{ this.payload.company_name }}</h5>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- end of table col-lg-6 -->
+              </div>
+              <!-- end of row -->
+            </div>
+            <!-- end of general info -->
+          </div>
+          <!-- end of col-lg-12 -->
+        </div>
+        <!-- end of row -->
+      </div>
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngIf="this.type==='EMPLOYEE'">
+
+    <div class="modal-body">
+      <div class="view-info">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="general-info">
+              <div class="row">
+                <div class="col-lg-12 col-xl-12">
+                  <div class="table-responsive">
+                    <table class="table m-0">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Full name</th>
+                          <td>
+                            <h5>{{ this.payload.fullname }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Email</th>
+                          <td>
+                            <h5>{{ this.payload.email }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Phone</th>
+                          <td>
+                            <h5>{{ this.payload.phone }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Salary</th>
+                          <td>
+                            <h5>{{ this.payload.salary }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Address</th>
+                          <td>
+                            <h5>{{ this.payload.address }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
                           <th scope="row">Birth date</th>
                           <td>
                             <h5>{{ this.payload.birthdate|date:'dd/MM/yyyy' }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Hire date</th>
+                          <td>
+                            <h5>{{ this.payload.hiredate|date:'dd/MM/yyyy' }}</h5>
                           </td>
                         </tr>
                       </tbody>
@@ -160,7 +245,7 @@
                           </td>
                         </tr>
                          <tr>
-                          <th scope="row">Sale price	</th>
+                          <th scope="row">Price	</th>
                           <td>
                             <h5>{{ this.payload.sale_price }}</h5>
                           </td>
@@ -169,7 +254,7 @@
                         <tr >
                           <th scope="row">Tax</th>
                           <td>
-                            <h5>{{ this.payload.tax }}</h5>
+                            <h5>{{ this.payload.tax+"%" }}</h5>
                           </td>
                         </tr>
                         <tr >
@@ -210,6 +295,7 @@
       </div>
     </div>
   </ng-container>
+
   <ng-container *ngIf="this.type==='SERVICES'">
     <div class="modal-body">
       <div class="view-info">
@@ -240,7 +326,7 @@
                             <h5>{{ this.payload.description }}</h5>
                           </td>
                          <tr>
-                          <th scope="row">Sale price	</th>
+                          <th scope="row">Price	</th>
                           <td>
                             <h5>{{ this.payload.sale_price }}</h5>
                           </td>
@@ -249,7 +335,7 @@
                         <tr >
                           <th scope="row">Tax</th>
                           <td>
-                            <h5>{{ this.payload.tax }}</h5>
+                            <h5>{{ this.payload.tax+"%" }}</h5>
                           </td>
                         </tr>
                         <tr >
@@ -290,7 +376,175 @@
       </div>
     </div>
   </ng-container>
-  <!--  -->
+
+  <ng-container *ngIf="this.type==='TRANSACTIONS-PRODUCTS'">
+    <div class="modal-body">
+      <div class="view-info">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="general-info">
+              <div class="row">
+                <div class="col-lg-12 col-xl-12">
+                  <div class="table-responsive">
+                    <table class="table m-0">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Porduct name</th>
+                          <td>
+                            <h5>{{ this.payload.productName }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Porduct ref</th>
+                          <td>
+                            <h5>{{ this.payload.ref }}</h5>
+                          </td>
+                        </tr>
+
+                       <tr>
+                          <th scope="row">Product description</th>
+                          <td>
+                            <h5>{{ this.payload.description }}</h5>
+                          </td>
+                         <tr>
+                          <th scope="row">Product price</th>
+                          <td>
+                            <h5>{{ this.payload.sale_price }}</h5>
+                          </td>
+                        </tr>
+
+                        <tr >
+                          <th scope="row">Product tax</th>
+                          <td>
+                            <h5>{{ this.payload.tax+"%" }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Product cost</th>
+                          <td>
+                            <h5>{{ this.payload.cost }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Supplier info</th>
+                          <td>
+                            <h5>{{ this.payload.nom_suppliers+", "+this.payload.email_suppliers+", "+this.payload.adr_suppliers }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Company name</th>
+                          <td>
+                            <h5>{{ this.payload.name }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Company domain</th>
+                          <td>
+                            <h5>{{ this.payload.domain }}</h5>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- end of table col-lg-6 -->
+              </div>
+              <!-- end of row -->
+            </div>
+            <!-- end of general info -->
+          </div>
+          <!-- end of col-lg-12 -->
+        </div>
+        <!-- end of row -->
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="this.type==='TRANSACTIONS-SERVICES'">
+    <div class="modal-body">
+      <div class="view-info">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="general-info">
+              <div class="row">
+                <div class="col-lg-12 col-xl-12">
+                  <div class="table-responsive">
+                    <table class="table m-0">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Service name</th>
+                          <td>
+                            <h5>{{ this.payload.name }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Service ref</th>
+                          <td>
+                            <h5>{{ this.payload.ref }}</h5>
+                          </td>
+                        </tr>
+
+                       <tr>
+                          <th scope="row">Service description</th>
+                          <td>
+                            <h5>{{ this.payload.description }}</h5>
+                          </td>
+                         <tr>
+                          <th scope="row">Service price</th>
+                          <td>
+                            <h5>{{ this.payload.sale_price }}</h5>
+                          </td>
+                        </tr>
+
+                        <tr >
+                          <th scope="row">Service tax</th>
+                          <td>
+                            <h5>{{ this.payload.tax+"%" }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Service cost</th>
+                          <td>
+                            <h5>{{ this.payload.cost }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Supplier info</th>
+                          <td>
+                            <h5>{{ this.payload.nom_suppliers+", "+this.payload.email_suppliers+", "+this.payload.adr_suppliers }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Company name</th>
+                          <td>
+                            <h5>{{ this.payload.companyName }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Company domain</th>
+                          <td>
+                            <h5>{{ this.payload.domain }}</h5>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- end of table col-lg-6 -->
+              </div>
+              <!-- end of row -->
+            </div>
+            <!-- end of general info -->
+          </div>
+          <!-- end of col-lg-12 -->
+        </div>
+        <!-- end of row -->
+      </div>
+    </div>
+  </ng-container>
+
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="actifmodal.close('Close click')">
       Close

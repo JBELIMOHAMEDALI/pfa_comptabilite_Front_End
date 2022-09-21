@@ -173,7 +173,7 @@ export class ProdservComponent implements OnInit {
   }
   OpenDetails(title: string, payload: any) {
     const modalRef = this.modalService.open(DetailsComponent);
-    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.title = `${title}${this.operation=='0'?' (PURCHASE)':' (SALE)'}`;
     modalRef.componentInstance.type = this.etat=='1'?PRODUCTS_POPUP_TYPE:SERVICES_POPUP_TYPE;
     modalRef.componentInstance.payload = { ...payload };
   }

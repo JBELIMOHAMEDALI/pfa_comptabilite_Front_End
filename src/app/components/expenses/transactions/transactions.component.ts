@@ -9,7 +9,10 @@ import {
 } from "../../../services/endpoints";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DetailsComponent } from "../../../popup/details/details.component";
-import { TRANSACTIONS_POPUP_TYPE } from "../../../popup/popup-type";
+import {
+  TRANSACTIONS_PRODUCTS_POPUP_TYPE,
+  TRANSACTIONS_SERVICES_POPUP_TYPE,
+} from "../../../popup/popup-type";
 
 @Component({
   selector: "app-transactions",
@@ -73,8 +76,11 @@ export class TransactionsComponent implements OnInit {
 
   OpenDetails(title: string, payload: any) {
     const modalRef = this.modalService.open(DetailsComponent);
-    modalRef.componentInstance.title = title;
-    modalRef.componentInstance.type = TRANSACTIONS_POPUP_TYPE;
+    modalRef.componentInstance.title = `${title}${this.operation=='0'?' (PURCHASE)':' (SALE)'}`;
+    modalRef.componentInstance.type =
+      this.etat == "1"
+        ? TRANSACTIONS_PRODUCTS_POPUP_TYPE
+        : TRANSACTIONS_SERVICES_POPUP_TYPE;
 
     modalRef.componentInstance.payload = payload && { ...payload };
   }

@@ -6,9 +6,9 @@
           <span><i class="fas fa-user-tie" style="background-color: #000080"></i></span>
           <div class="d-inline">
             <span class="d-block text-primary">
-              <h4>Transaction Page</h4>
+              <h4>Transactions Page</h4>
             </span>
-            <span class="text-dark">Transaction Page</span>
+            <!-- <span class="text-dark">Transaction Page</span> -->
           </div>
         </div>
       </div>
@@ -42,10 +42,10 @@
                           <thead>
                             <tr style="text-align: center">
                               <th scope="col">
-                                Product name
+                                Product
                               </th>
                               <th scope="col">
-                                Supplier name
+                                Supplier
                               </th>
                               <th scope="col">
                                 Company </th>
@@ -111,13 +111,14 @@
                           <thead>
                             <tr style="text-align: center">
                               <th scope="col">
-                                Product name
+                                Service
                               </th>
                               <th scope="col">
-                                Supplier name
+                                Supplier
                               </th>
                               <th scope="col">
-                                Company </th>
+                                Company
+                              </th>
 
                               <th scope="col">Explore</th>
                             </tr>
@@ -125,13 +126,13 @@
                           <tbody *ngFor="let transaction of this.transactionsList|slice">
                             <tr style="text-align: center">
                               <td scope="row">{{
-                                transaction.productName
+                                transaction.name
                                 }} </td>
                               <td scope="row"> {{
                                 transaction.nom_suppliers
                                 }} </td>
                               <td scope="row"> {{
-                                transaction.name
+                                transaction.companyName
                                 }} </td>
 
 
