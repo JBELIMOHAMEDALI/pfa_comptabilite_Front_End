@@ -35,25 +35,9 @@ const routes: Routes = [
         path: "company",
         loadChildren: () => import("./company/company.module").then((m) => m.CompanyModule),
       },
+
       {
-        path: "sales",
-        children: [
-          {
-            path: 'invoices',
-            loadChildren: () => import('./sales/invoices/invoices.module').then(m => m.InvoicesModule)
-          },
-          {
-            path: 'products-services',
-            loadChildren: () => import('./sales/prodserv/prodserv.module').then(m => m.ProdservModule)
-          },
-          {
-            path: 'customers',
-            loadChildren: () => import('./sales/customers/customers.module').then(m => m.CustomersModule)
-          },
-        ]
-      },
-      {
-        path: "expenses",
+        path: "expenses-sales",
         children: [
           {
             path: 'transactions',
@@ -66,6 +50,10 @@ const routes: Routes = [
           {
             path: 'suppliers',
             loadChildren: () => import('./expenses/suppliers/suppliers.module').then(m => m.SuppliersModule)
+          },
+          {
+            path: 'customers',
+            loadChildren: () => import('./expenses/customers/customers.module').then(m => m.CustomersModule)
           },
         ]
       },

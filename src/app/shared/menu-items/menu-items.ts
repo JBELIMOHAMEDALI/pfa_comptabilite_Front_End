@@ -87,7 +87,7 @@ const MENUITEMS:Menu[] = [
     ],
   },
   {//expenses
-    label: 'Expenses',
+    label: 'Expenses/Sales',
     main: [
       {
         state: 'transactions',
@@ -95,7 +95,7 @@ const MENUITEMS:Menu[] = [
         name: 'Transactions',
         type: 'link',
         icon: 'fas fa-donate',
-        routerLink:'/app/expenses/transactions'
+        routerLink:'/app/expenses-sales/transactions'
       },
       {
         state: 'products-services',
@@ -103,7 +103,7 @@ const MENUITEMS:Menu[] = [
         name: 'Products/Services',
         type: 'link',
         icon: 'fas fa-box',
-        routerLink:'/app/expenses/products-services'
+        routerLink:'/app/expenses-sales/products-services'
       },
       {
         state: 'suppliers',
@@ -111,28 +111,7 @@ const MENUITEMS:Menu[] = [
         name: 'Suppliers',
         type: 'link',
         icon: 'fas fa-users',
-        routerLink:'/app/expenses/suppliers'
-      }
-    ]
-  },
-  {//sales
-    label: 'Sales',
-    main: [
-      {
-        state: 'sales-invoices',
-        short_label: 'E-T',
-        name: 'Invoices',
-        type: 'link',
-        icon: 'fas fa-file-invoice-dollar',
-        routerLink:'/app/sales/invoices'
-      },
-      {
-        state: 'products-services',
-        short_label: 'P-S',
-        name: 'Products/Services',
-        type: 'link',
-        icon: 'fas fa-box',
-        routerLink:'/app/sales/products-services'
+        routerLink:'/app/expenses-sales/suppliers'
       },
       {
         state: 'customers',
@@ -140,11 +119,11 @@ const MENUITEMS:Menu[] = [
         name: 'Customers',
         type: 'link',
         icon: 'fas fa-user-tie',
-        routerLink:"/app/sales/customers"
+        routerLink:"/app/expenses-sales/customers"
       },
-
     ]
   },
+
 
   // {
   //   label: 'Map And Extra Pages ',
