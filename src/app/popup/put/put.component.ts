@@ -34,7 +34,7 @@ export class PutComponent implements OnInit {
   hiredateinputype: string;
   companyList: [];
   suppliersList: [] = [];
-  AccountinList: [] = [];
+  accountsList: [] = [];
   constructor(
     public activeModal: NgbActiveModal,
     public sharedService: SharedService,
@@ -48,13 +48,14 @@ export class PutComponent implements OnInit {
   ngOnInit() {
     if (this.type == "SERVICES" || this.type == "PRODUCTS") {
       this.getSuppliers();
-      this.getListaccutn();
+      this.getAccounts();
     }
   }
   getSuppliers() {
+
     this.backendService
       .get(
-        `${GET_SUPPLIETS_SERVICES_END_POINT}/${localStorage.getItem(
+        `${GET_SUPPLIETS_SERVICES_END_POINT}/${this.sharedService.getItem(
           "companyNo"
         )}`
       )
@@ -64,16 +65,16 @@ export class PutComponent implements OnInit {
         })
       );
   }
-  getListaccutn() {
+  getAccounts() {
     this.backendService
       .get(
-        `${GET_USER_ACCOUNTING_LIST_PLAN_END_POINT}/${localStorage.getItem(
+        `${GET_USER_ACCOUNTING_LIST_PLAN_END_POINT}/${this.sharedService.getItem(
           "companyNo"
         )}`
       )
       .subscribe(
         new Observer().OBSERVER_GET((response) => {
-          this.AccountinList = response.rows;
+          this.accountsList = response.rows;
         })
       );
   }
@@ -123,18 +124,18 @@ export class PutComponent implements OnInit {
         payload = { ...payload, id_service: this.payload.id_service };
         break;
     }
-    this.backendService
-      .put(endpoint, payload)
-      .subscribe(
-        new Observer(
-          this.router,
-          null,
-          true,
-          true,
-          this.sharedService,
-          this.activeModal
-        ).OBSERVER_EDIT()
-      );
+    // this.backendService
+    //   .put(endpoint, payload)
+    //   .subscribe(
+    //     new Observer(
+    //       this.router,
+    //       null,
+    //       true,
+    //       true,
+    //       this.sharedService,
+    //       this.activeModal
+    //     ).OBSERVER_EDIT()
+    //   );
   }
 
   setinputtype(event, type: string) {

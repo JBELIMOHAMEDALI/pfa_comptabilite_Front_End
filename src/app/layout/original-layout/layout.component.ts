@@ -17,7 +17,6 @@ import {
 } from "../../services/endpoints";
 import Observer from "../../services/observer";
 import { Router } from "@angular/router";
-import { TokenService } from "../../services/token.service";
 import { SharedService } from "../../services/shared.service";
 
 @Component({
@@ -140,7 +139,6 @@ export class LayoutComponent implements OnInit {
     private backendService: BackendService,
     private sharedService: SharedService,
     private router: Router,
-    private tokenService: TokenService
   ) {
     this.navType = "st5";
     this.themeLayout = "vertical";
@@ -393,9 +391,9 @@ export class LayoutComponent implements OnInit {
     this.backendService
     .delete(USER_LOGOUT_END_POINT)
     .subscribe(new Observer().OBSERVER_DELETE());
-    this.tokenService.removeToken("accessToken");
-    this.tokenService.removeToken("refreshToken");
-    this.tokenService.removeToken("companyNo");
+    this.sharedService.deleteItem("accessToken");
+    this.sharedService.deleteItem("refreshToken");
+    this.sharedService.deleteItem("companyNo");
     this.router.navigate(["/signin"]);
   }
 }

@@ -18,7 +18,7 @@
           <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel" required />
         </div>
         <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
-          <span>Enter company name !</span>
+          <span>Enter name !</span>
         </div>
 
         <div class="input-group">
@@ -28,7 +28,7 @@
             required />
         </div>
         <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
-          <span>Enter company domain !</span>
+          <span>Enter domain !</span>
         </div>
 
 
@@ -89,16 +89,6 @@
         <div *ngIf="salary.invalid && salary.touched" class="alert alert-danger p-2" role="alert">
           <span>Enter salary !</span>
         </div>
-        <!-- <div class="form-check form-check-inline">
-          <input class="form-check-input" ngModel #gender="ngModel" type="radio" name="gender" id="inlineRadio1" value="F"
-            checked>
-          <label class="form-check-label" for="inlineRadio1">€</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" ngModel #gender="ngModel" type="radio" name="gender" id="inlineRadio2"
-            value="M">
-          <label class="form-check-label" for="inlineRadio2">$</label>
-        </div> -->
 
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
@@ -195,7 +185,7 @@
           <input type="text" class="form-control" placeholder="Name" name="source" ngModel #source="ngModel" required />
         </div>
         <div *ngIf="source.invalid && source.touched" class="alert alert-danger p-2" role="alert">
-          <span>Enter accounting plan name !</span>
+          <span>Enter name !</span>
         </div>
 
         <div class="modal-footer">
@@ -216,7 +206,7 @@
           <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel" required />
         </div>
         <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
-          <span>Enter tax name !</span>
+          <span>Enter name !</span>
         </div>
 
         <div class="input-group">
@@ -245,9 +235,7 @@
           <input type="number" class="form-control" placeholder="Business No" name="businessNo" ngModel
             #businessNo="ngModel" />
         </div>
-        <!-- <div *ngIf="businessNo.invalid && businessNo.touched" class="alert alert-danger p-2" role="alert">
-          <span>Enter business No!</span>
-        </div> -->
+
 
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
@@ -345,7 +333,7 @@
         <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
         <select ngModel='-1' #payment_method="ngModel" name="payment_method" class="form-control" required>
           <option value="-1" disabled selected>Select your payment method</option>
-          <option value="credit_cards">Credit cards</option>
+          <option value="credit_cards">Credit card</option>
           <option value="bank_check">Bank check</option>
           <option value="cash_payment">Cash payment</option>
         </select>
@@ -365,11 +353,11 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" placeholder="Nom suppliers" name="nom_suppliers" ngModel
+        <input type="text" class="form-control" placeholder="Name" name="nom_suppliers" ngModel
           #nom_suppliers="ngModel" required />
       </div>
       <div *ngIf="nom_suppliers.invalid && nom_suppliers.touched" class="alert alert-danger p-2" role="alert">
-        <span>Nom suppliers</span>
+        <span>Enter name !</span>
       </div>
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
@@ -409,8 +397,8 @@
         <select class="form-select" value="-1" name="id_accounting_plan" ngModel #id_accounting_plan="ngModel"
           placeholder="Name" required>
           <option value="">choose account number </option>
-          <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
-            {{file.account_number}}
+          <option *ngFor="let account of this.accountsList;" value="{{account.id}}">
+            {{account.account_number}}
           </option>
         </select>
       </div>
@@ -422,7 +410,7 @@
               class="icofont icofont-brand-myspace"></i></label></span>
         <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
         <select class="form-select" value="-1" name="id_suppliers" ngModel #id_suppliers="ngModel" required>
-          <option value="">choose suppliers</option>
+          <option value="">choose supplier</option>
 
           <option *ngFor="let supplier of this.supplierList;" value="{{supplier.id}}">
             {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
@@ -430,7 +418,7 @@
         </select>
       </div>
       <div *ngIf="id_suppliers.invalid && id_suppliers.touched" class="alert alert-danger p-2" role="alert">
-        <span>choose suppliers !</span>
+        <span>choose supplier !</span>
       </div>
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
@@ -488,14 +476,15 @@
         <input type="number" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" required />
       </div>
       <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
-        <span>Enter Tax</span>
+        <span>Enter Tax !</span>
       </div>
 
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="number" class="form-control" disabled placeholder="Cost"
+        <input type="text" class="form-control" placeholder="Cost"
         [ngModel]="((sale_price.value*quantity.value)+(tax.value/100))"
+        onkeydown="return false"
         name="cost" ngModel #cost="ngModel"
           required />
       </div>
@@ -522,8 +511,8 @@
         <select class="form-select" value="-1" name="id_accounting_plan" ngModel #id_accounting_plan="ngModel"
           placeholder="Name" required>
           <option value="">choose account number </option>
-          <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
-            {{file.account_number}}
+          <option *ngFor="let account of this.accountsList;" value="{{account.id}}">
+            {{account.account_number}}
           </option>
         </select>
       </div>
@@ -535,7 +524,7 @@
               class="icofont icofont-brand-myspace"></i></label></span>
         <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
         <select class="form-select" value="-1" name="id_suppliers" ngModel #id_suppliers="ngModel" required>
-          <option value="">choose suppliers</option>
+          <option value="">choose supplier</option>
 
           <option *ngFor="let supplier of this.supplierList;" value="{{supplier.id}}">
             {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
@@ -543,7 +532,7 @@
         </select>
       </div>
       <div *ngIf="id_suppliers.invalid && id_suppliers.touched" class="alert alert-danger p-2" role="alert">
-        <span>choose suppliers !</span>
+        <span>choose supplier !</span>
       </div>
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
@@ -589,6 +578,15 @@
       </div>
       <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter Tax</span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" placeholder="Cost"
+        [ngModel]="((sale_price.value*quantity.value)+(tax.value/100))"
+        onkeydown="return false"
+        name="cost" ngModel #cost="ngModel"
+          required />
       </div>
       <div class="modal-footer">
         <input value="Confirm" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />

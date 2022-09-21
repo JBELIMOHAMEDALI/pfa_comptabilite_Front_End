@@ -2,12 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import {
-  GOOGLE_SIGNIN_END_POINT,
   SIGNIN_END_POINT,
 } from "../../../services/endpoints";
 import { BackendService } from "../../../services/backend.service";
 import Observer from "../../../services/observer";
-import { TokenService } from "../../../services/token.service";
+import { SharedService } from "../../../services/shared.service";
 
 @Component({
   selector: "app-signin",
@@ -18,7 +17,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private backendService: BackendService,
     private router: Router,
-    private tokenService: TokenService
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {}
@@ -29,8 +28,8 @@ export class SigninComponent implements OnInit {
       new Observer(this.router, "/app/dashboard", false).OBSERVER_SIGNIN(
         (response: any) => {
           const { accessToken, refreshToken } = response;
-          this.tokenService.saveToken("accessToken", accessToken);
-          this.tokenService.saveToken("refreshToken", refreshToken);
+          this.sharedService.setItem("accessToken", accessToken);
+          this.sharedService.setItem("refreshToken", refreshToken);
           // }
         }
       )

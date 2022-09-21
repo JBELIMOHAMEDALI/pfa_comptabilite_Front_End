@@ -8,7 +8,7 @@
             <span class="d-block text-primary">
               <h4>Products and Services Page</h4>
             </span>
-            <span class="text-dark">Products and Services Page</span>
+            <!-- <span class="text-dark">Products and Services Page</span> -->
           </div>
         </div>
       </div>
@@ -58,45 +58,45 @@
                           <thead>
                             <tr style="text-align: center">
                               <th scope="col">
-                                Product Name
+                                Name
                               </th>
                               <th scope="col">
-                                Product Ref
+                                Ref
                               </th>
                               <th scope="col">
-                                Product Quantity </th>
+                                Quantity </th>
                               <th scope="col">
-                                Product Sale price
+                                Sale price
                               </th>
                               <th scope="col">
-                                suppliers Name
+                                Supplier Name
                               </th>
                               <!--   -->
                               <th scope="col">Actions</th>
                             </tr>
                           </thead>
-                          <tbody *ngFor="let item of this.productList|slice">
+                          <tbody *ngFor="let product of this.productList|slice">
                             <tr style="text-align: center">
                               <td scope="row">{{
-                                item.name
+                                product.name
                                 }} </td>
                               <td scope="row"> {{
-                                item.ref
+                                product.ref
                                 }} </td>
                               <td scope="row"> {{
-                                item.quantity
+                                product.quantity
                                 }} </td>
                               <td scope="row"> {{
-                                item.sale_price
+                                product.sale_price
                                 }} </td>
                               <td scope="row"> {{
-                                item.nom_suppliers
+                                product.nom_suppliers
                                 }} </td>
 
                               <td scope="row">
-                                <i (click)="OpenModal('UPDATE PRODUCTS',item)" class="fas fa-edit"></i>
-                                <i (click)="deleteCustomer(item.id_product)" class="fa fa-trash-o ml-2"></i>
-                                <i (click)="OpenDetails('PRODUCTS DETAILS',item)" class="fa fa-eye ml-2"></i>
+                                <i (click)="OpenModal('UPDATE PRODUCT',product)" class="fas fa-edit"></i>
+                                <i (click)="deleteItem(product.id_product)" class="fa fa-trash-o ml-2"></i>
+                                <i (click)="OpenDetails('PRODUCT DETAILS',product)" class="fa fa-eye ml-2"></i>
 
                               </td>
                             </tr>
@@ -133,14 +133,14 @@
                       <div class="container">
                         <div class="row">
                           <div class="col-md-12 col-lg-3 mt-5 mr-2">
-                            <select class="form-select" value="0" (change)="changeServiceState($event.target.value)">
+                            <select class="form-select" value="0" (change)="changeState($event.target.value)">
                               <option value="0">Purchases</option>
                               <option value="1">Sales</option>
                             </select>
                           </div>
                           <div class="col-sm-1 mt-5 mr-2 ml-4">
                             <!-- <div class="pcoded-search-box"> -->
-                              <button class="btn " (click)="OpenModal2('NEW SERVICE')">
+                              <button class="btn " (click)="OpenModal('NEW SERVICE')">
                                 <i class="icofont icofont-ui-add"></i>
                                 New
                               </button>
@@ -156,37 +156,37 @@
                           <thead>
                             <tr style="text-align: center">
                               <th scope="col">
-                                service name
+                                Name
                               </th>
                               <th scope="col">
-                                service ref
+                                Ref
                               </th>
                               <th scope="col">
-                                service sale price </th>
+                                Sale price </th>
                               <th scope="col">
-                                service tax
+                                Tax
                               </th>
                               <th scope="col">Actions</th>
                             </tr>
                           </thead>
-                          <tbody *ngFor="let item of this.serviceList|slice">
+                          <tbody *ngFor="let service of this.serviceList|slice">
                             <tr style="text-align: center">
                               <td scope="row">{{
-                                item.name
+                                service.name
                                 }} </td>
                               <td scope="row"> {{
-                                item.ref
+                                service.ref
                                 }} </td>
                               <td scope="row"> {{
-                                item.sale_price
+                                service.sale_price
                                 }} </td>
                               <td scope="row"> {{
-                                item.tax
+                                service.tax
                                 }} </td>
                               <td scope="row">
-                                <i (click)="OpenModal2('UPDATE SERVICES',item)" class="fas fa-edit"></i>
-                                <i (click)="deleteCustomer2(item.id_service)" class="fa fa-trash-o ml-2"></i>
-                                <i (click)="OpenDetails2('SERVICES DETAILS',item)" class="fa fa-eye ml-2"></i>
+                                <i (click)="OpenModal('UPDATE SERVICE',service)" class="fas fa-edit"></i>
+                                <i (click)="deleteItem(service.id_service)" class="fa fa-trash-o ml-2"></i>
+                                <i (click)="OpenDetails('SERVICE DETAILS',service)" class="fa fa-eye ml-2"></i>
 
                               </td>
                             </tr>

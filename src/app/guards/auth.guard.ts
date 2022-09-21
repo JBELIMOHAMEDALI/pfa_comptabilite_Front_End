@@ -3,23 +3,21 @@ import {
   CanActivateChild,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree,
   Router,
   CanActivate,
 } from "@angular/router";
-import { Observable } from "rxjs";
-import { TokenService } from "../services/token.service";
+import { SharedService } from "../services/shared.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthGuard implements CanActivateChild, CanActivate {
-  constructor(private router: Router, private tokenService: TokenService) {}
+  constructor(private router: Router, private sharedService: SharedService) {}
   canActivate(//test for login pages
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (this.tokenService.LoggedIn()) {
+    if (this.sharedService.LoggedIn()) {
       this.router.navigate(["/app"]);
       return false;
     } else {
@@ -31,7 +29,7 @@ export class AuthGuard implements CanActivateChild, CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (this.tokenService.LoggedIn()) {
+    if (this.sharedService.LoggedIn()) {
       return true;
     } else {
       this.router.navigate(["/signin"]);

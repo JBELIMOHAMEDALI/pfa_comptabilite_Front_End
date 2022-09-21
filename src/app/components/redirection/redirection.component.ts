@@ -6,7 +6,7 @@ import {
 } from "../../services/endpoints";
 import Observer from "../../services/observer";
 import { BackendService } from "../../services/backend.service";
-import { TokenService } from "../../services/token.service";
+import { SharedService } from "../../services/shared.service";
 
 @Component({
   selector: "app-redirection",
@@ -18,7 +18,7 @@ export class RedirectionComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private backendService: BackendService,
-    private tokenService: TokenService
+    private sharedService:SharedService
   ) {}
 
   ngOnInit() {
@@ -36,8 +36,8 @@ export class RedirectionComponent implements OnInit {
           new Observer(this.router, null, false).OBSERVER_POST(
             (response: any, nav: boolean) => {
               if (nav) {
-                this.tokenService.saveToken("refreshToken", refreshToken);
-                this.tokenService.saveToken(
+                this.sharedService.setItem("refreshToken", refreshToken);
+                this.sharedService.setItem(
                   "accessToken",
                   response.accessToken
                 );
@@ -49,8 +49,8 @@ export class RedirectionComponent implements OnInit {
           )
         );
     } else {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
+      this.sharedService.deleteItem("accessToken");
+      this.sharedService.deleteItem("refreshToken");
       this.router.navigate(["/signin"]);
     }
   }

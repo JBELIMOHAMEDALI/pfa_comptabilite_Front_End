@@ -31,9 +31,9 @@ export class PostComponent implements OnInit {
   @Input("payload") payload: any;
   @Input("operationSer") operationSer: any;
   @Input("operationPro") operationPro: any;
-  // 
+  //
   supplierList: [] = [];
-  AccountinList: [] = [];
+  accountsList: [] = [];
   actualDate: string;
 
   birthdateinputype: string;
@@ -55,13 +55,13 @@ export class PostComponent implements OnInit {
   ngOnInit() {
     if (this.type == "SERVICES" || this.type == "PRODUCTS") {
       this.getSuppliers();
-      this.getListaccutn();
+      this.getAccounts();
     }
   }
   getSuppliers() {
     this.backendService
       .get(
-        `${GET_SUPPLIETS_SERVICES_END_POINT}/${localStorage.getItem(
+        `${GET_SUPPLIETS_SERVICES_END_POINT}/${this.sharedService.getItem(
           "companyNo"
         )}`
       )
@@ -71,29 +71,19 @@ export class PostComponent implements OnInit {
         })
       );
   }
-  getListaccutn() {
+  getAccounts() {
     this.backendService
       .get(
-        `${GET_USER_ACCOUNTING_LIST_PLAN_END_POINT}/${localStorage.getItem(
+        `${GET_USER_ACCOUNTING_LIST_PLAN_END_POINT}/${this.sharedService.getItem(
           "companyNo"
         )}`
       )
       .subscribe(
         new Observer().OBSERVER_GET((response) => {
-          this.AccountinList = response.rows;
+          this.accountsList = response.rows;
         })
       );
   }
-
-  // getCompanies() {
-  //   this.backendService.get(GET_USER_COMPANIES_END_POINT).subscribe(
-  //     new Observer(this.router, '', false).OBSERVER_GET((response) => {
-  //       if (!response.err)
-  //         this.companyList = response.rows;
-  //     })
-  //   )
-
-  // }
 
   onSubmit(form: NgForm) {
     let endpoint: string = "";
@@ -144,7 +134,7 @@ export class PostComponent implements OnInit {
           tax: payload.tax,
           cost: payload.cost,
           operation: this.operationPro,
-          id_company: localStorage.getItem("companyNo"),
+          id_company: this.sharedService.getItem("companyNo"),
           id_suppliers: payload.id_suppliers,
           id_accounting_plan: payload.id_accounting_plan,
         };
@@ -157,19 +147,21 @@ export class PostComponent implements OnInit {
         payload = { ...payload, id_company: this.payload.id_company };
         break;
     }
+    console.log(payload);
 
-    this.backendService
-      .post(endpoint, payload)
-      .subscribe(
-        new Observer(
-          this.router,
-          null,
-          true,
-          true,
-          this.sharedService,
-          this.activeModal
-        ).OBSERVER_POST()
-      );
+
+    // this.backendService
+    //   .post(endpoint, payload)
+    //   .subscribe(
+    //     new Observer(
+    //       this.router,
+    //       null,
+    //       true,
+    //       true,
+    //       this.sharedService,
+    //       this.activeModal
+    //     ).OBSERVER_POST()
+    //   );
   }
 
   setinputtype(type: string) {

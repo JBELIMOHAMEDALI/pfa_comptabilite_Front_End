@@ -7,13 +7,11 @@ import {
   HttpRequest,
 } from "@angular/common/http";
 import { Injectable, Injector } from "@angular/core";
-import { Observable, throwError } from "rxjs";
-import { ObservableInput } from "rxjs-compat/Observable";
+import {  throwError } from "rxjs";
 import { catchError, switchMap } from "rxjs/operators";
 import { BackendService } from "./backend.service";
 import { GET_USER_REFRESH_TOKEN_END_POINT } from "./endpoints";
-import Observer from "./observer";
-import { TokenService } from "./token.service";
+import { SharedService } from "./shared.service";
 
 @Injectable({
   providedIn: "root",
@@ -23,10 +21,10 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor(
     private http: HttpClient,
     private injector: Injector,
-    private backendService: BackendService
+
   ) {}
   intercept(request: HttpRequest<any>, next: HttpHandler) {
-    const accessToken = this.injector.get(TokenService).getToken("accessToken");
+    const accessToken = this.injector.get(SharedService).getItem("accessToken");
 
     if (accessToken) {
       const req = request.clone({
@@ -41,8 +39,8 @@ export class TokenInterceptorService implements HttpInterceptor {
           if (err.status === 403 && !this.refresh) {
             this.refresh = true;
             const refreshToken = this.injector
-              .get(TokenService)
-              .getToken("refreshToken");
+              .get(SharedService)
+              .getItem("refreshToken");
             return this.http
               .post(GET_USER_REFRESH_TOKEN_END_POINT, { token: refreshToken })
               .pipe(
@@ -50,8 +48,8 @@ export class TokenInterceptorService implements HttpInterceptor {
                   //if refreshToken is not correct redempt it
                   const newAccessToken = res.accessToken;
                   this.injector
-                    .get(TokenService)
-                    .saveToken("accessToken", newAccessToken);
+                    .get(SharedService)
+                    .setItem("accessToken", newAccessToken);
                   const tokenizedReq = req.clone({
                     setHeaders: {
                       Authorization: `Bearer ${newAccessToken}`,

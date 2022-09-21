@@ -3,7 +3,6 @@ import { Router } from "@angular/router";
 import { BackendService } from "./backend.service";
 import { GET_USER_SELECTED_COMPANY_END_POINT } from "./endpoints";
 import Observer from "./observer";
-import * as CryptoJS from "crypto-js";
 
 @Injectable({
   providedIn: "root",
@@ -23,36 +22,28 @@ export class SharedService {
     //regex and password length
   }
 
-  // getStoredCompany() {
-  //   const id_company = localStorage.getItem("COMPANY");
-  //   if (!id_company) {
-  //     this.backendservice.get(GET_USER_SELECTED_COMPANY_END_POINT).subscribe(
-  //       new Observer().OBSERVER_GET((response) => {
-  //         if (!response.err&&response.rows[0]) {
-  //           localStorage.setItem(
-  //             "COMPANY",
-  //             (response.rows[0].id_company)
-  //           );
-  //         }
-  //       })
-  //     );
-  //   }
-  //   return localStorage.getItem("COMPANY");
-  // }
+
 
   setItem(key: string, value: string) {
-    localStorage.setItem(key, value);
+    sessionStorage.setItem(key, value);
   }
   deleteItem(key: string) {
-    localStorage.removeItem(key);
+    sessionStorage.removeItem(key);
   }
+  getItem(key:string){
+    return sessionStorage.getItem(key);
+  }
+  LoggedIn(){
+    return !!sessionStorage.getItem('refreshToken');
+  }
+
   getSelectedCompany(cb) {
-    const id = localStorage.getItem("companyNo");
+    const id = this.getItem("companyNo");
     if (!id) {
       this.backendservice.get(GET_USER_SELECTED_COMPANY_END_POINT).subscribe(
         new Observer().OBSERVER_GET((response) => {
           if (!response.err && response.rows[0]) {
-            localStorage.setItem("companyNo", response.rows[0].id_company);
+            this.setItem("companyNo", response.rows[0].id_company);
             cb(response.rows[0].id_company)
           }
         })

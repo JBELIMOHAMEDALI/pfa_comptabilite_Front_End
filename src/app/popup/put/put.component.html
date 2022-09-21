@@ -17,7 +17,7 @@
             #name="ngModel" required />
         </div>
         <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
-          <span>Enter company name !</span>
+          <span>Enter name !</span>
         </div>
 
         <div class="input-group">
@@ -27,7 +27,7 @@
             ngModel #domain="ngModel" required />
         </div>
         <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
-          <span>Enter company domain !</span>
+          <span>Enter domain !</span>
         </div>
 
 
@@ -164,7 +164,8 @@
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
                 class="icofont icofont-company"></i></label></span>
-          <input type="text" class="form-control" [(ngModel)]="this.payload.description" placeholder="Description" name="description" ngModel #domain="ngModel" required />
+          <input type="text" class="form-control" [(ngModel)]="this.payload.description" placeholder="Description"
+            name="description" ngModel #domain="ngModel" required />
         </div>
         <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
           <span>Enter description !</span>
@@ -188,7 +189,7 @@
             #name="ngModel" required />
         </div>
         <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
-          <span>Enter tax name !</span>
+          <span>Enter name !</span>
         </div>
 
         <div class="input-group">
@@ -217,9 +218,6 @@
           <input type="number" class="form-control" [(ngModel)]="this.payload.businessNo" placeholder="Business No"
             name="businessNo" ngModel #businessNo="ngModel" />
         </div>
-        <!-- <div *ngIf="businessNo.invalid && businessNo.touched" class="alert alert-danger p-2" role="alert">
-        <span>Enter business No !</span>
-      </div> -->
 
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
@@ -259,303 +257,321 @@
         </div>
       </form>
     </ng-container>
-<!-- ///** -->
+    <!-- ///** -->
 
 
-<ng-container *ngIf="this.type==='CUSTOMER'">
-  <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Fullname" [(ngModel)]="this.payload.fullname" name="fullname" ngModel #fullname="ngModel" required />
-    </div>
-    <div *ngIf="fullname.invalid && fullname.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter fullname !</span>
-    </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="this.payload.email"  ngModel #email="ngModel" required />
-    </div>
-    <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter email !</span>
-    </div>
+    <ng-container *ngIf="this.type==='CUSTOMER'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" placeholder="Fullname" [(ngModel)]="this.payload.fullname"
+            name="fullname" ngModel #fullname="ngModel" required />
+        </div>
+        <div *ngIf="fullname.invalid && fullname.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter fullname !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="this.payload.email"
+            ngModel #email="ngModel" required />
+        </div>
+        <div *ngIf="email.invalid && email.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter email !</span>
+        </div>
 
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="tel" class="form-control" placeholder="Phone" name="phone" [(ngModel)]="this.payload.phone"  ngModel #phone="ngModel" required />
-    </div>
-    <div *ngIf="phone.invalid && phone.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter phone !</span>
-    </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="tel" class="form-control" placeholder="Phone" name="phone" [(ngModel)]="this.payload.phone"
+            ngModel #phone="ngModel" required />
+        </div>
+        <div *ngIf="phone.invalid && phone.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter phone !</span>
+        </div>
 
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Address" name="address"  [(ngModel)]="this.payload.address" ngModel #address="ngModel"
-        required />
-    </div>
-    <div *ngIf="address.invalid && address.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter address !</span>
-    </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" placeholder="Address" name="address"
+            [(ngModel)]="this.payload.address" ngModel #address="ngModel" required />
+        </div>
+        <div *ngIf="address.invalid && address.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter address !</span>
+        </div>
 
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="company name" name="company_name" [(ngModel)]="this.payload.company_name"  ngModel #company_name="ngModel"
-        required />
-    </div>
-    <div *ngIf="company_name.invalid && company_name.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter company name !</span>
-    </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" placeholder="company name" name="company_name"
+            [(ngModel)]="this.payload.company_name" ngModel #company_name="ngModel" required />
+        </div>
+        <div *ngIf="company_name.invalid && company_name.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter company name !</span>
+        </div>
 
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-brand-myspace"></i></label></span>
-      <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
-        <select #payment_method="ngModel" name="payment_method" class="form-control"  [(ngModel)]=" this.payload.payment_method" required>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-brand-myspace"></i></label></span>
+          <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
+          <select #payment_method="ngModel" name="payment_method" class="form-control"
+            [(ngModel)]=" this.payload.payment_method" required>
 
-          <option value="credit_cards">Credit cards</option>
-          <option value="bank_check">Bank check</option>
-           <option value="cash_payment">Cash payment</option>
-        </select>
-    </div>
-    <div class="modal-footer">
-      <input value="Confirm" [disabled]="fedit.invalid" type="submit"
-        class="btn btn-outline-primary" />
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
-        Cancel
-      </button>
-    </div>
-  </form>
-</ng-container>
+            <option value="credit_cards">Credit card</option>
+            <option value="bank_check">Bank check</option>
+            <option value="cash_payment">Cash payment</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <input value="Confirm" [disabled]="fedit.invalid" type="submit" class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </ng-container>
 
-<ng-container *ngIf="this.type==='SUPPLIERS'">
-  <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
+    <ng-container *ngIf="this.type==='SUPPLIERS'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
 
-      <input type="text" class="form-control" [(ngModel)]="this.payload.nom_suppliers" placeholder="Nom suppliers" name="nom_suppliers" ngModel #nom_suppliers="ngModel"
-        required />
-    </div>
-    <div *ngIf="nom_suppliers.invalid && nom_suppliers.touched" class="alert alert-danger p-2" role="alert">
-      <span>Nom suppliers</span>
-    </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.nom_suppliers"
+          placeholder="Name"
+            name="nom_suppliers" ngModel #nom_suppliers="ngModel" required />
+        </div>
+        <div *ngIf="nom_suppliers.invalid && nom_suppliers.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter name !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
 
-      <input type="email" class="form-control" [(ngModel)]="this.payload.email_suppliers" placeholder="Email" name="email_suppliers" ngModel #email_suppliers="ngModel" required />
-    </div>
-    <div *ngIf="email_suppliers.invalid && email_suppliers.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Email !</span>
-    </div>
+          <input type="email" class="form-control" [(ngModel)]="this.payload.email_suppliers"
+          placeholder="Email"
+            name="email_suppliers" ngModel #email_suppliers="ngModel" required />
+        </div>
+        <div *ngIf="email_suppliers.invalid && email_suppliers.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Email !</span>
+        </div>
 
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" [(ngModel)]="this.payload.adr_suppliers" placeholder="Address" name="adr_suppliers" ngModel #adr_suppliers="ngModel" required />
-    </div>
-    <div *ngIf="adr_suppliers.invalid && adr_suppliers.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Address !</span>
-    </div>
-    <div class="modal-footer">
-      <input value="Confirm" [disabled]="fedit.invalid" type="submit"
-        class="btn btn-outline-primary" />
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
-        Cancel
-      </button>
-    </div>
-  </form>
-</ng-container>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" [(ngModel)]="this.payload.adr_suppliers"
+          placeholder="Address"
+            name="adr_suppliers" ngModel #adr_suppliers="ngModel" required />
+        </div>
+        <div *ngIf="adr_suppliers.invalid && adr_suppliers.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Address !</span>
+        </div>
+        <div class="modal-footer">
+          <input value="Confirm" [disabled]="fedit.invalid" type="submit" class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </ng-container>
 
-<ng-container *ngIf="this.type==='PRODUCTS'">
-  <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-credit-card"></i></label></span>
-            <select class="form-select"  name="id_accounting_plan" [(ngModel)]="this.payload.id_accounting_plan" ngModel #id_accounting_plan="ngModel"
-            required>
+    <ng-container *ngIf="this.type==='PRODUCTS'">
+      <form name="fedit" (ngSubmit)="onSubmit(fedit)" #fedit="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-credit-card"></i></label></span>
+          <select class="form-select" name="id_accounting_plan" [(ngModel)]="this.payload.id_accounting_plan" ngModel
+            #id_accounting_plan="ngModel" required>
 
-              <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
-                {{file.account_number}}
-              </option>
-            </select>
-    </div>
-    <div *ngIf="id_accounting_plan.invalid && id_accounting_plan.touched" class="alert alert-danger p-2" role="alert">
-      <span>choose account number !</span>
-    </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-brand-myspace"></i></label></span>
-        <select class="form-select"   name="id_suppliers" ngModel #id_suppliers="ngModel"
-        [(ngModel)]="this.payload.id_suppliers" required>
-          <option *ngFor="let supplier of this.suppliersList;" value="{{supplier.id}}">
-            {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
-          </option>
-        </select>
-    </div>
-    <div *ngIf="id_suppliers.invalid && id_suppliers.touched" class="alert alert-danger p-2" role="alert">
-      <span>choose suppliers !</span>
-    </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel" [(ngModel)]="this.payload.name"
-        required />
-    </div>
-    <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Name !</span>
-    </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Ref" name="ref" ngModel #ref="ngModel" [(ngModel)]="this.payload.ref"  required />
-    </div>
-    <div *ngIf="ref.invalid && ref.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Ref !</span>
-    </div>
+            <option *ngFor="let account of this.accountsList;" value="{{account.id}}">
+              {{account.account_number}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="id_accounting_plan.invalid && id_accounting_plan.touched" class="alert alert-danger p-2"
+          role="alert">
+          <span>choose account number !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-brand-myspace"></i></label></span>
+          <select class="form-select" name="id_suppliers" ngModel #id_suppliers="ngModel"
+            [(ngModel)]="this.payload.id_suppliers" required>
+            <option *ngFor="let supplier of this.suppliersList;" value="{{supplier.id}}">
+              {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="id_suppliers.invalid && id_suppliers.touched" class="alert alert-danger p-2" role="alert">
+          <span>choose supplier !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel"
+            [(ngModel)]="this.payload.name" required />
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Name !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" placeholder="Ref" name="ref" ngModel #ref="ngModel"
+            [(ngModel)]="this.payload.ref" required />
+        </div>
+        <div *ngIf="ref.invalid && ref.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Ref !</span>
+        </div>
 
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="number" class="form-control" placeholder="Quantity" name="quantity" ngModel #quantity="ngModel" [(ngModel)]="this.payload.quantity"
-        required />
-    </div>
-    <div *ngIf="quantity.invalid && quantity.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Quantity !</span>
-    </div>
-    <!--  -->
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-        class="icofont icofont-file-text"></i></label></span>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control" placeholder="Quantity" name="quantity" ngModel #quantity="ngModel"
+            [(ngModel)]="this.payload.quantity" required />
+        </div>
+        <div *ngIf="quantity.invalid && quantity.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Quantity !</span>
+        </div>
+        <!--  -->
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-file-text"></i></label></span>
 
-    <textarea class="form-control" id="exampleFormControlTextarea1"  placeholder="Description" rows="2" name="description" ngModel #description="ngModel" [(ngModel)]="this.payload.description"  required></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="2"
+            name="description" ngModel #description="ngModel" [(ngModel)]="this.payload.description"
+            required></textarea>
 
-  </div>
-  <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
-    <span>Enter Description !</span>
-  </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="number" class="form-control" placeholder="Sale price" name="sale_price" ngModel #sale_price="ngModel" [(ngModel)]="this.payload.sale_price"  required />
-    </div>
-    <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter sale price !</span>
-    </div>
-     <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="number" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" [(ngModel)]="this.payload.tax"  required />
-    </div>
-    <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Tax</span>
-    </div>
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Description !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control" placeholder="Sale price" name="sale_price" ngModel
+            #sale_price="ngModel" [(ngModel)]="this.payload.sale_price" required />
+        </div>
+        <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter sale price !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel"
+            [(ngModel)]="this.payload.tax" required />
+        </div>
+        <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Tax</span>
+        </div>
 
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="number" class="form-control" disabled placeholder="Cost" name="cost"
-      [ngModel]="((sale_price.value*quantity.value)+(tax.value/100))"
-      ngModel #cost="ngModel" [(ngModel)]="this.payload.cost"  required />
-    </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="number" class="form-control" onkeydown="return false" placeholder="Cost" name="cost"
+            [ngModel]="((sale_price.value*quantity.value)+(tax.value/100))" ngModel #cost="ngModel"
+            [(ngModel)]="this.payload.cost" required />
+        </div>
 
-    <div class="modal-footer">
-      <input value="Confirm" [disabled]="fedit.invalid" type="submit"
-        class="btn btn-outline-primary" />
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
-        Cancel
-      </button>
-    </div>
-  </form>
-</ng-container>
+        <div class="modal-footer">
+          <input value="Confirm" [disabled]="fedit.invalid" type="submit" class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </ng-container>
 
-<ng-container *ngIf="this.type==='SERVICES'">
-  <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-credit-card"></i></label></span>
-            <select class="form-select" value="-1"  name="id_accounting_plan" ngModel #id_accounting_plan="ngModel" placeholder="Name"
-            [(ngModel)]="this.payload.id_accounting_plan" required>
+    <ng-container *ngIf="this.type==='SERVICES'">
+      <form name="fadd" (ngSubmit)="onSubmit(fadd)" #fadd="ngForm" novalidate>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-credit-card"></i></label></span>
+          <select class="form-select" value="-1" name="id_accounting_plan" ngModel #id_accounting_plan="ngModel"
+            placeholder="Name" [(ngModel)]="this.payload.id_accounting_plan" required>
             <option value="">Choose account number </option>
-              <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
-                {{file.account_number}}
-              </option>
-            </select>
-    </div>
-    <div *ngIf="id_accounting_plan.invalid && id_accounting_plan.touched" class="alert alert-danger p-2" role="alert">
-      <span>choose account number !</span>
-    </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-brand-myspace"></i></label></span>
-      <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" [(ngModel)]="this.payload.id_accounting_plan" required> -->
-        <select class="form-select"  name="id_suppliers" ngModel #id_suppliers="ngModel" [(ngModel)]="this.payload.id_suppliers" required>
+            <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
+              {{file.account_number}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="id_accounting_plan.invalid && id_accounting_plan.touched" class="alert alert-danger p-2"
+          role="alert">
+          <span>choose account number !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-brand-myspace"></i></label></span>
+          <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" [(ngModel)]="this.payload.id_accounting_plan" required> -->
+          <select class="form-select" name="id_suppliers" ngModel #id_suppliers="ngModel"
+            [(ngModel)]="this.payload.id_suppliers" required>
 
-          <option *ngFor="let supplier of this.suppliersList;" value="{{supplier.id}}">
-            {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
-          </option>
-        </select>
-    </div>
-    <div *ngIf="id_suppliers.invalid && id_suppliers.touched" class="alert alert-danger p-2" role="alert">
-      <span>choose suppliers !</span>
-    </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel"
-        [(ngModel)]="this.payload.name" required />
-    </div>
-    <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Name !</span>
-    </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Ref" name="ref" ngModel #ref="ngModel" [(ngModel)]="this.payload.ref" required />
-    </div>
-    <div *ngIf="ref.invalid && ref.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Ref !</span>
-    </div>
+            <option *ngFor="let supplier of this.suppliersList;" value="{{supplier.id}}">
+              {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="id_suppliers.invalid && id_suppliers.touched" class="alert alert-danger p-2" role="alert">
+          <span>choose supplier !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel"
+            [(ngModel)]="this.payload.name" required />
+        </div>
+        <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Name !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" placeholder="Ref" name="ref" ngModel #ref="ngModel"
+            [(ngModel)]="this.payload.ref" required />
+        </div>
+        <div *ngIf="ref.invalid && ref.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Ref !</span>
+        </div>
 
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-        class="icofont icofont-file-text"></i></label></span>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-file-text"></i></label></span>
 
-    <textarea class="form-control" id="exampleFormControlTextarea1"  placeholder="Description" rows="2" name="description" ngModel #description="ngModel" [(ngModel)]="this.payload.description" required></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="2"
+            name="description" ngModel #description="ngModel" [(ngModel)]="this.payload.description"
+            required></textarea>
 
-  </div>
-  <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
-    <span>Enter Description !</span>
-  </div>
-  <div class="input-group">
-    <span class="input-group-prepend"><label class="input-group-text"><i
-          class="icofont icofont-presentation"></i></label></span>
-    <input type="tel" class="form-control" placeholder="Sale price" name="sale_price" ngModel #sale_price="ngModel" [(ngModel)]="this.payload.sale_price" required />
-  </div>
-  <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
-    <span>Enter sale price !</span>
-  </div>
-   <div class="input-group">
-    <span class="input-group-prepend"><label class="input-group-text"><i
-          class="icofont icofont-presentation"></i></label></span>
-    <input type="text" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" [(ngModel)]="this.payload.tax" required />
-  </div>
-  <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
-    <span>Enter Tax</span>
-  </div>
-    <div class="modal-footer">
-      <input value="Confirm" [disabled]="fadd.invalid" type="submit"
-        class="btn btn-outline-primary" />
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
-        Cancel
-      </button>
-    </div>
-  </form>
-</ng-container>
-<!-- ****** -->
+        </div>
+        <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Description !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="tel" class="form-control" placeholder="Sale price" name="sale_price" ngModel
+            #sale_price="ngModel" [(ngModel)]="this.payload.sale_price" required />
+        </div>
+        <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter sale price !</span>
+        </div>
+        <div class="input-group">
+          <span class="input-group-prepend"><label class="input-group-text"><i
+                class="icofont icofont-presentation"></i></label></span>
+          <input type="text" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel"
+            [(ngModel)]="this.payload.tax" required />
+        </div>
+        <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
+          <span>Enter Tax</span>
+        </div>
+        <div class="modal-footer">
+          <input value="Confirm" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </ng-container>
+    <!-- ****** -->
   </div>
 </ng-container>
