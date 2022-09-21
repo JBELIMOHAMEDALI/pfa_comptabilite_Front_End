@@ -1,202 +1,218 @@
 <ng-container>
   <div class="page-header card" id="myheader">
-      <div class="row align-items-end">
-          <div class="col-lg-8">
-              <div class="page-header-title">
-                  <span><i class="fas fa-user-tie" style="background-color: #000080"></i></span>
-                  <div class="d-inline">
-                      <span class="d-block text-primary">
-                          <h4>Products and Services Page</h4>
-                      </span>
-                      <span class="text-dark">Products and Services Page</span>
-                  </div>
-              </div>
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="page-header-title">
+          <span><i class="fas fa-user-tie" style="background-color: #000080"></i></span>
+          <div class="d-inline">
+            <span class="d-block text-primary">
+              <h4>Products and Services Page</h4>
+            </span>
+            <span class="text-dark">Products and Services Page</span>
           </div>
-
+        </div>
       </div>
+
+    </div>
   </div>
   <!-- Page-header end -->
 
   <div class="row">
-      <div class="col-lg-12">
-          <div class="md-tabs">
-          <ngb-tabset (tabChange)="changeEtat($event)">
+    <div class="col-lg-12">
+      <div class="md-tabs">
+        <ngb-tabset (tabChange)="changeEtat($event)">
           <ngb-tab title="Products " [id]="1">
-                  <ng-template ngbTabContent>
+            <ng-template ngbTabContent>
 
 
               <div class="m-t-15">
-                  <div class="card">
-                      <div class="col-sm-12">
-                          <div class="card-header">
-                              <h5 class="card-header-text">Products List</h5>
-                              <div class="col-md-12 col-lg-3 offset-lg-10">
-                                  <div class="pcoded-search">
-                                      <div class="pcoded-search-box">
-                                          <button class="btn " (click)="OpenModal('NEW PRODUCTS')">
-                                              <i class="icofont icofont-ui-add"></i>
-                                              New
-                                          </button>
-                                      </div>
-                                  </div>
-                              </div>
+                <div class="card">
+                  <div class="col-sm-12">
+                    <div class="card-header">
+                      <h5 class="card-header-text">Products List</h5>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-12 col-lg-3 mt-5 mr-2">
+                            <select class="form-select" value="0" (change)="changeProductState($event.target.value)">
+                              <option value="0">Purchases</option>
+                              <option value="1">Sales</option>
+                            </select>
                           </div>
-                          <div class="table-responsive">
-                              <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
-                                  <table class="table table-hover">
-                                      <thead>
-                                          <tr style="text-align: center">
-                                              <th scope="col">
-                                                  Product Name
-                                              </th>
-                                              <th scope="col">
-                                                  Product Ref
-                                              </th>
-                                              <th scope="col">
-                                                  Product Quantity                                                </th>
-                                              <th scope="col">
-                                                  Product Sale price
-                                              </th>
-                                              <th scope="col">
-                                                   suppliers Name
-                                              </th>
-                                             <!--   -->
-                                              <th scope="col">Actions</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody *ngFor="let item of this.productList|slice">
-                                          <tr style="text-align: center">
-                                              <td scope="row">{{
-                                                  item.name
-                                              }} </td>
-                                          <td scope="row"> {{
-                                              item.ref
-                                              }} </td>
-                                          <td scope="row"> {{
-                                              item.quantity
-                                              }} </td>
-                                          <td scope="row"> {{
-                                              item.sale_price
-                                                  }} </td>
-                                                  <td scope="row"> {{
-                                                      item.nom_suppliers
-                                                      }} </td>
-
-                                              <td scope="row">
-                                                  <i (click)="OpenModal('UPDATE PRODUCTS',item)"
-                                                      class="fas fa-edit"></i>
-                                                  <i (click)="deleteCustomer(item.id_product)"
-                                                      class="fa fa-trash-o ml-2"></i>
-                                                  <i (click)="OpenDetails('PRODUCTS DETAILS',item)" class="fa fa-eye ml-2"></i>
-
-                                              </td>
-                                          </tr>
-                                      </tbody>
-                                  </table>
-                                  <div class="d-flex justify-content-between p-2">
-                                      <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)"
-                                          [pageSize]="pageSize" [collectionSize]="collectionSize">
-                                      </ngb-pagination>
-                                      <select class="custom-select" style="width: auto" name="pageSize"
-                                          (change)="handlePageSizeChange($event)">
-                                          <option *ngFor="let size of pageSizes" [ngValue]="size">
-                                              {{ size }}
-                                          </option>
-                                      </select>
-                                  </div>
-                              </div>
+                          <div class="col-sm-1 mt-5 mr-2 ml-4">
+                            <!-- <div class="pcoded-search-box"> -->
+                              <button class="btn " (click)="OpenModal('NEW PRODUCT')">
+                                <i class="icofont icofont-ui-add"></i>
+                                New
+                              </button>
+                            <!-- </div> -->
                           </div>
-                          <!-- </app-card> -->
+                        </div>
                       </div>
+
+
+
+                    </div>
+                    <div class="table-responsive">
+                      <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr style="text-align: center">
+                              <th scope="col">
+                                Product Name
+                              </th>
+                              <th scope="col">
+                                Product Ref
+                              </th>
+                              <th scope="col">
+                                Product Quantity </th>
+                              <th scope="col">
+                                Product Sale price
+                              </th>
+                              <th scope="col">
+                                suppliers Name
+                              </th>
+                              <!--   -->
+                              <th scope="col">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let item of this.productList|slice">
+                            <tr style="text-align: center">
+                              <td scope="row">{{
+                                item.name
+                                }} </td>
+                              <td scope="row"> {{
+                                item.ref
+                                }} </td>
+                              <td scope="row"> {{
+                                item.quantity
+                                }} </td>
+                              <td scope="row"> {{
+                                item.sale_price
+                                }} </td>
+                              <td scope="row"> {{
+                                item.nom_suppliers
+                                }} </td>
+
+                              <td scope="row">
+                                <i (click)="OpenModal('UPDATE PRODUCTS',item)" class="fas fa-edit"></i>
+                                <i (click)="deleteCustomer(item.id_product)" class="fa fa-trash-o ml-2"></i>
+                                <i (click)="OpenDetails('PRODUCTS DETAILS',item)" class="fa fa-eye ml-2"></i>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="d-flex justify-content-between p-2">
+                          <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)" [pageSize]="pageSize"
+                            [collectionSize]="collectionSize">
+                          </ngb-pagination>
+                          <select class="custom-select" style="width: auto" name="pageSize"
+                            (change)="handlePageSizeChange($event)">
+                            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                              {{ size }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- </app-card> -->
                   </div>
+                </div>
               </div>
-              </ng-template>
-              </ngb-tab>
-              <ngb-tab title="Services" [id]="2">
-                  <ng-template ngbTabContent>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Services" [id]="2">
+            <ng-template ngbTabContent>
 
 
               <div class="m-t-15">
-                  <div class="card">
-                      <div class="col-sm-12">
-                          <div class="card-header">
-                              <h5 class="card-header-text">Services List</h5>
-                              <div class="col-md-12 col-lg-3 offset-lg-10">
-                                  <div class="pcoded-search">
-                                      <div class="pcoded-search-box">
-                                          <button class="btn " (click)="OpenModal2('NEW SERVICES')">
-                                              <i class="icofont icofont-ui-add"></i>
-                                              New
-                                          </button>
-                                      </div>
-                                  </div>
-                              </div>
+                <div class="card">
+                  <div class="col-sm-12">
+                    <div class="card-header">
+                      <h5 class="card-header-text">Services List</h5>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-12 col-lg-3 mt-5 mr-2">
+                            <select class="form-select" value="0" (change)="changeProductState($event.target.value)">
+                              <option value="0">Purchases</option>
+                              <option value="1">Sales</option>
+                            </select>
                           </div>
-                          <div class="table-responsive">
-                              <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
-                                  <table class="table table-hover">
-                                      <thead>
-                                          <tr style="text-align: center">
-                                              <th scope="col">
-                                                  service name
-                                              </th>
-                                              <th scope="col">
-                                                  service ref
-                                              </th>
-                                              <th scope="col">
-                                                  service sale price                                                </th>
-                                              <th scope="col">
-                                                  service tax
-                                              </th>
-                                              <th scope="col">Actions</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody *ngFor="let item of this.serviceList|slice">
-                                          <tr style="text-align: center">
-                                              <td scope="row">{{
-                                                  item.name
-                                                  }} </td>
-                                              <td scope="row"> {{
-                                                  item.ref
-                                                  }} </td>
-                                              <td scope="row"> {{
-                                                  item.sale_price
-                                                  }} </td>
-                                                  <td scope="row"> {{
-                                                      item.tax
-                                                      }} </td>
-                                              <td scope="row">
-                                                  <i (click)="OpenModal2('UPDATE SERVICES',item)"
-                                                      class="fas fa-edit"></i>
-                                                  <i (click)="deleteCustomer2(item.id_service)"
-                                                      class="fa fa-trash-o ml-2"></i>
-                                                      <i (click)="OpenDetails2('SERVICES DETAILS',item)" class="fa fa-eye ml-2"></i>
-
-                                              </td>
-                                          </tr>
-                                      </tbody>
-                                  </table>
-                                  <div class="d-flex justify-content-between p-2">
-                                      <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)"
-                                          [pageSize]="pageSize" [collectionSize]="collectionSize">
-                                      </ngb-pagination>
-                                      <select class="custom-select" style="width: auto" name="pageSize"
-                                          (change)="handlePageSizeChange($event)">
-                                          <option *ngFor="let size of pageSizes" [ngValue]="size">
-                                              {{ size }}
-                                          </option>
-                                      </select>
-                                  </div>
-                              </div>
+                          <div class="col-sm-1 mt-5 mr-2 ml-4">
+                            <!-- <div class="pcoded-search-box"> -->
+                              <button class="btn " (click)="OpenModal('NEW SERVICE')">
+                                <i class="icofont icofont-ui-add"></i>
+                                New
+                              </button>
+                            <!-- </div> -->
                           </div>
-                          <!-- </app-card> -->
+                        </div>
                       </div>
+
+                    </div>
+                    <div class="table-responsive">
+                      <div style="margin-bottom: 50px; margin-left: 50px; margin-right: 50px;">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr style="text-align: center">
+                              <th scope="col">
+                                service name
+                              </th>
+                              <th scope="col">
+                                service ref
+                              </th>
+                              <th scope="col">
+                                service sale price </th>
+                              <th scope="col">
+                                service tax
+                              </th>
+                              <th scope="col">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let item of this.serviceList|slice">
+                            <tr style="text-align: center">
+                              <td scope="row">{{
+                                item.name
+                                }} </td>
+                              <td scope="row"> {{
+                                item.ref
+                                }} </td>
+                              <td scope="row"> {{
+                                item.sale_price
+                                }} </td>
+                              <td scope="row"> {{
+                                item.tax
+                                }} </td>
+                              <td scope="row">
+                                <i (click)="OpenModal2('UPDATE SERVICES',item)" class="fas fa-edit"></i>
+                                <i (click)="deleteCustomer2(item.id_service)" class="fa fa-trash-o ml-2"></i>
+                                <i (click)="OpenDetails2('SERVICES DETAILS',item)" class="fa fa-eye ml-2"></i>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="d-flex justify-content-between p-2">
+                          <ngb-pagination [(page)]="page" (pageChange)="handlePageChange($event)" [pageSize]="pageSize"
+                            [collectionSize]="collectionSize">
+                          </ngb-pagination>
+                          <select class="custom-select" style="width: auto" name="pageSize"
+                            (change)="handlePageSizeChange($event)">
+                            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                              {{ size }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- </app-card> -->
                   </div>
+                </div>
               </div>
-              </ng-template>
-              </ngb-tab>
-          </ngb-tabset>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
       </div>
-  </div>
+    </div>
   </div>
 </ng-container>
