@@ -124,18 +124,19 @@ export class PutComponent implements OnInit {
         payload = { ...payload, id_service: this.payload.id_service };
         break;
     }
-    // this.backendService
-    //   .put(endpoint, payload)
-    //   .subscribe(
-    //     new Observer(
-    //       this.router,
-    //       null,
-    //       true,
-    //       true,
-    //       this.sharedService,
-    //       this.activeModal
-    //     ).OBSERVER_EDIT()
-    //   );
+
+    this.backendService
+      .put(endpoint, payload)
+      .subscribe(
+        new Observer(
+          this.router,
+          null,
+          true,
+          true,
+          this.sharedService,
+          this.activeModal
+        ).OBSERVER_EDIT()
+      );
   }
 
   setinputtype(event, type: string) {

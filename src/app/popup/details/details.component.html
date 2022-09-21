@@ -135,45 +135,55 @@
                     <table class="table m-0">
                       <tbody>
                         <tr>
-                          <th scope="row">Product Ref</th>
+                          <th scope="row">Ref</th>
                           <td>
                             <h5>{{ this.payload.ref }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Product Name	</th>
+                          <th scope="row">Name	</th>
                           <td>
                             <h5>{{ this.payload.name }}</h5>
                           </td>
                         </tr>
 
                        <tr>
-                          <th scope="row">Product Description</th>
+                          <th scope="row">Description</th>
                           <td>
                             <h5>{{ this.payload.description }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Product Quantity</th>
+                          <th scope="row">Quantity</th>
                           <td>
                             <h5>{{ this.payload.quantity }}</h5>
                           </td>
                         </tr>
                          <tr>
-                          <th scope="row">Product Sale price	</th>
+                          <th scope="row">Sale price	</th>
                           <td>
                             <h5>{{ this.payload.sale_price }}</h5>
                           </td>
                         </tr>
 
                         <tr >
-                          <th scope="row">Product Tax</th>
+                          <th scope="row">Tax</th>
                           <td>
                             <h5>{{ this.payload.tax }}</h5>
                           </td>
                         </tr>
-
-                        <!--  -->
+                        <tr >
+                          <th scope="row">Cost</th>
+                          <td>
+                            <h5>{{ this.payload.cost }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Supplier info</th>
+                          <td>
+                            <h5>{{ this.payload.nom_suppliers+", "+this.payload.email_suppliers+", "+this.payload.adr_suppliers }}</h5>
+                          </td>
+                        </tr>
                         <tr >
                           <th scope="row">Accounting plan Ref</th>
                           <td>
@@ -212,38 +222,48 @@
                     <table class="table m-0">
                       <tbody>
                         <tr>
-                          <th scope="row">Services Ref</th>
+                          <th scope="row">Ref</th>
                           <td>
                             <h5>{{ this.payload.ref }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Services Name	</th>
+                          <th scope="row">Name	</th>
                           <td>
                             <h5>{{ this.payload.name }}</h5>
                           </td>
                         </tr>
 
                        <tr>
-                          <th scope="row">Services Description</th>
+                          <th scope="row">Description</th>
                           <td>
                             <h5>{{ this.payload.description }}</h5>
                           </td>
                          <tr>
-                          <th scope="row">Services Sale price	</th>
+                          <th scope="row">Sale price	</th>
                           <td>
                             <h5>{{ this.payload.sale_price }}</h5>
                           </td>
                         </tr>
 
                         <tr >
-                          <th scope="row">Services Tax</th>
+                          <th scope="row">Tax</th>
                           <td>
                             <h5>{{ this.payload.tax }}</h5>
                           </td>
                         </tr>
-
-                        <!--  -->
+                        <tr >
+                          <th scope="row">Cost</th>
+                          <td>
+                            <h5>{{ this.payload.cost }}</h5>
+                          </td>
+                        </tr>
+                        <tr >
+                          <th scope="row">Supplier info</th>
+                          <td>
+                            <h5>{{ this.payload.nom_suppliers+", "+this.payload.email_suppliers+", "+this.payload.adr_suppliers }}</h5>
+                          </td>
+                        </tr>
                         <tr >
                           <th scope="row">Accounting plan Ref</th>
                           <td>

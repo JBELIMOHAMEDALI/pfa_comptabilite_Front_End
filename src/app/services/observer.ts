@@ -92,7 +92,7 @@ export default class Observer {
         swal("Success!", response.message, "success");
         this.sharedService.reloadComponent(this.router);
         if (this.activeModal) this.activeModal.dismiss();
-        cb(response);
+        if(cb)cb(response);
       },
       error: (err: HttpErrorResponse) => {
         // cb(err)

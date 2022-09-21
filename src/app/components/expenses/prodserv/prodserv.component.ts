@@ -20,6 +20,7 @@ import {
 import Observer from "../../../../app/services/observer";
 import { SharedService } from "../../../../app/services/shared.service";
 import { Router } from "@angular/router";
+import { StringMap } from "@angular/compiler/src/compiler_facade_interface";
 
 @Component({
   selector: "app-prodserv",
@@ -32,43 +33,44 @@ export class ProdservComponent implements OnInit {
   page = 1;
   pageSize = 5;
   pageSizes = [5, 20, 100];
-  etat = "1";
   id_company: string;
+
+  etat: string;
+  operation: string;
+  defaultEndPoint: string;
 
   constructor(
     private backendService: BackendService,
     private modalService: NgbModal,
     private router: Router,
     private sharedService: SharedService
-  ) {}
-
-  ngOnInit() {
-    // this.sharedService.getSelectedCompany((id) => {
-    //   if (id) {
-    //     this.id_company = id;
-    //     this.getproduit("0");
-    //     this.getservices("0");
-    //   } else {
-    //     return swal("Failure!", "No company selected !", "info");
-    //   }
-    // });
+  ) {
+    this.etat = "1";
+    this.operation = "0";
   }
 
-  // getproduit(operation:string) {
-  //   const offset = (this.page - 1) * this.pageSize;
-  //   this.backendService
-  //     .get(
-  //       `${GET_USER_PRODUCTS_END_POINT}/${this.id_company}/${operation}`,
-  //       this.pageSize,
-  //       offset
-  //     )
-  //     .subscribe(
-  //       new Observer().OBSERVER_GET((response) => {
-  //         this.productList = response.rows;
-  //         this.collectionSize = response.totalItems;
-  //       })
-  //     );
-  // }
+  ngOnInit() {
+    this.sharedService.getSelectedCompany((id) => {
+      if (id) {
+        this.id_company = id;
+        this.defaultEndPoint = `${GET_USER_PRODUCTS_END_POINT}/${this.id_company}/${this.operation}`;
+        this.getItems(this.defaultEndPoint);
+      } else {
+        return swal("Failure!", "No company selected !", "info");
+      }
+    });
+  }
+
+  getItems(endPoint: string) {
+    this.itemsList = [];
+    const offset = (this.page - 1) * this.pageSize;
+    this.backendService.get(endPoint, this.pageSize, offset).subscribe(
+      new Observer().OBSERVER_GET((response) => {
+        this.itemsList = response.rows;
+        this.collectionSize = response.totalItems;
+      })
+    );
+  }
   // getservices(operation:string) {
   //   const offset = (this.page - 1) * this.pageSize;
   //   this.backendService
@@ -86,42 +88,62 @@ export class ProdservComponent implements OnInit {
   // }
 
   handlePageSizeChange(event: any): void {
-    // this.pageSize = event.target.value;
-    // this.page = 1;
-    // this.getproduit("0");
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.getItems(this.defaultEndPoint);
   }
 
   handlePageChange(currentPage: number) {
-    // this.page = currentPage;
-    // this.getproduit("0");
+    this.page = currentPage;
+    this.getItems(this.defaultEndPoint);
   }
 
-  changeEtat(event) {
-    // const etat = event.nextId.toString();
-    // this.etat = etat;
-    // if (this.etat === "1") {
-    //   this.getproduit("0");
-    // } else {
-    //   this.getservices("0");
-    // }
+  changeState(event) {
+    const etat = event.nextId.toString();
+    this.etat = etat;
+    switch (this.etat) {
+      case "1":
+        this.defaultEndPoint = `${GET_USER_PRODUCTS_END_POINT}/${this.id_company}/0`;
+        break;
+      case "2":
+        this.defaultEndPoint = `${GET_USER_SERVICES_END_POINT}/${this.id_company}/0`;
+        break;
+    }
+    this.getItems(this.defaultEndPoint);
+
+
   }
+
+
+  changeOperation(value: string) {
+    this.operation = value;
+    switch (this.etat) {
+      case "1":
+        this.defaultEndPoint = `${GET_USER_PRODUCTS_END_POINT}/${this.id_company}/${this.operation}`;
+        break;
+      case "2":
+        this.defaultEndPoint = `${GET_USER_SERVICES_END_POINT}/${this.id_company}/${this.operation}`;
+        break;
+    }
+    this.getItems(this.defaultEndPoint);
+  }
+
+
   OpenModal(title: string, obj?) {
-    // if (this.id_company) {
-    //   //produt
-    //   const modalRef = this.modalService.open(
-    //     title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
-    //     { size: "lg", backdrop: "static" }
-    //   );
-    //   modalRef.componentInstance.title = title;
-    //   modalRef.componentInstance.operationPro = this.opetationProduct;
-    //   modalRef.componentInstance.type =
-    //     this.etat == "1" ? PRODUCTS_POPUP_TYPE : SERVICES_POPUP_TYPE;
-    //   modalRef.componentInstance.payload = obj
-    //     ? { ...obj }
-    //     : { id_company: this.id_company };
-    // } else {
-    //   return swal("Failure!", "No company selected !", "info");
-    // }
+    if (this.id_company) {
+      const modalRef = this.modalService.open(
+        title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
+        { size: "lg", backdrop: "static" }
+      );
+      modalRef.componentInstance.title = title;
+      modalRef.componentInstance.type =
+        this.etat == "1" ? PRODUCTS_POPUP_TYPE : SERVICES_POPUP_TYPE;
+      modalRef.componentInstance.payload = obj
+        ? { ...obj, id_company: this.id_company }
+        : { id_company: this.id_company,operation:this.operation };
+    } else {
+      return swal("Failure!", "No company selected !", "info");
+    }
   }
   // SERVICES PRODUCTS
   deleteItem(id) {
@@ -152,7 +174,7 @@ export class ProdservComponent implements OnInit {
   OpenDetails(title: string, payload: any) {
     const modalRef = this.modalService.open(DetailsComponent);
     modalRef.componentInstance.title = title;
-    modalRef.componentInstance.type = PRODUCTS_POPUP_TYPE;
+    modalRef.componentInstance.type = this.etat=='1'?PRODUCTS_POPUP_TYPE:SERVICES_POPUP_TYPE;
     modalRef.componentInstance.payload = { ...payload };
   }
 

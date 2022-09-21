@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="md-tabs">
-        <ngb-tabset (tabChange)="changeEtat($event)">
+        <ngb-tabset (tabChange)="changeState($event)">
           <ngb-tab title="Products " [id]="1">
             <ng-template ngbTabContent>
 
@@ -33,7 +33,7 @@
                       <div class="container">
                         <div class="row">
                           <div class="col-md-12 col-lg-3 mt-5 mr-2">
-                            <select class="form-select" value="0" (change)="changeProductState($event.target.value)">
+                            <select class="form-select" value="0" (change)="changeOperation($event.target.value)">
                               <option value="0">Purchases</option>
                               <option value="1">Sales</option>
                             </select>
@@ -75,7 +75,7 @@
                               <th scope="col">Actions</th>
                             </tr>
                           </thead>
-                          <tbody *ngFor="let product of this.productList|slice">
+                          <tbody *ngFor="let product of this.itemsList|slice">
                             <tr style="text-align: center">
                               <td scope="row">{{
                                 product.name
@@ -133,7 +133,7 @@
                       <div class="container">
                         <div class="row">
                           <div class="col-md-12 col-lg-3 mt-5 mr-2">
-                            <select class="form-select" value="0" (change)="changeState($event.target.value)">
+                            <select class="form-select" value="0" (change)="changeOperation($event.target.value)">
                               <option value="0">Purchases</option>
                               <option value="1">Sales</option>
                             </select>
@@ -169,7 +169,7 @@
                               <th scope="col">Actions</th>
                             </tr>
                           </thead>
-                          <tbody *ngFor="let service of this.serviceList|slice">
+                          <tbody *ngFor="let service of this.itemsList|slice">
                             <tr style="text-align: center">
                               <td scope="row">{{
                                 service.name

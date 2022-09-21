@@ -79,7 +79,7 @@ export class TransactionsComponent implements OnInit {
     modalRef.componentInstance.payload = payload && { ...payload };
   }
 
-  changeEtat(event) {
+  changeState(event) {
     this.etat = event.nextId.toString();
     switch (this.etat) {
       case "1":
@@ -96,10 +96,10 @@ export class TransactionsComponent implements OnInit {
     this.operation = value;
     switch (this.etat) {
       case "1":
-        this.defaultEndPoint = `${GET_USER_TRANSACTIONS_PRODUCTS_END_POINT}/${this.id_company}/${value}`;
+        this.defaultEndPoint = `${GET_USER_TRANSACTIONS_PRODUCTS_END_POINT}/${this.id_company}/${this.operation}`;
         break;
       case "2":
-        this.defaultEndPoint = `${GET_USER_TRANSACTIONS_SERVICES_END_POINT}/${this.id_company}/${value}`;
+        this.defaultEndPoint = `${GET_USER_TRANSACTIONS_SERVICES_END_POINT}/${this.id_company}/${this.operation}`;
         break;
     }
     this.getTransactions(this.defaultEndPoint);

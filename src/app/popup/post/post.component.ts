@@ -29,8 +29,6 @@ export class PostComponent implements OnInit {
   @Input("title") title: string;
   @Input("type") type: string;
   @Input("payload") payload: any;
-  @Input("operationSer") operationSer: any;
-  @Input("operationPro") operationPro: any;
   //
   supplierList: [] = [];
   accountsList: [] = [];
@@ -122,46 +120,31 @@ export class PostComponent implements OnInit {
         break;
       case "SERVICES":
         endpoint = POST_USER_SERVICES_END_POINT;
-        payload = { ...payload, id_company: this.payload.id_company,operation:this.operationSer };
+        payload = { ...payload, id_company: this.payload.id_company,operation:this.payload.operation };
         break;
       case "PRODUCTS":
-        const obj_post = {
-          name: payload.name,
-          ref: payload.ref,
-          quantity: payload.quantity,
-          description: payload.description,
-          sale_price: payload.sale_price,
-          tax: payload.tax,
-          cost: payload.cost,
-          operation: this.operationPro,
-          id_company: this.sharedService.getItem("companyNo"),
-          id_suppliers: payload.id_suppliers,
-          id_accounting_plan: payload.id_accounting_plan,
-        };
 
         endpoint = ADD_USER_PRODUCTS_END_POINT;
-        payload = obj_post;
+        payload = { ...payload, id_company: this.payload.id_company,operation:this.payload.operation };
         break;
       case "SUPPLIERS":
         endpoint = POST_SUPPLIETS_CUSTOMERS_END_POINT;
         payload = { ...payload, id_company: this.payload.id_company };
         break;
     }
-    console.log(payload);
 
-
-    // this.backendService
-    //   .post(endpoint, payload)
-    //   .subscribe(
-    //     new Observer(
-    //       this.router,
-    //       null,
-    //       true,
-    //       true,
-    //       this.sharedService,
-    //       this.activeModal
-    //     ).OBSERVER_POST()
-    //   );
+    this.backendService
+      .post(endpoint, payload)
+      .subscribe(
+        new Observer(
+          this.router,
+          null,
+          true,
+          true,
+          this.sharedService,
+          this.activeModal
+        ).OBSERVER_POST()
+      );
   }
 
   setinputtype(type: string) {
