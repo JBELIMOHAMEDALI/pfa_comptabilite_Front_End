@@ -15,8 +15,7 @@
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
                 class="icofont icofont-presentation"></i></label></span>
-          <input type="text" class="form-control" placeholder="Name"
-          name="name" ngModel #name="ngModel" required />
+          <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel" required />
         </div>
         <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
           <span>Enter company name !</span>
@@ -25,7 +24,8 @@
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
                 class="icofont icofont-company"></i></label></span>
-          <input type="text" class="form-control" placeholder="Domain" name="domain" ngModel #domain="ngModel" required />
+          <input type="text" class="form-control" placeholder="Domain" name="domain" ngModel #domain="ngModel"
+            required />
         </div>
         <div *ngIf="domain.invalid && domain.touched" class="alert alert-danger p-2" role="alert">
           <span>Enter company domain !</span>
@@ -83,7 +83,8 @@
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
                 class="icofont icofont-presentation"></i></label></span>
-          <input type="text" class="form-control" placeholder="Salary" name="salary" ngModel #salary="ngModel" required />
+          <input type="text" class="form-control" placeholder="Salary" name="salary" ngModel #salary="ngModel"
+            required />
         </div>
         <div *ngIf="salary.invalid && salary.touched" class="alert alert-danger p-2" role="alert">
           <span>Enter salary !</span>
@@ -134,8 +135,8 @@
         </div> -->
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" ngModel #gender="ngModel" type="radio" name="gender" id="inlineRadio3" value="F"
-            checked>
+          <input class="form-check-input" ngModel #gender="ngModel" type="radio" name="gender" id="inlineRadio3"
+            value="F" checked>
           <label class="form-check-label" for="inlineRadio3">Female</label>
         </div>
         <div class="form-check form-check-inline">
@@ -159,7 +160,8 @@
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
                 class="icofont icofont-presentation"></i></label></span>
-          <input type="number" min="0" class="form-control" placeholder="Account number" name="account_number" ngModel #account_number="ngModel" required />
+          <input type="number" min="0" class="form-control" placeholder="Account number" name="account_number" ngModel
+            #account_number="ngModel" required />
         </div>
         <div *ngIf="account_number.invalid && account_number.touched" class="alert alert-danger p-2" role="alert">
           <span>Enter account number !</span>
@@ -250,9 +252,9 @@
         <div class="input-group">
           <span class="input-group-prepend"><label class="input-group-text"><i
                 class="icofont icofont-company"></i></label></span>
-          <input  class="form-control" (click)="setinputtype('start_period')" onkeydown="return false"
-          [type]="startperiodinputype" placeholder="Start Period" name="start_period" ngModel
-            #start_period="ngModel" required />
+          <input class="form-control" (click)="setinputtype('start_period')" onkeydown="return false"
+            [type]="startperiodinputype" placeholder="Start Period" name="start_period" ngModel #start_period="ngModel"
+            required />
         </div>
         <div *ngIf="start_period.invalid && start_period.touched" class="alert alert-danger p-2" role="alert">
           <span>Enter start period !</span>
@@ -330,8 +332,8 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" placeholder="company name" name="company_name" ngModel #company_name="ngModel"
-          required />
+        <input type="text" class="form-control" placeholder="company name" name="company_name" ngModel
+          #company_name="ngModel" required />
       </div>
       <div *ngIf="company_name.invalid && company_name.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter company name !</span>
@@ -341,17 +343,16 @@
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-brand-myspace"></i></label></span>
         <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
-          <select ngModel='-1' #payment_method="ngModel" name="payment_method" class="form-control" required>
-            <option value="-1" disabled selected>Select your payment method</option>
-            <option value="credit_cards">Credit cards</option>
-            <option value="bank_check">Bank check</option>
-             <option value="cash_payment">Cash payment</option>
-          </select>
+        <select ngModel='-1' #payment_method="ngModel" name="payment_method" class="form-control" required>
+          <option value="-1" disabled selected>Select your payment method</option>
+          <option value="credit_cards">Credit cards</option>
+          <option value="bank_check">Bank check</option>
+          <option value="cash_payment">Cash payment</option>
+        </select>
       </div>
 
       <div class="modal-footer">
-        <input value="Confirm" [disabled]="fadd.invalid" type="submit"
-          class="btn btn-outline-primary" />
+        <input value="Confirm" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />
         <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
           Cancel
         </button>
@@ -364,8 +365,8 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" placeholder="Nom suppliers" name="nom_suppliers" ngModel #nom_suppliers="ngModel"
-          required />
+        <input type="text" class="form-control" placeholder="Nom suppliers" name="nom_suppliers" ngModel
+          #nom_suppliers="ngModel" required />
       </div>
       <div *ngIf="nom_suppliers.invalid && nom_suppliers.touched" class="alert alert-danger p-2" role="alert">
         <span>Nom suppliers</span>
@@ -373,7 +374,8 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="email" class="form-control" placeholder="Email" name="email_suppliers" ngModel #email_suppliers="ngModel" required />
+        <input type="email" class="form-control" placeholder="Email" name="email_suppliers" ngModel
+          #email_suppliers="ngModel" required />
       </div>
       <div *ngIf="email_suppliers.invalid && email_suppliers.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter email !</span>
@@ -382,14 +384,14 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="tel" class="form-control" placeholder="Address" name="adr_suppliers" ngModel #adr_suppliers="ngModel" required />
+        <input type="tel" class="form-control" placeholder="Address" name="adr_suppliers" ngModel
+          #adr_suppliers="ngModel" required />
       </div>
       <div *ngIf="adr_suppliers.invalid && adr_suppliers.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter Address !</span>
       </div>
       <div class="modal-footer">
-        <input value="Confirm" [disabled]="fadd.invalid" type="submit"
-          class="btn btn-outline-primary" />
+        <input value="Confirm" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />
         <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
           Cancel
         </button>
@@ -404,13 +406,13 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-credit-card"></i></label></span>
-              <select class="form-select" value="-1"  name="id_accounting_plan" ngModel #id_accounting_plan="ngModel" placeholder="Name"
-              required>
-              <option value="">choose account number </option>
-                <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
-                  {{file.account_number}}
-                </option>
-              </select>
+        <select class="form-select" value="-1" name="id_accounting_plan" ngModel #id_accounting_plan="ngModel"
+          placeholder="Name" required>
+          <option value="">choose account number </option>
+          <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
+            {{file.account_number}}
+          </option>
+        </select>
       </div>
       <div *ngIf="id_accounting_plan.invalid && id_accounting_plan.touched" class="alert alert-danger p-2" role="alert">
         <span>choose account number !</span>
@@ -419,13 +421,13 @@
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-brand-myspace"></i></label></span>
         <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
-          <select class="form-select" value="-1"  name="id_suppliers" ngModel #id_suppliers="ngModel" required>
-            <option value="">choose suppliers</option>
+        <select class="form-select" value="-1" name="id_suppliers" ngModel #id_suppliers="ngModel" required>
+          <option value="">choose suppliers</option>
 
-            <option *ngFor="let supplier of this.supplierList;" value="{{supplier.id}}">
-              {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
-            </option>
-          </select>
+          <option *ngFor="let supplier of this.supplierList;" value="{{supplier.id}}">
+            {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
+          </option>
+        </select>
       </div>
       <div *ngIf="id_suppliers.invalid && id_suppliers.touched" class="alert alert-danger p-2" role="alert">
         <span>choose suppliers !</span>
@@ -433,8 +435,7 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel"
-          required />
+        <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel" required />
       </div>
       <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter Name !</span>
@@ -451,7 +452,10 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" placeholder="Quantity" name="quantity" ngModel #quantity="ngModel"
+        <input type="number" class="form-control" placeholder="Quantity" name="quantity" min="1"
+         ngModel
+         [ngModel]="1"
+         #quantity="ngModel"
           required />
       </div>
       <div *ngIf="quantity.invalid && quantity.touched" class="alert alert-danger p-2" role="alert">
@@ -460,26 +464,28 @@
       <!--  -->
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
-          class="icofont icofont-file-text"></i></label></span>
+              class="icofont icofont-file-text"></i></label></span>
 
-      <textarea class="form-control" id="exampleFormControlTextarea1"  placeholder="Description" rows="2" name="description" ngModel #description="ngModel" required></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="2"
+          name="description" ngModel #description="ngModel" required></textarea>
 
-    </div>
-    <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Description !</span>
-    </div>
+      </div>
+      <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter Description !</span>
+      </div>
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="tel" class="form-control" placeholder="Sale price" name="sale_price" ngModel #sale_price="ngModel" required />
+        <input type="number" class="form-control" placeholder="Sale price" name="sale_price" ngModel #sale_price="ngModel"
+          required />
       </div>
       <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter sale price !</span>
       </div>
-       <div class="input-group">
+      <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" required />
+        <input type="number" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" required />
       </div>
       <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter Tax</span>
@@ -488,17 +494,19 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" placeholder="Cost" name="cost" ngModel #cost="ngModel" required />
+        <input type="number" class="form-control" disabled placeholder="Cost"
+        [ngModel]="((sale_price.value*quantity.value)+(tax.value/100))"
+        name="cost" ngModel #cost="ngModel"
+          required />
       </div>
-      <div *ngIf="cost.invalid && cost.touched" class="alert alert-danger p-2" role="alert">
+      <!-- <div *ngIf="cost.invalid && cost.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter cost   !</span>
-      </div>
+      </div> -->
 
 
 
       <div class="modal-footer">
-        <input value="Confirm" [disabled]="fadd.invalid" type="submit"
-          class="btn btn-outline-primary" />
+        <input value="Confirm" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />
         <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
           Cancel
         </button>
@@ -511,13 +519,13 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-credit-card"></i></label></span>
-              <select class="form-select" value="-1"  name="id_accounting_plan" ngModel #id_accounting_plan="ngModel" placeholder="Name"
-              required>
-              <option value="">choose account number </option>
-                <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
-                  {{file.account_number}}
-                </option>
-              </select>
+        <select class="form-select" value="-1" name="id_accounting_plan" ngModel #id_accounting_plan="ngModel"
+          placeholder="Name" required>
+          <option value="">choose account number </option>
+          <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
+            {{file.account_number}}
+          </option>
+        </select>
       </div>
       <div *ngIf="id_accounting_plan.invalid && id_accounting_plan.touched" class="alert alert-danger p-2" role="alert">
         <span>choose account number !</span>
@@ -526,13 +534,13 @@
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-brand-myspace"></i></label></span>
         <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
-          <select class="form-select" value="-1"  name="id_suppliers" ngModel #id_suppliers="ngModel" required>
-            <option value="">choose suppliers</option>
+        <select class="form-select" value="-1" name="id_suppliers" ngModel #id_suppliers="ngModel" required>
+          <option value="">choose suppliers</option>
 
-            <option *ngFor="let file of this.supplierList;" value="{{file.id}}">
-              {{file.fullname}}
-            </option>
-          </select>
+          <option *ngFor="let file of this.supplierList;" value="{{file.id}}">
+            {{file.fullname}}
+          </option>
+        </select>
       </div>
       <div *ngIf="id_suppliers.invalid && id_suppliers.touched" class="alert alert-danger p-2" role="alert">
         <span>choose suppliers !</span>
@@ -540,8 +548,7 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel"
-          required />
+        <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel" required />
       </div>
       <div *ngIf="name.invalid && name.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter Name !</span>
@@ -557,33 +564,34 @@
 
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
-          class="icofont icofont-file-text"></i></label></span>
+              class="icofont icofont-file-text"></i></label></span>
 
-      <textarea class="form-control" id="exampleFormControlTextarea1"  placeholder="Description" rows="2" name="description" ngModel #description="ngModel" required></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="2"
+          name="description" ngModel #description="ngModel" required></textarea>
 
-    </div>
-    <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Description !</span>
-    </div>
-    <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="tel" class="form-control" placeholder="Sale price" name="sale_price" ngModel #sale_price="ngModel" required />
-    </div>
-    <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter sale price !</span>
-    </div>
-     <div class="input-group">
-      <span class="input-group-prepend"><label class="input-group-text"><i
-            class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" required />
-    </div>
-    <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter Tax</span>
-    </div>
+      </div>
+      <div *ngIf="description.invalid && description.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter Description !</span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="tel" class="form-control" placeholder="Sale price" name="sale_price" ngModel #sale_price="ngModel"
+          required />
+      </div>
+      <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter sale price !</span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-prepend"><label class="input-group-text"><i
+              class="icofont icofont-presentation"></i></label></span>
+        <input type="text" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" required />
+      </div>
+      <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
+        <span>Enter Tax</span>
+      </div>
       <div class="modal-footer">
-        <input value="Confirm" [disabled]="fadd.invalid" type="submit"
-          class="btn btn-outline-primary" />
+        <input value="Confirm" [disabled]="fadd.invalid" type="submit" class="btn btn-outline-primary" />
         <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">
           Cancel
         </button>
@@ -594,6 +602,6 @@
 
 
 
-  </ng-container>
+</ng-container>
 
-  <!-- update -->
+<!-- update -->

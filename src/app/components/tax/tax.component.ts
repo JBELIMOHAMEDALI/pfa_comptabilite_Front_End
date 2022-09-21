@@ -81,8 +81,6 @@ export class TaxComponent implements OnInit {
   }
 
   OpenModal(title: string, tax?) {
-    console.log(tax);
-
     if(this.id_company){
     const modalRef = this.modalService.open(
       title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,

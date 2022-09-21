@@ -67,10 +67,10 @@ export const PUT_PRODUCTS_CUSTOMERS_END_POINT: string = `${environment.apiUrl}/p
 
 
 //SERVICES ENDPOINTS
-export const GET_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/service/get`;
-export const POST_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/service/add`;
-export const PUT_SERVICES_END_POINT: string = `${environment.apiUrl}/service/update`;
-export const DELETE_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/service/delete`;
+export const GET_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/services/get`;
+export const POST_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/services/add`;
+export const PUT_SERVICES_END_POINT: string = `${environment.apiUrl}/services/update`;
+export const DELETE_USER_SERVICES_END_POINT: string = `${environment.apiUrl}/services/delete`;
 
 // SUPPLIETS
 export const GET_SUPPLIETS_SERVICES_END_POINT: string = `${environment.apiUrl}/suppliers/get`;
@@ -82,6 +82,7 @@ export const DELETE_SUPPLIETS_CUSTOMERS_END_POINT: string = `${environment.apiUr
 export const GET_USER_INVOICES_END_POINT: string = `${environment.apiUrl}/invoices/get`;
 
 //TRANSACTIONS ENDPOINTS
-export const GET_USER_TRANSACTIONS_END_POINT: string = `${environment.apiUrl}/transactions/get`;
+export const GET_USER_TRANSACTIONS_PRODUCTS_END_POINT: string = `${environment.apiUrl}/products/get/transactions`;
 
+export const GET_USER_TRANSACTIONS_SERVICES_END_POINT: string = `${environment.apiUrl}/services/get/transactions`;
 

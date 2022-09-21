@@ -3,7 +3,10 @@ import { SharedService } from "../../../services/shared.service";
 import swal from "sweetalert";
 import { BackendService } from "../../../services/backend.service";
 import Observer from "../../../services/observer";
-import { GET_USER_TRANSACTIONS_END_POINT } from "../../../services/endpoints";
+import {
+  GET_USER_TRANSACTIONS_PRODUCTS_END_POINT,
+  GET_USER_TRANSACTIONS_SERVICES_END_POINT,
+} from "../../../services/endpoints";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DetailsComponent } from "../../../popup/details/details.component";
 import { TRANSACTIONS_POPUP_TYPE } from "../../../popup/popup-type";
@@ -14,57 +17,58 @@ import { TRANSACTIONS_POPUP_TYPE } from "../../../popup/popup-type";
   styleUrls: ["./transactions.component.scss"],
 })
 export class TransactionsComponent implements OnInit {
-  customersList: [] = [];
   collectionSize: number = 0;
   page = 1;
   pageSize = 5;
   pageSizes = [5, 20, 100];
-  id_company: string;
   transactionsList: [] = [];
+  etat: string;
+  id_company: string;
+  defaultEndPoint: string;
+  operation: string;
 
   constructor(
     private sharedService: SharedService,
     private backendService: BackendService,
-    private modalService: NgbModal,
-
-  ) {}
+    private modalService: NgbModal
+  ) {
+    this.etat = "1";
+    this.operation = "0";
+  }
 
   ngOnInit() {
     this.sharedService.getSelectedCompany((id) => {
       if (id) {
         this.id_company = id;
-        this.getTransactions();
+        this.defaultEndPoint = `${GET_USER_TRANSACTIONS_PRODUCTS_END_POINT}/${this.id_company}/${this.operation}`;
+        this.getTransactions(this.defaultEndPoint);
       } else {
         return swal("Failure!", "No company selected !", "info");
       }
     });
   }
 
-  getTransactions() {
+  getTransactions(endpoint: string) {
+    this.transactionsList = [];
     const offset = (this.page - 1) * this.pageSize;
-    this.backendService
-      .get(
-        `${GET_USER_TRANSACTIONS_END_POINT}/${this.id_company}`,
-        this.pageSize,
-        offset
-      )
-      .subscribe(
-        new Observer().OBSERVER_GET((response) => {
-          this.collectionSize = response.totalItems;
-          this.transactionsList = response.rows;
-        })
-      );
+
+    this.backendService.get(endpoint, this.pageSize, offset).subscribe(
+      new Observer().OBSERVER_GET((response) => {
+        this.collectionSize = response.totalItems;
+        this.transactionsList = response.rows;
+      })
+    );
   }
 
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
     this.page = 1;
-    this.getTransactions();
+    this.getTransactions(this.defaultEndPoint);
   }
 
   handlePageChange(currentPage: number) {
     this.page = currentPage;
-    this.getTransactions();
+    this.getTransactions(this.defaultEndPoint);
   }
 
   OpenDetails(title: string, payload: any) {
@@ -75,6 +79,29 @@ export class TransactionsComponent implements OnInit {
     modalRef.componentInstance.payload = payload && { ...payload };
   }
 
-  changeEtat(event){
+  changeEtat(event) {
+    this.etat = event.nextId.toString();
+    switch (this.etat) {
+      case "1":
+        this.defaultEndPoint = `${GET_USER_TRANSACTIONS_PRODUCTS_END_POINT}/${this.id_company}/0`;
+        break;
+      case "2":
+        this.defaultEndPoint = `${GET_USER_TRANSACTIONS_SERVICES_END_POINT}/${this.id_company}/0`;
+        break;
+    }
+    this.getTransactions(this.defaultEndPoint);
+  }
+
+  changeOperation(value: string) {
+    this.operation = value;
+    switch (this.etat) {
+      case "1":
+        this.defaultEndPoint = `${GET_USER_TRANSACTIONS_PRODUCTS_END_POINT}/${this.id_company}/${value}`;
+        break;
+      case "2":
+        this.defaultEndPoint = `${GET_USER_TRANSACTIONS_SERVICES_END_POINT}/${this.id_company}/${value}`;
+        break;
+    }
+    this.getTransactions(this.defaultEndPoint);
   }
 }

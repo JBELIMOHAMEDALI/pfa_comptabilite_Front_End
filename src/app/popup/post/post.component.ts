@@ -130,8 +130,6 @@ export class PostComponent implements OnInit {
       case "SERVICES":
         endpoint = POST_USER_SERVICES_END_POINT;
         payload = { ...payload, id_company: this.payload.id_company };
-        console.log(payload);
-
         break;
       case "PRODUCTS":
         // payload.cost payload.id_accounting_plan payload.id_suppliers payload.name payload.quantity payload.ref

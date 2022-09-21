@@ -15,6 +15,7 @@ export class DetailsComponent implements OnInit {
   constructor(public actifmodal:NgbActiveModal) { }
 
   ngOnInit() {
+    console.log(this.payload);
 
   }
 

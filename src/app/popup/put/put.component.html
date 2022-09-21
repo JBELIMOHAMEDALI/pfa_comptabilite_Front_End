@@ -421,7 +421,7 @@
     <div class="input-group">
       <span class="input-group-prepend"><label class="input-group-text"><i
             class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Quantity" name="quantity" ngModel #quantity="ngModel" [(ngModel)]="this.payload.quantity"
+      <input type="number" class="form-control" placeholder="Quantity" name="quantity" ngModel #quantity="ngModel" [(ngModel)]="this.payload.quantity"
         required />
     </div>
     <div *ngIf="quantity.invalid && quantity.touched" class="alert alert-danger p-2" role="alert">
@@ -441,7 +441,7 @@
     <div class="input-group">
       <span class="input-group-prepend"><label class="input-group-text"><i
             class="icofont icofont-presentation"></i></label></span>
-      <input type="tel" class="form-control" placeholder="Sale price" name="sale_price" ngModel #sale_price="ngModel" [(ngModel)]="this.payload.sale_price"  required />
+      <input type="number" class="form-control" placeholder="Sale price" name="sale_price" ngModel #sale_price="ngModel" [(ngModel)]="this.payload.sale_price"  required />
     </div>
     <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
       <span>Enter sale price !</span>
@@ -449,7 +449,7 @@
      <div class="input-group">
       <span class="input-group-prepend"><label class="input-group-text"><i
             class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" [(ngModel)]="this.payload.tax"  required />
+      <input type="number" class="form-control" placeholder="Tax" name="tax" ngModel #tax="ngModel" [(ngModel)]="this.payload.tax"  required />
     </div>
     <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
       <span>Enter Tax</span>
@@ -458,11 +458,11 @@
     <div class="input-group">
       <span class="input-group-prepend"><label class="input-group-text"><i
             class="icofont icofont-presentation"></i></label></span>
-      <input type="text" class="form-control" placeholder="Cost" name="cost" ngModel #cost="ngModel" [(ngModel)]="this.payload.cost"  required />
+      <input type="number" class="form-control" disabled placeholder="Cost" name="cost"
+      [ngModel]="((sale_price.value*quantity.value)+(tax.value/100))"
+      ngModel #cost="ngModel" [(ngModel)]="this.payload.cost"  required />
     </div>
-    <div *ngIf="cost.invalid && cost.touched" class="alert alert-danger p-2" role="alert">
-      <span>Enter cost   !</span>
-    </div>
+
     <div class="modal-footer">
       <input value="Confirm" [disabled]="fedit.invalid" type="submit"
         class="btn btn-outline-primary" />
