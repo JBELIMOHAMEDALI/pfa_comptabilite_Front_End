@@ -376,9 +376,8 @@
     <div class="input-group">
       <span class="input-group-prepend"><label class="input-group-text"><i
             class="icofont icofont-credit-card"></i></label></span>
-            <select class="form-select" value="-1"  name="id_accounting_plan" [(ngModel)]="this.payload.id_accounting_plan" ngModel #id_accounting_plan="ngModel"
+            <select class="form-select"  name="id_accounting_plan" [(ngModel)]="this.payload.id_accounting_plan" ngModel #id_accounting_plan="ngModel"
             required>
-          <option value="">Choose account number</option>
 
               <option *ngFor="let file of this.AccountinList;" value="{{file.id}}">
                 {{file.account_number}}
@@ -391,12 +390,10 @@
     <div class="input-group">
       <span class="input-group-prepend"><label class="input-group-text"><i
             class="icofont icofont-brand-myspace"></i></label></span>
-      <!-- <select ngModel="{{ '-1' }}"  [(ngModel)]="payment_method" name="payment_method" class="form-control" required> -->
-        <select class="form-select" value="-1"  name="id_suppliers" ngModel #id_suppliers="ngModel" [(ngModel)]="this.payload.id_suppliers" required>
-          <option value="">Choose suppliers</option>
-
-          <option *ngFor="let file of this.customerList;" value="{{file.id}}">
-            {{file.fullname}}
+        <select class="form-select"   name="id_suppliers" ngModel #id_suppliers="ngModel"
+        [(ngModel)]="this.payload.id_suppliers" required>
+          <option *ngFor="let supplier of this.suppliersList;" value="{{supplier.id}}">
+            {{supplier.nom_suppliers+", "+supplier.email_suppliers}}
           </option>
         </select>
     </div>
