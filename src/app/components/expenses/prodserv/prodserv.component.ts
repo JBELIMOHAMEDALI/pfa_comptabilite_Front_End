@@ -135,7 +135,7 @@ export class ProdservComponent implements OnInit {
         title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
         { size: "lg", backdrop: "static" }
       );
-      modalRef.componentInstance.title = title;
+      modalRef.componentInstance.title = `${title}${this.operation=='0'?' (PURCHASE)':' (SALE)'}`;
       modalRef.componentInstance.type =
         this.etat == "1" ? PRODUCTS_POPUP_TYPE : SERVICES_POPUP_TYPE;
       modalRef.componentInstance.payload = obj
