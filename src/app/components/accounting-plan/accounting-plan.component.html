@@ -6,7 +6,7 @@
           <span><i class="fas fa-receipt" style="background-color: #000080"></i></span>
           <div class="d-inline">
             <span class="d-block text-primary">
-              <h4>Accounting Plans Page</h4>
+              <h4>{{'ACCOUNTING_PLAN_COMPONENT.TITLE'|translate}}</h4>
             </span>
             <!-- <span class="text-dark">Accounting plan</span> -->
           </div>
@@ -37,7 +37,7 @@
           <div class="card">
             <div class="col-sm-12">
               <div class="card-header">
-                <h5 class="card-header-text">Accounting Plans List</h5>
+                <h5 class="card-header-text">{{'ACCOUNTING_PLAN_COMPONENT.HEADER'|translate}}</h5>
               </div>
               <div class="container">
                 <div class="row">
@@ -57,33 +57,33 @@
                         accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
                         (change)="changeFile($event)" name="file1" class="fileInput" />
                       <i class="fas fa-file-import"></i>
-                      Import
+                      {{'ACCOUNTING_PLAN_COMPONENT.IMPORT'|translate}}
                     </button>
                   </div>
                   <div class="col-sm-1 mb-5 mr-2">
                     <button class="btn" (click)="exportFile()">
                       <i class="fas fa-file-export"></i>
-                      Export
+                      {{'ACCOUNTING_PLAN_COMPONENT.EXPORT'|translate}}
                     </button>
                   </div>
 
                   <div class="col-sm-1 mb-5 mr-2 ml-4">
                     <button class="btn" (click)="OpenModal('NEW ACCOUNTING PLAN')">
                       <i class="fas fa-file-signature"></i>
-                      New Plan
+                      {{'ACCOUNTING_PLAN_COMPONENT.NEW_PLAN'|translate}}
                     </button>
                   </div>
                   <div class="col-sm-1 mb-5 mr-2 ml-5">
                     <button class="btn" (click)="unlinkFile()">
                       <i class="fas fa-trash"></i>
-                       Delete
+                      {{'ACCOUNTING_PLAN_COMPONENT.DELETE'|translate}}
                     </button>
                   </div>
 
                   <div class="col-sm-1 mb-5 mr-2 ml-4" *ngIf="this.upload">
                     <button class="btn" (click)="OpenModal('NEW ACCOUNTING PLAN ROW')">
                       <i class="fas fa-plus-square"></i>
-                    New row
+                      {{'ACCOUNTING_PLAN_COMPONENT.NEW_ROW'|translate}}
                     </button>
                   </div>
                 </div>
@@ -97,12 +97,12 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th scope="col">Actions</th>
+                      <th scope="col">{{'ACTIONS'|translate}}</th>
                       <th scope="col">
-                        Account number
+                        {{'ACCOUNTING_PLAN_COMPONENT.TABLE.ACCOUNT_NUMBER'|translate}}
                       </th>
                       <th scope="col">
-                        Description
+                        {{'ACCOUNTING_PLAN_COMPONENT.TABLE.DESCRIPTION'|translate}}
                       </th>
                     </tr>
                   </thead>

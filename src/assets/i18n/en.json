@@ -1,41 +1,162 @@
 {
+  "APP": "App",
+  "DASHBOARD": "Dashboard",
+  "ACCOUNTING_PLAN": "Accounting plans",
+  "COMPANY": "Companies",
+  "TAX": "Taxes",
+  "EMPLOYEES": "Employees",
+  "TRANSACTIONS": "Transactions",
+  "PRODUCTS_SERVICES": "Products/Services",
+  "SUPPLIERS": "Suppliers",
+  "CUSTOMERS": "Customers",
+  "NEW": "New",
+  "ACTIONS": "Actions",
+  "EXPENSES_SALES": "Expenses/Sales",
 
-    "DASHBOARD": "Dashboard",
-    "ACCOUNTING_PLAN": "Accounting plan",
-    "COMPANY": "Company",
-    "TAX": "Tax",
-    "CASH_FLOW": "Cash flow",
-    "EMPLOYEES": "Employees",
-    "TRANSACTIONS": "Transactions",
-    "PRODUCTS_SERVICES": "Products/Services",
-    "SUPPLIERS": "Suppliers",
-    "CUSTOMERS": "Customers"
-    ,
-    "ACCOUNTING_PLAN_COMPONENT":{
-
-    },
-    "COMPANY_COMPONENT":{
-
-    },
-    "TAX_COMPONENT":{
-
-    },
-    "EMPLOYEES_COMPONENT":{
-
-    },
-    "TRANSACTIONS_COMPONENT":{
-
-    },
-    "PRODUCTS_SERVICES_COMPONENT":{
-
-    },
-
-    "SUPPLIERS_COMPONENT":{
-
-    },"CUSTOMERS_COMPONENT":{
-
+  "ACCOUNTING_PLAN_COMPONENT": {
+    "TITLE": "Accounting plans page",
+    "HEADER": "Accounting plans list",
+    "IMPORT": "Import",
+    "EXPORT": "Export",
+    "NEW_PLAN": "New plan",
+    "DELETE": "Delete",
+    "NEW_ROW": "New row",
+    "TABLE": {
+      "ACCOUNT_NUMBER": "Account number",
+      "DESCRIPTION": "Description"
     }
+  },
+  "COMPANY_COMPONENT": {
+    "TITLE": "Companies page",
+    "HEADER": "Companies list",
+    "TABLE": {
+      "NAME": "Name",
+      "DOMAIN": "Domain"
+    }
+  },
+  "EMPLOYEES_COMPONENT": {
+    "TITLE": "Employees page",
+    "HEADER": "Employees list",
+    "TABLE": {
+      "FULLNAME": "Full name",
+      "SALARY": "Salary",
+      "HIRE_DATE": "Hire date"
+    }
+  },
+  "TAX_COMPONENT": {
+    "TITLE": "Taxes page",
+    "HEADER": "Taxes list",
+    "TABLE": {
+      "NAME": "Wording",
+      "AGENCY_NAME": "Agency name",
+      "START_PERIOD": "Start period"
+    }
+  },
 
+  "TRANSACTIONS_COMPONENT": {
+    "TITLE": "Transactions page",
+    "HEADER": "Transactions list",
+    "SELECT": {
+      "PURCHASES": "Purchases",
+      "SALES": "Sales"
+    },
+    "TABLE": {
+      "PRODUCT": "Product name",
+      "SUPPLIER": "Supplier name",
+      "COMPANY": "Company name",
+      "SERVICE": "Service",
+      "EXPLORE": "Explore"
+    }
+  },
 
+  "PRODUCTS_SERVICES_COMPONENT": {
+    "TITLE": "Products And Services Page",
+    "PRODUCTS": {
+      "HEADER": "Products list",
 
+      "TABLE": {
+        "NAME": "Product name",
+        "REF": "Product reference",
+        "SUPPLIER_NAME": "Supplier name"
+      }
+    },
+    "SERVICES": {
+      "HEADER": "Services list",
+
+      "TABLE": {
+        "NAME": "Service name",
+        "REF": "Service reference",
+        "SUPPLIER_NAME": "Supplier name"
+      }
+    }
+  },
+
+  "SUPPLIERS_COMPONENT": {
+    "TITLE": "Suppliers page",
+    "HEADER": "Suppliers list",
+
+    "TABLE": {
+      "NAME": "Name",
+      "EMAIL": "Email",
+      "ADDRESS": "Address"
+    }
+  },
+  "CUSTOMERS_COMPONENT": {
+    "TITLE": "Customers page",
+    "HEADER": "Customers list",
+
+    "TABLE": {
+      "FULLNAME": "Full name",
+      "PAYMENT_METHOD": "Payment method",
+      "COMPANY": "Company name"
+    }
+  },
+
+  "TABSET": {
+    "PRODUCTS": "Products",
+    "SERVICES": "Services"
+  },
+
+  "DETAILS": {
+    "FULLNAME": "Full name",
+    "EMAIL": "Email",
+    "ADDRESS": "Address",
+    "COMPANY": "Company name",
+    "COMPANY_DOMAIN": "Company domain",
+    "PAYMENT_METHOD": "Payment method",
+    "PHONE": "Phone",
+    "SALARY": "Salary",
+    "BIRTH_DATE": "Birthdate",
+    "HIRE_DATE": "Hire date",
+    "DESCRIPTION": "Description",
+    "AGENCY_NAME": "Agency name",
+    "FILLING_FREQ": "Filling frequency",
+    "COLLECTION_TYPE": "Collection type",
+    "BUSINESS": "BUSINESS NO",
+
+    "PRODUCT_NAME": "Product name",
+    "PRODUCT_REF": "Product reference",
+    "SUPPLIER_NAME": "Supplier name",
+    "PRODUCT_QUANTITY": "Product quantity",
+    "PRODUCT_PRICE": "Product price",
+    "PRODUCT_TAX": "Product tax",
+    "PRODUCT_COST": "Product cost",
+    "PRODUCT_DESCRIPTION": "Description",
+    "SUPPLIER_INFO": "Supplier info",
+
+    "ACCOUNTING_PLAN_REF": "Accounting plan reference",
+
+    "SERVICE_NAME": "Service name",
+    "SERVICE_REF": "Service reference",
+    "SERVICE_PRICE": "Service price",
+    "SERVICE_TAX": "Service tax",
+    "SERVICE_COST": "Service cost",
+    "SERVICE_DESCRIPTION": "Description"
+  },
+  "EMPLOYEE_DETAILS": "Employee info",
+
+  "CUSTOMER_DETAILS": "Customer info",
+  "SERVICE_DETAILS": "Service details",
+  "PRODUCT_DETAILS": "Product details",
+  "TRANSACTION_DETAILS": "Transaction details"
 }

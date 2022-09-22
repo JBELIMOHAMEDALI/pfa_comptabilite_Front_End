@@ -5,6 +5,7 @@ import { AccountingPlanRoutingModule } from './accounting-plan-routing.module';
 import { AccountingPlanComponent } from './accounting-plan.component';
 import { ExcelService } from '../../services/excel.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     AccountingPlanRoutingModule,
-    NgbModule
+    NgbModule,
+    TranslateModule
   ],
   providers:[ExcelService],
   schemas:[NO_ERRORS_SCHEMA]

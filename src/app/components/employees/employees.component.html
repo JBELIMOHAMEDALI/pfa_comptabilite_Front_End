@@ -6,7 +6,7 @@
           <span><i class="fas fa-user-friends" style="background-color: #000080"></i></span>
           <div class="d-inline">
             <span class="d-block text-primary">
-              <h4>Employees page</h4>
+              <h4>{{'EMPLOYEES_COMPONENT.TITLE'|translate}}</h4>
             </span>
             <!-- <span class="text-dark">Employee desc</span> -->
           </div>
@@ -23,13 +23,13 @@
           <div class="card">
             <div class="col-sm-12">
               <div class="card-header">
-                <h5 class="card-header-text">Employees List</h5>
+                <h5 class="card-header-text">{{'EMPLOYEES_COMPONENT.HEADER'|translate}}</h5>
                 <div class="col-md-12 col-lg-3 offset-lg-10">
                   <div class="pcoded-search">
                     <div class="pcoded-search-box">
                       <button class="btn " (click)="OpenModal('NEW EMPLOYEE')">
                         <i class="icofont icofont-ui-add"></i>
-                        New
+                        {{'NEW'|translate}}
                       </button>
                     </div>
                   </div>
@@ -43,15 +43,15 @@
                     <thead>
                       <tr style="text-align: center">
                         <th scope="col">
-                          Full name
+                          {{'EMPLOYEES_COMPONENT.TABLE.FULLNAME'|translate}}
                         </th>
                         <th scope="col">
-                          Salary
+                          {{'EMPLOYEES_COMPONENT.TABLE.SALARY'|translate}}
                         </th>
                         <th scope="col">
-                          Hire date
+                          {{'EMPLOYEES_COMPONENT.TABLE.HIRE_DATE'|translate}}
                         </th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">{{'ACTIONS'|translate}}</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let employee of this.employeesList|slice">
@@ -68,7 +68,7 @@
                         <td scope="row">
                           <i (click)="OpenModal('UPDATE EMPLOYEE',employee)" class="fas fa-edit"></i>
                           <i (click)="deleteEmployee(employee.id_employee)" class="fa fa-trash-o ml-2"></i>
-                          <i (click)="OpenDetails('EMPLOYEE DETAILS',employee)" class="fa fa-eye ml-2"></i>
+                          <i (click)="OpenDetails('EMPLOYEE_DETAILS',employee)" class="fa fa-eye ml-2"></i>
                         </td>
                       </tr>
                     </tbody>

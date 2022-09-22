@@ -33,7 +33,7 @@ export interface Menu {
 
 const MENUITEMS:Menu[] = [
   {
-    label: 'App',
+    label: 'APP',
     main: [
       {
         state: 'dashboard',
@@ -68,14 +68,6 @@ const MENUITEMS:Menu[] = [
         routerLink:"/app/tax"
       },
       {
-        state: 'cash-flow',
-        short_label: 'C-F',
-        name: 'CASH_FLOW',
-        type: 'link',
-        icon: 'fas fa-money-check-alt',
-        routerLink:"/app/cash-flow"
-      },
-      {
         state: 'employees',
         short_label: 'EMP',
         name: 'EMPLOYEES',
@@ -87,7 +79,7 @@ const MENUITEMS:Menu[] = [
     ],
   },
   {//expenses
-    label: 'Expenses/Sales',
+    label: 'EXPENSES_SALES',
     main: [
       {
         state: 'transactions',

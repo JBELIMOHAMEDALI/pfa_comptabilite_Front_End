@@ -1,6 +1,6 @@
 <ng-container>
   <div class="modal-header">
-    <h4 class="modal-title">{{ title }}</h4>
+    <h4 class="modal-title">{{title|translate}}</h4>
 
     <button type="button" class="close" aria-label="Close" (click)="actifmodal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -21,37 +21,37 @@
                     <table class="table m-0">
                       <tbody>
                         <tr>
-                          <th scope="row">Fullname</th>
+                          <th scope="row">{{'DETAILS.FULLNAME'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.fullname }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Email</th>
+                          <th scope="row">{{'DETAILS.EMAIL'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.email }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Phone</th>
+                          <th scope="row">{{'DETAILS.PHONE'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.phone }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Address</th>
+                          <th scope="row">{{'DETAILS.ADDRESS'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.address }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Payment method</th>
+                          <th scope="row">{{'DETAILS.PAYMENT_METHOD'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.payment_method }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Company</th>
+                          <th scope="row">{{'DETAILS.COMPANY'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.company_name }}</h5>
                           </td>
@@ -88,43 +88,43 @@
                     <table class="table m-0">
                       <tbody>
                         <tr>
-                          <th scope="row">Full name</th>
+                          <th scope="row">{{'DETAILS.FULLNAME'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.fullname }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Email</th>
+                          <th scope="row">{{'DETAILS.EMAIL'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.email }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Phone</th>
+                          <th scope="row">{{'DETAILS.PHONE'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.phone }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Salary</th>
+                          <th scope="row">{{'DETAILS.SALARY'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.salary }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Address</th>
+                          <th scope="row">{{'DETAILS.ADDRESS'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.address }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Birth date</th>
+                          <th scope="row">{{'DETAILS.BIRTH_DATE'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.birthdate|date:'dd/MM/yyyy' }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Hire date</th>
+                          <th scope="row">{{'DETAILS.HIRE_DATE'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.hiredate|date:'dd/MM/yyyy' }}</h5>
                           </td>
@@ -159,33 +159,33 @@
                     <table class="table m-0">
                       <tbody>
                         <tr>
-                          <th scope="row">Description</th>
+                          <th scope="row">{{'DETAILS.DESCRIPTION'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.description }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Agency name</th>
+                          <th scope="row">{{'DETAILS.AGENCY_NAME'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.agency_name }}</h5>
                           </td>
                         </tr>
 
                         <tr>
-                          <th scope="row">Filling Frequency</th>
+                          <th scope="row">{{'DETAILS.FILLING_FREQ'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.filling_frequency }}</h5>
                           </td>
                         </tr>
                          <tr>
-                          <th scope="row">Collection Type</th>
+                          <th scope="row">{{'DETAILS.FILLING_FREQ'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.collection_type }}</h5>
                           </td>
                         </tr>
 
                         <tr *ngIf="this.payload.businessNo">
-                          <th scope="row">Business No</th>
+                          <th scope="row">{{'DETAILS.BUSINESS'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.businessNo }}</h5>
                           </td>
@@ -220,57 +220,57 @@
                     <table class="table m-0">
                       <tbody>
                         <tr>
-                          <th scope="row">Ref</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_REF'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.ref }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Name	</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_NAME'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.name }}</h5>
                           </td>
                         </tr>
 
                        <tr>
-                          <th scope="row">Description</th>
+                          <th scope="row">{{'DETAILS.DESCRIPTION'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.description }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Quantity</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_QUANTITY'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.quantity }}</h5>
                           </td>
                         </tr>
                          <tr>
-                          <th scope="row">Price	</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_PRICE'|translate}}	</th>
                           <td>
                             <h5>{{ this.payload.sale_price }}</h5>
                           </td>
                         </tr>
 
                         <tr >
-                          <th scope="row">Tax</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_TAX'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.tax+"%" }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Cost</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_COST'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.cost }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Supplier info</th>
+                          <th scope="row">{{'DETAILS.SUPPLIER_INFO'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.nom_suppliers+", "+this.payload.email_suppliers+", "+this.payload.adr_suppliers }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Accounting plan Ref</th>
+                          <th scope="row">{{'DETAILS.ACCOUNTING_PLAN_REF'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.id_accounting_plan }}</h5>
                           </td>
@@ -308,50 +308,50 @@
                     <table class="table m-0">
                       <tbody>
                         <tr>
-                          <th scope="row">Ref</th>
+                          <th scope="row">{{'DETAILS.SERVICE_REF'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.ref }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Name	</th>
+                          <th scope="row">{{'DETAILS.SERVICE_NAME'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.name }}</h5>
                           </td>
                         </tr>
 
                        <tr>
-                          <th scope="row">Description</th>
+                          <th scope="row">{{'DETAILS.DESCRIPTION'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.description }}</h5>
                           </td>
                          <tr>
-                          <th scope="row">Price	</th>
+                          <th scope="row">{{'DETAILS.SERVICE_PRICE'|translate}}	</th>
                           <td>
                             <h5>{{ this.payload.sale_price }}</h5>
                           </td>
                         </tr>
 
                         <tr >
-                          <th scope="row">Tax</th>
+                          <th scope="row">{{'DETAILS.SERVICE_TAX'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.tax+"%" }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Cost</th>
+                          <th scope="row">{{'DETAILS.SERVICE_COST'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.cost }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Supplier info</th>
+                          <th scope="row">{{'DETAILS.SUPPLIER_INFO'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.nom_suppliers+", "+this.payload.email_suppliers+", "+this.payload.adr_suppliers }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Accounting plan Ref</th>
+                          <th scope="row">{{'DETAILS.ACCOUNTING_PLAN_REF'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.id_accounting_plan }}</h5>
                           </td>
@@ -389,56 +389,56 @@
                     <table class="table m-0">
                       <tbody>
                         <tr>
-                          <th scope="row">Porduct name</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_NAME'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.productName }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Porduct ref</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_REF'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.ref }}</h5>
                           </td>
                         </tr>
 
                        <tr>
-                          <th scope="row">Product description</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_DESCRIPTION'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.description }}</h5>
                           </td>
                          <tr>
-                          <th scope="row">Product price</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_PRICE'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.sale_price }}</h5>
                           </td>
                         </tr>
 
                         <tr >
-                          <th scope="row">Product tax</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_TAX'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.tax+"%" }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Product cost</th>
+                          <th scope="row">{{'DETAILS.PRODUCT_COST'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.cost }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Supplier info</th>
+                          <th scope="row">{{'DETAILS.SUPPLIER_INFO'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.nom_suppliers+", "+this.payload.email_suppliers+", "+this.payload.adr_suppliers }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Company name</th>
+                          <th scope="row">{{'DETAILS.COMPANY'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.name }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Company domain</th>
+                          <th scope="row">{{'DETAILS.COMPANY_DOMAIN'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.domain }}</h5>
                           </td>
@@ -473,56 +473,56 @@
                     <table class="table m-0">
                       <tbody>
                         <tr>
-                          <th scope="row">Service name</th>
+                          <th scope="row">{{'DETAILS.SERVICE_NAME'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.name }}</h5>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">Service ref</th>
+                          <th scope="row">{{'DETAILS.SERVICE_REF'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.ref }}</h5>
                           </td>
                         </tr>
 
                        <tr>
-                          <th scope="row">Service description</th>
+                          <th scope="row">{{'DETAILS.SERVICE_DESCRIPTION'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.description }}</h5>
                           </td>
                          <tr>
-                          <th scope="row">Service price</th>
+                          <th scope="row">{{'DETAILS.SERVICE_PRICE'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.sale_price }}</h5>
                           </td>
                         </tr>
 
                         <tr >
-                          <th scope="row">Service tax</th>
+                          <th scope="row">{{'DETAILS.SERVICE_TAX'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.tax+"%" }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Service cost</th>
+                          <th scope="row">{{'DETAILS.SERVICE_COST'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.cost }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Supplier info</th>
+                          <th scope="row">{{'DETAILS.SUPPLIER_INFO'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.nom_suppliers+", "+this.payload.email_suppliers+", "+this.payload.adr_suppliers }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Company name</th>
+                          <th scope="row">{{'DETAILS.COMPANY'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.companyName }}</h5>
                           </td>
                         </tr>
                         <tr >
-                          <th scope="row">Company domain</th>
+                          <th scope="row">{{'DETAILS.COMPANY_DOMAIN'|translate}}</th>
                           <td>
                             <h5>{{ this.payload.domain }}</h5>
                           </td>

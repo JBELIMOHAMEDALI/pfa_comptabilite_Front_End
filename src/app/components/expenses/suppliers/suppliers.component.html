@@ -6,7 +6,7 @@
                   <span><i class="fas fa-user-tie" style="background-color: #000080"></i></span>
                   <div class="d-inline">
                       <span class="d-block text-primary">
-                          <h4>Suppliers Page</h4>
+                          <h4>{{'SUPPLIERS_COMPONENT.TITLE'|translate}}</h4>
                       </span>
                       <!-- <span class="text-dark">Suppliers Page</span> -->
                   </div>
@@ -24,13 +24,13 @@
                   <div class="card">
                       <div class="col-sm-12">
                           <div class="card-header">
-                              <h5 class="card-header-text">Suppliers List</h5>
+                              <h5 class="card-header-text">{{'SUPPLIERS_COMPONENT.HEADER'|translate}}</h5>
                               <div class="col-md-12 col-lg-3 offset-lg-10">
                                   <div class="pcoded-search">
                                       <div class="pcoded-search-box">
                                           <button class="btn " (click)="OpenModal('NEW SUPPLIER')">
                                               <i class="icofont icofont-ui-add"></i>
-                                              New
+                                              {{'NEW'|translate}}
                                           </button>
                                       </div>
                                   </div>
@@ -42,14 +42,14 @@
                                       <thead>
                                           <tr style="text-align: center">
                                               <th scope="col">
-                                                  Name
+                                                {{'SUPPLIERS_COMPONENT.TABLE.NAME'|translate}}
                                               </th>
                                               <th scope="col">
-                                                  Email
+                                                {{'SUPPLIERS_COMPONENT.TABLE.EMAIL'|translate}}
                                               </th>
                                               <th scope="col">
-                                                Address                                                </th>
-                                              <th scope="col">Actions</th>
+                                                {{'SUPPLIERS_COMPONENT.TABLE.ADDRESS'|translate}}                                                </th>
+                                              <th scope="col">{{'ACTIONS'|translate}}</th>
                                           </tr>
                                       </thead>
                                       <tbody *ngFor="let item of this.suppliersList|slice">

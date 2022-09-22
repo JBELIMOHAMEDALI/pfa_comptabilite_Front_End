@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { PostComponent } from './post/post.component';
 import { PutComponent } from './put/put.component';
 import { DetailsComponent } from './details/details.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -16,6 +17,7 @@ import { DetailsComponent } from './details/details.component';
   imports: [
     CommonModule,
     FormsModule,
+    TranslateModule
   ],
   entryComponents : [
     PostComponent,

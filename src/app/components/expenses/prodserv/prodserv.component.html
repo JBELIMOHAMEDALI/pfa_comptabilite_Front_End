@@ -6,7 +6,7 @@
           <span><i class="fas fa-user-tie" style="background-color: #000080"></i></span>
           <div class="d-inline">
             <span class="d-block text-primary">
-              <h4>Products and Services Page</h4>
+              <h4>{{'PRODUCTS_SERVICES_COMPONENT.TITLE'|translate}}</h4>
             </span>
             <!-- <span class="text-dark">Products and Services Page</span> -->
           </div>
@@ -21,7 +21,7 @@
     <div class="col-lg-12">
       <div class="md-tabs">
         <ngb-tabset (tabChange)="changeState($event)">
-          <ngb-tab title="Products " [id]="1">
+          <ngb-tab [title]="'TABSET.PRODUCTS'|translate" [id]="1">
             <ng-template ngbTabContent>
 
 
@@ -29,20 +29,20 @@
                 <div class="card">
                   <div class="col-sm-12">
                     <div class="card-header">
-                      <h5 class="card-header-text">Products List</h5>
+                      <h5 class="card-header-text">{{'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.HEADER'|translate}}</h5>
                       <div class="container">
                         <div class="row">
                           <div class="col-md-12 col-lg-3 mt-5 mr-2">
                             <select class="form-select" value="0" (change)="changeOperation($event.target.value)">
-                              <option value="0">Purchases</option>
-                              <option value="1">Sales</option>
+                              <option value="0">{{'TRANSACTIONS_COMPONENT.SELECT.PURCHASES'|translate}}</option>
+                              <option value="1">{{'TRANSACTIONS_COMPONENT.SELECT.SALES'|translate}}</option>
                             </select>
                           </div>
                           <div class="col-sm-1 mt-5 mr-2 ml-4">
                             <!-- <div class="pcoded-search-box"> -->
                               <button class="btn " (click)="OpenModal('NEW PRODUCT')">
                                 <i class="icofont icofont-ui-add"></i>
-                                New
+                                {{'NEW'|translate}}
                               </button>
                             <!-- </div> -->
                           </div>
@@ -58,18 +58,17 @@
                           <thead>
                             <tr style="text-align: center">
                               <th scope="col">
-                                Name
+                                {{'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.TABLE.NAME'|translate}}
                               </th>
                               <th scope="col">
-                                Ref
+                                {{'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.TABLE.REF'|translate}}
                               </th>
+
                               <th scope="col">
-                                Quantity </th>
-                              <th scope="col">
-                                Supplier Name
+                                {{'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.TABLE.SUPPLIER_NAME'|translate}}
                               </th>
                               <!--   -->
-                              <th scope="col">Actions</th>
+                              <th scope="col">{{'ACTIONS'|translate}}</th>
                             </tr>
                           </thead>
                           <tbody *ngFor="let product of this.itemsList|slice">
@@ -80,9 +79,7 @@
                               <td scope="row"> {{
                                 product.ref
                                 }} </td>
-                              <td scope="row"> {{
-                                product.quantity
-                                }} </td>
+
                               <td scope="row"> {{
                                 product.nom_suppliers
                                 }} </td>
@@ -90,7 +87,7 @@
                               <td scope="row">
                                 <i (click)="OpenModal('UPDATE PRODUCT',product)" class="fas fa-edit"></i>
                                 <i (click)="deleteItem(product.id_product)" class="fa fa-trash-o ml-2"></i>
-                                <i (click)="OpenDetails('PRODUCT DETAILS',product)" class="fa fa-eye ml-2"></i>
+                                <i (click)="OpenDetails('PRODUCT_DETAILS',product)" class="fa fa-eye ml-2"></i>
 
                               </td>
                             </tr>
@@ -115,7 +112,7 @@
               </div>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="Services" [id]="2">
+          <ngb-tab [title]="'TABSET.SERVICES'|translate" [id]="2">
             <ng-template ngbTabContent>
 
 
@@ -123,20 +120,20 @@
                 <div class="card">
                   <div class="col-sm-12">
                     <div class="card-header">
-                      <h5 class="card-header-text">Services List</h5>
+                      <h5 class="card-header-text">{{'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.HEADER'|translate}}</h5>
                       <div class="container">
                         <div class="row">
                           <div class="col-md-12 col-lg-3 mt-5 mr-2">
                             <select class="form-select" value="0" (change)="changeOperation($event.target.value)">
-                              <option value="0">Purchases</option>
-                              <option value="1">Sales</option>
+                              <option value="0">{{'TRANSACTIONS_COMPONENT.SELECT.PURCHASES'|translate}}</option>
+                              <option value="1">{{'TRANSACTIONS_COMPONENT.SELECT.SALES'|translate}}</option>
                             </select>
                           </div>
                           <div class="col-sm-1 mt-5 mr-2 ml-4">
                             <!-- <div class="pcoded-search-box"> -->
                               <button class="btn " (click)="OpenModal('NEW SERVICE')">
                                 <i class="icofont icofont-ui-add"></i>
-                                New
+                                {{'NEW'|translate}}
                               </button>
                             <!-- </div> -->
                           </div>
@@ -150,17 +147,15 @@
                           <thead>
                             <tr style="text-align: center">
                               <th scope="col">
-                                Name
+                                {{'PRODUCTS_SERVICES_COMPONENT.SERVICES.TABLE.NAME'|translate}}
                               </th>
                               <th scope="col">
-                                Ref
+                                {{'PRODUCTS_SERVICES_COMPONENT.SERVICES.TABLE.REF'|translate}}
                               </th>
                               <th scope="col">
-                                Sale price </th>
-                              <th scope="col">
-                                Tax
+                                {{'PRODUCTS_SERVICES_COMPONENT.PRODUCTS.TABLE.SUPPLIER_NAME'|translate}}
                               </th>
-                              <th scope="col">Actions</th>
+                              <th scope="col">{{'ACTIONS'|translate}}</th>
                             </tr>
                           </thead>
                           <tbody *ngFor="let service of this.itemsList|slice">
@@ -172,15 +167,12 @@
                                 service.ref
                                 }} </td>
                               <td scope="row"> {{
-                                service.sale_price
-                                }} </td>
-                              <td scope="row"> {{
-                                service.tax
-                                }} </td>
+                                service.nom_suppliers}}
+                                </td>
                               <td scope="row">
                                 <i (click)="OpenModal('UPDATE SERVICE',service)" class="fas fa-edit"></i>
                                 <i (click)="deleteItem(service.id_service)" class="fa fa-trash-o ml-2"></i>
-                                <i (click)="OpenDetails('SERVICE DETAILS',service)" class="fa fa-eye ml-2"></i>
+                                <i (click)="OpenDetails('SERVICE_DETAILS',service)" class="fa fa-eye ml-2"></i>
 
                               </td>
                             </tr>

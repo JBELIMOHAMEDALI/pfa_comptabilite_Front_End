@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyComponent } from './company.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     CompanyRoutingModule,
-    NgbModule
+    NgbModule,
+    TranslateModule
   ],
   schemas:[NO_ERRORS_SCHEMA]
 

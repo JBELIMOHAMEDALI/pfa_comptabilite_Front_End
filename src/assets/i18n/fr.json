@@ -1,21 +1,158 @@
 {
-  "DASHBOARD": "Dashboard-fr",
-  "ACCOUNTING_PLAN": "Accounting plan-fr",
-  "COMPANY": "Company-fr",
-  "TAX": "Tax-fr",
-  "CASH_FLOW": "Cash flow-fr",
-  "EMPLOYEES": "Employees-fr",
-  "TRANSACTIONS": "Transactions-fr",
-  "PRODUCTS_SERVICES": "Products/Services-fr",
-  "SUPPLIERS": "Suppliers-fr",
-  "CUSTOMERS": "Customers-fr",
-  "ACCOUNTING_PLAN_COMPONENT": {},
-  "COMPANY_COMPONENT": {},
-  "TAX_COMPONENT": {},
-  "EMPLOYEES_COMPONENT": {},
-  "TRANSACTIONS_COMPONENT": {},
-  "PRODUCTS_SERVICES_COMPONENT": {},
+  "APP": "App",
+  "DASHBOARD": "Tableau de bord",
+  "ACCOUNTING_PLAN": "Plans comptables",
+  "COMPANY": "Entreprises",
+  "TAX": "impôts",
+  "EMPLOYEES": "Employés",
+  "TRANSACTIONS": "Transactions",
+  "PRODUCTS_SERVICES": "Produits/Services",
+  "SUPPLIERS": "Fournisseurs",
+  "CUSTOMERS": "Clients",
+  "NEW": "Nouveau",
+  "ACTIONS": "Actions",
+  "EXPENSES_SALES": "Dépenses/Ventes",
+  "ACCOUNTING_PLAN_COMPONENT": {
+    "TITLE": "La page des plans comptables",
+    "HEADER": "La liste des plans comptables",
+    "IMPORT": "Importer",
+    "EXPORT": "Exporter",
+    "NEW_PLAN": "Nouveau plan",
+    "DELETE": "Supprimer",
+    "NEW_ROW": "Nouvelle ligne",
+    "TABLE": {
+      "ACCOUNT_NUMBER": "N° de compte",
+      "DESCRIPTION": "Description"
+    }
+  },
 
-  "SUPPLIERS_COMPONENT": {},
-  "CUSTOMERS_COMPONENT": {}
+  "COMPANY_COMPONENT": {
+    "TITLE": "La page des entreprises",
+    "HEADER": "La liste des entreprises",
+    "TABLE": {
+      "NAME": "Nom",
+      "DOMAIN": "Domaine"
+    }
+  },
+  "TAX_COMPONENT": {
+    "TITLE": "La page des impôts",
+    "HEADER": "La liste des impôts",
+    "TABLE": {
+      "NAME": "Libellé",
+      "AGENCY_NAME": "Nom de l'agence",
+      "START_PERIOD": "Période de début"
+    }
+  },
+  "EMPLOYEES_COMPONENT": {
+    "TITLE": "La page des employés",
+    "HEADER": "La liste des employés",
+    "TABLE": {
+      "FULLNAME": "Nom complet",
+      "SALARY": "Salaire",
+      "HIRE_DATE": "Date d'embauche"
+    }
+  },
+  "TRANSACTIONS_COMPONENT": {
+    "TITLE": "La page des transactions",
+    "HEADER": "La liste des transactions",
+    "SELECT": {
+      "PURCHASES": "Achats",
+      "SALES": "Ventes"
+    },
+    "TABLE": {
+      "PRODUCT": "Nom produit",
+      "SUPPLIER": "Nom fournisseur",
+      "COMPANY": "Nom entreprise",
+      "SERVICE": "Service",
+      "EXPLORE": "Explorer"
+    }
+  },
+  "PRODUCTS_SERVICES_COMPONENT": {
+    "TITLE": "La page des produits et des services",
+    "PRODUCTS": {
+      "HEADER": "La liste des produits",
+
+      "TABLE": {
+        "NAME": "Nom produit",
+        "REF": "Référence produit",
+        "SUPPLIER_NAME": "Nom fournisseur"
+      }
+    },
+    "SERVICES": {
+      "HEADER": "La liste des services",
+
+      "TABLE": {
+        "NAME": "Nom service ",
+        "REF": "Référence service",
+        "SUPPLIER_NAME": "Nom fournisseur"
+      }
+    }
+  },
+
+  "SUPPLIERS_COMPONENT": {
+    "TITLE": "La page des fournisseurs",
+    "HEADER": "La liste des fournisseurs",
+
+    "TABLE": {
+      "NAME": "Nom",
+      "EMAIL": "Email",
+      "ADDRESS": "Adresse"
+    }
+  },
+  "CUSTOMERS_COMPONENT": {
+    "TITLE": "La page des clients",
+    "HEADER": "La liste des clients",
+
+    "TABLE": {
+      "FULLNAME": "Nom complet",
+      "PAYMENT_METHOD": "Mode de paiement",
+      "COMPANY": "Nom de l'entreprise"
+    }
+  },
+
+  "TABSET": {
+    "PRODUCTS": "Produits",
+    "SERVICES": "Services"
+  },
+
+  "DETAILS": {
+    "FULLNAME": "Nom complet",
+    "EMAIL": "Email",
+    "ADDRESS": "Adresse",
+    "COMPANY": "Nom de l'entreprise",
+    "COMPANY_DOMAIN": "Domaine de l'entreprise",
+    "PAYMENT_METHOD": "Mode de paiement",
+    "PHONE": "N° tél",
+    "SALARY": "Salaire",
+    "BIRTH_DATE": "Date de naissance",
+    "HIRE_DATE": "Date d'embauche",
+    "DESCRIPTION": "Description",
+    "AGENCY_NAME": "Nom de l'agence",
+    "FILLING_FREQ": "Fréquence de remplissage",
+    "COLLECTION_TYPE": "Type de collecte",
+    "BUSINESS": "N° d'affaire",
+    "PRODUCT_NAME": "Nom produit",
+    "PRODUCT_REF": "Référence produit",
+    "SUPPLIER_NAME": "Nom fournisseur",
+    "PRODUCT_QUANTITY": "Quantité produit",
+    "PRODUCT_PRICE": "Prix produit",
+    "PRODUCT_TAX": "impôts produit",
+    "PRODUCT_COST": "Coût produit",
+    "PRODUCT_DESCRIPTION": "Description",
+    "SUPPLIER_INFO": "Info fournisseur",
+
+    "ACCOUNTING_PLAN_REF": "Référence plan comptable",
+
+    "SERVICE_NAME": "Nom service",
+    "SERVICE_REF": "Référence service",
+    "SERVICE_PRICE": "Prix service",
+    "SERVICE_TAX": "Impôts service",
+    "SERVICE_COST": "Coût service",
+    "SERVICE_DESCRIPTION": "Description"
+  },
+  "EMPLOYEE_DETAILS": "Info sur l'employé(e)",
+  "CUSTOMER_DETAILS": "Info sur le(a) client(e)",
+  "SERVICE_DETAILS": "Détails service",
+  "PRODUCT_DETAILS": "Détails produit",
+  "TRANSACTION_DETAILS": "Détails de la transaction"
 }

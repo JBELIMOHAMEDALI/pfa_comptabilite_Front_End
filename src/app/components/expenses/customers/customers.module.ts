@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomersComponent } from './customers.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     CustomersRoutingModule,
-    NgbModule
+    NgbModule,
+    TranslateModule
   ],
   schemas:[NO_ERRORS_SCHEMA]
 })

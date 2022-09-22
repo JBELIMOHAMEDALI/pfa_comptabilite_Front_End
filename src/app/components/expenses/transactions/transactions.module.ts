@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { TransactionsRoutingModule } from './transactions-routing.module';
 import { TransactionsComponent } from './transactions.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [TransactionsComponent],
   imports: [
     CommonModule,
     TransactionsRoutingModule,
-    NgbModule
+    NgbModule,
+    TranslateModule
   ],
   schemas:[NO_ERRORS_SCHEMA]
 })

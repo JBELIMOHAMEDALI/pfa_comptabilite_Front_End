@@ -6,7 +6,7 @@
           <span><i class="fas fa-user-tie" style="background-color: #000080"></i></span>
           <div class="d-inline">
             <span class="d-block text-primary">
-              <h4>Customers Page</h4>
+              <h4>{{'CUSTOMERS_COMPONENT.TITLE'|translate}}</h4>
             </span>
             <!-- <span class="text-dark">Customer Page</span> -->
           </div>
@@ -24,13 +24,13 @@
           <div class="card">
             <div class="col-sm-12">
               <div class="card-header">
-                <h5 class="card-header-text">Customers List</h5>
+                <h5 class="card-header-text">{{'CUSTOMERS_COMPONENT.HEADER'|translate}}</h5>
                 <div class="col-md-12 col-lg-3 offset-lg-10">
                   <div class="pcoded-search">
                     <div class="pcoded-search-box">
                       <button class="btn " (click)="OpenModal('NEW CUSTOMER')">
                         <i class="icofont icofont-ui-add"></i>
-                        New
+                        {{'NEW'|translate}}
                       </button>
                     </div>
                   </div>
@@ -42,17 +42,17 @@
                     <thead>
                       <tr style="text-align: center">
                         <th scope="col">
-                          Full name
+                          {{'CUSTOMERS_COMPONENT.TABLE.FULLNAME'|translate}}
                         </th>
 
                         <th scope="col">
-                          company
+                          {{'CUSTOMERS_COMPONENT.TABLE.COMPANY'|translate}}
                         </th>
                         <th scope="col">
-                          payment method
+                          {{'CUSTOMERS_COMPONENT.TABLE.PAYMENT_METHOD'|translate}}
                         </th>
                         <!--   -->
-                        <th scope="col">Actions</th>
+                        <th scope="col">{{'ACTIONS'|translate}}</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let customer of this.customersList|slice">
@@ -70,7 +70,7 @@
                         <td scope="row">
                           <i (click)="OpenModal('UPDATE customer',customer)" class="fas fa-edit"></i>
                           <i (click)="deleteCustomer(customer.id)" class="fa fa-trash-o ml-2"></i>
-                          <i (click)="OpenDetails('CUSTOMER INFO',customer)" class="fa fa-eye ml-2"></i>
+                          <i (click)="OpenDetails('CUSTOMER_DETAILS',customer)" class="fa fa-eye ml-2"></i>
 
                         </td>
                       </tr>
