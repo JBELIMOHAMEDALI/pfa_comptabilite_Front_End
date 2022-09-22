@@ -159,5 +159,14 @@
   "SERVICE_DETAILS": "Service details",
   "PRODUCT_DETAILS": "Product details",
   "TRANSACTION_DETAILS": "Transaction details",
-  "TAX_DETAILS": "Tax details"
+  "TAX_DETAILS": "Tax details",
+  "DASHBOARD_COMPONENT": {
+    "PURCHASES": "Purchases",
+    "SALES": "Sales",
+    "COMPANY_STATE": "SALES % PURCHASES"
+  }
+
+  ,"USER":{
+    "LOGOUT":"Logout"
+  }
 }

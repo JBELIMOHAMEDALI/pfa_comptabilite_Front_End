@@ -353,8 +353,8 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="text" class="form-control" placeholder="Name" name="nom_suppliers" ngModel
-          #nom_suppliers="ngModel" required />
+        <input type="text" class="form-control" placeholder="Name" name="nom_suppliers" ngModel #nom_suppliers="ngModel"
+          required />
       </div>
       <div *ngIf="nom_suppliers.invalid && nom_suppliers.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter name !</span>
@@ -440,12 +440,8 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="number" class="form-control" placeholder="Quantity" name="quantity"
-        min="1"
-         ngModel
-         [ngModel]="1"
-         #quantity="ngModel"
-          required />
+        <input type="number" class="form-control" placeholder="Quantity" name="quantity" min="1" ngModel [ngModel]="1"
+          #quantity="ngModel" required />
       </div>
       <div *ngIf="quantity.invalid && quantity.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter Quantity !</span>
@@ -465,8 +461,8 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="number" class="form-control" placeholder="Price" min="0" name="sale_price" ngModel #sale_price="ngModel"
-          required />
+        <input type="number" class="form-control" placeholder="Price" min="0" name="sale_price" ngModel
+          #sale_price="ngModel" required />
       </div>
       <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter price !</span>
@@ -474,8 +470,8 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="number" class="form-control" placeholder="Tax %" name="tax" min="0" max="100"
-        ngModel #tax="ngModel" required />
+        <input type="number" class="form-control" placeholder="Tax %" name="tax" min="0" max="100" ngModel
+          #tax="ngModel" required />
       </div>
       <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter Tax !</span>
@@ -485,10 +481,8 @@
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
         <input type="text" class="form-control" placeholder="Cost"
-        [ngModel]="((sale_price&&quantity&&sale_price.value*quantity.value)+(tax&&tax.value/100)).toFixed(2)"
-        onkeydown="return false"
-        name="cost" ngModel #cost="ngModel"
-          required />
+          [ngModel]="((sale_price&&quantity&&sale_price.value*quantity.value)+((tax&&tax.value/100)*(sale_price.value*quantity.value))).toFixed(2)"
+          onkeydown="return false" name="cost" ngModel #cost="ngModel" required />
       </div>
 
       <div class="modal-footer">
@@ -562,8 +556,8 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="number" class="form-control" placeholder="Price" min="0" name="sale_price" ngModel #sale_price="ngModel"
-          required />
+        <input type="number" class="form-control" placeholder="Price" min="0" name="sale_price" ngModel
+          #sale_price="ngModel" required />
       </div>
       <div *ngIf="sale_price.invalid && sale_price.touched" class="alert alert-danger p-2" role="alert">
         <span>Enter price !</span>
@@ -571,21 +565,19 @@
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
-        <input type="number" class="form-control" placeholder="Tax %" min="0" max="100"
-        name="tax" ngModel #tax="ngModel" required />
+        <input type="number" class="form-control" placeholder="Tax %" min="0" max="100" name="tax" ngModel
+          #tax="ngModel" required />
       </div>
       <div *ngIf="tax.invalid && tax.touched" class="alert alert-danger p-2" role="alert">
-        <span>Enter Tax</span>
+        <span>Enter Tax !</span>
       </div>
 
       <div class="input-group">
         <span class="input-group-prepend"><label class="input-group-text"><i
               class="icofont icofont-presentation"></i></label></span>
         <input type="number" class="form-control" placeholder="Cost"
-        [ngModel]="((sale_price&&sale_price.value)+((tax&&tax.value/100)))"
-        onkeydown="return false"
-        name="cost" ngModel #cost="ngModel"
-          required />
+          [ngModel]="(    (sale_price&&sale_price.value)+((tax&&tax.value/100)*sale_price.value)    )" onkeydown="return false" name="cost"
+          ngModel #cost="ngModel" required />
       </div>
 
       <div class="modal-footer">

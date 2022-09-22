@@ -9,7 +9,7 @@ export class BackendService {
 
   get(endpoint: string, limit?: number, offset?: number) {
     return this.httpClient.get(
-      limit > 0 ? `${endpoint}?limit=${limit}&offset=${offset}` : endpoint
+      limit  ? `${endpoint}?limit=${limit}&offset=${offset}` : endpoint
     );
   }
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { DashboardComponent } from './dashboard.component';
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    TranslateModule
   ],
   schemas:[NO_ERRORS_SCHEMA]
 })

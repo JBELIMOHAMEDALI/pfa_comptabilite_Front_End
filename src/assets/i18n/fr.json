@@ -3,7 +3,7 @@
   "DASHBOARD": "Tableau de bord",
   "ACCOUNTING_PLAN": "Plans comptables",
   "COMPANY": "Entreprises",
-  "TAX": "impôts",
+  "TAX": "Impôts",
   "EMPLOYEES": "Employés",
   "TRANSACTIONS": "Transactions",
   "PRODUCTS_SERVICES": "Produits/Services",
@@ -155,5 +155,14 @@
   "SERVICE_DETAILS": "Détails service",
   "PRODUCT_DETAILS": "Détails produit",
   "TRANSACTION_DETAILS": "Détails de la transaction",
-  "TAX_DETAILS": "Détails de l'impôt"
+  "TAX_DETAILS": "Détails de l'impôt",
+  "DASHBOARD_COMPONENT": {
+    "PURCHASES": "Achats",
+    "SALES": "Ventes",
+    "COMPANY_STATE": "VENTES % ACHATS"
+
+  },
+  "USER":{
+    "LOGOUT":"Déconnexion"
+  }
 }
