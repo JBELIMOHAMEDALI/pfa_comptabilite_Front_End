@@ -4,6 +4,8 @@ import { AuthGuard } from "../guards/auth.guard";
 import { LayoutComponent } from "../layout/original-layout/layout.component";
 import { NotfoundComponent } from "../pages/notfound/notfound.component";
 
+
+
 const routes: Routes = [
   {
     path: "app",
@@ -109,3 +111,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class ComponentsRoutingModule { }
+

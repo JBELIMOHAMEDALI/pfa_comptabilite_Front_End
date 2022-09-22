@@ -38,7 +38,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'dashboard',
         short_label: 'D',
-        name: 'Dashboard',
+        name: 'DASHBOARD',
         type: 'link',
         icon: 'fas fa-chart-line',
         routerLink:"/app/dashboard"
@@ -46,7 +46,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'accounting-plan',
         short_label: 'A-P',
-        name: 'Accounting plan',
+        name: 'ACCOUNTING_PLAN',
         type: 'link',
         icon: 'fas fa-receipt',
         routerLink:"/app/accounting/plan"
@@ -54,7 +54,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'company',
         short_label: 'C',
-        name: 'Company',
+        name: 'COMPANY',
         type: 'link',
         icon: 'fas fa-building',
         routerLink:"/app/company"
@@ -62,7 +62,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'tax',
         short_label: 'T',
-        name: 'Tax',
+        name: 'TAX',
         type: 'link',
         icon: 'fas fa-file-invoice-dollar',
         routerLink:"/app/tax"
@@ -70,7 +70,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'cash-flow',
         short_label: 'C-F',
-        name: 'Cash flow',
+        name: 'CASH_FLOW',
         type: 'link',
         icon: 'fas fa-money-check-alt',
         routerLink:"/app/cash-flow"
@@ -78,7 +78,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'employees',
         short_label: 'EMP',
-        name: 'Employees',
+        name: 'EMPLOYEES',
         type: 'link',
         icon: 'fas fa-user-friends',
         routerLink:"/app/employees"
@@ -92,7 +92,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'transactions',
         short_label: 'E-T',
-        name: 'Transactions',
+        name: 'TRANSACTIONS',
         type: 'link',
         icon: 'fas fa-donate',
         routerLink:'/app/expenses-sales/transactions'
@@ -100,7 +100,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'products-services',
         short_label: 'P-S',
-        name: 'Products/Services',
+        name: 'PRODUCTS_SERVICES',
         type: 'link',
         icon: 'fas fa-box',
         routerLink:'/app/expenses-sales/products-services'
@@ -108,7 +108,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'suppliers',
         short_label: 'S',
-        name: 'Suppliers',
+        name: 'SUPPLIERS',
         type: 'link',
         icon: 'fas fa-users',
         routerLink:'/app/expenses-sales/suppliers'
@@ -116,7 +116,7 @@ const MENUITEMS:Menu[] = [
       {
         state: 'customers',
         short_label: 'C',
-        name: 'Customers',
+        name: 'CUSTOMERS',
         type: 'link',
         icon: 'fas fa-user-tie',
         routerLink:"/app/expenses-sales/customers"

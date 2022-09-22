@@ -18,6 +18,7 @@ import {
 import Observer from "../../services/observer";
 import { Router } from "@angular/router";
 import { SharedService } from "../../services/shared.service";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-layout",
@@ -128,6 +129,9 @@ export class LayoutComponent implements OnInit {
   companyList: [];
   userinfo: { lastname: ""; firstname: ""; photo: "" };
 
+  langList=[];
+  selectedLanguage;
+
   @ViewChild("searchFriends", /* TODO: add static flag */ { static: false })
   search_friends: ElementRef;
 
@@ -139,7 +143,9 @@ export class LayoutComponent implements OnInit {
     private backendService: BackendService,
     private sharedService: SharedService,
     private router: Router,
+    private translate: TranslateService
   ) {
+
     this.navType = "st5";
     this.themeLayout = "vertical";
     this.vNavigationView = "view1";
@@ -194,9 +200,16 @@ export class LayoutComponent implements OnInit {
     // dark-light
     // this.setNavBarTheme('theme1');
     // this.navType = 'st3';
+
   }
 
   ngOnInit() {
+    this.langList = [
+      { image: "assets/images/flags/ENGLISH.jpg", language: "English",lang:"en" },
+      { image: "assets/images/flags/FRANCE.jpg", language: "France",lang:"fr" },
+    ];
+    this.selectedLanguage=JSON.parse(localStorage.getItem('lang'));
+
     this.getUserInfo();
     this.getCompanies();
     this.setBackgroundPattern("pattern2");
@@ -389,11 +402,19 @@ export class LayoutComponent implements OnInit {
 
   logout() {
     this.backendService
-    .delete(USER_LOGOUT_END_POINT)
-    .subscribe(new Observer().OBSERVER_DELETE());
+      .delete(USER_LOGOUT_END_POINT)
+      .subscribe(new Observer().OBSERVER_DELETE());
     this.sharedService.deleteItem("accessToken");
     this.sharedService.deleteItem("refreshToken");
     this.sharedService.deleteItem("companyNo");
     this.router.navigate(["/signin"]);
+  }
+
+  selectLanguage(i18n){
+    const{lang}=i18n;
+    localStorage.setItem('lang',JSON.stringify(i18n))
+    this.translate.use(lang);
+    this.selectedLanguage=i18n;
+
   }
 }

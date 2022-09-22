@@ -1,0 +1,41 @@
+{
+
+    "DASHBOARD": "Dashboard",
+    "ACCOUNTING_PLAN": "Accounting plan",
+    "COMPANY": "Company",
+    "TAX": "Tax",
+    "CASH_FLOW": "Cash flow",
+    "EMPLOYEES": "Employees",
+    "TRANSACTIONS": "Transactions",
+    "PRODUCTS_SERVICES": "Products/Services",
+    "SUPPLIERS": "Suppliers",
+    "CUSTOMERS": "Customers"
+    ,
+    "ACCOUNTING_PLAN_COMPONENT":{
+
+    },
+    "COMPANY_COMPONENT":{
+
+    },
+    "TAX_COMPONENT":{
+
+    },
+    "EMPLOYEES_COMPONENT":{
+
+    },
+    "TRANSACTIONS_COMPONENT":{
+
+    },
+    "PRODUCTS_SERVICES_COMPONENT":{
+
+    },
+
+    "SUPPLIERS_COMPONENT":{
+
+    },"CUSTOMERS_COMPONENT":{
+
+    }
+
+
+
+}

@@ -22,6 +22,8 @@
     "@angular/platform-browser-dynamic": "^8.2.3",
     "@angular/router": "^8.2.3",
     "@ng-bootstrap/ng-bootstrap": "^5.1.0",
+    "@ngx-translate/core": "^12.1.2",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@nicky-lenaers/ngx-scroll-to": "^3.0.1",
     "angular2-chartjs": "^0.5.1",
     "angular2-notifications": "^0.7.4",
