@@ -158,5 +158,6 @@
   "CUSTOMER_DETAILS": "Customer info",
   "SERVICE_DETAILS": "Service details",
   "PRODUCT_DETAILS": "Product details",
-  "TRANSACTION_DETAILS": "Transaction details"
+  "TRANSACTION_DETAILS": "Transaction details",
+  "TAX_DETAILS": "Tax details"
 }

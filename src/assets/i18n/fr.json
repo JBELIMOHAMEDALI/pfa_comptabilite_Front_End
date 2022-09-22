@@ -154,5 +154,6 @@
   "CUSTOMER_DETAILS": "Info sur le(a) client(e)",
   "SERVICE_DETAILS": "Détails service",
   "PRODUCT_DETAILS": "Détails produit",
-  "TRANSACTION_DETAILS": "Détails de la transaction"
+  "TRANSACTION_DETAILS": "Détails de la transaction",
+  "TAX_DETAILS": "Détails de l'impôt"
 }
