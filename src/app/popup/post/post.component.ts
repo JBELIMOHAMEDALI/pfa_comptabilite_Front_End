@@ -6,7 +6,6 @@ import {
   ADD_USER_PRODUCTS_END_POINT,
   GET_SUPPLIETS_SERVICES_END_POINT,
   GET_USER_ACCOUNTING_LIST_PLAN_END_POINT,
-  GET_USER_CUSTOMERS_LIST_END_POINT,
   POST_SUPPLIETS_CUSTOMERS_END_POINT,
   POST_USER_ACCOUNTING_PLAN_END_POINT,
   POST_USER_ACCOUNTING_PLAN_ROW_END_POINT,
@@ -48,9 +47,9 @@ export class PostComponent implements OnInit {
     this.actualDate = new Date().toDateString();
     this.birthdateinputype = "text";
     this.hiredateinputype = "text";
-    this.startperiodinputype = "text";
   }
   ngOnInit() {
+    this.startperiodinputype = "text";
     if (this.type == "SERVICES" || this.type == "PRODUCTS") {
       this.getSuppliers();
       this.getAccounts();

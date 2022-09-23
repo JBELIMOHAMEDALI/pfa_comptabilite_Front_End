@@ -43,7 +43,8 @@
                 <div class="row">
                   <div class="col-sm-4 mb-5 mr-2">
                     <select class="form-select" value="-1" (change)="changeSelectedFile($event.target.value)">
-                      <option value="-1" disabled>{{this.sourceFiles.length===0?'Import files ':'Select a file'}}
+                      <option value="-1" disabled>
+                        {{'ACCOUNTING_PLAN_COMPONENT.SELECT.SELECT_FILE'|translate}}
                       </option>
                       <option *ngFor="let file of this.sourceFiles;let i=index" [value]="file.upload+';'+file.id">
                         {{file.source}}
@@ -68,7 +69,7 @@
                   </div>
 
                   <div class="col-sm-1 mb-5 mr-2 ml-4">
-                    <button class="btn" (click)="OpenModal('NEW ACCOUNTING PLAN')">
+                    <button class="btn" (click)="OpenModal('NEW_ACCOUNTING_PLAN')">
                       <i class="fas fa-file-signature"></i>
                       {{'ACCOUNTING_PLAN_COMPONENT.NEW_PLAN'|translate}}
                     </button>
@@ -81,7 +82,7 @@
                   </div>
 
                   <div class="col-sm-1 mb-5 mr-2 ml-4" *ngIf="this.upload">
-                    <button class="btn" (click)="OpenModal('NEW ACCOUNTING PLAN ROW')">
+                    <button class="btn" (click)="OpenModal('NEW_ACCOUNTING_PLAN_ROW')">
                       <i class="fas fa-plus-square"></i>
                       {{'ACCOUNTING_PLAN_COMPONENT.NEW_ROW'|translate}}
                     </button>
@@ -110,7 +111,7 @@
                   <tbody *ngFor="let accounting_plan of this.accountingPlansList| slice">
                     <tr>
                       <td scope="row">
-                        <i (click)="OpenModal('UPDATE ACCOUNTING PLAN ROW',accounting_plan)" class="fas fa-edit"></i>
+                        <i (click)="OpenModal('UPDATE_ACCOUNTING_PLAN_ROW',accounting_plan)" class="fas fa-edit"></i>
                         <i (click)="deleteAccountingPlanRow(accounting_plan.id)" class="fa fa-trash-o ml-2"></i>
                       </td>
                       <td scope="row">{{ accounting_plan.account_number}} </td>

@@ -45,7 +45,7 @@ export class AccountingPlanComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.sharedService.getSelectedCompany((id)=>{
+    this.sharedService.getSelectedCompany((id) => {
       if (id) {
         this.id_company = id;
         this.getsources();
@@ -79,8 +79,7 @@ export class AccountingPlanComponent implements OnInit {
     this.id_source = b;
     this.accountingPlansList.length = 0;
     this.collectionSize = 1;
-    if(this.id_company)
-    this.getAccountingPlans(a);
+    if (this.id_company) this.getAccountingPlans(a);
   }
 
   getAccountingPlans(upload: string) {
@@ -132,7 +131,7 @@ export class AccountingPlanComponent implements OnInit {
     if (this.id_company) {
       if (this.sourceFiles.length > 0 || title.includes("NEW")) {
         const modalRef = this.modalService.open(
-          title.split(" ")[0] === "NEW" ? PostComponent : PutComponent
+          title.split("_")[0] === "NEW" ? PostComponent : PutComponent
         );
         modalRef.componentInstance.title = title;
         modalRef.componentInstance.type = title.includes("ROW")
@@ -179,14 +178,21 @@ export class AccountingPlanComponent implements OnInit {
 
   unlinkFile() {
     if (this.id_company) {
-      if (this.sourceFiles.length > 0)
+      if (this.sourceFiles.length > 0) {
+        const lang = JSON.parse(localStorage.getItem("lang")).lang;
         swal({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
+          title: lang && lang == "en" ? "Are you sure?" : "Êtes-vous sûr?",
+          text:
+            lang && lang == "en"
+              ? "You won't be able to revert this !"
+              : "Vous ne pourrez pas revenir en arrière !",
           icon: "warning",
           closeOnEsc: true,
           closeOnClickOutside: true,
-          buttons: ["cancel", "confirm"],
+          buttons:
+            lang && lang == "en"
+              ? ["cancel", "confirm"]
+              : ["annuler", "confirmer"],
         }).then((result) => {
           if (result) {
             this.backendService
@@ -205,7 +211,7 @@ export class AccountingPlanComponent implements OnInit {
               );
           }
         });
-      else return swal("Failure!", "No file selected !", "info");
+      } else return swal("Failure!", "No file selected !", "info");
     } else {
       return swal("Failure!", "No company selected !", "info");
     }

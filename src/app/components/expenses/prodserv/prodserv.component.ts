@@ -132,10 +132,10 @@ export class ProdservComponent implements OnInit {
   OpenModal(title: string, obj?) {
     if (this.id_company) {
       const modalRef = this.modalService.open(
-        title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
+        title.split("_")[0] === "NEW" ? PostComponent : PutComponent,
         { size: "lg", backdrop: "static" }
       );
-      modalRef.componentInstance.title = `${title}${this.operation=='0'?' (PURCHASE)':' (SALE)'}`;
+      modalRef.componentInstance.title = title;
       modalRef.componentInstance.type =
         this.etat == "1" ? PRODUCTS_POPUP_TYPE : SERVICES_POPUP_TYPE;
       modalRef.componentInstance.payload = obj
@@ -147,13 +147,14 @@ export class ProdservComponent implements OnInit {
   }
   // SERVICES PRODUCTS
   deleteItem(id) {
+    const lang=JSON.parse(localStorage.getItem('lang')).lang;
     swal({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: lang&&lang=='en'?"Are you sure?":'Êtes-vous sûr?',
+      text: lang&&lang=='en'?"You won't be able to revert this !":'Vous ne pourrez pas revenir en arrière !',
       icon: "warning",
       closeOnEsc: true,
       closeOnClickOutside: true,
-      buttons: ["cancel", "confirm"],
+      buttons: lang&&lang=='en'?["Cancel", "Confirm"]:["Annuler","Confirmer"],
     }).then((result) => {
       if (result) {
         this.backendService
@@ -173,83 +174,10 @@ export class ProdservComponent implements OnInit {
   }
   OpenDetails(title: string, payload: any) {
     const modalRef = this.modalService.open(DetailsComponent);
-    modalRef.componentInstance.title = `${title}${this.operation=='0'?' (PURCHASE)':' (SALE)'}`;
+    modalRef.componentInstance.title = title
     modalRef.componentInstance.type = this.etat=='1'?PRODUCTS_POPUP_TYPE:SERVICES_POPUP_TYPE;
     modalRef.componentInstance.payload = { ...payload };
   }
 
-  // OpenModal2(title: string, obj?) {
 
-  //   if (this.id_company) {
-  //     //produt
-  //     const modalRef = this.modalService.open(
-  //       title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
-  //       { size: "lg", backdrop: "static" }
-  //     );
-  //     modalRef.componentInstance.title = title;
-  //     modalRef.componentInstance.operationSer = this.opetationService;
-  //     modalRef.componentInstance.type =
-  //       this.etat == "1" ? PRODUCTS_POPUP_TYPE : SERVICES_POPUP_TYPE;
-  //     modalRef.componentInstance.payload = obj
-  //       ? { ...obj }
-  //       : { id_company: this.id_company };
-  //   } else {
-  //     return swal("Failure!", "No company selected !", "info");
-  //   }
-  // }
-  // SERVICES PRODUCTS
-  // deleteCustomer2(id) {
-  //   swal({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     closeOnEsc: true,
-  //     closeOnClickOutside: true,
-  //     buttons: ["cancel", "confirm"],
-  //   }).then((result) => {
-  //     if (result) {
-  //       this.backendService
-  //         .delete(`${DELETE_USER_SERVICES_END_POINT}/${id}`)
-  //         .subscribe(
-  //           new Observer(
-  //             this.router,
-  //             null,
-  //             true,
-  //             true,
-  //             this.sharedService,
-  //             null
-  //           ).OBSERVER_DELETE()
-  //         );
-  //     }
-  //   });
-  // }
-  // OpenDetails2(title: string, payload: any) {
-  //   const modalRef = this.modalService.open(DetailsComponent);
-  //   modalRef.componentInstance.title = title;
-  //   modalRef.componentInstance.type = SERVICES_POPUP_TYPE;
-  //   modalRef.componentInstance.payload = { ...payload };
-  // }
-  // changeProductState(event:any){
-  //   this.opetationProduct = event;
-  //   if(event == "0"){
-  //     this.productList = [];
-  //     this.getproduit("0")
-  //   }else{
-  //     this.productList = [];
-  //     this.getproduit("1")
-  //   }
-
-  // }
-  // changeServiceState(valur:any){
-  //   this.opetationService=""
-  //   this.opetationService =valur;
-  //   if(valur == "0"){
-  //     this.serviceList=[]
-  //     this.getservices("0")
-  //   }else{
-  //     this.serviceList=[]
-  //     this.getservices("1")
-  //   }
-
-  // }
 }

@@ -27,7 +27,7 @@
                 <div class="col-md-12 col-lg-3 offset-lg-10">
                   <div class="pcoded-search">
                     <div class="pcoded-search-box">
-                      <button class="btn " (click)="OpenModal('NEW EMPLOYEE')">
+                      <button class="btn " (click)="OpenModal('NEW_EMPLOYEE')">
                         <i class="icofont icofont-ui-add"></i>
                         {{'NEW'|translate}}
                       </button>
@@ -66,7 +66,7 @@
                           employee.hiredate|date:'dd/MM/yyyy'
                           }} </td>
                         <td scope="row">
-                          <i (click)="OpenModal('UPDATE EMPLOYEE',employee)" class="fas fa-edit"></i>
+                          <i (click)="OpenModal('UPDATE_EMPLOYEE',employee)" class="fas fa-edit"></i>
                           <i (click)="deleteEmployee(employee.id_employee)" class="fa fa-trash-o ml-2"></i>
                           <i (click)="OpenDetails('EMPLOYEE_DETAILS',employee)" class="fa fa-eye ml-2"></i>
                         </td>

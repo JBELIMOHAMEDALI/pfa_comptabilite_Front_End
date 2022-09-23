@@ -55,13 +55,14 @@ export class TaxComponent implements OnInit {
   }
 
   deleteTax(id_tax: string) {
+    const lang=JSON.parse(localStorage.getItem('lang')).lang;
     swal({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: lang&&lang=='en'?"Are you sure?":'Êtes-vous sûr?',
+      text: lang&&lang=='en'?"You won't be able to revert this !":'Vous ne pourrez pas revenir en arrière !',
       icon: "warning",
       closeOnEsc: true,
       closeOnClickOutside: true,
-      buttons: ["cancel", "confirm"],
+      buttons: lang&&lang=='en'?["Cancel", "Confirm"]:["Annuler","Confirmer"],
     }).then((result) => {
       if (result) {
         this.backendService
@@ -83,7 +84,7 @@ export class TaxComponent implements OnInit {
   OpenModal(title: string, tax?) {
     if(this.id_company){
     const modalRef = this.modalService.open(
-      title.split(" ")[0] === "NEW" ? PostComponent : PutComponent,
+      title.split("_")[0] === "NEW" ? PostComponent : PutComponent,
       { size: "lg", backdrop: "static" }
     );
     modalRef.componentInstance.title = title;

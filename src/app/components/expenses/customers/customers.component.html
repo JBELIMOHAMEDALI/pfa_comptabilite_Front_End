@@ -28,7 +28,7 @@
                 <div class="col-md-12 col-lg-3 offset-lg-10">
                   <div class="pcoded-search">
                     <div class="pcoded-search-box">
-                      <button class="btn " (click)="OpenModal('NEW CUSTOMER')">
+                      <button class="btn " (click)="OpenModal('NEW_CUSTOMER')">
                         <i class="icofont icofont-ui-add"></i>
                         {{'NEW'|translate}}
                       </button>
@@ -68,7 +68,7 @@
                           customer.payment_method
                           }} </td>
                         <td scope="row">
-                          <i (click)="OpenModal('UPDATE customer',customer)" class="fas fa-edit"></i>
+                          <i (click)="OpenModal('UPDATE_CUSTOMER',customer)" class="fas fa-edit"></i>
                           <i (click)="deleteCustomer(customer.id)" class="fa fa-trash-o ml-2"></i>
                           <i (click)="OpenDetails('CUSTOMER_DETAILS',customer)" class="fa fa-eye ml-2"></i>
 

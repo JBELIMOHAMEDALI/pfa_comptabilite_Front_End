@@ -28,7 +28,7 @@
                               <div class="col-md-12 col-lg-3 offset-lg-10">
                                   <div class="pcoded-search">
                                       <div class="pcoded-search-box">
-                                          <button class="btn " (click)="OpenModal('NEW SUPPLIER')">
+                                          <button class="btn " (click)="OpenModal('NEW_SUPPLIER')">
                                               <i class="icofont icofont-ui-add"></i>
                                               {{'NEW'|translate}}
                                           </button>
@@ -65,7 +65,7 @@
                                                   }} </td>
 
                                               <td scope="row">
-                                                  <i (click)="OpenModal('UPDATE SUPPLIERS',item)"
+                                                  <i (click)="OpenModal('UPDATE_SUPPLIER',item)"
                                                       class="fas fa-edit"></i>
                                                   <i (click)="deletesuppliers(item.id)"
                                                       class="fa fa-trash-o ml-2"></i>
